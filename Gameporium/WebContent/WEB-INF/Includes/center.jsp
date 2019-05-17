@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 </head>
 <body>
-<!-- container novità -->
+<!-- container novitÃ  -->
       	<div class="container-fluid clearfix">
       	<div style="border-bottom:1px black solid">
       		Offerte</div>
@@ -50,7 +50,7 @@
        		<!-- fine terza colonna -->	
       		</div>
       		<div style="border-bottom:1px black solid;  margin-top: 30px">
-      		Novità Giochi</div>
+      		NovitÃ  Giochi</div>
       		<!-- Inizio schede centrali-->
       		<div class="row">
       		<!-- Inizio prima colonna -->
@@ -91,7 +91,7 @@
        		<!-- fine terza colonna -->	
       		</div>
 <div style="border-bottom:1px black solid; margin-top: 30px">
-      		Novità Accessori</div>
+      		NovitÃ  Accessori</div>
       		<!-- Inizio schede centrali-->
       		<div class="row">
       		<!-- Inizio prima colonna -->
@@ -132,6 +132,6 @@
        		<!-- fine terza colonna -->	
       		</div>
       	</div>
-<!--fine container novità -->
+<!--fine container novitÃ  -->
 </body>
 </html>
