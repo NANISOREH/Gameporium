@@ -56,7 +56,7 @@
     <!-- fine colonna centrale -->
     
     <!-- colonna destra -->
-      	<div class="clearfix col-lg-2 col-md-2 col-sm-2 col-xs-12 d-md-block"style= "margin-bottom:300px" style="border-left:1px">
+      	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-md-block bg-light"style= "margin-bottom:300px" style="border-left:1px">
        <%@include file="/WEB-INF/Includes/rightpanel.jsp" %>
   		</div>
   <!-- fine sistema di colonne -->

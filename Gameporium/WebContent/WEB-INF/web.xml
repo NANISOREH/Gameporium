@@ -35,4 +35,15 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
+  
+  
+  
+  <servlet>
+     <servlet-name>loginpage</servlet-name>
+     <jsp-file>loginpage.jsp</jsp-file>
+  </servlet>
+<servlet-mapping>
+     <servlet-name>loginpage</servlet-name>
+     <url-pattern>/loginpage.jsp</url-pattern>
+</servlet-mapping>
 </web-app>
