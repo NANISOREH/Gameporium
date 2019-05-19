@@ -21,7 +21,7 @@ public class ProductModelDS implements ProductModel {
 			Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 
-			ds = (DataSource) envCtx.lookup("jdbc/gameporiumdb");
+			ds = (DataSource) envCtx.lookup("jdbc/GameporiumDB");
 
 		} catch (NamingException e) {
 			System.out.println("Error:" + e.getMessage());
@@ -37,7 +37,7 @@ public class ProductModelDS implements ProductModel {
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + ProductModelDS.TABLE_NAME
-				+ " (CodiceProdotto, codiceCategoria, foto, titolo, disponibilità, prezzo, produttore, descrizione, IVA) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ " (CodiceProdotto, codiceCategoria, foto, titolo, disponibilita, prezzo, produttore, descrizione, IVA) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			connection = ds.getConnection();
@@ -46,7 +46,7 @@ public class ProductModelDS implements ProductModel {
 			preparedStatement.setInt(2, Product.getCodCategoria());
 			preparedStatement.setString(3, Product.getFoto());
 			preparedStatement.setString(4, Product.getTitolo());
-			preparedStatement.setInt(5, Product.getDisponibilità());
+			preparedStatement.setInt(5, Product.getDisponibilita());
 			preparedStatement.setDouble(6, Product.getPrezzo());
 			preparedStatement.setString(7, Product.getProduttore());
 			preparedStatement.setString(8, Product.getDescrizione());
@@ -87,7 +87,7 @@ public class ProductModelDS implements ProductModel {
 				bean.setCodCategoria(rs.getInt("codiceCategoria"));
 				bean.setFoto(rs.getString("foto"));
 				bean.setTitolo(rs.getString("titolo"));
-				bean.setDisponibilità(rs.getInt("disponibilità"));
+				bean.setDisponibilita(rs.getInt("disponibilita"));
 				bean.setPrezzo(rs.getDouble("prezzo"));
 				bean.setProduttore(rs.getString("produttore"));
 				bean.setDescrizione(rs.getString("descrizione"));
@@ -160,7 +160,7 @@ public class ProductModelDS implements ProductModel {
 				bean.setCodCategoria(rs.getInt("codiceCategoria"));
 				bean.setFoto(rs.getString("foto"));
 				bean.setTitolo(rs.getString("titolo"));
-				bean.setDisponibilità(rs.getInt("disponibilità"));
+				bean.setDisponibilita(rs.getInt("disponibilita"));
 				bean.setPrezzo(rs.getDouble("prezzo"));
 				bean.setProduttore(rs.getString("produttore"));
 				bean.setDescrizione(rs.getString("descrizione"));

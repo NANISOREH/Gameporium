@@ -21,7 +21,7 @@ public class EffettuaModelDS implements EffettuaModel {
 			Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 
-			ds = (DataSource) envCtx.lookup("jdbc/gameporiumdb");
+			ds = (DataSource) envCtx.lookup("jdbc/gameporiumDB");
 
 		} catch (NamingException e) {
 			System.out.println("Error:" + e.getMessage());

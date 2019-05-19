@@ -9,7 +9,7 @@ CREATE TABLE prodotto (
     codiceCategoria int,
     foto			varchar(100),
     titolo			varchar(30),
-    disponibilità	int,
+    disponibilita	int,
     prezzo			numeric,
     produttore		varchar(30),
     descrizione		varchar(100),
@@ -41,7 +41,7 @@ CREATE TABLE gioco(
 	nomeCategoria	varchar(15),
     descrizioneCategoria	varchar(100),
     durata			varchar(10),
-    etàConsigliata	int,
+    etaConsigliata	int,
     numGiocatori	varchar(5),
     foreign key (codiceProdotto) references prodotto(codiceProdotto)
 								ON UPDATE CASCADE
@@ -154,7 +154,7 @@ USE GameporiumDB;
 CREATE TABLE composizione(
 	codiceOrdine int,
     codiceProdotto int,
-    quantità int,
+    quantita int,
     foreign key (codiceProdotto) references prodotto (codiceProdotto)
 								ON UPDATE CASCADE
                                 ON DELETE CASCADE,

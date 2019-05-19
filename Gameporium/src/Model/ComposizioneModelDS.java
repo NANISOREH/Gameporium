@@ -21,7 +21,7 @@ public class ComposizioneModelDS implements ComposizioneModel {
 			Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 
-			ds = (DataSource) envCtx.lookup("jdbc/gameporiumdb");
+			ds = (DataSource) envCtx.lookup("jdbc/GameporiumDB");
 
 		} catch (NamingException e) {
 			System.out.println("Error:" + e.getMessage());
@@ -37,13 +37,13 @@ public class ComposizioneModelDS implements ComposizioneModel {
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + ComposizioneModelDS.TABLE_NAME
-				+ " (codiceOrdine, codiceProdotto, quantità) VALUES (?, ?, ?)";
+				+ " (codiceOrdine, codiceProdotto, quantita) VALUES (?, ?, ?)";
 
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setInt(2, Composizione.getCodiceProdotto());
-			preparedStatement.setInt(3, Composizione.getQuantità());
+			preparedStatement.setInt(3, Composizione.getQuantita());
 			preparedStatement.setInt(1, Composizione.getCodiceOrdine());
 			preparedStatement.executeUpdate();
 
@@ -78,7 +78,7 @@ public class ComposizioneModelDS implements ComposizioneModel {
 			while (rs.next()) {
 				bean.setCodiceProdotto(rs.getInt("codiceProdotto"));
 				bean.setCodiceOrdine(rs.getInt("codiceOrdine"));
-				bean.setQuantità(rs.getInt("quantità"));
+				bean.setQuantita(rs.getInt("quantita"));
 			}
 
 		} finally {
@@ -145,7 +145,7 @@ public class ComposizioneModelDS implements ComposizioneModel {
 
 				bean.setCodiceProdotto(rs.getInt("codiceProdotto"));
 				bean.setCodiceOrdine(rs.getInt("codiceOrdine"));
-				bean.setQuantità(rs.getInt("quantità"));
+				bean.setQuantita(rs.getInt("quantita"));
 				Composizione.add(bean);
 			}
 

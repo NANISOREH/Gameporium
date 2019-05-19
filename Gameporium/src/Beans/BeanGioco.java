@@ -5,7 +5,7 @@ import java.sql.Time;
 
 public class BeanGioco implements Serializable{
 	private static final long serialVersionUID = 1L;
-	int codiceProdotto, numeroGiocatori, etàConsigliata;
+	int codiceProdotto, numeroGiocatori, etaConsigliata;
 	String nomeCategoria, descrizioneCategoria;
 	Time durata;
 
@@ -13,7 +13,7 @@ public class BeanGioco implements Serializable{
 	{
 		codiceProdotto=-1;
 		numeroGiocatori=-1;
-		etàConsigliata=-1;
+		etaConsigliata=-1;
 		nomeCategoria="";
 		descrizioneCategoria="";
 		durata=null;
@@ -35,12 +35,12 @@ public class BeanGioco implements Serializable{
 		this.numeroGiocatori = newNumeroGiocatori;
 	}
 
-	public int getEtàConsigliata() {
-		return etàConsigliata;
+	public int getEtaConsigliata() {
+		return etaConsigliata;
 	}
 
-	public void setEtàConsigliata(int newEtàConsigliata) {
-		this.etàConsigliata = newEtàConsigliata;
+	public void setEtaConsigliata(int newEtaConsigliata) {
+		this.etaConsigliata = newEtaConsigliata;
 	}
 
 	public String getNomeCategoria() {
@@ -70,7 +70,7 @@ public class BeanGioco implements Serializable{
 	@Override
 	public String toString() {
 		return "BeanGioco [codiceProdotto=" + codiceProdotto + ", numeroGiocatori=" + numeroGiocatori
-				+ ", etàConsigliata=" + etàConsigliata + ", nomeCategoria=" + nomeCategoria + ", descrizioneCategoria="
+				+ ", etaConsigliata=" + etaConsigliata + ", nomeCategoria=" + nomeCategoria + ", descrizioneCategoria="
 				+ descrizioneCategoria + ", durata=" + durata + "]";
 	}
 	

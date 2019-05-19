@@ -4,13 +4,13 @@ import java.io.Serializable;
 
 public class BeanComposizione implements Serializable{
 	private static final long serialVersionUID = 1L;
-	int codiceOrdine, codiceProdotto, quantità;
+	int codiceOrdine, codiceProdotto, quantita;
 	
 	public BeanComposizione()
 	{
 		codiceOrdine=-1;
 		codiceProdotto=-1;
-		quantità=-1;
+		quantita=-1;
 	}
 
 	public int getCodiceOrdine() {
@@ -29,18 +29,18 @@ public class BeanComposizione implements Serializable{
 		this.codiceProdotto = newCodiceProdotto;
 	}
 
-	public int getQuantità() {
-		return quantità;
+	public int getQuantita() {
+		return quantita;
 	}
 
-	public void setQuantità(int newQuantità) {
-		this.quantità = newQuantità;
+	public void setQuantita(int newQuantità) {
+		this.quantita = newQuantità;
 	}
 
 	@Override
 	public String toString() {
-		return "BeanComposizione [codiceOrdine=" + codiceOrdine + ", codiceProdotto=" + codiceProdotto + ", quantit�="
-				+ quantità + "]";
+		return "BeanComposizione [codiceOrdine=" + codiceOrdine + ", codiceProdotto=" + codiceProdotto + ", quantita="
+				+ quantita + "]";
 	}
 	
 	
