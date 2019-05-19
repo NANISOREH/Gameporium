@@ -5,10 +5,16 @@
 <head>
 <meta charset="UTF-8">
 </head>
+<%@  taglib  prefix="c"   uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ page
+  [session = "true"]
+%>
+
+<%@ page import="javax.servlet.*" %> 
 <body>
 <!-- navbar -->
   <nav class="navbar navbar-dark navbar-expand-sm" style="margin-top: 0px">
-    <a class="navbar-brand text-white-80" href="#"><img src="LOGOPLACEH.png" class="rounded mx-auto d-block" alt="Responsive image" style="margin-bottom: 0; max-width: 200px; max-height: 50%"></a>
+    <a class="navbar-brand text-white-80" href="/Gameporium/home.jsp"><img src="LOGOPLACEH.png" class="rounded mx-auto d-block" alt="Responsive image" style="margin-bottom: 0; max-width: 200px; max-height: 50%"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -51,12 +57,26 @@
 	        </div>
 	      </li>
 	      
-	      <li class="nav-item d-block d-sm-none" style="border-top: 1px solid #000000">
-	      <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Accedi o registrati</a>
-	      </li>
+	      <c:set var = "openLogin" scope = "session" value = "false"/>
+	     
+	      <c:choose>
+		    <c:when test="${openLogin==true}">
+			  <li class="nav-item d-block d-sm-none" style="border-top: 1px solid #000000">
+			    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Area Utente</a>
+			  </li>
+		    </c:when>   
+	      </c:choose>
+
+	      <c:choose>
+		    <c:when test="${openLogin==false}">
+			  <li class="nav-item d-block d-sm-none" style="border-top: 1px solid #000000">
+			    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Accedi o registrati</a>
+			  </li>
+		    </c:when>   
+	      </c:choose>
 	      
 	      <li class="nav-item d-block d-sm-none">
-	      <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Il tuo carrello</a>
+	      	<a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Il tuo carrello</a>
 	      </li>
 	      
 	      
@@ -73,16 +93,27 @@
 			</form>
 	      </li>
 	      
-	      <li class="nav-item">
-	      	<a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Accedi o registrati</a>
-	      </li>
+	      <c:choose>
+		    <c:when test="${openLogin==true}">
+			  <li class="nav-item d-block d-sm-none" style="border-top: 1px solid #000000">
+			    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Area Utente</a>
+			  </li>
+		    </c:when>   
+	      </c:choose>
+	      
+	      <c:choose>
+		    <c:when test="${openLogin==false}">
+			  <li class="nav-item d-block d-sm-none" style="border-top: 1px solid #000000">
+			    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Accedi o registrati</a>
+			  </li>
+		    </c:when>   
+	      </c:choose>
 	  
 	  </ul>
     </div> 
   
   </nav>
   <!-- end navbar -->
-</div>
 
 </body>
 </html>

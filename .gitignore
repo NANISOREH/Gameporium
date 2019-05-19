@@ -2,3 +2,5 @@
 .recommenders
 Servers
 .settings
+/WebContent/META-INF/context.xml
+

@@ -10,5 +10,7 @@ public interface ClienteModel {
 
 	public BeanCliente doRetrieveByKey(int code) throws SQLException;
 	
+	public BeanCliente doRetrieveByUserPass(String user, String pass) throws SQLException;
+	
 	public Collection<BeanCliente> doRetrieveAll(String order) throws SQLException;
 }
