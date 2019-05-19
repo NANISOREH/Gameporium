@@ -25,7 +25,7 @@ INSERT INTO evento(codiceEvento,nome,luogo,descrizione,dataEvento,ora,numeroPart
     (002, 'Cavacon', 'Mediateca Marte, Cava de Tirreni, SA', 'Giochi da tavolo','2020/01/06','10:00:00',7),
     (003, 'Isola di Illyon','Mostra d oltre Mare, Campi Flegrei, NA','Giochi di Ruolo','2020/04/28','12:00:00',16);
     
-INSERT INTO prodotto(codiceProdotto, codiceCategoria, foto,titolo,disponibilità,prezzo,produttore,descrizione,IVA) VALUES
+INSERT INTO prodotto(codiceProdotto, codiceCategoria, foto,titolo,disponibilita,prezzo,produttore,descrizione,IVA) VALUES
 	(0001, 01,'','Imagine',8,20,'Oliphante','blablabla',22),
     (0002, 01,'','Dungeons & Dragons', 15, 40,'Wizard of the coast','blablabla',22),
     (0003, 02,'','Miniatura soldato',6,15,'Scalpello','blablabla',22),
@@ -43,7 +43,7 @@ INSERT INTO accessorio(nomeCategoria, descrizioneCategoria,codiceProdotto) VALUE
     ('Accessorio','Accessori per giochi di ruolo',0009),
     ('Accessorio','Accessori per giochi di carte',0010);
     
-INSERT INTO gioco (codiceProdotto,nomeCategoria,descrizioneCategoria,durata,etàConsigliata,numgiocatori) VALUES
+INSERT INTO gioco (codiceProdotto,nomeCategoria,descrizioneCategoria,durata,etaConsigliata,numgiocatori) VALUES
 	(0001,'Gioco','Gioco da tavolo','variabile',6,'2+'),
     (0002,'Gioco','Gioco di ruolo','variabile',14,'2+'),
     (0005,'Gioco','Gioco di carte','60\'',12,'2'),
@@ -75,7 +75,7 @@ INSERT INTO recensione(codiceCliente,codiceProdotto,testo) VALUES
     ('MNZVCN90H11A091W', 0002,'ho ingoiato dei pezzi'),
     ('CHRGNN93D24F022E', 0003,'non adatto a chi ha un QI<80');
 
-INSERT INTO composizione(codiceOrdine,codiceProdotto,quantità) VALUES
+INSERT INTO composizione(codiceOrdine,codiceProdotto,quantita) VALUES
 	(00001,0003,1),
     (00002,0001,1),
     (00002,0006,1),
