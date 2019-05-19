@@ -149,10 +149,10 @@
 					out.print(c.getUsername());
 					%>
 			</div>
-				<form action="login" method="post" class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="#">Area Cliente</a>
+				<form action="logout" method="get" class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" style="text-align: center" href="#">Area Cliente</a>
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" type="submit">Logout</a>
+					<div style="text-align: center"><button class="btn btn-primary" type="submit">Logout</button></div>
 				</form>
 			</div>
 			<% } %>

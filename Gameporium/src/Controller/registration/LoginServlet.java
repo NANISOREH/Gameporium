@@ -1,4 +1,4 @@
-package Controller;
+package Controller.registration;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -32,11 +32,6 @@ public class LoginServlet extends HttpServlet
 	{
 		HttpSession newSession = request.getSession(true);
 		boolean accessDone;
-//		if ((boolean) newSession.getAttribute("accessDone") == true)
-//		{
-//			accessDone = false;
-//			response.sendRedirect("/Gameporium/home.jsp");
-//		}
 		
 		BeanCliente cliente = new BeanCliente();
 		String user = request.getParameter("un");
@@ -62,7 +57,7 @@ public class LoginServlet extends HttpServlet
 			response.sendRedirect("/Gameporium/home.jsp"); 
 		}
 		else
-			response.sendRedirect("/Gameporium/loginpage.jsp");
+			response.sendRedirect("/Gameporium/home.jsp");
 	}
 
 }
