@@ -22,7 +22,7 @@ public class ClienteModelDS implements ClienteModel {
 			Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 
-			ds = (DataSource) envCtx.lookup("jdbc/gameporiumdb");
+			ds = (DataSource) envCtx.lookup("jdbc/GameporiumDB");
 
 		} catch (NamingException e) {
 			System.out.println("Error:" + e.getMessage());
@@ -74,12 +74,53 @@ public class ClienteModelDS implements ClienteModel {
 
 		BeanCliente bean = new BeanCliente();
 
-		String selectSQL = "SELECT * FROM " + ClienteModelDS.TABLE_NAME + " WHERE codiceProdotto = ?";
+		String selectSQL = "SELECT * FROM " + ClienteModelDS.TABLE_NAME + " WHERE CF = ?";
 
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setInt(1, code);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				bean.setCF(rs.getString("CF"));
+				bean.setCap(rs.getInt("cap"));
+				bean.setCognome(rs.getString("cognome"));
+				bean.setDataNascita(rs.getDate("dataNascita"));
+				bean.setNome(rs.getString("nome"));
+				bean.setPasswordU(rs.getString("passwordU"));
+				bean.setProvincia(rs.getString("provincia"));
+				bean.setRecapito(rs.getString("recapito"));
+				bean.setUsername(rs.getString("username"));
+				bean.setVia(rs.getString("via"));
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return bean;
+	}
+	
+	public synchronized BeanCliente doRetrieveByUserPass(String user, String pass) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		BeanCliente bean = new BeanCliente();
+
+		String selectSQL = "SELECT * FROM " + ClienteModelDS.TABLE_NAME + " WHERE username = ? AND PasswordU = ?";
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, user);
+			preparedStatement.setString(2, pass);
 
 			ResultSet rs = preparedStatement.executeQuery();
 
