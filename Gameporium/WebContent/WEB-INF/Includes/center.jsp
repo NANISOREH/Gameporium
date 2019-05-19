@@ -8,6 +8,16 @@
 <body>
 <!-- container novità -->
       	<div class="container-fluid clearfix">
+	  	
+	  	<div class = "container-fluid text-center" style = "margin-bottom: 30px;">
+		  	<form class="active-cyan active-cyan-2 d-block d-md-none w-100">
+				<i class="fas fa-search w-100" aria-hidden="true"></i> <input
+					class="form-control form-control-sm w-100" type="text"
+					placeholder="Search" aria-label="Search">
+			</form>
+		</div>
+      	
+      	
       	<div style="border-bottom:1px black solid">
       		Offerte</div>
       		<!-- Inizio schede centrali-->
@@ -90,7 +100,7 @@
        			</div>
        		<!-- fine terza colonna -->	
       		</div>
-<div style="border-bottom:1px black solid; margin-top: 30px">
+			<div style="border-bottom:1px black solid; margin-top: 30px">
       		Novità Accessori</div>
       		<!-- Inizio schede centrali-->
       		<div class="row">

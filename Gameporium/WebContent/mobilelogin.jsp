@@ -51,26 +51,21 @@
 		<!-- sistema di colonne -->
 		<div class="row">
 			<!-- colonna sinistra -->
-			<div
-				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light"
-				style="margin-bottom: 500px">
+			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-md-block bg-light">
 				<%@include file="/WEB-INF/Includes/leftpanel.jsp"%>
 			</div>
 			<!-- fine colonna sinistra -->
 			<!-- colonna centrale -->
-			<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 bg-light"
-				style="margin-bottom: 1100px; margin-top: 30px">
-
-				<div style="border-bottom: 1px black solid; text-align:center; font-size: 20px">Username o
-					password errati: riprova o registra un nuovo account</div>
+			<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 bg-light"
+				style="margin-bottom: 20px; margin-top: 30px">
 
 				<div class="container">
 					<div class="row">
 
-						<div class="col-sm-12 col-md-12 col-lg-6 mx-auto">
+						<div class="col-sm-12 col-md-6 col-lg-6 mx-auto">
 							<div class="card card-signin my-5">
 								<div class="card-body">
-									<h5 class="card-title text-center">Sei già nostro cliente?</h5>
+									<h5 class="card-title text-center">Accedi</h5>
 									<form action="login" class="form-signin">
 									
 										<%
@@ -104,7 +99,7 @@
 												class="form-control" placeholder="Password" name="pw" autocomplete="off" value="<%=password%>" required>
 										</div>
 
-										<div class="form-check text-right" style= "margin:20px">
+										<div class="form-check text-right" style="margin: 17px">
 										    <input type="checkbox" class="form-check-input active unchecked" id="exampleCheck1" name="remember">
 										    <label class="form-check-label" for="exampleCheck1">Ricordami</label>
 										</div>
@@ -140,8 +135,7 @@
 			<!-- fine colonna centrale -->
 
 			<!-- colonna destra -->
-			<div class="clearfix col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block"
-				style="margin-bottom: 300px" style="border-left:1px">
+			<div class="clearfix col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-md-block" style="border-left:1px">
 				<%@include file="/WEB-INF/Includes/rightpanel.jsp"%>
 			</div>
 			<!-- fine sistema di colonne -->

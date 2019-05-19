@@ -74,7 +74,7 @@
 				<% } else { %>
 				<li class="nav-item d-block d-sm-none"
 					style="border-top: 1px solid #000000"><a class="nav-link"
-					href="/Gameporium/loginpage.jsp" id="navbarDropdown" role="button" data-toggle="dropdown">Accedi
+					href="/Gameporium/mobilelogin.jsp" id="navbarDropdown" role="button">Accedi
 						o registrati</a>
 				</li>
 				<% } %>
@@ -87,9 +87,9 @@
 			</ul>
 		</div>
 
-		<div class="navbar-collapse collapse w-100 order-3 dual-collapse2"
+		<div class="navbar-collapse collapse w-100 order-3 dual-collapse2 d-none d-md-block"
 			id="collapsibleNavbarRight">
-			<ul class="navbar-nav ml-auto .d-md-none .d-lg-block">
+			<ul class="navbar-nav ml-auto d-none d-md-block">
 
 				<li class="nav-item mr-auto" style="margin-bottom: 5px;">
 					<form
@@ -174,6 +174,7 @@
 			</div>
 				<form action="logout" method="get" class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<a class="dropdown-item" style="text-align: center" href="#">Area Cliente</a>
+					<a class="dropdown-item" style="text-align: center" href="#">Carrello</a>
 					<div class="dropdown-divider"></div>
 					<div style="text-align: center"><button class="btn btn-primary" type="submit">Logout</button></div>
 				</form>
