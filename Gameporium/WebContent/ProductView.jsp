@@ -72,7 +72,7 @@
 			<td><%=product.getTitolo()%></td>
 			<td><%=product.getDescrizione()%></td>
 			<td><%=product.getPrezzo()%></td>
-			<td><%=product.getDisponibilità()%></td>
+			<td><%=product.getDisponibilita()%></td>
 		</tr>
 	</table>
 	<%

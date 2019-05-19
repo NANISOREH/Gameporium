@@ -36,7 +36,7 @@
 	border-color: transparent
   } 
   </style>
-  <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+
   <%@include file="/WEB-INF/Includes/header.jsp" %>
 </head>
 
@@ -45,15 +45,15 @@
     <!-- sistema di colonne -->
     <div class="row">
       <!-- colonna sinistra -->
-    	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-md-block bg-light" style="margin-bottom:500px">
-         <%@include file="/WEB-INF/Includes/leftpanel.jsp" %>  
-      	</div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-md-block bg-light" style="margin-bottom:500px">
+        <%@include file="/WEB-INF/Includes/leftpanel.jsp" %>  
+      </div>
       <!-- fine colonna sinistra -->
-	<!-- colonna centrale -->
-       <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 bg-light" style="margin-bottom:1100px; margin-top: 30px">
-        <%@include file="/WEB-INF/Includes/center.jsp" %>
-		</div>
-    <!-- fine colonna centrale -->
+	  <!-- colonna centrale -->
+      <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 bg-light" style="margin-bottom:1100px; margin-top: 30px">
+      
+	  </div>
+      <!-- fine colonna centrale -->
     
     <!-- colonna destra -->
       	<div class="clearfix col-lg-2 col-md-2 col-sm-2 col-xs-12 d-md-block"style= "margin-bottom:300px" style="border-left:1px">
