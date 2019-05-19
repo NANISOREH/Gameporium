@@ -57,26 +57,28 @@
 						<a class="dropdown-item" href="#">Something else here</a>
 					</div></li>
 
-				<c:set var="openLogin" scope="session" value="true" />
-
-				<c:choose>
-					<c:when test="${openLogin==true}">
-						<li class="nav-item d-block d-sm-none"
-							style="border-top: 1px solid #000000"><a class="nav-link"
-							href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Area
-								Utente</a></li>
-					</c:when>
-				</c:choose>
-
-				<c:choose>
-					<c:when test="${openLogin==false}">
-						<li class="nav-item d-block d-sm-none"
-							style="border-top: 1px solid #000000"><a class="nav-link"
-							href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Accedi
-								o registrati</a></li>
-					</c:when>
-				</c:choose>
-
+	 			<%  
+	  				boolean access = true;
+					
+	  				if (session.getAttribute("accessDone") != null)
+	  					access = (boolean) session.getAttribute("accessDone");
+	  				else
+	  					access = false;
+	 			%> 
+				
+				<% if (access) { %>
+				<li class="nav-item d-block d-sm-none"
+					style="border-top: 1px solid #000000"><a class="nav-link"
+					href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Area
+						Utente</a></li>
+				<% } else { %>
+				<li class="nav-item d-block d-sm-none"
+					style="border-top: 1px solid #000000"><a class="nav-link"
+					href="/Gameporium/loginpage.jsp" id="navbarDropdown" role="button" data-toggle="dropdown">Accedi
+						o registrati</a>
+				</li>
+				<% } %>
+				
 				<li class="nav-item d-block d-sm-none"><a class="nav-link"
 					href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Il
 						tuo carrello</a></li>
@@ -100,16 +102,6 @@
 
 			</ul>
 			
- 			<%  
-  				boolean access = true;
-				
-  				if (session.getAttribute("accessDone") != null)
-  					access = (boolean) session.getAttribute("accessDone");
-  				else
-  					access = false;
- 			%> 
-			
-			
 			
 			<% if (!access) { %>
 				<button type="button" id="dropdownMenu1" data-toggle="dropdown"
@@ -119,21 +111,52 @@
 				<ul class="dropdown-menu dropdown-menu-right mt-2">
 					<li class="px-3 py-2">
 						<form action="login" method="post" class="form" role="form">
+							
+							<%
+						    Cookie[] cookies=request.getCookies();
+						    String password = "";
+						    String user = "";
+						    if (cookies != null) 
+						    {
+						    	for (Cookie cookie : cookies) 
+						        {
+						           if(cookie.getName().equals("savePass"))
+						           {
+						               password = cookie.getValue();
+						           }
+						           if(cookie.getName().equals("saveUser"))
+						           {
+						        	   user = cookie.getValue();
+						           }
+						        }
+						    }
+							%>
+							
 							<div class="form-group">
 								<input id="emailInput" placeholder="Username"
-									class="form-control form-control-sm" type="text" name="un" required="">
+									class="form-control form-control-sm" type="text" name="un" autocomplete="off" value="<%=user%>">
 							</div>
+							
+
 							<div class="form-group">
 								<input id="passwordInput" placeholder="Password"
-									class="form-control form-control-sm" type="password" name="pw" required="">
+									class="form-control form-control-sm" type="password" name="pw" autocomplete="off" value="<%=password%>">
 							</div>
+							
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary btn-block">Login</button>
 							</div>
+							
+							<div class="form-check text-right">
+							    <input type="checkbox" class="form-check-input active unchecked" id="exampleCheck1" name="remember">
+							    <label class="form-check-label" for="exampleCheck1">Ricordami</label>
+							</div>
+							
 							<div class="form-group text-right">
 								<small><a href="#" data-toggle="modal"
 									data-target="#modalPassword">Registrati</a></small>
 							</div>
+						
 						</form>
 					</li>
 				</ul>

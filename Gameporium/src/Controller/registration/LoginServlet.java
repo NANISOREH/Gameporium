@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import Beans.BeanCliente;
 import javax.servlet.*;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,10 +35,34 @@ public class LoginServlet extends HttpServlet
 		boolean accessDone;
 		
 		BeanCliente cliente = new BeanCliente();
-		String user = request.getParameter("un");
-		String pass = request.getParameter("pw");
-		ClienteModelDS cm;
+		String user = "";
+		String pass = "";
+		String rem = request.getParameter("remember");
 		
+		Cookie[] cookies = request.getCookies();
+
+		if (cookies != null) 
+		{
+			for (Cookie cookie : cookies) 
+			{
+				if (cookie.getName().equals("savePass")) 
+				{
+					pass = cookie.getValue();
+				}
+				if (cookie.getName().equals("saveUser")) 
+				{
+					user = cookie.getValue();
+				}
+			}
+		}
+			
+		pass = request.getParameter("pw");
+		user = request.getParameter("un");
+		
+		
+		Cookie savePass;
+		Cookie saveUser;
+		ClienteModelDS cm;
 		
 		try 
 		{
@@ -54,10 +79,22 @@ public class LoginServlet extends HttpServlet
 			newSession.setAttribute("currentSessionUser", cliente);
 			accessDone = true;
 			newSession.setAttribute("accessDone", accessDone);
+			
+			if (rem != null)
+			{
+				savePass = new Cookie("savePass", pass);
+				saveUser = new Cookie("saveUser", user);
+				response.addCookie(savePass);
+				response.addCookie(saveUser);
+			}
+				
 			response.sendRedirect("/Gameporium/home.jsp"); 
 		}
 		else
-			response.sendRedirect("/Gameporium/home.jsp");
+		{
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/loginpage.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 
 }
