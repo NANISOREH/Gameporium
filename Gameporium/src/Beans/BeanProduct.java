@@ -5,9 +5,9 @@ import java.io.Serializable;
 public class BeanProduct implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	int IVA,codiceProdotto,disponibilità,codCategoria;
+	int IVA,codiceProdotto,disponibilita,codCategoria;
 	double prezzo;
-	boolean offerta, preordine, novità;
+	boolean offerta, preordine, novita;
 
 
 	String titolo,descrizione,foto, produttore;
@@ -15,7 +15,7 @@ public class BeanProduct implements Serializable {
 
 	public BeanProduct(){
 		codiceProdotto=-1;
-		disponibilità=0;
+		disponibilita=0;
 		codCategoria=0;
 		prezzo=0.00;
 		titolo="";
@@ -25,7 +25,7 @@ public class BeanProduct implements Serializable {
 		IVA=-1;
 		offerta=false;
 		preordine=false;
-		novità=false;
+		novita=false;
 	}
 	
 	public boolean isOfferta() {
@@ -44,12 +44,12 @@ public class BeanProduct implements Serializable {
 		this.preordine = newPreordine;
 	}
 
-	public boolean isNovità() {
-		return novità;
+	public boolean isNovita() {
+		return novita;
 	}
 
-	public void setNovità(boolean newNovità) {
-		this.novità = newNovità;
+	public void setNovita(boolean newNovita) {
+		this.novita = newNovita;
 	}
 
 	public int getCodice() {
@@ -58,11 +58,11 @@ public class BeanProduct implements Serializable {
 	public void setCodice(int newCodice) {
 		this.codiceProdotto=newCodice;
 	}
-	public int getDisponibilità() {
-		return this.disponibilità;
+	public int getDisponibilita() {
+		return this.disponibilita;
 	}
-	public void setDisponibilità(int q) {
-		this.disponibilità=q;
+	public void setDisponibilita(int q) {
+		this.disponibilita=q;
 	}
 
 	public int getCodCategoria() {
@@ -112,9 +112,9 @@ public class BeanProduct implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "BeanProduct [IVA=" + IVA + ", codiceProdotto=" + codiceProdotto + ", disponibilità=" + disponibilità
+		return "BeanProduct [IVA=" + IVA + ", codiceProdotto=" + codiceProdotto + ", disponibilita=" + disponibilita
 				+ ", codCategoria=" + codCategoria + ", prezzo=" + prezzo + ", offerta=" + offerta + ", preordine="
-				+ preordine + ", novità=" + novità + ", titolo=" + titolo + ", descrizione=" + descrizione + ", foto="
+				+ preordine + ", novita=" + novita + ", titolo=" + titolo + ", descrizione=" + descrizione + ", foto="
 				+ foto + ", produttore=" + produttore + "]";
 	}
 	

@@ -65,7 +65,7 @@ public class ProductControl extends HttpServlet {
 					bean.setTitolo(name);
 					bean.setDescrizione(description);
 					bean.setPrezzo(price);
-					bean.setDisponibilità(quantity);
+					bean.setDisponibilita(quantity);
 					model.doSave(bean);
 				}
 			}			

@@ -21,7 +21,7 @@ public class GiocoModelDS implements GiocoModel {
 			Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 
-			ds = (DataSource) envCtx.lookup("jdbc/gameporiumdb");
+			ds = (DataSource) envCtx.lookup("jdbc/GameporiumDB");
 
 		} catch (NamingException e) {
 			System.out.println("Error:" + e.getMessage());
@@ -37,7 +37,7 @@ public class GiocoModelDS implements GiocoModel {
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + GiocoModelDS.TABLE_NAME
-				+ " (CodiceProdotto, nomeCategoria, descrizioneCategoria, durata, etàConsigliata, numGiocatori) VALUES (?, ?, ?, ?, ?, ?)";
+				+ " (CodiceProdotto, nomeCategoria, descrizioneCategoria, durata, etaConsigliata, numGiocatori) VALUES (?, ?, ?, ?, ?, ?)";
 
 		try {
 			connection = ds.getConnection();
@@ -46,7 +46,7 @@ public class GiocoModelDS implements GiocoModel {
 			preparedStatement.setString(2, Gioco.getNomeCategoria());
 			preparedStatement.setString(3, Gioco.getDescrizioneCategoria());
 			preparedStatement.setTime(4, Gioco.getDurata());
-			preparedStatement.setInt(5, Gioco.getEtàConsigliata());
+			preparedStatement.setInt(5, Gioco.getEtaConsigliata());
 			preparedStatement.setInt(6, Gioco.getNumeroGiocatori());
 			preparedStatement.executeUpdate();
 
@@ -83,7 +83,7 @@ public class GiocoModelDS implements GiocoModel {
 				bean.setDescrizioneCategoria(rs.getString("descrizioneCategoria"));
 				bean.setNomeCategoria(rs.getString("nomeCategoria"));
 				bean.setDurata(rs.getTime("durata"));
-				bean.setEtàConsigliata(rs.getInt("etàConsigliata"));
+				bean.setEtaConsigliata(rs.getInt("etaConsigliata"));
 				bean.setNumeroGiocatori(rs.getInt("numGiocatori"));
 			}
 
@@ -153,7 +153,7 @@ public class GiocoModelDS implements GiocoModel {
 				bean.setDescrizioneCategoria(rs.getString("descrizioneCategoria"));
 				bean.setNomeCategoria(rs.getString("nomeCategoria"));
 				bean.setDurata(rs.getTime("durata"));
-				bean.setEtàConsigliata(rs.getInt("etàConsigliata"));
+				bean.setEtaConsigliata(rs.getInt("etaConsigliata"));
 				bean.setNumeroGiocatori(rs.getInt("numGiocatori"));
 				Gioco.add(bean);
 			}

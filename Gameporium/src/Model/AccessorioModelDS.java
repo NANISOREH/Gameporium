@@ -21,7 +21,7 @@ public class AccessorioModelDS implements AccessorioModel {
 			Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 
-			ds = (DataSource) envCtx.lookup("jdbc/gameporiumdb");
+			ds = (DataSource) envCtx.lookup("jdbc/GameporiumDB");
 
 		} catch (NamingException e) {
 			System.out.println("Error:" + e.getMessage());
@@ -43,7 +43,6 @@ public class AccessorioModelDS implements AccessorioModel {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setInt(3, Accessorio.getCodiceProdotto());
-			preparedStatement.setString(2, Accessorio.getNomeCategoria());
 			preparedStatement.setString(1, Accessorio.getDescrizioneCategoria());
 			preparedStatement.executeUpdate();
 
