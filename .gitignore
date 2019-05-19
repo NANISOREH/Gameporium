@@ -2,5 +2,6 @@
 .recommenders
 Servers
 .settings
-/WebContent/META-INF/context.xml
+Gameporium/WebContent/META-INF/context.xml
+
 
