@@ -5,11 +5,9 @@ import java.sql.SQLException;
 
 import Beans.BeanCliente;
 import javax.servlet.*;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import Model.*;
 
 /**
@@ -31,70 +29,55 @@ public class RegisterServlet extends HttpServlet
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		HttpSession newSession = request.getSession(true);
-		boolean accessDone;
-		
+		ClienteModelDS cm = new ClienteModelDS();;
 		BeanCliente cliente = new BeanCliente();
-		String user = "";
-		String pass = "";
-		String rem = request.getParameter("remember");
+		BeanCliente testCliente = null;
 		
-		Cookie[] cookies = request.getCookies();
-
-		if (cookies != null) 
-		{
-			for (Cookie cookie : cookies) 
-			{
-				if (cookie.getName().equals("savePass")) 
-				{
-					pass = cookie.getValue();
-				}
-				if (cookie.getName().equals("saveUser")) 
-				{
-					user = cookie.getValue();
-				}
-			}
-		}
-			
-		pass = request.getParameter("pw");
-		user = request.getParameter("un");
-		
-		
-		Cookie savePass;
-		Cookie saveUser;
-		ClienteModelDS cm;
+		String user = request.getParameter("user");
+		String pass = request.getParameter("pass");
+		String confirmPass = request.getParameter ("confirmPass");
+		String mail = request.getParameter("mail");
+		String name = request.getParameter("name");
+		String surname = request.getParameter("surname");
+		String check = request.getParameter("check");
 		
 		try 
 		{
-			cm = new ClienteModelDS();
-			cliente = cm.doRetrieveByUserPass(user, pass);
+			testCliente = cm.doRetrieveByKey(user);
 		} 
 		catch (SQLException e) 
 		{
 			e.printStackTrace();
 		}
 		
-		if (cliente.getPasswordU() != "" && cliente.getUsername() != "")
+		if (testCliente.getUsername().equals("") && Utils.isValidPass(pass, confirmPass) && check != null)
 		{
-			newSession.setAttribute("currentSessionUser", cliente);
-			accessDone = true;
-			newSession.setAttribute("accessDone", accessDone);
-			
-			if (rem != null)
+			cliente.setNome(name);
+			cliente.setCognome(surname);
+			cliente.setUsername(user);
+			cliente.setPasswordU(pass);
+			cliente.setRecapito(mail);
+		
+			try 
 			{
-				savePass = new Cookie("savePass", pass);
-				saveUser = new Cookie("saveUser", user);
-				response.addCookie(savePass);
-				response.addCookie(saveUser);
+				cm.doSave(cliente);
+			} 
+			catch (SQLException e) 
+			{
+				e.printStackTrace();
 			}
-				
-			response.sendRedirect("/Gameporium/home.jsp"); 
+			
+			request.setAttribute("registered", true);
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/home.jsp");
+			dispatcher.forward(request, response);
 		}
 		else
 		{
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/loginpage.jsp");
+			request.setAttribute("notRegistered", true);
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/register.jsp");
 			dispatcher.forward(request, response);
 		}
+		
 	}
 
 }

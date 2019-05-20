@@ -39,12 +39,12 @@ public class ClienteModelDS implements ClienteModel {
 
 		String insertSQL = "INSERT INTO " + ClienteModelDS.TABLE_NAME
 				+ " (CF, dataNascita,nome,cognome,username,passwordU,recapito,cap,via,provincia) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		Date dt=new java.sql.Date(Cliente.getDataNascita().getTime());
+
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setString(1, Cliente.getCF());
-			preparedStatement.setDate(2, dt);
+			preparedStatement.setDate(2, java.sql.Date.valueOf("2013-09-04"));   							//da aggiustare
 			preparedStatement.setString(3, Cliente.getNome());
 			preparedStatement.setString(4, Cliente.getCognome());
 			preparedStatement.setString(5, Cliente.getUsername());
@@ -68,18 +68,18 @@ public class ClienteModelDS implements ClienteModel {
 	}
 
 	@Override
-	public synchronized BeanCliente doRetrieveByKey(int code) throws SQLException {
+	public synchronized BeanCliente doRetrieveByKey(String user) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
 		BeanCliente bean = new BeanCliente();
 
-		String selectSQL = "SELECT * FROM " + ClienteModelDS.TABLE_NAME + " WHERE CF = ?";
+		String selectSQL = "SELECT * FROM " + ClienteModelDS.TABLE_NAME + " WHERE username = ?";
 
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setInt(1, code);
+			preparedStatement.setString(1, user);
 
 			ResultSet rs = preparedStatement.executeQuery();
 

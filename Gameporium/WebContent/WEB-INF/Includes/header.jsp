@@ -13,11 +13,19 @@
 
 	
 	<c:set var="loginFail" value='${requestScope["loginFail"]}' />
+	<c:set var="registered" value='${requestScope["registered"]}' />	
 			
 	<c:if test="${loginFail}">
 		<div class="alert alert-warning alert-dismissible fade-in" role="alert">
 		  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		  <strong>Attenzione,</strong> Dati di login errati, riprovare!
+		</div>
+	</c:if>
+		
+	<c:if test="${registered}">
+		<div class="alert alert-success alert-dismissible fade-in" role="alert">
+		  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		  <strong>Complimenti!</strong> Sei registrato a Gameporium, effettua l'accesso usando il tasto Login.
 		</div>
 	</c:if>
 

@@ -8,7 +8,7 @@ public interface ClienteModel {
 
 	public boolean doDelete(int code) throws SQLException;
 
-	public BeanCliente doRetrieveByKey(int code) throws SQLException;
+	public BeanCliente doRetrieveByKey(String user) throws SQLException;
 	
 	public BeanCliente doRetrieveByUserPass(String user, String pass) throws SQLException;
 	
