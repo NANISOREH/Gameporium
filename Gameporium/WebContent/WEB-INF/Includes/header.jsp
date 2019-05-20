@@ -10,6 +10,17 @@
 <%@ page import="javax.servlet.*"%>
 <%@ page import="Beans.*"%>
 <body>
+
+	
+	<c:set var="loginFail" value='${requestScope["loginFail"]}' />
+			
+	<c:if test="${loginFail}">
+		<div class="alert alert-warning alert-dismissible fade-in" role="alert">
+		  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		  <strong>Attenzione,</strong> Dati di login errati, riprovare!
+		</div>
+	</c:if>
+
 	<!-- navbar -->
 	<nav class="navbar navbar-dark navbar-expand-sm"
 		style="margin-top: 0px">
@@ -74,8 +85,10 @@
 				<% } else { %>
 				<li class="nav-item d-block d-sm-none"
 					style="border-top: 1px solid #000000"><a class="nav-link"
-					href="/Gameporium/mobilelogin.jsp" id="navbarDropdown" role="button">Accedi
-						o registrati</a>
+					href="/Gameporium/mobilelogin.jsp" id="navbarDropdown" role="button">Accedi</a>
+				</li>
+				<li class="nav-item d-block d-sm-none"><a class="nav-link"
+					href="/Gameporium/register.jsp" id="navbarDropdown" role="button">Registrati</a>
 				</li>
 				<% } %>
 				
@@ -153,8 +166,7 @@
 							</div>
 							
 							<div class="form-group text-right">
-								<small><a href="#" data-toggle="modal"
-									data-target="#modalPassword">Registrati</a></small>
+								<small><a href="/Gameporium/register.jsp">Registrati</a></small>
 							</div>
 						
 						</form>
@@ -180,6 +192,8 @@
 				</form>
 			</div>
 			<% } %>
+			
+			
 			
 		
 		</div>
