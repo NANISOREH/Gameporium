@@ -15,11 +15,11 @@ import Model.*;
 /**
  * Servlet implementation class ProductControl
  */
-public class LoginServlet extends HttpServlet 
+public class RegisterServlet extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;
 
-	public LoginServlet() 
+	public RegisterServlet() 
 	{
 		super();
 	}
@@ -92,12 +92,9 @@ public class LoginServlet extends HttpServlet
 		}
 		else
 		{
-			request.setAttribute("loginFail", true);
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/home.jsp");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/loginpage.jsp");
 			dispatcher.forward(request, response);
 		}
-		
-			
 	}
 
 }

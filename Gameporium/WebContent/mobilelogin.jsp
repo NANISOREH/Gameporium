@@ -109,18 +109,8 @@
 											type="submit">Accedi</button>
 										<hr class="my-4">
 										<button
-											class="btn btn-md btn-google btn-block text-uppercase"
-											type="submit">
-											<i class="fab fa-google mr-2"></i> Accedi con Google
-										</button>
-										<button
 											class="btn btn-md btn-facebook btn-block text-uppercase"
-											type="submit">
-											<i class="fab fa-facebook-f mr-2"></i> Accedi con Facebook
-										</button>
-										<button
-											class="btn btn-md btn-facebook btn-block text-uppercase"
-											type="submit">
+											type="submit" onclick="window.location='/Gameporium/register.jsp';">
 											<i class="fab fa-facebook-f mr-2"></i> Registra un nuovo account
 										</button>
 									</form>
