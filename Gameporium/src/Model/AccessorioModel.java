@@ -4,7 +4,7 @@ import java.util.Collection;
 import Beans.BeanAccessorio;
 
 public interface AccessorioModel {
-	public void doSave(BeanAccessorio product) throws SQLException;
+	public void doSave(BeanAccessorio bean) throws SQLException;
 
 	public boolean doDelete(int code) throws SQLException;
 
