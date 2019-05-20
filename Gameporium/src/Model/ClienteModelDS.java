@@ -224,4 +224,45 @@ public class ClienteModelDS implements ClienteModel {
 		return Cliente;
 	}
 
+	public BeanCliente doRetrieveByEmail(String mail) throws SQLException
+	{
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		BeanCliente bean = new BeanCliente();
+
+		String selectSQL = "SELECT * FROM " + ClienteModelDS.TABLE_NAME + " WHERE recapito = ?";
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, mail);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				bean.setCF(rs.getString("CF"));
+				bean.setCap(rs.getInt("cap"));
+				bean.setCognome(rs.getString("cognome"));
+				bean.setDataNascita(rs.getDate("dataNascita"));
+				bean.setNome(rs.getString("nome"));
+				bean.setPasswordU(rs.getString("passwordU"));
+				bean.setProvincia(rs.getString("provincia"));
+				bean.setRecapito(rs.getString("recapito"));
+				bean.setUsername(rs.getString("username"));
+				bean.setVia(rs.getString("via"));
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return bean;
+	}
+
 }
