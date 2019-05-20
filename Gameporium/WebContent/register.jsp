@@ -14,6 +14,8 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/lt.js"></script>
+
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <style>
@@ -131,7 +133,15 @@
 </head>
 
 <body style="background-color: #343a40">
+	<c:set var="notRegistered" value='${requestScope["notRegistered"]}' />
+
 	<div class="container-fluid bg-light" style="margin-top: 0">
+	<c:if test="${notRegistered}">
+		<div class="alert alert-warning alert-dismissible fade-in" role="alert">
+		  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		  <strong>Attenzione,</strong> la registrazione, non è andata a buon fine, riprovare!
+		</div>
+	</c:if>
 		<!-- sistema di colonne -->
 		<div class="row">
 			
@@ -146,26 +156,32 @@
 			<!-- colonna centrale -->
 			<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 bg-light" style="margin-bottom: 1100px; margin-top: 30px">
 				<div class="signup-form">
-				    <form action="/examples/actions/confirmation.php" method="post">
+				    <form action="register" method="post">
 						<h2>Registrati</h2>
 						<p class="hint-text">Crea un account. Ci vorrà solo un minuto!</p>
 				        
 				        <div class="form-group">
-							<input type="text" class="form-control" name="first_name" placeholder="Nome" required="required">
-							<input type="text" class="form-control" name="last_name" placeholder="Cognome" required="required">
+							<input type="text" class="form-control" name="name" placeholder="Nome" required="required">
+							<input type="text" class="form-control" name="surname" placeholder="Cognome" required="required">
 						</div>
+						
+						<div class="form-group">
+				        	<input type="text" class="form-control" name="user" placeholder="Username" required="required">
+				        </div>
 				        
 				        <div class="form-group">
-				        	<input type="email" class="form-control" name="email" placeholder="Email" required="required">
+				        	<input type="email" class="form-control" name="mail" placeholder="Email" required="required">
 				        </div>
 						<div class="form-group">
-				            <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+				            <input type="password" class="form-control" name="pass" placeholder="Password" required="required">
 				        </div>
 						<div class="form-group">
-				            <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
+				            <input type="password" class="form-control" name="confirmPass" placeholder="Confirm Password" required="required">
 				        </div>        
 				        <div class="form-group">
-							<label class="checkbox-inline"><input type="checkbox" required="required"> Accetto i <a href="#">Termini di Uso</a> e le <a href="#">Norme della privacy</a></label>
+							<label class="checkbox-inline">
+								<input type="checkbox" name="check" required="required"> Accetto i <a href="#">Termini di Uso</a> e le <a href="#">Norme della privacy</a>
+							</label>
 						</div>
 						<div class="form-group">
 				            <button type="submit" class="btn btn-success btn-lg btn-block">Registrati adesso!</button>
