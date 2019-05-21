@@ -1,34 +1,20 @@
 package Beans;
-
-import java.util.Date;
+import java.time.*;
 import java.io.Serializable;
 
 public class BeanCliente extends Bean implements Serializable {
 	private static final long serialVersionUID = 1L;
-	String CF, nome, cognome, username, passwordU, recapito, via, provincia;
-	Date dataNascita;
-	int cap;
+	String nome, cognome, username, passwordU, recapito;
+	LocalDate dataNascita;
 	
 	public BeanCliente()
 	{
-		CF="";
 		nome="";
 		cognome="";
 		username="";
 		passwordU="";
 		recapito="";
-		via="";
-		provincia="";
-		dataNascita=null;
-		cap=-1;
-	}
-
-	public String getCF() {
-		return CF;
-	}
-
-	public void setCF(String newCF) {
-		CF = newCF;
+		dataNascita = LocalDate.now();
 	}
 
 	public String getNome() {
@@ -71,50 +57,19 @@ public class BeanCliente extends Bean implements Serializable {
 		this.recapito = newRecapito;
 	}
 
-	public String getVia() {
-		return via;
-	}
-
-	public void setVia(String newVia) {
-		this.via = newVia;
-	}
-
-	public String getProvincia() {
-		return provincia;
-	}
-
-	public void setProvincia(String newProvincia) {
-		this.provincia = newProvincia;
-	}
-
-	public Date getDataNascita() {
+	public LocalDate getDataNascita() {
 		return dataNascita;
 	}
 
-	public void setDataNascita(Date newDataNascita) {
+	public void setDataNascita(LocalDate newDataNascita) {
 		this.dataNascita = newDataNascita;
-	}
-
-	public int getCap() {
-		return cap;
-	}
-
-	public void setCap(int newCap) {
-		this.cap = newCap;
 	}
 
 	@Override
 	public String toString() {
-		return "BeanAmministratore [CF=" + CF + ", nome=" + nome + ", cognome=" + cognome + ", username=" + username
-				+ ", passwordU=" + passwordU + ", recapito=" + recapito + ", via=" + via + ", provincia=" + provincia
-				+ ", dataNascita=" + dataNascita + ", cap=" + cap + "]";
+		return "BeanCliente [nome=" + nome + ", cognome=" + cognome + ", username=" + username + ", passwordU="
+				+ passwordU + ", recapito=" + recapito + ", dataNascita=" + dataNascita + "]";
 	}
-	
-	
-	
-	
-
-	
 
 }
 

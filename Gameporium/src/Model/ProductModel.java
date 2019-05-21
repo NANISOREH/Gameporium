@@ -39,7 +39,7 @@ public class ProductModel implements Model {
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + ProductModel.TABLE_NAME
-				+ " (CodiceProdotto, codiceCategoria, foto, titolo, disponibilita, prezzo, produttore, descrizione, IVA) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ " (CodiceProdotto, codiceCategoria, foto, titolo, disponibilita, prezzo, produttore, descrizione, IVA, novita, offerta) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			connection = ds.getConnection();
@@ -53,6 +53,9 @@ public class ProductModel implements Model {
 			preparedStatement.setString(7, p.getProduttore());
 			preparedStatement.setString(8, p.getDescrizione());
 			preparedStatement.setInt(9, p.getIVA());
+			preparedStatement.setBoolean(10, p.isNovita());
+			preparedStatement.setBoolean(11, p.isOfferta());
+			
 			
 			preparedStatement.executeUpdate();
 
@@ -96,6 +99,8 @@ public class ProductModel implements Model {
 				bean.setProduttore(rs.getString("produttore"));
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setIVA(rs.getInt("IVA"));
+				bean.setNovita(rs.getBoolean("novita"));
+				bean.setNovita(rs.getBoolean("offerta"));
 			}
 
 		} finally {
@@ -171,6 +176,8 @@ public class ProductModel implements Model {
 				bean.setProduttore(rs.getString("produttore"));
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setIVA(rs.getInt("IVA"));
+				bean.setNovita(rs.getBoolean("novita"));
+				bean.setNovita(rs.getBoolean("offerta"));
 				product.add(bean);
 			}
 
