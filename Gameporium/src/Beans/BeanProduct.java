@@ -7,7 +7,7 @@ public class BeanProduct extends Bean implements Serializable {
 	
 	int IVA,codiceProdotto,disponibilita,codCategoria;
 	double prezzo;
-	boolean offerta, preordine, novita;
+	boolean offerta, novita;
 
 
 	String titolo,descrizione,foto, produttore;
@@ -24,7 +24,6 @@ public class BeanProduct extends Bean implements Serializable {
 		produttore="";
 		IVA=-1;
 		offerta=false;
-		preordine=false;
 		novita=false;
 	}
 	
@@ -34,14 +33,6 @@ public class BeanProduct extends Bean implements Serializable {
 
 	public void setOfferta(boolean newOfferta) {
 		this.offerta = newOfferta;
-	}
-
-	public boolean isPreordine() {
-		return preordine;
-	}
-
-	public void setPreordine(boolean newPreordine) {
-		this.preordine = newPreordine;
 	}
 
 	public boolean isNovita() {
@@ -106,15 +97,13 @@ public class BeanProduct extends Bean implements Serializable {
 	public int getIVA() {
 		return IVA;
 	}
-
 	public void setIVA(int newIVA) {
 		IVA = newIVA;
 	}
 	@Override
 	public String toString() {
 		return "BeanProduct [IVA=" + IVA + ", codiceProdotto=" + codiceProdotto + ", disponibilita=" + disponibilita
-				+ ", codCategoria=" + codCategoria + ", prezzo=" + prezzo + ", offerta=" + offerta + ", preordine="
-				+ preordine + ", novita=" + novita + ", titolo=" + titolo + ", descrizione=" + descrizione + ", foto="
+				+ ", codCategoria=" + codCategoria + ", prezzo=" + prezzo + ", offerta=" + offerta + ", novita=" + novita + ", titolo=" + titolo + ", descrizione=" + descrizione + ", foto="
 				+ foto + ", produttore=" + produttore + "]";
 	}
 	
