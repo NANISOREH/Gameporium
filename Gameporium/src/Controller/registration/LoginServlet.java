@@ -84,6 +84,8 @@ public class LoginServlet extends HttpServlet
 			{
 				savePass = new Cookie("savePass", pass);
 				saveUser = new Cookie("saveUser", user);
+				savePass.setMaxAge(50000);
+				saveUser.setMaxAge(50000);
 				response.addCookie(savePass);
 				response.addCookie(saveUser);
 			}

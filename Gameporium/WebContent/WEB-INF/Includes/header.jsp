@@ -14,6 +14,8 @@
 	
 	<c:set var="loginFail" value='${requestScope["loginFail"]}' />
 	<c:set var="registered" value='${requestScope["registered"]}' />	
+	<c:set var="accessDone" value='${sessionScope["accessDone"]}' />
+	<c:set var="currentUser" value='${sessionScope["currentSessionUser"]}' />
 			
 	<c:if test="${loginFail}">
 		<div class="alert alert-warning alert-dismissible fade-in" role="alert">
@@ -75,30 +77,25 @@
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="#">Something else here</a>
 					</div></li>
-
-	 			<%  
-	  				boolean access = true;
 					
-	  				if (session.getAttribute("accessDone") != null)
-	  					access = (boolean) session.getAttribute("accessDone");
-	  				else
-	  					access = false;
-	 			%> 
 				
-				<% if (access) { %>
-				<li class="nav-item d-block d-sm-none"
-					style="border-top: 1px solid #000000"><a class="nav-link"
-					href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Area
-						Utente</a></li>
-				<% } else { %>
-				<li class="nav-item d-block d-sm-none"
-					style="border-top: 1px solid #000000"><a class="nav-link"
-					href="/Gameporium/mobilelogin.jsp" id="navbarDropdown" role="button">Accedi</a>
-				</li>
-				<li class="nav-item d-block d-sm-none"><a class="nav-link"
-					href="/Gameporium/register.jsp" id="navbarDropdown" role="button">Registrati</a>
-				</li>
-				<% } %>
+				
+				<c:if test="${accessDone}">
+					<li class="nav-item d-block d-sm-none"
+						style="border-top: 1px solid #000000"><a class="nav-link"
+						href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Area Utente</a>
+					</li>
+				</c:if>
+	
+				<c:if test="${accessDone != true}">
+					<li class="nav-item d-block d-sm-none"
+						style="border-top: 1px solid #000000"><a class="nav-link"
+						href="/Gameporium/mobilelogin.jsp" id="navbarDropdown" role="button">Accedi</a>
+					</li>
+					<li class="nav-item d-block d-sm-none"><a class="nav-link"
+						href="/Gameporium/register.jsp" id="navbarDropdown" role="button">Registrati</a>
+					</li>
+				</c:if>
 				
 				<li class="nav-item d-block d-sm-none"><a class="nav-link"
 					href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Il
@@ -124,7 +121,7 @@
 			</ul>
 			
 			
-			<% if (!access) { %>
+			<c:if test="${accessDone == null}">
 				<button type="button" id="dropdownMenu1" data-toggle="dropdown"
 					class="btn btn-outline-secondary dropdown-toggle">
 					Accedi o registrati <span class="caret"></span>
@@ -133,35 +130,15 @@
 					<li class="px-3 py-2">
 						<form action="login" method="post" class="form" role="form">
 							
-							<%
-						    Cookie[] cookies=request.getCookies();
-						    String password = "";
-						    String user = "";
-						    if (cookies != null) 
-						    {
-						    	for (Cookie cookie : cookies) 
-						        {
-						           if(cookie.getName().equals("savePass"))
-						           {
-						               password = cookie.getValue();
-						           }
-						           if(cookie.getName().equals("saveUser"))
-						           {
-						        	   user = cookie.getValue();
-						           }
-						        }
-						    }
-							%>
-							
 							<div class="form-group">
 								<input id="emailInput" placeholder="Username"
-									class="form-control form-control-sm" type="text" name="un" autocomplete="off" value="<%=user%>">
+									class="form-control form-control-sm" type="text" name="un" autocomplete="off" value="${cookie.saveUser.value}">
 							</div>
 							
 
 							<div class="form-group">
 								<input id="passwordInput" placeholder="Password"
-									class="form-control form-control-sm" type="password" name="pw" autocomplete="off" value="<%=password%>">
+									class="form-control form-control-sm" type="password" name="pw" autocomplete="off" value="${cookie.savePass.value}">
 							</div>
 							
 							<div class="form-group">
@@ -180,29 +157,25 @@
 						</form>
 					</li>
 				</ul>
-			<% } %>
+			</c:if>
 				
-			<% if (access) { %>
-			<div class="navbar-nav nav-item dropdown">
-			<div class="nav-link dropdown-toggle text-center" 
-				id="navbarDropdown" role="button" data-toggle="dropdown"
-				aria-haspopup="true" aria-expanded="false">
-				 	Benvenuto, <%
-					BeanCliente c = (BeanCliente) session.getAttribute("currentSessionUser");
-					out.print(c.getUsername());
-					%>
-			</div>
-				<form action="logout" method="get" class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" style="text-align: center" href="#">Area Cliente</a>
-					<a class="dropdown-item" style="text-align: center" href="#">Carrello</a>
-					<div class="dropdown-divider"></div>
-					<div style="text-align: center"><button class="btn btn-primary" type="submit">Logout</button></div>
-				</form>
-			</div>
-			<% } %>
-			
-			
-			
+			<c:if test="${accessDone}">
+				<div class="navbar-nav nav-item dropdown">
+					
+					<div class="nav-link dropdown-toggle text-center" 
+						id="navbarDropdown" role="button" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">
+						 	Benvenuto, <c:out value="${currentUser.username}"/>
+					</div>
+					
+					<form action="logout" method="get" class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" style="text-align: center" href="#">Area Cliente</a>
+						<a class="dropdown-item" style="text-align: center" href="#">Carrello</a>
+						<div class="dropdown-divider"></div>
+						<div style="text-align: center"><button class="btn btn-primary" type="submit">Logout</button></div>
+					</form>
+				</div>
+			</c:if>
 		
 		</div>
 
