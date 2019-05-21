@@ -51,16 +51,17 @@ public class RegisterServlet extends HttpServlet
 			e.printStackTrace();
 		}
 		
-		if (!testCliente.getUsername().equals(""))
-		{
-			request.setAttribute("userPresent", true);
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/register.jsp");
-			dispatcher.forward(request, response);
-		}
+		String testUser = testCliente.getUsername();
+		String testMail = testCliente.getRecapito();
 		
-		if (!testCliente.getRecapito().equals(""))
+		if (!testUser.equals("") || !testMail.equals(""))
 		{
-			request.setAttribute("mailPresent", true);
+			if (!testUser.equals(""))
+				request.setAttribute("userPresent", true);
+			
+			if (!testMail.equals(""))
+				request.setAttribute("mailPresent", true);
+			
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/register.jsp");
 			dispatcher.forward(request, response);
 		}
@@ -80,6 +81,9 @@ public class RegisterServlet extends HttpServlet
 			} 
 			catch (SQLException e) 
 			{
+				request.setAttribute("notRegistered", true);
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/register.jsp");
+				dispatcher.forward(request, response);
 				e.printStackTrace();
 			}
 			
@@ -88,7 +92,7 @@ public class RegisterServlet extends HttpServlet
 			dispatcher.forward(request, response);
 		}
 		else
-		{
+		{	
 			request.setAttribute("notRegistered", true);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/register.jsp");
 			dispatcher.forward(request, response);

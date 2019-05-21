@@ -39,24 +39,18 @@ public class ClienteModel implements Model {
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + ClienteModel.TABLE_NAME
-				+ " (CF, dataNascita,nome,cognome,username,passwordU,recapito,cap,via,provincia) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		Date dt=new java.sql.Date(c.getDataNascita().getTime());
+				+ " (dataNascita,nome,cognome,username,passwordU,recapito) VALUES (?, ?, ?, ?, ?, ?)";
+		
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setString(1, c.getCF());
-			preparedStatement.setDate(2, dt);
-			preparedStatement.setString(3, c.getNome());
-			preparedStatement.setString(4, c.getCognome());
-			preparedStatement.setString(5, c.getUsername());
-			preparedStatement.setString(6, c.getPasswordU());
-			preparedStatement.setString(7, c.getRecapito());
-			preparedStatement.setInt(8, c.getCap());
-			preparedStatement.setString(9, c.getVia());
-			preparedStatement.setString(10, c.getVia());
+			preparedStatement.setDate(1, Date.valueOf(c.getDataNascita()));
+			preparedStatement.setString(2, c.getNome());
+			preparedStatement.setString(3, c.getCognome());
+			preparedStatement.setString(4, c.getUsername());
+			preparedStatement.setString(5, c.getPasswordU());
+			preparedStatement.setString(6, c.getRecapito());
 			preparedStatement.executeUpdate();
-
-			connection.commit();
 		} finally {
 			try {
 				if (preparedStatement != null)
@@ -87,16 +81,12 @@ public class ClienteModel implements Model {
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				bean.setCF(rs.getString("CF"));
-				bean.setCap(rs.getInt("cap"));
 				bean.setCognome(rs.getString("cognome"));
-				bean.setDataNascita(rs.getDate("dataNascita"));
+				bean.setDataNascita((rs.getDate("dataNascita")).toLocalDate());
 				bean.setNome(rs.getString("nome"));
 				bean.setPasswordU(rs.getString("passwordU"));
-				bean.setProvincia(rs.getString("provincia"));
 				bean.setRecapito(rs.getString("recapito"));
 				bean.setUsername(rs.getString("username"));
-				bean.setVia(rs.getString("via"));
 			}
 
 		} finally {
@@ -127,16 +117,12 @@ public class ClienteModel implements Model {
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				bean.setCF(rs.getString("CF"));
-				bean.setCap(rs.getInt("cap"));
 				bean.setCognome(rs.getString("cognome"));
-				bean.setDataNascita(rs.getDate("dataNascita"));
+				bean.setDataNascita((rs.getDate("dataNascita")).toLocalDate());
 				bean.setNome(rs.getString("nome"));
 				bean.setPasswordU(rs.getString("passwordU"));
-				bean.setProvincia(rs.getString("provincia"));
 				bean.setRecapito(rs.getString("recapito"));
 				bean.setUsername(rs.getString("username"));
-				bean.setVia(rs.getString("via"));
 			}
 
 		} finally {
@@ -168,16 +154,12 @@ public class ClienteModel implements Model {
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				bean.setCF(rs.getString("CF"));
-				bean.setCap(rs.getInt("cap"));
 				bean.setCognome(rs.getString("cognome"));
-				bean.setDataNascita(rs.getDate("dataNascita"));
+				bean.setDataNascita((rs.getDate("dataNascita")).toLocalDate());
 				bean.setNome(rs.getString("nome"));
 				bean.setPasswordU(rs.getString("passwordU"));
-				bean.setProvincia(rs.getString("provincia"));
 				bean.setRecapito(rs.getString("recapito"));
 				bean.setUsername(rs.getString("username"));
-				bean.setVia(rs.getString("via"));
 			}
 
 		} finally {
@@ -244,16 +226,12 @@ public class ClienteModel implements Model {
 			while (rs.next()) {
 				BeanCliente bean = new BeanCliente();
 
-				bean.setCF(rs.getString("CF"));
-				bean.setCap(rs.getInt("cap"));
 				bean.setCognome(rs.getString("cognome"));
-				bean.setDataNascita(rs.getDate("dataNascita"));
+				bean.setDataNascita((rs.getDate("dataNascita")).toLocalDate());
 				bean.setNome(rs.getString("nome"));
 				bean.setPasswordU(rs.getString("passwordU"));
-				bean.setProvincia(rs.getString("provincia"));
 				bean.setRecapito(rs.getString("recapito"));
 				bean.setUsername(rs.getString("username"));
-				bean.setVia(rs.getString("via"));
 				Cliente.add(bean);
 			}
 

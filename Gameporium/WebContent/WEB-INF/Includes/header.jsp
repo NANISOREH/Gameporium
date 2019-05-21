@@ -127,7 +127,7 @@
 			<% if (!access) { %>
 				<button type="button" id="dropdownMenu1" data-toggle="dropdown"
 					class="btn btn-outline-secondary dropdown-toggle">
-					Accedi <span class="caret"></span>
+					Accedi o registrati <span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu dropdown-menu-right mt-2">
 					<li class="px-3 py-2">
