@@ -25,17 +25,17 @@ INSERT INTO evento(codiceEvento,nome,luogo,descrizione,dataEvento,ora,numeroPart
     (002, 'Cavacon', 'Mediateca Marte, Cava de Tirreni, SA', 'Giochi da tavolo','2020/01/06','10:00:00',7),
     (003, 'Isola di Illyon','Mostra d oltre Mare, Campi Flegrei, NA','Giochi di Ruolo','2020/04/28','12:00:00',16);
     
-INSERT INTO prodotto(codiceProdotto, codiceCategoria, foto,titolo,disponibilita,prezzo,produttore,descrizione,IVA) VALUES
-	(0001, 01,'','Imagine',8,20,'Oliphante','blablabla',22),
-    (0002, 01,'','Dungeons & Dragons', 15, 40,'Wizard of the coast','blablabla',22),
-    (0003, 02,'','Miniatura soldato',6,15,'Scalpello','blablabla',22),
-    (0004, 02,'','Set dadi',30, 12,'Chessex','blablabla',22),
-    (0005, 01,'','Magic',50, 10,'Wizard of the coast','blablabla',22),
-    (0006, 01,'','Voodoo', 4, 15, 'Red Glove','blablabla',22),
-    (0007, 01,'','Taboo', 5, 25, 'Milton Bradely','blablabla',22),
-    (0008, 01,'','Risiko', 11, 30, 'Editrice Giochi','blablabla',22),
-    (0009, 02,'','Torre lancia dadi',3, 35, 'Ravensburger','blablabla',22),
-    (0010, 02,'','Album porta carte', 20, 12, 'Wizard of the coast', 'blablabla',22);
+INSERT INTO prodotto(codiceProdotto, codiceCategoria, foto,titolo,disponibilita,prezzo,produttore,descrizione,IVA,novita,offerta) VALUES
+	(0001, 01,'','Imagine',8,20,'Oliphante','blablabla',22,false,false),
+	(0002, 01,'','Dungeons & Dragons', 15, 40,'Wizard of the coast','blablabla',22,false,true),
+    (0003, 02,'','Miniatura soldato',6,15,'Scalpello','blablabla',22,true,true),
+    (0004, 02,'','Set dadi',30, 12,'Chessex','blablabla',22,true,false),
+    (0005, 01,'','Magic',50, 10,'Wizard of the coast','blablabla',22,false,false),
+    (0006, 01,'','Voodoo', 4, 15, 'Red Glove','blablabla',22,false,true),
+    (0007, 01,'','Taboo', 5, 25, 'Milton Bradely','blablabla',22,true,true),
+    (0008, 01,'','Risiko', 11, 30, 'Editrice Giochi','blablabla',22,false,false),
+    (0009, 02,'','Torre lancia dadi',3, 35, 'Ravensburger','blablabla',22,true,false),
+    (0010, 02,'','Album porta carte', 20, 12, 'Wizard of the coast', 'blablabla',22,false,false);
     
 INSERT INTO accessorio(nomeCategoria, descrizioneCategoria,codiceProdotto) VALUES
 	('Accessorio','Miniatura',0003),

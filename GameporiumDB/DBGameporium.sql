@@ -14,6 +14,8 @@ CREATE TABLE prodotto (
     produttore		varchar(30),
     descrizione		varchar(100),
     IVA				numeric,
+    novita			bool default null,
+    offerta 		bool default null,
     primary key (codiceProdotto, codiceCategoria)
 );
 
