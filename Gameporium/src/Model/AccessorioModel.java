@@ -60,7 +60,9 @@ public class AccessorioModel implements Model {
 	}
 
 	@Override
-	public synchronized BeanAccessorio doRetrieveByKey(int code) throws SQLException {
+	public synchronized BeanAccessorio doRetrieveByKey(Object codice) throws SQLException {
+		
+		int code=(int) codice;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -94,7 +96,9 @@ public class AccessorioModel implements Model {
 	}
 
 	@Override
-	public synchronized boolean doDelete(int code) throws SQLException {
+	public synchronized boolean doDelete(Object codice) throws SQLException {
+		
+		int code=(int) codice;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -142,18 +146,11 @@ public class AccessorioModel implements Model {
 
 			while (rs.next()) {
 				BeanAccessorio bean = new BeanAccessorio();
-
-<<<<<<< HEAD
 				bean.setCodiceProdotto(rs.getInt("codiceProdotto"));
 				bean.setDescrizioneCategoria(rs.getString("descrizioneCategoria"));
 				bean.setNomeCategoria(rs.getString("nomeCategoria"));
 				Accessorio.add(bean);
 			}
-=======
-public interface AccessorioModel {
-	public void doSave(BeanAccessorio bean) throws SQLException;
->>>>>>> 6455e6a4438800b2f97ee0e1546fe96194c64c07
-
 		} finally {
 			try {
 				if (preparedStatement != null)

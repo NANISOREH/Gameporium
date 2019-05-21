@@ -65,7 +65,9 @@ public class GiocoModel implements Model {
 	}
 
 	@Override
-	public synchronized BeanGioco doRetrieveByKey(int code) throws SQLException {
+	public synchronized BeanGioco doRetrieveByKey(Object codice) throws SQLException {
+		
+		int code=(int) codice;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -102,7 +104,9 @@ public class GiocoModel implements Model {
 	}
 
 	@Override
-	public synchronized boolean doDelete(int code) throws SQLException {
+	public synchronized boolean doDelete(Object codice) throws SQLException {
+		
+		int code=(int) codice;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 

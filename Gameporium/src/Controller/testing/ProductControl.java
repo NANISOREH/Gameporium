@@ -13,7 +13,7 @@ import Model.*;
  */
 public class ProductControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	static ProductModel model=new ProductModelDS();
+	static ProductModel model=new ProductModel();
 	
 	public ProductControl() {
 		super();
