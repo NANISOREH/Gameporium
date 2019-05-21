@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-<title>prova</title>
+<title>Registrati a Gameporium!</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -160,6 +160,7 @@
 		  <strong>Attenzione,</strong> l'username inserito è già in uso!
 		</div>
 	</c:if>
+	
 <!-- 	fine messaggi di errore nella registrazione -->
 	
 		<!-- sistema di colonne -->
