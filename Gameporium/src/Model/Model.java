@@ -8,9 +8,9 @@ import Beans.BeanAccessorio;
 public interface Model {
 	public void doSave(Bean bean) throws SQLException;
 
-	public boolean doDelete(int code) throws SQLException;
+	public boolean doDelete(Object key) throws SQLException;
 
-	public Bean doRetrieveByKey(int code) throws SQLException;
+	public Bean doRetrieveByKey(Object key) throws SQLException;
 	
 	public Collection<Bean> doRetrieveAll(String order) throws SQLException;
 }

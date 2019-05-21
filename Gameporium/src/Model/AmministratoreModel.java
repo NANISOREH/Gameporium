@@ -69,7 +69,9 @@ public class AmministratoreModel implements Model {
 	}
 
 	@Override
-	public synchronized BeanAmministratore doRetrieveByKey(int code) throws SQLException {
+	public synchronized BeanAmministratore doRetrieveByKey(Object codice) throws SQLException {
+		
+		String CF=(String) codice;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -80,7 +82,7 @@ public class AmministratoreModel implements Model {
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setInt(1, code);
+			preparedStatement.setString(1, CF);
 
 			ResultSet rs = preparedStatement.executeQuery();
 
@@ -110,7 +112,9 @@ public class AmministratoreModel implements Model {
 	}
 
 	@Override
-	public synchronized boolean doDelete(int code) throws SQLException {
+	public synchronized boolean doDelete(Object codice) throws SQLException {
+		
+		String CF=(String) codice;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -121,7 +125,7 @@ public class AmministratoreModel implements Model {
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
-			preparedStatement.setInt(1, code);
+			preparedStatement.setString(1, CF);
 
 			result = preparedStatement.executeUpdate();
 

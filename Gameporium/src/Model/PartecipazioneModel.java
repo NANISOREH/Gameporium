@@ -1,4 +1,4 @@
-package Model;
+/*package Model;
 import Beans.Bean;
 import Beans.BeanPartecipazione;
 import java.sql.Connection;
@@ -61,7 +61,7 @@ public class PartecipazioneModel implements Model {
 	}
 
 	@Override
-	public synchronized BeanPartecipazione doRetrieveByKey(int code) throws SQLException {
+	public synchronized BeanPartecipazione doRetrieveByKey(Object codice) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -162,3 +162,4 @@ public class PartecipazioneModel implements Model {
 
 
 }
+*/

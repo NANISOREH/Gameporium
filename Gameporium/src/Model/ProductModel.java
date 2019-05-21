@@ -69,7 +69,9 @@ public class ProductModel implements Model {
 	}
 
 	@Override
-	public synchronized BeanProduct doRetrieveByKey(int code) throws SQLException {
+	public synchronized BeanProduct doRetrieveByKey(Object codice) throws SQLException {
+		
+		int code=(int) codice;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -109,7 +111,9 @@ public class ProductModel implements Model {
 	}
 
 	@Override
-	public synchronized boolean doDelete(int code) throws SQLException {
+	public synchronized boolean doDelete(Object codice) throws SQLException {
+		
+		int code=(int) codice;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 

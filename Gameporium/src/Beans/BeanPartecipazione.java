@@ -1,4 +1,4 @@
-package Beans;
+/*package Beans;
 
 import java.io.Serializable;
 
@@ -38,3 +38,4 @@ public class BeanPartecipazione extends Bean implements Serializable{
 
 
 }
+*/

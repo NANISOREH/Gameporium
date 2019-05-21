@@ -1,4 +1,4 @@
-package Model;
+/*package Model;
 import Beans.Bean;
 import Beans.BeanEffettua;
 import java.sql.Connection;
@@ -159,4 +159,4 @@ public class EffettuaModel implements Model {
 		return Effettua;
 	}
 
-}
+}*/

@@ -63,7 +63,9 @@ public class RecensioneModel implements Model {
 	}
 
 	@Override
-	public BeanRecensione doRetrieveByKey(int code) throws SQLException {
+	public BeanRecensione doRetrieveByKey(Object codice) throws SQLException {
+		
+		int code=(int) codice;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -99,7 +101,9 @@ public class RecensioneModel implements Model {
 
 	}
 	
-	public synchronized boolean doDelete(int code) throws SQLException {
+	public synchronized boolean doDelete(Object codice) throws SQLException {
+		
+		int code=(int) codice;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 

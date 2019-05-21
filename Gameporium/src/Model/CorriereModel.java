@@ -62,7 +62,9 @@ public class CorriereModel implements Model {
 	}
 
 	@Override
-	public synchronized BeanCorriere doRetrieveByKey(int code) throws SQLException {
+	public synchronized BeanCorriere doRetrieveByKey(Object codice) throws SQLException {
+		
+		int code=(int) codice;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -96,7 +98,9 @@ public class CorriereModel implements Model {
 	}
 
 	@Override
-	public synchronized boolean doDelete(int code) throws SQLException {
+	public synchronized boolean doDelete(Object codice) throws SQLException {
+		
+		int code=(int) codice;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 

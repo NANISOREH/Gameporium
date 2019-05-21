@@ -69,18 +69,60 @@ public class ClienteModel implements Model {
 	}
 
 	@Override
-	public synchronized BeanCliente doRetrieveByKey(int code) throws SQLException {
+	public synchronized BeanCliente doRetrieveByKey(Object user) throws SQLException {
+		
+		String username=(String) user;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
 		BeanCliente bean = new BeanCliente();
 
-		String selectSQL = "SELECT * FROM " + ClienteModel.TABLE_NAME + " WHERE CF = ?";
+		String selectSQL = "SELECT * FROM " + ClienteModel.TABLE_NAME + " WHERE username = ?";
 
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setInt(1, code);
+			preparedStatement.setString(1, username);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				bean.setCF(rs.getString("CF"));
+				bean.setCap(rs.getInt("cap"));
+				bean.setCognome(rs.getString("cognome"));
+				bean.setDataNascita(rs.getDate("dataNascita"));
+				bean.setNome(rs.getString("nome"));
+				bean.setPasswordU(rs.getString("passwordU"));
+				bean.setProvincia(rs.getString("provincia"));
+				bean.setRecapito(rs.getString("recapito"));
+				bean.setUsername(rs.getString("username"));
+				bean.setVia(rs.getString("via"));
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return bean;
+	}
+	
+	public synchronized BeanCliente doRetrieveByEmail(String email) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		BeanCliente bean = new BeanCliente();
+
+		String selectSQL = "SELECT * FROM " + ClienteModel.TABLE_NAME + " WHERE recapito = ?";
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, email);
 
 			ResultSet rs = preparedStatement.executeQuery();
 
@@ -151,7 +193,9 @@ public class ClienteModel implements Model {
 	}
 
 	@Override
-	public synchronized boolean doDelete(int code) throws SQLException {
+	public synchronized boolean doDelete(Object codice) throws SQLException {
+		
+		int code=(int) codice;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
