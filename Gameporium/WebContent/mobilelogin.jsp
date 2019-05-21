@@ -68,35 +68,15 @@
 									<h5 class="card-title text-center">Accedi</h5>
 									<form action="login" class="form-signin">
 									
-										<%
-									    Cookie[] cookies=request.getCookies();
-									    String password = "";
-									    String user = "";
-									    if (cookies != null) 
-									    {
-									    	for (Cookie cookie : cookies) 
-									        {
-									           if(cookie.getName().equals("savePass"))
-									           {
-									               password = cookie.getValue();
-									           }
-									           if(cookie.getName().equals("saveUser"))
-									           {
-									        	   user = cookie.getValue();
-									           }
-									        }
-									    }
-										%>
-									
 										<div class="form-label-group" style="padding: 5px">
 											<input type="text" id="inputEmail" name="un"
-												class="form-control" placeholder="Username" name="un" autocomplete="off" value="<%=user%>" required
+												class="form-control" placeholder="Username" name="un" autocomplete="off" value="${cookie.saveUser.value}" required
 												autofocus>
 										</div>
 
 										<div class="form-label-group" style="padding: 5px">
 											<input type="password" id="inputPassword" name="pw"
-												class="form-control" placeholder="Password" name="pw" autocomplete="off" value="<%=password%>" required>
+												class="form-control" placeholder="Password" name="pw" autocomplete="off" value="${cookie.savePass.value}" required>
 										</div>
 
 										<div class="form-check text-right" style="margin: 17px">
