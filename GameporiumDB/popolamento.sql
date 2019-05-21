@@ -1,14 +1,14 @@
-INSERT INTO cliente(CF,nome,cognome,dataNascita,username,passwordU,recapito,via,cap,provincia) VALUES
-	('CRRSRA90A50A091Q','Sara','Corrente','1990/01/10','Brontolo','Pippo','3394004520','Via Podgora',84047,'SA'),
-	('GTTFBA92F72A091E','Fabiana','Gatto','1992/06/11','Cucciolo','Pluto','3384596321','Via Vittoria',84048,'SA'),
-    ('MNZVCN90H11A091W','Vincenzo','Monzo','1990/08/22','Mammolo','Topolino','3384558321','Via Database',84052,'SA'),
-    ('DLCMRA95B12A091S','Maria','De Luca','1995/02/01','Pisolo','Minnie','3849675843','Via java',84521,'SA'),
-    ('CHRGNN93D24F022E','Giovanni','Chiariello','1993/04/24', 'Eolo','ZioPaperone','3296304587','Corso Pyton',84132,'SA'),
-    ('PLLNDR92H05A091L','Andrea','Palladino','1992/08/05','Dotto','Qui','3569472315','Viale dell HTML',81030,'CE'),
-    ('VLPCML89D63V043M','Carmela','Volpe','1989/11/30','Gongolo','Quo','3896475147','Piazza del C++',80100,'NA'),
-    ('TRRCLD89F50J121H','Claudia','Torre','1989/06/20','Aramis','Qua','3336244859','Vicolo Julia',80104,'NA'),
-    ('PRZFNC92F26H666W','Francesco','Perozziello','1992/02/26','Portos','Paperina','3329957128','Angolo Angular',82151,'AV'),
-    ('DLCMHL92R09U567Q','Michela','De Lucia','1992/10/09','Athos','Paperino','3694752198','Corso Cobol',83101,'BN');
+INSERT INTO cliente(nome,cognome,dataNascita,username,passwordU,recapito) VALUES
+	('Sara','Corrente','1990/01/10','Brontolo','Pippo','3394004520'),
+	('Fabiana','Gatto','1992/06/11','Cucciolo','Pluto','3384596321'),
+    ('Vincenzo','Monzo','1990/08/22','Mammolo','Topolino','3384558321'),
+    ('Maria','De Luca','1995/02/01','Pisolo','Minnie','3849675843'),
+    ('Giovanni','Chiariello','1993/04/24', 'Eolo','ZioPaperone','3397835226'),
+    ('Andrea','Palladino','1992/08/05','Dotto','Qui','3569472315'),
+    ('Carmela','Volpe','1989/11/30','Gongolo','Quo','3896475147'),
+    ('Claudia','Torre','1989/06/20','Aramis','Qua','3336244859'),
+    ('Francesco','Perozziello','1992/02/26','Portos','Paperina','3329957128'),
+    ('Michela','De Lucia','1992/10/09','Athos','Paperino','3694752198');
     
 INSERT INTO amministratore(CF,nome,cognome,dataNascita,username,passwordU,recapito,via,cap,provincia) VALUES
 	('SSTCNA70A01Y123Z','Caino','Savastano','1970/01/01','Broslayer','hostatoio','123456789','Via dall Eden', 12345, 'TB');
@@ -57,23 +57,23 @@ INSERT INTO ordine(codiceOrdine,indirizzoSpedizione,tipoSpedizione,dataSpedizion
     (00003,'Via Lemure 88','Celere','2019/05/08',0022,3,28, 'Paypal', 'Corso Umberto 27');
     
     
-INSERT INTO effettua(codiceCliente,codiceOrdine) VALUES
-	('CRRSRA90A50A091Q',00001),
-    ('DLCMHL92R09U567Q',00002),
-    ('CHRGNN93D24F022E',00003);
+INSERT INTO effettua(username,codiceOrdine) VALUES
+	('Brontolo',00001),
+    ('Athos',00002),
+    ('Eolo',00003);
     
-INSERT INTO partecipazione(codiceEvento,codiceCliente) VALUES
-	(001,'PRZFNC92F26H666W'),
-    (001,'DLCMHL92R09U567Q'),
-    (002,'GTTFBA92F72A091E'),
-    (002,'VLPCML89D63V043M'),
-    (001,'VLPCML89D63V043M');
+INSERT INTO partecipazione(codiceEvento,username) VALUES
+	(001,'Portos'),
+    (001,'Athos'),
+    (002,'Cucciolo'),
+    (002,'Gongolo'),
+    (001,'Gongolo');
     
-INSERT INTO recensione(codiceCliente,codiceProdotto,testo) VALUES
-	('VLPCML89D63V043M', 0005,'fa schifo'),
-    ('GTTFBA92F72A091E', 0004,'divertente se stai fatto'),
-    ('MNZVCN90H11A091W', 0002,'ho ingoiato dei pezzi'),
-    ('CHRGNN93D24F022E', 0003,'non adatto a chi ha un QI<80');
+INSERT INTO recensione(username,codiceProdotto,testo) VALUES
+	('Gongolo', 0005,'fa schifo'),
+    ('Cucciolo', 0004,'divertente se stai fatto'),
+    ('Mammolo', 0002,'ho ingoiato dei pezzi'),
+    ('Eolo', 0003,'non adatto a chi ha un QI<80');
 
 INSERT INTO composizione(codiceOrdine,codiceProdotto,quantita) VALUES
 	(00001,0003,1),
