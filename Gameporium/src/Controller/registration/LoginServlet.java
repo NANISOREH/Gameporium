@@ -62,11 +62,11 @@ public class LoginServlet extends HttpServlet
 		
 		Cookie savePass;
 		Cookie saveUser;
-		ClienteModelDS cm;
+		ClienteModel cm;
 		
 		try 
 		{
-			cm = new ClienteModelDS();
+			cm = new ClienteModel();
 			cliente = cm.doRetrieveByUserPass(user, pass);
 		} 
 		catch (SQLException e) 
