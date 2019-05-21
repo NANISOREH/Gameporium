@@ -20,17 +20,13 @@ CREATE TABLE prodotto (
 DROP TABLE IF EXISTS cliente;
 USE GameporiumDB;
 CREATE TABLE cliente(
-	CF				varchar(16),
-    dataNascita		date,
+	dataNascita		date,
     nome			varchar(20),
     cognome			varchar(30),
     username		varchar(15),
     passwordU		varchar(20),
     recapito		varchar(30),
-    cap				int,
-    via				varchar(40),
-    provincia		varchar(2),
-    primary key(CF)
+    primary key(username)
 );
 
 
@@ -62,13 +58,13 @@ CREATE TABLE accessorio(
 DROP TABLE IF EXISTS recensione;
 USE GameporiumDB;
 CREATE TABLE recensione(
-	codiceCliente	varchar(16),
+	username	varchar(16),
     codiceProdotto	int,
     testo			varchar(200),
     foreign key (codiceProdotto) references prodotto (codiceProdotto)
 								ON UPDATE CASCADE
                                 ON DELETE CASCADE,
-    foreign key (codiceCliente) references cliente (CF)
+    foreign key (username) references cliente (username)
 								ON UPDATE CASCADE
                                 ON DELETE CASCADE);
 
@@ -89,8 +85,8 @@ DROP TABLE IF EXISTS partecipazione;
 USE GameporiumDB;
 CREATE TABLE partecipazione(
 	codiceEvento	int,
-    codiceCliente	varchar(16),
-    foreign key (codiceCliente) references cliente (CF)
+    username	varchar(16),
+    foreign key (username) references cliente (username)
 								ON UPDATE CASCADE
                                 ON DELETE CASCADE,
 	foreign key (codiceEvento) references evento (codiceEvento)
@@ -126,9 +122,9 @@ CREATE TABLE corriere(
 DROP TABLE IF EXISTS effettua;
 USE GameporiumDB;
 CREATE TABLE effettua(
-	codiceCliente	varchar(16),
+	username	varchar(16),
     codiceOrdine	int,
-    foreign key(codiceCliente) references cliente(CF)
+    foreign key(username) references cliente(username)
 								ON UPDATE CASCADE
 								ON DELETE CASCADE
 );
