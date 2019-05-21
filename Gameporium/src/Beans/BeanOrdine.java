@@ -2,7 +2,7 @@ package Beans;
 
 import java.io.Serializable;
 
-public class BeanOrdine implements Serializable {
+public class BeanOrdine extends Bean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	int codiceOrdine, codiceSpedizione, codicePagamento;
 	String indirizzoSpedizione, tipoSpedizione,metodo, indirizzoFatturazione;
