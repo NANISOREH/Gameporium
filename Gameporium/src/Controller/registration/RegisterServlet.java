@@ -29,7 +29,7 @@ public class RegisterServlet extends HttpServlet
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		ClienteModelDS cm = new ClienteModelDS();;
+		ClienteModel cm = new ClienteModelDS();;
 		BeanCliente cliente = new BeanCliente();
 		BeanCliente testCliente = null;
 		
