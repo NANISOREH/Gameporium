@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
 
-public class BeanEvento implements Serializable {
+public class BeanEvento extends Bean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	int codiceEvento, numeroPartecipanti;
 	String nome, luogo, descrizione;

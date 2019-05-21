@@ -3,7 +3,7 @@ package Beans;
 import java.io.Serializable;
 import java.util.Date;
 
-public class BeanAmministratore implements Serializable {
+public class BeanAmministratore extends Bean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	String CF, nome, cognome, username, passwordU, recapito, via, provincia;
 	Date dataNascita;
