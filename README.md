@@ -6,3 +6,4 @@ TO DO LIST
 - Correggere tempo di persistenza del cookie per il "ricordami" del login.
 - Consentire il login usando l'indirizzo email.
 - Check dei campi nei form (correttezza e sicurezza). Da implementare client-side con gli scriptarielli js dentro ai jsp secondo la professoressa. Vabbè.
+- Settare campo preordine per i prodotti nel database e relative modifiche in bean e model.
