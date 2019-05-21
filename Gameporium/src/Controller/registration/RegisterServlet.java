@@ -44,13 +44,29 @@ public class RegisterServlet extends HttpServlet
 		try 
 		{
 			testCliente = cm.doRetrieveByKey(user);
+			testCliente = cm.doRetrieveByEmail(mail);
 		} 
 		catch (SQLException e) 
 		{
 			e.printStackTrace();
 		}
 		
-		if (testCliente.getUsername().equals("") && Utils.isValidPass(pass, confirmPass) && check != null)
+		if (!testCliente.getUsername().equals(""))
+		{
+			request.setAttribute("userPresent", true);
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/register.jsp");
+			dispatcher.forward(request, response);
+		}
+		
+		if (!testCliente.getRecapito().equals(""))
+		{
+			request.setAttribute("mailPresent", true);
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/register.jsp");
+			dispatcher.forward(request, response);
+		}
+		
+		
+		if (Utils.isValidPass(pass, confirmPass) && check != null)
 		{
 			cliente.setNome(name);
 			cliente.setCognome(surname);

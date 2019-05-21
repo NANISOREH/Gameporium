@@ -2,7 +2,6 @@ package Beans;
 
 import java.io.Serializable;
 import java.sql.Time;
-import java.time.LocalTime;
 import java.util.Date;
 
 public class BeanEvento implements Serializable {

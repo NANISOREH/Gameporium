@@ -133,15 +133,35 @@
 </head>
 
 <body style="background-color: #343a40">
+
+<!-- 	messaggi di errore nella registrazione -->
 	<c:set var="notRegistered" value='${requestScope["notRegistered"]}' />
+	<c:set var="mailPresent" value='${requestScope["mailPresent"]}' />
+	<c:set var="userPresent" value='${requestScope["userPresent"]}' />
 
 	<div class="container-fluid bg-light" style="margin-top: 0">
 	<c:if test="${notRegistered}">
 		<div class="alert alert-warning alert-dismissible fade-in" role="alert">
 		  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		  <strong>Attenzione,</strong> la registrazione, non è andata a buon fine, riprovare!
+		  <strong>Attenzione,</strong> la registrazione non è andata a buon fine, riprovare!
 		</div>
 	</c:if>
+	
+	<c:if test="${mailPresent}">
+		<div class="alert alert-warning alert-dismissible fade-in" role="alert">
+		  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		  <strong>Attenzione,</strong> l'indirizzo email inserito è già in uso!
+		</div>
+	</c:if>
+	
+	<c:if test="${userPresent}">
+		<div class="alert alert-warning alert-dismissible fade-in" role="alert">
+		  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		  <strong>Attenzione,</strong> l'username inserito è già in uso!
+		</div>
+	</c:if>
+<!-- 	fine messaggi di errore nella registrazione -->
+	
 		<!-- sistema di colonne -->
 		<div class="row">
 			
