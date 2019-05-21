@@ -3,7 +3,7 @@ package Beans;
 import java.io.Serializable;
 import java.sql.Time;
 
-public class BeanGioco implements Serializable{
+public class BeanGioco extends Bean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	int codiceProdotto, numeroGiocatori, etaConsigliata;
 	String nomeCategoria, descrizioneCategoria;

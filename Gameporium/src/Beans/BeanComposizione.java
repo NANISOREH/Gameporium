@@ -2,7 +2,7 @@ package Beans;
 
 import java.io.Serializable;
 
-public class BeanComposizione implements Serializable{
+public class BeanComposizione extends Bean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	int codiceOrdine, codiceProdotto, quantita;
 	
@@ -33,8 +33,8 @@ public class BeanComposizione implements Serializable{
 		return quantita;
 	}
 
-	public void setQuantita(int newQuantità) {
-		this.quantita = newQuantità;
+	public void setQuantita(int newQuantita) {
+		this.quantita = newQuantita;
 	}
 
 	@Override
