@@ -35,7 +35,7 @@
 	<nav class="navbar navbar-dark navbar-expand-sm"
 		style="margin-top: 0px">
 		<a class="navbar-brand text-white-80" href="/Gameporium/home.jsp"><img
-			src="LOGOPLACEH.png" class="rounded mx-auto d-block"
+			src="res/LOGOPLACEH.png" class="rounded mx-auto d-block"
 			alt="Responsive image"
 			style="margin-bottom: 0; max-width: 200px; max-height: 50%"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
