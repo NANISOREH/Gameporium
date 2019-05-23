@@ -50,10 +50,11 @@
 					id="navbarDropdown" role="button" data-toggle="dropdown"
 					aria-haspopup="true" aria-expanded="false"> Giochi </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">Action</a> <a
-							class="dropdown-item" href="#">Another action</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Something else here</a>
+						<form action="product">
+						<a class="dropdown-item" href="/Gameporium/ProductSelection.jsp">Giochi da tavolo</a> 
+						<a class="dropdown-item" href="#">Giochi di ruolo</a> 
+						<a class="dropdown-item" href="#">Giochi di carte</a>
+						</form>
 					</div></li>
 
 				<li class="nav-item dropdown"><a
@@ -61,10 +62,9 @@
 					role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"> Accessori </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">Action</a> <a
-							class="dropdown-item" href="#">Another action</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Something else here</a>
+						<a class="dropdown-item" href="#">Accessori per GdT</a> <a
+							class="dropdown-item" href="#">Accessori per GdR</a> <a 
+							class="dropdown-item" href="#">Accessori per GdC</a>
 					</div></li>
 
 				<li class="nav-item dropdown"><a

@@ -75,6 +75,7 @@ public class ProductModel implements Model {
 	public synchronized BeanProduct doRetrieveByKey(Object codice) throws SQLException {
 		
 		int code=(int) codice;
+		System.out.println(code);
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -167,6 +168,48 @@ public class ProductModel implements Model {
 			while (rs.next()) {
 				BeanProduct bean = new BeanProduct();
 
+				bean.setCodice(rs.getInt("codiceProdotto"));
+				bean.setCodCategoria(rs.getInt("codiceCategoria"));
+				bean.setFoto(rs.getString("foto"));
+				bean.setTitolo(rs.getString("titolo"));
+				bean.setDisponibilita(rs.getInt("disponibilita"));
+				bean.setPrezzo(rs.getDouble("prezzo"));
+				bean.setProduttore(rs.getString("produttore"));
+				bean.setDescrizione(rs.getString("descrizione"));
+				bean.setIVA(rs.getInt("IVA"));
+				bean.setNovita(rs.getBoolean("novita"));
+				bean.setNovita(rs.getBoolean("offerta"));
+				product.add(bean);
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return product;
+	}
+	public synchronized Collection<Bean> doRetrieveByBool(String no,boolean b) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Collection<Bean> product = new LinkedList<Bean>();
+
+		String selectSQL = "SELECT * FROM " + ProductModel.TABLE_NAME + " WHERE " + no +"= ? ORDER BY codiceCategoria";
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setBoolean(1, b);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				BeanProduct bean = new BeanProduct();
 				bean.setCodice(rs.getInt("codiceProdotto"));
 				bean.setCodCategoria(rs.getInt("codiceCategoria"));
 				bean.setFoto(rs.getString("foto"));
