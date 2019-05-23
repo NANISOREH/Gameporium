@@ -1,11 +1,16 @@
 package Controller.testing;
+import Model.ProductModel;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Collection;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import Beans.Bean;
 import Beans.BeanProduct;
 import Model.*;
 /**
@@ -21,69 +26,29 @@ public class ProductControl extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		Cart cart = (Cart)request.getSession().getAttribute("cart");
-		if(cart == null) {
-			cart = new Cart();
-			request.getSession().setAttribute("cart", cart);
-		}
+	
+		HttpSession session = request.getSession();
 		
-		String action = request.getParameter("action");
-
+		
+		
+		//aggiungere un if
 		try {
-			if (action != null) {
-				if (action.equalsIgnoreCase("addC")) {
-					int id = Integer.parseInt(request.getParameter("id"));
-					cart.addProduct(model.doRetrieveByKey(id));
-				} else if (action.equalsIgnoreCase("deleteC")) {
-					int id = Integer.parseInt(request.getParameter("id"));
-					cart.deleteProduct(model.doRetrieveByKey(id));
-				} else if (action.equalsIgnoreCase("read")) {
-					int id = Integer.parseInt(request.getParameter("id"));
-					request.removeAttribute("product");
-					request.setAttribute("product", model.doRetrieveByKey(id));
-				} else if (action.equalsIgnoreCase("delete")) {
-					int id = Integer.parseInt(request.getParameter("id"));
-					model.doDelete(id);
-				} else if (action.equalsIgnoreCase("insert")) {
-					String name = request.getParameter("name");
-					String description = request.getParameter("description");
-					int codice= Integer.parseInt(request.getParameter("code"));
-					int codiceC=Integer.parseInt(request.getParameter("catcod"));
-					String pict =request.getParameter("pic");
-					int price = Integer.parseInt(request.getParameter("price"));
-					int quantity = Integer.parseInt(request.getParameter("quantity"));
-					
-					BeanProduct bean = new BeanProduct();
-					bean.setCodice(codice);
-					bean.setCodCategoria(codiceC);
-					bean.setFoto(pict);
-					bean.setIVA(Integer.parseInt(request.getParameter("iva")));
-					bean.setProduttore(request.getParameter("produttore"));
-					bean.setTitolo(name);
-					bean.setDescrizione(description);
-					bean.setPrezzo(price);
-					bean.setDisponibilita(quantity);
-					model.doSave(bean);
-				}
-			}			
+			Collection <Bean> bpo= model.doRetrieveByBool("offerta",true);
+			session.setAttribute("listaOfferta", bpo);
+			Collection <Bean> bpn= model.doRetrieveByBool("novita",true);
+			session.setAttribute("listaNovita", bpn);
 		} catch (SQLException e) {
-			System.out.println("Error:" + e.getMessage());
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-
-		request.getSession().setAttribute("cart", cart);
-		request.setAttribute("cart", cart);
-		
-		
-		String sort = request.getParameter("sort");
-
+		//
+		String categoria= (String) request.getAttribute("categoria");
 		try {
-			request.removeAttribute("products");
-			request.setAttribute("products", model.doRetrieveAll(sort));
-		} catch (SQLException e) {
-			System.out.println("Error:" + e.getMessage());
+			Collection <Bean> bpc= model.doRetrieveAll(categoria);
+			session.setAttribute("listaCategoria", bpc);
+		}catch (SQLException e) {
+			e.printStackTrace();
 		}
-
 
 	}
 
