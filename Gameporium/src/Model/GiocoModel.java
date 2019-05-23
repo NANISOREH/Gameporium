@@ -73,7 +73,7 @@ public class GiocoModel implements Model {
 
 		BeanGioco bean = new BeanGioco();
 
-		String selectSQL = "SELECT * FROM " + GiocoModel.TABLE_NAME + " WHERE codiceProdotto = ?";
+		String selectSQL = "SELECT * FROM " + GiocoModel.TABLE_NAME +"AS g JOIN prodotto as p on on g.codiceProdotto=p.codiceProdotto WHERE g.codiceProdotto = ?";
 
 		try {
 			connection = ds.getConnection();
@@ -89,6 +89,16 @@ public class GiocoModel implements Model {
 				bean.setDurata(rs.getTime("durata"));
 				bean.setEtaConsigliata(rs.getInt("etaConsigliata"));
 				bean.setNumeroGiocatori(rs.getInt("numGiocatori"));
+				bean.setCodCategoria(rs.getInt("codiceCategoria"));
+				bean.setDescrizione(rs.getString("descrizione"));
+				bean.setDisponibilita(rs.getInt("disponibilita"));
+				bean.setFoto(rs.getString("foto"));
+				bean.setTitolo(rs.getString("titolo"));
+				bean.setPrezzo(rs.getDouble("prezzo"));
+				bean.setProduttore(rs.getString("produttore"));
+				bean.setIVA(rs.getInt("IVA"));
+				bean.setNovita(rs.getBoolean("novita"));
+				bean.setOfferta(rs.getBoolean("offerta"));
 			}
 
 		} finally {
@@ -105,32 +115,7 @@ public class GiocoModel implements Model {
 
 	@Override
 	public synchronized boolean doDelete(Object codice) throws SQLException {
-		
-		int code=(int) codice;
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-
-		int result = 0;
-
-		String deleteSQL = "DELETE FROM " + GiocoModel.TABLE_NAME + " WHERE codiceProdotto = ?";
-
-		try {
-			connection = ds.getConnection();
-			preparedStatement = connection.prepareStatement(deleteSQL);
-			preparedStatement.setInt(1, code);
-
-			result = preparedStatement.executeUpdate();
-
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
-		}
-		return (result != 0);
+		return false;
 	}
 
 	@Override
@@ -161,6 +146,16 @@ public class GiocoModel implements Model {
 				bean.setDurata(rs.getTime("durata"));
 				bean.setEtaConsigliata(rs.getInt("etaConsigliata"));
 				bean.setNumeroGiocatori(rs.getInt("numGiocatori"));
+				bean.setCodCategoria(rs.getInt("codiceCategoria"));
+				bean.setDescrizione(rs.getString("descrizione"));
+				bean.setDisponibilita(rs.getInt("disponibilita"));
+				bean.setFoto(rs.getString("foto"));
+				bean.setTitolo(rs.getString("titolo"));
+				bean.setPrezzo(rs.getDouble("prezzo"));
+				bean.setProduttore(rs.getString("produttore"));
+				bean.setIVA(rs.getInt("IVA"));
+				bean.setNovita(rs.getBoolean("novita"));
+				bean.setOfferta(rs.getBoolean("offerta"));
 				Gioco.add(bean);
 			}
 
