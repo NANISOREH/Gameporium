@@ -1,4 +1,4 @@
-package Controller.testing;
+package Controller.productview;
 import Model.ProductModel;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -16,11 +16,11 @@ import Model.*;
 /**
  * Servlet implementation class ProductControl
  */
-public class ProductControl extends HttpServlet {
+public class HomeProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static ProductModel model=new ProductModel();
 	
-	public ProductControl() {
+	public HomeProductServlet() {
 		super();
 	}
 
@@ -29,27 +29,18 @@ public class ProductControl extends HttpServlet {
 	
 		HttpSession session = request.getSession();
 		
-		
-		
-		//aggiungere un if
-		try {
-			Collection <Bean> bpo= model.doRetrieveByBool("offerta",true);
-			session.setAttribute("listaOfferta", bpo);
-			Collection <Bean> bpn= model.doRetrieveByBool("novita",true);
-			session.setAttribute("listaNovita", bpn);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (session.getAttribute("listaOfferta")==null && session.getAttribute("listaNovita")==null)
+		{
+			try {
+				Collection <Bean> bpo= model.doRetrieveByBool("offerta",true);
+				session.setAttribute("listaOfferta", bpo);
+				Collection <Bean> bpn= model.doRetrieveByBool("novita",true);
+				session.setAttribute("listaNovita", bpn);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		//
-		String categoria= (String) request.getAttribute("categoria");
-		try {
-			Collection <Bean> bpc= model.doRetrieveAll(categoria);
-			session.setAttribute("listaCategoria", bpc);
-		}catch (SQLException e) {
-			e.printStackTrace();
-		}
-
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
