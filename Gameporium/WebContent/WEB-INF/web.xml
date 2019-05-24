@@ -11,8 +11,8 @@
     <res-auth>Container</res-auth>
   </resource-ref>
   <servlet>
-    <servlet-name>ProductControl</servlet-name>
-    <servlet-class>Controller.testing.ProductControl</servlet-class>
+    <servlet-name>HomeProductServlet</servlet-name>
+    <servlet-class>Controller.productview.HomeProductServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
@@ -27,7 +27,7 @@
     <servlet-class>Controller.registration.RegisterServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ProductControl</servlet-name>
+    <servlet-name>HomeProductServlet</servlet-name>
     <url-pattern>/product</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
