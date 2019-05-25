@@ -73,7 +73,7 @@ public class GiocoModel implements Model {
 
 		BeanGioco bean = new BeanGioco();
 
-		String selectSQL = "SELECT * FROM " + GiocoModel.TABLE_NAME +"AS g JOIN prodotto as p on on g.codiceProdotto=p.codiceProdotto WHERE g.codiceProdotto = ?";
+		String selectSQL = "SELECT * FROM " + GiocoModel.TABLE_NAME +" AS g JOIN prodotto as p on g.codiceProdotto=p.codiceProdotto WHERE g.codiceProdotto = ?";
 
 		try {
 			connection = ds.getConnection();
