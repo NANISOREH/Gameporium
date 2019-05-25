@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Beans.Bean;
-import Beans.BeanProduct;
-import Model.*;
 /**
  * Servlet implementation class ProductControl
  */

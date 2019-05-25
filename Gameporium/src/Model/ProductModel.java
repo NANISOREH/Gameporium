@@ -244,7 +244,7 @@ public class ProductModel implements Model {
 		Collection<Bean> product = new LinkedList<Bean>();
 		
 		String selectSQL = "SELECT * FROM " + ProductModel.TABLE_NAME + " as p JOIN "+ categoria+ " as c on p.codiceProdotto=c.codiceProdotto WHERE c." + attribute +" LIKE ?";
-		System.out.println(selectSQL);
+
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
