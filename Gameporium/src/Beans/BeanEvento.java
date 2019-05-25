@@ -8,7 +8,7 @@ public class BeanEvento extends Bean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	int codiceEvento, numeroPartecipanti;
 	String nome, luogo, descrizione;
-	Date data;
+	Date dataEvento;
 	Time ora;
 	
 	public BeanEvento()
@@ -18,7 +18,7 @@ public class BeanEvento extends Bean implements Serializable {
 		nome="";
 		luogo="";
 		descrizione="";
-		data=null;
+		dataEvento=null;
 		ora=null;
 	}
 
@@ -63,11 +63,11 @@ public class BeanEvento extends Bean implements Serializable {
 	}
 
 	public Date getData() {
-		return data;
+		return dataEvento;
 	}
 
 	public void setData(Date newData) {
-		this.data = newData;
+		this.dataEvento = newData;
 	}
 
 	public Time getOra() {
@@ -81,7 +81,7 @@ public class BeanEvento extends Bean implements Serializable {
 	@Override
 	public String toString() {
 		return "BeanEvento [codiceEvento=" + codiceEvento + ", numeroPartecipanti=" + numeroPartecipanti + ", nome="
-				+ nome + ", luogo=" + luogo + ", descrizione=" + descrizione + ", data=" + data + ", ora=" + ora + "]";
+				+ nome + ", luogo=" + luogo + ", descrizione=" + descrizione + ", data=" + dataEvento + ", ora=" + ora + "]";
 	}
 	
 	

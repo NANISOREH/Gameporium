@@ -23,7 +23,7 @@
           <a href="/Gameporium/offerteNovita.jsp" style=float:right;>Scoprile tutte</a>
         </div>      		<!-- Inizio iterazione cards-->
       		<div class="row">
-      		<jsp:include page="/product"/>
+      		<jsp:include page="/productHome"/>
       		<c:set var="products" value='${sessionScope["listaOfferta"]}'/>
       		<c:forEach items="${products}" var="item">
       				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 bg-light">
@@ -53,7 +53,7 @@
       		</div>
       		<!-- Inizio iterazione cards-->
       		<div class="row">
-      		<jsp:include page="/product"/>
+      		<jsp:include page="/productHome"/>
       		<c:set var="products" value='${sessionScope["listaNovita"]}'/>
       		<c:forEach items="${products}" var="item">
       				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 bg-light">

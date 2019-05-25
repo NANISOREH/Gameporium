@@ -43,9 +43,6 @@
 </head>
 
 <body style="background-color: #343a40">
-		<c:set var="listaOfferta" value='${sessionScope["listaOfferta"]}' />
-		<c:set var="listaNovita" value='${sessionScope["listaNovita"]}' />
-		
   <div class="container-fluid bg-light" style="margin-top:0">
     <!-- sistema di colonne -->
     <div class="row">
@@ -55,64 +52,8 @@
       	</div>
       <!-- fine colonna sinistra -->
 	<!-- colonna centrale -->
-	
        <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 bg-light" style="margin-bottom:1100px; margin-top: 30px">
-     		<div class="container-fluid" style="margin-top: 60px">
-     			<div style="border-bottom:1px black solid"> Tutte le offerte</div>
-					<div class="row">
-<!-- 					trova un modo di far arrivare i parametri di controllo da centerHome.jsp -->
-						
-						<c:if test = "${testOff}">
-		      				<c:forEach items="${listaOfferta}" var="item">
-	      						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 bg-light">
-			      					<div class="card" style="margin-top: 30px">
-			      						<div class="card-header">
-			      							${item.titolo}
-			      						</div>
-		          						<div class="card-body">
-		          						<img class="card-img-top img-responsive" src="<c:url value="images/imagine.jpg"/>"alt="${item.foto}"/>
-		          						<br>
-		       							</div>
-		       							<div class="card-footer">
-		       							Prezzo:
-		       							${item.prezzo}
-		       							</div>
-		       						</div>
-	       						</div>
-							</c:forEach>
-						</c:if>>
-							
-						<c:if test="${testOff}">
-							<c:forEach items="${listaNovita}" var="item">
-								<div style="border-bottom:1px black solid"> Tutte le novità</div>
-	      						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 bg-light">
-			      					<div class="card" style="margin-top: 30px">
-			      						<div class="card-header">
-			      							${item.titolo}
-			      						</div>
-		          						<div class="card-body">
-		          						<img class="card-img-top img-responsive" src="<c:url value="images/imagine.jpg"/>"alt="${item.foto}"/>
-		          						<br>
-		       							</div>
-		       							<div class="card-footer">
-		       							Prezzo:
-		       							${item.prezzo}
-		       							</div>
-		       						</div>
-	       						</div>
-							</c:forEach>
-						</c:if>
-						
-			
-       		<!-- fine iterazione cards -->
-      				</div>
-      				
-			</div>
-     
-     
-     
-     
-     
+        <%@include file="/WEB-INF/Includes/center.jsp" %>
 		</div>
     <!-- fine colonna centrale -->
     
