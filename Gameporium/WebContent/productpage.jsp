@@ -18,37 +18,15 @@
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <style>
-.navbar-nav .nav-item .nav-link {
-	color: dark;
-	text-align: center;
-}
-
-.navbar-nav .nav-item.active .nav-link, .navbar-nav .nav-item:hover .nav-link
-	{
-	background-color: #8c8c8c
-}
-
-.navbar-toggler-icon {
-	background-image:
-		url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-}
-
-.navbar-toggler {
-	background: #212121; /* pick your color */
-}
-
-.active-cyan-2 input[type=text]:not ([readonly] ) {
-	border-bottom: 1px solid #4dd0e1;
-	box-shadow: 0 1px 0 0 #4dd0e1;
-	background: #343a40;
-	border-color: transparent
-}
 </style>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/Includes/header.jsp"%>
+<jsp:include page="/testproduct" />
 </head>
 
 <body style="background-color: #343a40">
+	<c:set var="currentProduct" value='${requestScope["currentProduct"]}' />
+
 	<div class="container-fluid bg-light" style="margin-top: 0">
 		<!-- sistema di colonne -->
 		<div class="row">
@@ -60,12 +38,12 @@
 			</div>
 			<!-- fine colonna sinistra -->
 			<!-- colonna centrale -->
-			<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 bg-light" style="margin-bottom: 300px; margin-top: 40px">
-				<h2>Articolo di Prova</h2>
-				<div class="container-fluid bg-light" style="border-top:1px black solid">
+			<div class="col-lg-8 col-md-12 bg-light" style="margin-bottom: 300px; margin-top: 40px">
+				<h2>${currentProduct.titolo}</h2>
+				<div class="container-fluid" style="border-top:1px black solid">
 					<div class="row">
 						
-						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 d-none d-lg-block bg-light">
+						<div class="col-lg-4 col-xs-12 d-none d-lg-block bg-light">
 							<a class="navbar-brand text-white-80" href="#"><img
 								src="res/pl.jpg" class="rounded mx-auto d-block"
 								alt="Responsive image"
@@ -73,15 +51,24 @@
 							</a>
 						</div>
 						
-						<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 d-none d-lg-block bg-light" style="margin-bottom: 300px; margin-top: 31px">
+						<div class="col-lg-8 col-xs-12 d-none d-lg-block bg-light" style="margin-bottom: 300px; margin-top: 31px">
 							 <ul class="list-group list-group-flush">
-							 	<li class="list-group-item">Prova</li>
-							  	<li class="list-group-item">Prova</li>
-							  	<li class="list-group-item">Prova</li>
-							  	<li class="list-group-item">Prova</li>
-							  	<li class="list-group-item">Prova</li>
-							  	<li class="list-group-item">Prova</li>
-							  	<li class="list-group-item">Prova</li>
+							 	<li class="list-group-item bg-light">Prezzo: 
+							 		<span style="font-size: 23px; font-weight: bold; display:inline-block; margin-left: 50px">
+							 		${currentProduct.prezzo}€</span> 
+							 	</li>
+							 	<li class="list-group-item bg-light">Marca: 
+							 		<span style="display:inline-block; margin-left: 50px">
+							 		${currentProduct.produttore}</span> 
+							 	</li>
+							 	<li class="list-group-item bg-light">Marca: 
+							 		<span style="display:inline-block; margin-left: 50px">
+							 		${currentProduct.produttore}</span> 
+							 	</li>
+							  	<li class="list-group-item bg-light">Prova</li>
+							  	<li class="list-group-item bg-light">Prova</li>
+							  	<li class="list-group-item bg-light">Prova</li>
+							  	<li class="list-group-item bg-light">Prova</li>
 							</ul> 
 						</div>
 						
