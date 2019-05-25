@@ -7,8 +7,35 @@
 </head>
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+  <style>
+  .navbar-nav .nav-item .nav-link {
+    color: dark;
+    text-align: center;
+  }
+  
+  .navbar-nav .nav-item.active .nav-link, .navbar-nav .nav-item:hover .nav-link {
+	    background-color: #8c8c8c
+  }
+  
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+  
+  .navbar-toggler {
+    background: #212121; /* pick your color */
+  }
+  
+  .active-cyan-2 input[type=text]:not([readonly]) {
+    border-bottom: 1px solid #4dd0e1;
+    box-shadow: 0 1px 0 0 #4dd0e1;
+    background: #343a40;	
+	border-color: transparent
+  } 
+  </style>
+
 <%@ page import="javax.servlet.*"%>
 <%@ page import="Beans.*"%>
+
 <body>
 
 	

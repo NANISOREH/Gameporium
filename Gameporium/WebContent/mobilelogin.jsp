@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-<title>prova</title>
+<title>Accedi a Gameporium!</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -63,39 +63,37 @@
 					<div class="row">
 
 						<div class="col-sm-12 col-md-6 col-lg-6 mx-auto">
-							<div class="card card-signin my-5">
-								<div class="card-body">
-									<h5 class="card-title text-center">Accedi</h5>
-									<form action="login" class="form-signin">
-									
-										<div class="form-label-group" style="padding: 5px">
-											<input type="text" id="inputEmail" name="un"
-												class="form-control" placeholder="Username" name="un" autocomplete="off" value="${cookie.saveUser.value}" required
-												autofocus>
-										</div>
-
-										<div class="form-label-group" style="padding: 5px">
-											<input type="password" id="inputPassword" name="pw"
-												class="form-control" placeholder="Password" name="pw" autocomplete="off" value="${cookie.savePass.value}" required>
-										</div>
-
-										<div class="form-check text-right" style="margin: 17px">
-										    <input type="checkbox" class="form-check-input active unchecked" id="exampleCheck1" name="remember">
-										    <label class="form-check-label" for="exampleCheck1">Ricordami</label>
-										</div>
-
-										<button
-											class="btn btn-lg btn-primary btn-block text-uppercase"
-											type="submit">Accedi</button>
-										<hr class="my-4">
-										<button
-											class="btn btn-md btn-facebook btn-block text-uppercase"
-											type="submit" onclick="window.location='/Gameporium/register.jsp';">
-											<i class="fab fa-facebook-f mr-2"></i> Registra un nuovo account
-										</button>
-									</form>
+							<h2>Accedi</h2>
+						
+							<p class="hint-text">Inizia a fare acquisti su Gameporium!</p>
+							<form action="login" class="form-signin">
+							
+								<div class="form-label-group" style="padding: 5px">
+									<input type="text" id="inputEmail" name="un"
+										class="form-control" placeholder="Username" name="un" autocomplete="off" value="${cookie.saveUser.value}" required
+										autofocus>
 								</div>
-							</div>
+
+								<div class="form-label-group" style="padding: 5px">
+									<input type="password" id="inputPassword" name="pw"
+										class="form-control" placeholder="Password" name="pw" autocomplete="off" value="${cookie.savePass.value}" required>
+								</div>
+
+								<div class="form-check text-right" style="margin: 17px">
+								    <input type="checkbox" class="form-check-input active unchecked" id="exampleCheck1" name="remember">
+								    <label class="form-check-label" for="exampleCheck1">Ricordami</label>
+								</div>
+
+								<button
+									class="btn btn-lg btn-primary btn-block text-uppercase"
+									type="submit">Accedi</button>
+								<hr class="my-4">
+								<button
+									class="btn btn-md btn-facebook btn-block text-uppercase"
+									type="submit" onclick="window.location='/Gameporium/register.jsp';">
+									<i class="fab fa-facebook-f mr-2"></i> Registra un nuovo account
+								</button>
+							</form>
 						</div>
 
 					</div>

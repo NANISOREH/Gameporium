@@ -15,6 +15,10 @@
     <servlet-class>Controller.productview.HomeProductServlet</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>TestProduct</servlet-name>
+    <servlet-class>Controller.testing.TestProduct</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>ProductShowServlet</servlet-name>
     <servlet-class>Controller.productview.ProductShowServlet</servlet-class>
   </servlet>
@@ -57,5 +61,9 @@
     <servlet-mapping>
     <servlet-name>EventShowServlet</servlet-name>
     <url-pattern>/events</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TestProduct</servlet-name>
+    <url-pattern>/testproduct</url-pattern>
   </servlet-mapping>
 </web-app>
