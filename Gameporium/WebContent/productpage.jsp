@@ -46,12 +46,12 @@
 			<!-- fine colonna sinistra -->
 			<!-- colonna centrale -->
 			
-			<div class="col-lg-8 col-md-12 bg-light" style="margin-top: 40px">
+			<div class="col-lg-8 col-md-12 bg-light" style="margin-top: 20px">
 			
 				<c:if test='${requestScope["isGioco"]}'>
 					<c:set var="gioco" value='${requestScope["gioco"]}' />
-					<h2>${gioco.titolo}</h2>
-					<div class="container-fluid" style="border-top:1px black solid">
+
+					<div class="container-fluid">
 						<div class="row">
 							
 							<div class="col-lg-4 col-xs-12 bg-light">
@@ -62,8 +62,13 @@
 								</a>
 							</div>
 							
-							<div class="col-lg-8 col-xs-12 bg-light" style="margin-top: 31px">
-								 <ul class="list-group list-group-flush">
+							<div class="col-lg-8 col-xs-12 bg-light" style="margin-top: 14px">
+								 <ul class="list-group list-group-flush" >
+								 	
+								 	<li class="list-group-item bg-light">
+										<h4>${gioco.titolo}</h4>
+								 	</li>
+								 
 								 	<li class="list-group-item bg-light">
 								 		<div class="row">
 								 			<div class="col-lg-5 col-xs-12" style="font-weight:bold">Prezzo:</div>
@@ -130,8 +135,8 @@
 				
 				<c:if test='${requestScope["isAccessorio"]}'>
 					<c:set var="gioco" value='${requestScope["accessorio"]}' />
-					<h2>${gioco.titolo}</h2>
-					<div class="container-fluid" style="border-top:1px black solid">
+
+					<div class="container-fluid">
 						<div class="row">
 							
 							<div class="col-lg-4 col-xs-12 bg-light">
@@ -142,8 +147,13 @@
 								</a>
 							</div>
 							
-							<div class="col-lg-8 col-xs-12 bg-light" style="margin-top: 31px">
+							<div class="col-lg-8 col-xs-12 bg-light" style="margin-top: 14px">
 								 <ul class="list-group list-group-flush">
+								 	
+								 	<li class="list-group-item bg-light">
+										<h4>${gioco.titolo}</h4>
+								 	</li>
+								 	
 								 	<li class="list-group-item bg-light">
 								 		<div class="row">
 								 			<div class="col-lg-5 col-xs-12" style="font-weight:bold">Prezzo:</div>
