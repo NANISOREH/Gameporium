@@ -44,7 +44,7 @@ public class ProductModel implements Model {
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setInt(1, p.getCodice());
+			preparedStatement.setInt(1, p.getCodiceProdotto());
 			preparedStatement.setInt(2, p.getCodCategoria());
 			preparedStatement.setString(3, p.getFoto());
 			preparedStatement.setString(4, p.getTitolo());
@@ -91,7 +91,7 @@ public class ProductModel implements Model {
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				bean.setCodice(rs.getInt("codiceProdotto"));
+				bean.setCodiceProdotto(rs.getInt("codiceProdotto"));
 				bean.setCodCategoria(rs.getInt("codiceCategoria"));
 				bean.setFoto(rs.getString("foto"));
 				bean.setTitolo(rs.getString("titolo"));
@@ -168,7 +168,7 @@ public class ProductModel implements Model {
 			while (rs.next()) {
 				BeanProduct bean = new BeanProduct();
 
-				bean.setCodice(rs.getInt("codiceProdotto"));
+				bean.setCodiceProdotto(rs.getInt("codiceProdotto"));
 				bean.setCodCategoria(rs.getInt("codiceCategoria"));
 				bean.setFoto(rs.getString("foto"));
 				bean.setTitolo(rs.getString("titolo"));
@@ -211,7 +211,7 @@ public class ProductModel implements Model {
 
 			while (rs.next()) {
 				BeanProduct bean = new BeanProduct();
-				bean.setCodice(rs.getInt("codiceProdotto"));
+				bean.setCodiceProdotto(rs.getInt("codiceProdotto"));
 				bean.setCodCategoria(rs.getInt("codiceCategoria"));
 				bean.setFoto(rs.getString("foto"));
 				bean.setTitolo(rs.getString("titolo"));
@@ -271,7 +271,7 @@ public class ProductModel implements Model {
 
 			while (rs.next()) {
 				BeanProduct bean = new BeanProduct();
-				bean.setCodice(rs.getInt("codiceProdotto"));
+				bean.setCodiceProdotto(rs.getInt("codiceProdotto"));
 				bean.setCodCategoria(rs.getInt("codiceCategoria"));
 				bean.setFoto(rs.getString("foto"));
 				bean.setTitolo(rs.getString("titolo"));
@@ -314,7 +314,7 @@ public class ProductModel implements Model {
 			while (rs.next()) {
 				BeanProduct bean = new BeanProduct();
 
-				bean.setCodice(rs.getInt("codiceProdotto"));
+				bean.setCodiceProdotto(rs.getInt("codiceProdotto"));
 				bean.setCodCategoria(rs.getInt("codiceCategoria"));
 				bean.setFoto(rs.getString("foto"));
 				bean.setTitolo(rs.getString("titolo"));

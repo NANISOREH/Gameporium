@@ -45,11 +45,11 @@ INSERT INTO accessorio(nomeCategoria, descrizioneCategoria,codiceProdotto) VALUE
     
 INSERT INTO gioco (codiceProdotto,nomeCategoria,descrizioneCategoria,durata,etaConsigliata,numgiocatori) VALUES
 	(0001,'Gioco','Gioco da tavolo','variabile',6,'2+'),
-    (0002,'Gioco','Gioco di ruolo','variabile',14,'2+'),
-    (0005,'Gioco','Gioco di carte','60\'',12,'2'),
-    (0006,'Gioco','Gioco da tavolo','90\'',16,'4-8'),
-    (0007,'Gioco','Gioco da tavolo','30\'',14,'4+'),
-    (0008,'Gioco','Gioco da tavolo','120\'',14,'2-4');
+    (0002,'Gioco','Gioco di ruolo','variabile',14,'2 o più'),
+    (0005,'Gioco','Gioco di carte','60 minuti',12,'2'),
+    (0006,'Gioco','Gioco da tavolo','90 minuti',16,'4-8'),
+    (0007,'Gioco','Gioco da tavolo','30 minuti',14,'4+'),
+    (0008,'Gioco','Gioco da tavolo','120 minuti',14,'2-4');
 
 INSERT INTO ordine(codiceOrdine,indirizzoSpedizione,tipoSpedizione,dataSpedizione,codiceSpedizione,codicePagamento,importo,metodo,indirizzoFatturazione) VALUES
 	(00001,'Via Paolo Uccello 8','Raccomandata','2019/07/05',0010,1,15.3, 'Carta di credito','Via Paolo Uccello 8'),

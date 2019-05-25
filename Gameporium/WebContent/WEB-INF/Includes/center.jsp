@@ -32,7 +32,7 @@
       				<div class="col-lg-4 col-xs-12 bg-light">
 		      			<div class="card" style="margin-top: 30px">
 		      				<div class="card-header">
-		      					${item.titolo}
+		      					<a href="singleProduct?selProd=${item.codiceProdotto}&selCat=${item.codCategoria}">${item.titolo}</a>
 		      				</div>
 	          				<div class="card-body">
 	          					<img class="card-img-top img-responsive" src="<c:url value="WebContent/images/${item.foto}"/>"alt="${item.foto}"/>

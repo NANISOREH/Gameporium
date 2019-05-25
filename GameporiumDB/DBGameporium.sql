@@ -40,7 +40,7 @@ CREATE TABLE gioco(
     descrizioneCategoria	varchar(100),
     durata			varchar(10),
     etaConsigliata	int,
-    numGiocatori	varchar(5),
+    numGiocatori	varchar(10),
     foreign key (codiceProdotto) references prodotto(codiceProdotto)
 								ON UPDATE CASCADE
                                 ON DELETE CASCADE

@@ -1,14 +1,12 @@
 package Beans;
 
 import java.io.Serializable;
-import java.sql.Time;
 
 public class BeanGioco extends Bean implements Serializable{
 	private static final long serialVersionUID = 1L;
-	int codiceProdotto, numeroGiocatori, etaConsigliata, disponibilita,codCategoria,IVA;
+	int codiceProdotto, etaConsigliata, disponibilita,codCategoria,IVA;
 	double prezzo;
-	String nomeCategoria, descrizioneCategoria,titolo,descrizione,foto,produttore;
-	Time durata;
+	String nomeCategoria, descrizioneCategoria,titolo,descrizione,foto,produttore, durata, numeroGiocatori;
 	boolean offerta,novita;
 
 	public int getDisponibilita() {
@@ -104,7 +102,7 @@ public class BeanGioco extends Bean implements Serializable{
 		IVA=-1;
 		offerta=false;
 		novita=false;
-		numeroGiocatori=-1;
+		numeroGiocatori="-1";
 		etaConsigliata=-1;
 		nomeCategoria="";
 		descrizioneCategoria="";
@@ -119,11 +117,11 @@ public class BeanGioco extends Bean implements Serializable{
 		this.codiceProdotto = newCodiceProdotto;
 	}
 
-	public int getNumeroGiocatori() {
+	public String getNumeroGiocatori() {
 		return numeroGiocatori;
 	}
 
-	public void setNumeroGiocatori(int newNumeroGiocatori) {
+	public void setNumeroGiocatori(String newNumeroGiocatori) {
 		this.numeroGiocatori = newNumeroGiocatori;
 	}
 
@@ -151,11 +149,11 @@ public class BeanGioco extends Bean implements Serializable{
 		this.descrizioneCategoria = newDescrizioneCategoria;
 	}
 
-	public Time getDurata() {
+	public String getDurata() {
 		return durata;
 	}
 
-	public void setDurata(Time newDurata) {
+	public void setDurata(String newDurata) {
 		this.durata = newDurata;
 	}
 
