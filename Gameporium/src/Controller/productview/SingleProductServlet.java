@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import Beans.BeanAccessorio;
 import Beans.BeanGioco;
-import Beans.BeanProduct;
 import Model.AccessorioModel;
 import Model.GiocoModel;
 
@@ -34,8 +33,8 @@ public class SingleProductServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BeanProduct bp = new BeanProduct();
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		String numProd = request.getParameter("selProd");
 		String selCat = request.getParameter("selCat");
 		
@@ -45,27 +44,35 @@ public class SingleProductServlet extends HttpServlet {
 		if (Integer.parseInt(selCat) == 1)
 		{
 			GiocoModel gm = new GiocoModel();
-			try {
+			try 
+			{
 				bg = gm.doRetrieveByKey(Integer.parseInt(numProd));
-			} catch (SQLException e) {
+			} 
+			catch (SQLException e) 
+			{
 				e.printStackTrace();
 			}
 			
 			request.setAttribute("gioco", bg);
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/gamepage.jsp");
+			request.setAttribute("isGioco", true);
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/productpage.jsp");
 			dispatcher.forward(request, response);
 		}
 		else if (Integer.parseInt(selCat) == 2) 
 		{
 			AccessorioModel am = new AccessorioModel();
-			try {
+			try 
+			{
 				ba = am.doRetrieveByKey(Integer.parseInt(numProd));
-			} catch (SQLException e) {
+			} 
+			catch (SQLException e) 
+			{
 				e.printStackTrace();
 			}
 			
 			request.setAttribute("accessorio", ba);
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/accpage.jsp");
+			request.setAttribute("isAccessorio", true);
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/productpage.jsp");
 			dispatcher.forward(request, response);
 		}
 		

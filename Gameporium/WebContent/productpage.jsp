@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="currentProduct" value='${requestScope["gioco"]}' />
+<c:set var="currentProduct" value='${requestScope["currentProduct"]}' />
 <title>Gameporium - ${currentProduct.titolo}</title>
 
 <style>
@@ -107,7 +107,7 @@
 												style = "max-width:150px; align-text: center; margin-top:20px" 
 												type="submit">Aggiungi al Carrello
 											</button>
-										</div>
+								 		</div>
 								 	</form>
 							 	</li>
 							
@@ -118,9 +118,8 @@
 					
 				</div>
 				
-				<h4 style= "margin-top: 40px">Descrizione</h4>
+				<h4>Descrizione</h4>
 				<div class="container-fluid" style="border-top:1px black solid">
-					<br>
 					${currentProduct.descrizione}
 				</div>
 				
