@@ -29,12 +29,12 @@
 	      		<jsp:include page="/productShow"/>
 	      		<c:set var="results" value='${sessionScope["listaRisultati"]}'/>
 	      		<c:forEach items="${results}" var="item">
-      				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 bg-light">
+      				<div class="col-lg-4 col-xs-12 bg-light">
 		      			<div class="card" style="margin-top: 30px">
 		      				<div class="card-header">
 		      					${item.titolo}
 		      				</div>
-	          				<div class="card-body" style="width:400px; height:300 px">
+	          				<div class="card-body">
 	          					<img class="card-img-top img-responsive" src="<c:url value="WebContent/images/${item.foto}"/>"alt="${item.foto}"/>
 	          					<br>
 	       					</div>
