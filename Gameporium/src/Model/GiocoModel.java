@@ -47,9 +47,9 @@ public class GiocoModel implements Model {
 			preparedStatement.setInt(1, g.getCodiceProdotto());
 			preparedStatement.setString(2, g.getNomeCategoria());
 			preparedStatement.setString(3, g.getDescrizioneCategoria());
-			preparedStatement.setTime(4, g.getDurata());
+			preparedStatement.setString(4, g.getDurata());
 			preparedStatement.setInt(5, g.getEtaConsigliata());
-			preparedStatement.setInt(6, g.getNumeroGiocatori());
+			preparedStatement.setString(6, g.getNumeroGiocatori());
 			preparedStatement.executeUpdate();
 
 			connection.commit();
@@ -86,9 +86,9 @@ public class GiocoModel implements Model {
 				bean.setCodiceProdotto(rs.getInt("codiceProdotto"));
 				bean.setDescrizioneCategoria(rs.getString("descrizioneCategoria"));
 				bean.setNomeCategoria(rs.getString("nomeCategoria"));
-				bean.setDurata(rs.getTime("durata"));
+				bean.setDurata(rs.getString("durata"));
 				bean.setEtaConsigliata(rs.getInt("etaConsigliata"));
-				bean.setNumeroGiocatori(rs.getInt("numGiocatori"));
+				bean.setNumeroGiocatori(rs.getString("numGiocatori"));
 				bean.setCodCategoria(rs.getInt("codiceCategoria"));
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setDisponibilita(rs.getInt("disponibilita"));
@@ -143,9 +143,9 @@ public class GiocoModel implements Model {
 				bean.setCodiceProdotto(rs.getInt("codiceProdotto"));
 				bean.setDescrizioneCategoria(rs.getString("descrizioneCategoria"));
 				bean.setNomeCategoria(rs.getString("nomeCategoria"));
-				bean.setDurata(rs.getTime("durata"));
+				bean.setDurata(rs.getString("durata"));
 				bean.setEtaConsigliata(rs.getInt("etaConsigliata"));
-				bean.setNumeroGiocatori(rs.getInt("numGiocatori"));
+				bean.setNumeroGiocatori(rs.getString("numGiocatori"));
 				bean.setCodCategoria(rs.getInt("codiceCategoria"));
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setDisponibilita(rs.getInt("disponibilita"));

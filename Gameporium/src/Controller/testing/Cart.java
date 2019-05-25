@@ -19,7 +19,7 @@ public class Cart {
 	
 	public void deleteProduct(BeanProduct product) {
 		for(BeanProduct prod : products) {
-			if(prod.getCodice() == product.getCodice()) {
+			if(prod.getCodiceProdotto() == product.getCodiceProdotto()) {
 				products.remove(prod);
 				break;
 			}

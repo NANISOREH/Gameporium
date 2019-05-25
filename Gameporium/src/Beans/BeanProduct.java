@@ -43,10 +43,10 @@ public class BeanProduct extends Bean implements Serializable {
 		this.novita = newNovita;
 	}
 
-	public int getCodice() {
+	public int getCodiceProdotto() {
 		return this.codiceProdotto;
 	}
-	public void setCodice(int newCodice) {
+	public void setCodiceProdotto(int newCodice) {
 		this.codiceProdotto=newCodice;
 	}
 	public int getDisponibilita() {

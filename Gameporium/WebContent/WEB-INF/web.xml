@@ -15,6 +15,10 @@
     <servlet-class>Controller.productview.HomeProductServlet</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>SingleProductServlet</servlet-name>
+    <servlet-class>Controller.productview.SingleProductServlet</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>TestProduct</servlet-name>
     <servlet-class>Controller.testing.TestProduct</servlet-class>
   </servlet>
@@ -43,6 +47,10 @@
     <url-pattern>/productHome</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
+    <servlet-name>SingleProductServlet</servlet-name>
+    <url-pattern>/singleProduct</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>ProductShowServlet</servlet-name>
     <url-pattern>/productShow</url-pattern>
   </servlet-mapping>
@@ -58,7 +66,7 @@
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/register</url-pattern>
   </servlet-mapping>
-    <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>EventShowServlet</servlet-name>
     <url-pattern>/events</url-pattern>
   </servlet-mapping>

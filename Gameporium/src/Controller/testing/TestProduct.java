@@ -38,7 +38,7 @@ public class TestProduct extends HttpServlet {
 		BeanGioco bg = new BeanGioco();
 		
 		try {
-			bg = pm.doRetrieveByKey(7);
+			bg = pm.doRetrieveByKey(2);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

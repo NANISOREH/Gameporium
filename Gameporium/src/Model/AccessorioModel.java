@@ -68,7 +68,7 @@ public class AccessorioModel implements Model {
 
 		BeanAccessorio bean = new BeanAccessorio();
 
-		String selectSQL = "SELECT * FROM " + AccessorioModel.TABLE_NAME + " WHERE codiceProdotto = ?";
+		String selectSQL = "SELECT * FROM " + AccessorioModel.TABLE_NAME + " AS g JOIN prodotto as p on g.codiceProdotto=p.codiceProdotto WHERE g.codiceProdotto = ?";
 
 		try {
 			connection = ds.getConnection();
