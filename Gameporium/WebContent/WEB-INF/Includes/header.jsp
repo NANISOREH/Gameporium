@@ -77,10 +77,13 @@
 					id="navbarDropdown" role="button" data-toggle="dropdown"
 					aria-haspopup="true" aria-expanded="false"> Giochi </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">Action</a> <a
-							class="dropdown-item" href="#">Another action</a>
+						<form action="product">
+						<a class="dropdown-item" href="/Gameporium/productselection.jsp?categoria=gioco&attribute=descrizioneCategoria&value=tavolo">Giochi da tavolo</a> 
+						<a class="dropdown-item" href="/Gameporium/productselection.jsp?categoria=gioco&attribute=descrizioneCategoria&value=ruolo">Giochi di ruolo</a> 
+						<a class="dropdown-item" href="/Gameporium/productselection.jsp?categoria=gioco&attribute=descrizioneCategoria&value=carte">Giochi di carte</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Something else here</a>
+						<a class="dropdown-item" href="/Gameporium/productselection.jsp?categoria=gioco">Mostra tutti</a>
+						</form>
 					</div></li>
 
 				<li class="nav-item dropdown"><a
@@ -88,10 +91,11 @@
 					role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"> Accessori </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">Action</a> <a
-							class="dropdown-item" href="#">Another action</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Something else here</a>
+						<a class="dropdown-item" href="/Gameporium/productselection.jsp?categoria=accessorio&attribute=descrizioneCategoria&value=tavolo">Accessori per GdT</a> <a
+							class="dropdown-item" href="/Gameporium/productselection.jsp?categoria=accessorio&attribute=descrizioneCategoria&value=ruolo">Accessori per GdR</a> <a 
+							class="dropdown-item" href="/Gameporium/productselection.jsp?categoria=accessorio&attribute=descrizioneCategoria&value=carte">Accessori per GdC</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="/Gameporium/productselection.jsp?categoria=accessorio">Mostra tutti</a>
 					</div></li>
 
 				<li class="nav-item dropdown"><a
@@ -99,10 +103,12 @@
 					role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"> Eventi </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">Action</a> <a
-							class="dropdown-item" href="#">Another action</a>
+						<a class="dropdown-item" href="/Gameporium/events.jsp">Mostra tutti gli eventi</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Something else here</a>
+						<form class="form-inline md-form form-sm active-cyan active-cyan-2 mt-2">
+						<i class="fas fa-search" aria-hidden="true"></i> 
+						<input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Cerca Città" aria-label="Search">
+					</form>
 					</div></li>
 					
 				
