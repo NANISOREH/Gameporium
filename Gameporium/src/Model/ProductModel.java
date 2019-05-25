@@ -193,6 +193,7 @@ public class ProductModel implements Model {
 		}
 		return product;
 	}
+	
 	public synchronized Collection<Bean> doRetrieveByBool(String no,boolean b) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -236,4 +237,106 @@ public class ProductModel implements Model {
 		return product;
 	}
 
+	public synchronized Collection<Bean> doRetrieveByAttribute(String categoria,String attribute, Object value) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Collection<Bean> product = new LinkedList<Bean>();
+		
+		String selectSQL = "SELECT * FROM " + ProductModel.TABLE_NAME + " as p JOIN "+ categoria+ " as c on p.codiceProdotto=c.codiceProdotto WHERE c." + attribute +" LIKE ?";
+		System.out.println(selectSQL);
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			
+			if(value instanceof String) {
+				String val = (String) value;
+				String param="%"+val;
+				preparedStatement.setString(1, param);
+			}
+			if(value instanceof Integer) {
+				int val= (Integer) value;
+				preparedStatement.setInt(1, val);
+			}
+			if(value instanceof Double) {
+				double val=(Double) value;
+				preparedStatement.setDouble(1, val);
+			}
+			if(value instanceof Boolean) {
+				Boolean val=(Boolean) value;
+				preparedStatement.setBoolean(1, val);
+			}
+			
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				BeanProduct bean = new BeanProduct();
+				bean.setCodice(rs.getInt("codiceProdotto"));
+				bean.setCodCategoria(rs.getInt("codiceCategoria"));
+				bean.setFoto(rs.getString("foto"));
+				bean.setTitolo(rs.getString("titolo"));
+				bean.setDisponibilita(rs.getInt("disponibilita"));
+				bean.setPrezzo(rs.getDouble("prezzo"));
+				bean.setProduttore(rs.getString("produttore"));
+				bean.setDescrizione(rs.getString("descrizione"));
+				bean.setIVA(rs.getInt("IVA"));
+				bean.setNovita(rs.getBoolean("novita"));
+				bean.setNovita(rs.getBoolean("offerta"));
+				product.add(bean);
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return product;
+	}
+
+	public synchronized Collection<Bean> doRetrieveByCat(String cat) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Collection<Bean> product = new LinkedList<Bean>();
+
+		String selectSQL = "SELECT * FROM " + ProductModel.TABLE_NAME +" as p JOIN "+ cat +" as c on p.codiceProdotto=c.codiceProdotto";
+		System.out.println(selectSQL);
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				BeanProduct bean = new BeanProduct();
+
+				bean.setCodice(rs.getInt("codiceProdotto"));
+				bean.setCodCategoria(rs.getInt("codiceCategoria"));
+				bean.setFoto(rs.getString("foto"));
+				bean.setTitolo(rs.getString("titolo"));
+				bean.setDisponibilita(rs.getInt("disponibilita"));
+				bean.setPrezzo(rs.getDouble("prezzo"));
+				bean.setProduttore(rs.getString("produttore"));
+				bean.setDescrizione(rs.getString("descrizione"));
+				bean.setIVA(rs.getInt("IVA"));
+				bean.setNovita(rs.getBoolean("novita"));
+				bean.setNovita(rs.getBoolean("offerta"));
+				product.add(bean);
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return product;
+	}
 }

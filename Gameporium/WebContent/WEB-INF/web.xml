@@ -15,6 +15,10 @@
     <servlet-class>Controller.productview.HomeProductServlet</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>ProductShowServlet</servlet-name>
+    <servlet-class>Controller.productview.ProductShowServlet</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>Controller.registration.LoginServlet</servlet-class>
   </servlet>
@@ -26,9 +30,17 @@
     <servlet-name>RegisterServlet</servlet-name>
     <servlet-class>Controller.registration.RegisterServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>EventShowServlet</servlet-name>
+    <servlet-class>Controller.eventsview.EventShowServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>HomeProductServlet</servlet-name>
-    <url-pattern>/product</url-pattern>
+    <url-pattern>/productHome</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ProductShowServlet</servlet-name>
+    <url-pattern>/productShow</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
@@ -41,5 +53,9 @@
   <servlet-mapping>
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/register</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>EventShowServlet</servlet-name>
+    <url-pattern>/events</url-pattern>
   </servlet-mapping>
 </web-app>
