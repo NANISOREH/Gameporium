@@ -26,22 +26,29 @@ public class ProductShowServlet extends HttpServlet {
 			throws ServletException, IOException {
 	
 		HttpSession session = request.getSession();
+		Collection <Bean> bpr;
 		
 		String cat=request.getParameter("categoria");
 		String val=request.getParameter("value");
 		String at=request.getParameter("attribute");
+		
 		try {
-				if (at!=null && at!=null) {
-					Collection <Bean> bpr= model.doRetrieveByAttribute(cat,at,val);
-					session.setAttribute("listaRisultati", bpr);
+				if (at!=null && val!=null) {
+					if (cat == null || cat.equals("")) {
+						bpr= model.doRetrieveByAttribute(at,val);
+						session.setAttribute("listaRisultati", bpr);
+					}
+					else {
+						bpr= model.doRetrieveByAttribute(cat,at,val);
+						session.setAttribute("listaRisultati", bpr);
+					}
 				}
 				else{
-					Collection <Bean> bpr=model.doRetrieveByCat(cat);
+					bpr=model.doRetrieveByCat(cat);
 					session.setAttribute("listaRisultati", bpr);
 				}
 				
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		

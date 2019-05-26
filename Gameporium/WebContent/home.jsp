@@ -25,6 +25,7 @@
 	<div class="container-fluid bg-light" style="margin-top: 0">
 		<!-- sistema di colonne -->
 		<div class="row">
+			
 			<!-- colonna sinistra -->
 			<div
 				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light"
@@ -32,11 +33,75 @@
 				<%@include file="/WEB-INF/Includes/leftpanel.jsp"%>
 			</div>
 			<!-- fine colonna sinistra -->
+			
 			<!-- colonna centrale -->
 			<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 bg-light"
 				style="margin-bottom: 1100px; margin-top: 30px">
 				<%@include file="/WEB-INF/Includes/mobilesearchbar.jsp"%>
-				<%@include file="/WEB-INF/Includes/centerHome.jsp"%>
+
+				<!-- container novità e offerte -->
+				<div class="container-fluid clearfix">
+			 	
+		      		<!-- Inizio sezione offerte -->
+					<div style="border-bottom:1px black solid;  margin-top: 30px">Offerte
+			          <a href="/Gameporium/productselection.jsp?attribute=offerta&value=true" style=float:right;>Scoprile tutte</a>
+			        </div>      		
+		        	
+		        	<!-- Inizio iterazione cards-->
+		      		<div class="row">
+		      			<jsp:include page="/productHome"/>
+		      			<c:set var="offerte" value='${sessionScope["listaOfferta"]}'/>
+			      		<c:forEach items="${offerte}" var="item">
+		      				<div class="col-lg-4 col-xs-12 bg-light">
+				      			<div class="card" style="margin-top: 30px">
+				      				<div class="card-header">
+				      					<a href="singleProduct?selProd=${item.codiceProdotto}&selCat=${item.codCategoria}">${item.titolo}</a>
+				      				</div>
+			          				<div class="card-body">
+			          					<img class="card-img-top img-responsive" src="<c:url value="WebContent/images/${item.foto}"/>"alt="${item.foto}"/>
+			          					<br>
+			       					</div>
+			       					<div class="card-footer">
+			       						Prezzo:
+			       						${item.prezzo}
+			       					</div>
+			       				</div>
+		       				</div>
+						</c:forEach>
+		       		<!-- fine iterazione cards -->
+		      		</div>
+		      	<!-- fine sezione offerte -->
+		      	
+		      	<!-- Inizio sezione novità -->
+					<div style="border-bottom:1px black solid;  margin-top: 30px">Novità
+			          <a href="/Gameporium/productselection.jsp?attribute=novita&value=true" style=float:right;>Scoprile tutte</a>
+			        </div>      		
+		        <!-- Inizio iterazione cards-->
+		      		<div class="row">
+		      			<jsp:include page="/productHome"/>
+		      			<c:set var="novita" value='${sessionScope["listaNovita"]}'/>
+			      		<c:forEach items="${novita}" var="item">
+		      				<div class="col-lg-4 col-xs-12 bg-light">
+				      			<div class="card" style="margin-top: 30px">
+				      				<div class="card-header">
+				      					<a href="singleProduct?selProd=${item.codiceProdotto}&selCat=${item.codCategoria}">${item.titolo}</a>
+				      				</div>
+			          				<div class="card-body">
+			          					<img class="card-img-top img-responsive" src="<c:url value="WebContent/images/${item.foto}"/>"alt="${item.foto}"/>
+			          					<br>
+			       					</div>
+			       					<div class="card-footer">
+			       						Prezzo:
+			       						${item.prezzo}
+			       					</div>
+			       				</div>
+		       				</div>
+						</c:forEach>
+		       		<!-- fine iterazione cards -->
+		      		</div>
+		      	<!-- fine sezione offerte -->
+		      	</div>
+			<!--fine container novità e offerte-->
 			</div>
 			<!-- fine colonna centrale -->
 

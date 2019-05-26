@@ -27,6 +27,7 @@
 	<div class="container-fluid bg-light" style="margin-top: 0">
 		<!-- sistema di colonne -->
 		<div class="row">
+			
 			<!-- colonna sinistra -->
 			<div
 				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light"
@@ -34,10 +35,45 @@
 				<%@include file="/WEB-INF/Includes/leftpanel.jsp"%>
 			</div>
 			<!-- fine colonna sinistra -->
+			
 			<!-- colonna centrale -->
 			<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 bg-light"
 				style="margin-bottom: 1100px; margin-top: 30px">
-				<%@include file="/WEB-INF/Includes/center.jsp"%>
+				<div class="container-fluid clearfix">	
+	  	
+					<%@include file="/WEB-INF/Includes/mobilesearchbar.jsp" %> 
+					
+			      	<!-- Inizio sezione risultati -->
+					<div style="border-bottom:1px black solid"> Risultati Ricerca </div>
+			
+			        <!-- Inizio iterazione cards-->
+			      		<div class="row">
+				      		<jsp:include page="/productShow"/>
+				      		<c:set var="results" value='${sessionScope["listaRisultati"]}'/>
+				      		<c:forEach items="${results}" var="item">
+			      				<div class="col-lg-4 col-xs-12 bg-light">
+					      			<div class="card" style="margin-top: 30px">
+					      				<div class="card-header">
+					      					<a href="singleProduct?selProd=${item.codiceProdotto}&selCat=${item.codCategoria}">${item.titolo}</a>
+					      				</div>
+				          				<div class="card-body">
+				          					<img class="card-img-top img-responsive" src="<c:url value="WebContent/images/${item.foto}"/>"alt="${item.foto}"/>
+				          					<br>
+				       					</div>
+				       					<div class="card-footer">
+				       						Prezzo:
+				       						${item.prezzo}
+				       					</div>
+				       				</div>
+			       				</div>
+							</c:forEach>
+						</div>
+			       		<!-- fine iterazione cards -->
+			      	<!-- fine sezione risultati -->
+				
+				</div>
+			<!--fine container novità e offerte-->
+			
 			</div>
 			<!-- fine colonna centrale -->
 
@@ -47,6 +83,8 @@
 				style="margin-bottom: 300px" style="border-left:1px">
 				<%@include file="/WEB-INF/Includes/rightpanel.jsp"%>
 			</div>
+			<!-- fine colonna destra -->
+			
 			<!-- fine sistema di colonne -->
 		</div>
 	</div>
