@@ -101,7 +101,7 @@ public class ProductModel implements Model {
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setIVA(rs.getInt("IVA"));
 				bean.setNovita(rs.getBoolean("novita"));
-				bean.setNovita(rs.getBoolean("offerta"));
+				bean.setOfferta(rs.getBoolean("offerta"));
 			}
 
 		} finally {
@@ -178,7 +178,7 @@ public class ProductModel implements Model {
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setIVA(rs.getInt("IVA"));
 				bean.setNovita(rs.getBoolean("novita"));
-				bean.setNovita(rs.getBoolean("offerta"));
+				bean.setOfferta(rs.getBoolean("offerta"));
 				product.add(bean);
 			}
 
@@ -221,7 +221,7 @@ public class ProductModel implements Model {
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setIVA(rs.getInt("IVA"));
 				bean.setNovita(rs.getBoolean("novita"));
-				bean.setNovita(rs.getBoolean("offerta"));
+				bean.setOfferta(rs.getBoolean("offerta"));
 				product.add(bean);
 			}
 
@@ -281,7 +281,75 @@ public class ProductModel implements Model {
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setIVA(rs.getInt("IVA"));
 				bean.setNovita(rs.getBoolean("novita"));
-				bean.setNovita(rs.getBoolean("offerta"));
+				bean.setOfferta(rs.getBoolean("offerta"));
+				product.add(bean);
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return product;
+	}
+	
+	public synchronized Collection<Bean> doRetrieveByAttribute(String attribute, Object value) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		//Questo metodo funziona in maniera strana con gli attributi bool:
+		//prende tutti i prodotti con true in almeno uno dei due attributi, anche se gliene indichi solo uno.
+		//Come workaround gli faccio usare direttamente il metodo doRetrieveByBool, che funziona correttamente.
+		if (attribute.equals("novita") || attribute.equals("offerta"))
+		{
+			return doRetrieveByBool(attribute, Boolean.parseBoolean((String)value));
+		}
+
+		Collection<Bean> product = new LinkedList<Bean>();
+		
+		String selectSQL = "SELECT * FROM " + ProductModel.TABLE_NAME + " WHERE " + attribute +" = ?";
+		System.out.println(selectSQL);
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			
+			if(value instanceof String) {
+				String val = (String) value;
+				String param="%"+val;
+				preparedStatement.setString(1, param);
+			}
+			if(value instanceof Integer) {
+				int val= (Integer) value;
+				preparedStatement.setInt(1, val);
+			}
+			if(value instanceof Double) {
+				double val=(Double) value;
+				preparedStatement.setDouble(1, val);
+			}
+			if(value instanceof Boolean) {
+				boolean val=(Boolean) value;
+				preparedStatement.setBoolean(1, val);
+			}
+			System.out.println(selectSQL + value);
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				BeanProduct bean = new BeanProduct();
+				bean.setCodiceProdotto(rs.getInt("codiceProdotto"));
+				bean.setCodCategoria(rs.getInt("codiceCategoria"));
+				bean.setFoto(rs.getString("foto"));
+				bean.setTitolo(rs.getString("titolo"));
+				bean.setDisponibilita(rs.getInt("disponibilita"));
+				bean.setPrezzo(rs.getDouble("prezzo"));
+				bean.setProduttore(rs.getString("produttore"));
+				bean.setDescrizione(rs.getString("descrizione"));
+				bean.setIVA(rs.getInt("IVA"));
+				bean.setNovita(rs.getBoolean("novita"));
+				bean.setOfferta(rs.getBoolean("offerta"));
 				product.add(bean);
 			}
 
@@ -324,7 +392,7 @@ public class ProductModel implements Model {
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setIVA(rs.getInt("IVA"));
 				bean.setNovita(rs.getBoolean("novita"));
-				bean.setNovita(rs.getBoolean("offerta"));
+				bean.setOfferta(rs.getBoolean("offerta"));
 				product.add(bean);
 			}
 
