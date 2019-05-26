@@ -178,7 +178,7 @@
 							</div>
 							
 							<div class="form-group">
-								<button type="button" onclick="validateUserPass(document.loginform)" class="btn btn-primary btn-block">Login</button>
+								<button type="button" onclick="validateLogin(document.loginform)" class="btn btn-primary btn-block">Login</button>
 							</div>
 							
 							<div class="form-check text-right">

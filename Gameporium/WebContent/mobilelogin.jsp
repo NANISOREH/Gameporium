@@ -65,7 +65,7 @@
 
 								<button
 									class="btn btn-lg btn-primary btn-block text-uppercase"
-									type="button" onclick="validateUserPass(document.thisform)">Accedi</button>
+									type="button" onclick="validateLogin(document.thisform)">Accedi</button>
 								<hr class="my-4">
 								<button
 									class="btn btn-md btn-facebook btn-block text-uppercase"

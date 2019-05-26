@@ -1,4 +1,4 @@
-function validateUserPass(loginform)
+function validateLogin(loginform)
 {	
 	var p = loginform.pw.value.length;
 	var u = loginform.un.value.length;
@@ -24,7 +24,7 @@ function validateUserPass(loginform)
 
 function validateRegister(registerform)
 {
-	var n = document.getElementById("reg").elements.length; 
+	var n = registerform.elements.length; 
 	
 	for (var i = 0; i < n - 1; i++) 
 	{		
@@ -97,6 +97,27 @@ function validateRegister(registerform)
 	}
 	else
 		registerform.submit();
+}
+
+function validateQuantity(quantityform)
+{
+	if (quantityform.quantita.value < 1 || quantityform.quantita.value > 99)
+	{
+		Swal.fire({
+			  title: '<h6>Inserire una quantità compresa tra 1 e 99 prodotti</h6>',
+			  toast: true,
+			  type: 'error',
+			  position: 'top',
+			  timer: 2000,
+			  showConfirmButton: false
+			})
+			return;
+	}
+	else
+	{
+		window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+		registerform.submit();
+	}
 }
 
 function validateEmail(email) {
