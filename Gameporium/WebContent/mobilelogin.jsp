@@ -13,6 +13,8 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script type="text/javascript" src="scripts/formvalidation.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <style>
@@ -41,17 +43,19 @@
 							<h2>Accedi</h2>
 						
 							<p class="hint-text">Inizia a fare acquisti su Gameporium!</p>
-							<form action="login" class="form-signin">
+							<form action="login" name="thisform" class="form-signin">
+								
 							
 								<div class="form-label-group" style="padding: 5px">
 									<input type="text" id="inputEmail" name="un"
-										class="form-control" placeholder="Username" name="un" autocomplete="off" value="${cookie.saveUser.value}" required
+										class="form-control" placeholder="Username" autocomplete="off" value="${cookie.saveUser.value}" required
 										autofocus>
 								</div>
 
+
 								<div class="form-label-group" style="padding: 5px">
 									<input type="password" id="inputPassword" name="pw"
-										class="form-control" placeholder="Password" name="pw" autocomplete="off" value="${cookie.savePass.value}" required>
+										class="form-control" placeholder="Password" autocomplete="off" value="${cookie.savePass.value}" required>
 								</div>
 
 								<div class="form-check text-right" style="margin: 17px">
@@ -61,11 +65,11 @@
 
 								<button
 									class="btn btn-lg btn-primary btn-block text-uppercase"
-									type="submit">Accedi</button>
+									type="button" onclick="validateUserPass(document.thisform)">Accedi</button>
 								<hr class="my-4">
 								<button
 									class="btn btn-md btn-facebook btn-block text-uppercase"
-									type="submit" onclick="window.location='/Gameporium/register.jsp';">
+									type="button" onclick="window.location='/Gameporium/register.jsp';">
 									<i class="fab fa-facebook-f mr-2"></i> Registra un nuovo account
 								</button>
 							</form>
