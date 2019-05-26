@@ -12,7 +12,7 @@
             <form action="/ricercaAvanzata">
               <div class="form-group">
                 <label for="Ricerca Avanzata">Ricerca Avanzata:</label>
-                <select name="categoria">
+                <select class="custom-select mr-sm-2" name="categoria">
                 	<option value="Gioco di Carte">Giochi di Carte</option>
                 	<option value="Gioco di Ruolo">Giochi di Ruolo</option>
                 	<option value="Gioco da Tavolo">Giochi da Tavolo</option>
