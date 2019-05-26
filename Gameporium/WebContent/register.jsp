@@ -15,6 +15,8 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/lt.js"></script>
+<script type="text/javascript" src="scripts/formvalidation.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -41,6 +43,7 @@
 	<c:set var="notRegistered" value='${requestScope["notRegistered"]}' />
 	<c:set var="mailPresent" value='${requestScope["mailPresent"]}' />
 	<c:set var="userPresent" value='${requestScope["userPresent"]}' />
+	<c:set var="pwerr" value='${requestScope["pwerr"]}' />
 
 	<div class="container-fluid bg-light" style="margin-top: 0">
 	<c:if test="${notRegistered}">
@@ -54,6 +57,13 @@
 		<div class="alert alert-warning alert-dismissible fade-in" role="alert">
 		  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		  <strong>Attenzione,</strong> l'indirizzo email inserito è già in uso!
+		</div>
+	</c:if>
+	
+	<c:if test="${pwerr}">
+		<div class="alert alert-warning alert-dismissible fade-in" role="alert">
+		  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		  <strong>Attenzione,</strong> la password deve essere di lunghezza compresa tra 7 e 20 caratteri!
 		</div>
 	</c:if>
 	
@@ -81,7 +91,7 @@
 			<div class="col-lg-8 col-md-12 bg-light" style="margin-bottom: 1100px; margin-top: 30px">
 				<div class = "container">
 
-				    <form action="register" method="post">
+				    <form action="register" name="registerform" method="post">
 						<h2>Registrati</h2>
 						<p class="hint-text">Crea un account. Ci vorrà solo un minuto!</p>
 				        
@@ -109,7 +119,7 @@
 							</label>
 						</div>
 						<div class="form-group">
-				            <button type="submit" class="btn btn-success btn-lg btn-block">Registrati adesso!</button>
+				            <button type="button" onclick="validateRegister(document.registerform)" class="btn btn-success btn-lg btn-block">Registrati adesso!</button>
 				        </div>
 				    </form>
 				</div>

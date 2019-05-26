@@ -141,7 +141,7 @@
 							
 							<div class="col-lg-4 col-xs-12 bg-light">
 								<a class="navbar-brand text-white-80" href="#"><img
-									src="res/pl.jpg" class="rounded mx-auto d-block"
+									src="images/pl.jpg" class="rounded mx-auto d-block"
 									alt="Responsive image"
 									style="margin-bottom: 0; margin-top:30px">
 								</a>

@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript" src="scripts/formvalidation.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <meta charset="UTF-8">
 </head>
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -47,7 +49,7 @@
 	<c:if test="${loginFail}">
 		<div class="alert alert-warning alert-dismissible fade-in" role="alert">
 		  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		  <strong>Attenzione,</strong> Dati di login errati, riprovare!
+		  <strong>Attenzione,</strong> dati di login errati, riprovare!
 		</div>
 	</c:if>
 		
@@ -161,21 +163,22 @@
 				</button>
 				<ul class="dropdown-menu dropdown-menu-right mt-2">
 					<li class="px-3 py-2">
-						<form action="login" method="post" class="form" role="form">
+						<form action="login" method="post" class="form" role="form" name="loginform">
 							
 							<div class="form-group">
 								<input id="emailInput" placeholder="Username"
-									class="form-control form-control-sm" type="text" name="un" autocomplete="off" value="${cookie.saveUser.value}">
+									class="form-control form-control-sm" type="text" name="un" 
+									required autocomplete="off" value="${cookie.saveUser.value}">
 							</div>
 							
 
 							<div class="form-group">
-								<input id="passwordInput" placeholder="Password"
+								<input id="passwordInput" placeholder="Password" required
 									class="form-control form-control-sm" type="password" name="pw" autocomplete="off" value="${cookie.savePass.value}">
 							</div>
 							
 							<div class="form-group">
-								<button type="submit" class="btn btn-primary btn-block">Login</button>
+								<button type="button" onclick="validateUserPass(document.loginform)" class="btn btn-primary btn-block">Login</button>
 							</div>
 							
 							<div class="form-check text-right">
@@ -215,5 +218,17 @@
 	</nav>
 	<!-- end navbar -->
 
+	<script type="text/javascript">
+		function validatePassword(loginform)
+		{	
+			var n = loginform.pw.value.length;
+			
+	 		if (n < 7 || n > 20)
+	 			alert("La password deve essere di lunghezza compresa tra 7 e 20 caratteri!");
+	 		else
+	 			loginform.submit();
+		}
+	</script>
+	
 </body>
 </html>

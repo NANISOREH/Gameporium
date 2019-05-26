@@ -32,7 +32,6 @@ public class LoginServlet extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		HttpSession newSession = request.getSession(true);
-		boolean accessDone;
 		
 		BeanCliente cliente = new BeanCliente();
 		String user = "";
@@ -77,8 +76,7 @@ public class LoginServlet extends HttpServlet
 		if (cliente.getPasswordU() != "" && cliente.getUsername() != "")
 		{
 			newSession.setAttribute("currentSessionUser", cliente);
-			accessDone = true;
-			newSession.setAttribute("accessDone", accessDone);
+			newSession.setAttribute("accessDone", true);
 			
 			if (rem != null)
 			{

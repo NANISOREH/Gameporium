@@ -35,7 +35,6 @@ public class RegisterServlet extends HttpServlet
 		
 		String user = request.getParameter("user");
 		String pass = request.getParameter("pass");
-		String confirmPass = request.getParameter ("confirmPass");
 		String mail = request.getParameter("mail");
 		String name = request.getParameter("name");
 		String surname = request.getParameter("surname");
@@ -67,7 +66,7 @@ public class RegisterServlet extends HttpServlet
 		}
 		
 		
-		if (Utils.isValidPass(pass, confirmPass) && check != null)
+		if (check != null)
 		{
 			cliente.setNome(name);
 			cliente.setCognome(surname);
