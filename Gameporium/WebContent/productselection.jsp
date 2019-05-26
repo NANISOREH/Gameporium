@@ -57,7 +57,7 @@
 					      					<a href="singleProduct?selProd=${item.codiceProdotto}&selCat=${item.codCategoria}">${item.titolo}</a>
 					      				</div>
 				          				<div class="card-body">
-				          					<img class="card-img-top img-responsive" src="<c:url value="WebContent/images/${item.foto}"/>"alt="${item.foto}"/>
+				          					<img class="card-img-top img-responsive" src="<c:url value="images/pl.jpg"/>"alt="${item.foto}"/>
 				          					<br>
 				       					</div>
 				       					<div class="card-footer">
