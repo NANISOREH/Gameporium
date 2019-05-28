@@ -5,16 +5,24 @@ function validateLogin(loginform)
 	
 	if (p == 0 || u == 0)
 	{
+		Swal.fire({
+			  title: '<h6>Riempire entrambi i campi per effettuare il login<h6>',
+			  toast: true,
+			  type: 'error',
+			  position: 'top-end',
+			  timer: 1200,
+			  showConfirmButton: false
+			})
 		return;
 	}
 	
 	if (p < 7 || p > 20)
 		Swal.fire({
-			  title: '<h6>La password deve essere di lunghezza compresa tra 7 e 20 caratteri!<h6>',
+			  title: '<h6>La password deve essere di lunghezza compresa tra 7 e 20 caratteri<h6>',
 			  toast: true,
 			  type: 'error',
 			  position: 'top-end',
-			  timer: 2000,
+			  timer: 1800,
 			  showConfirmButton: false
 			})
 	else
@@ -47,7 +55,7 @@ function validateRegister(registerform)
 	if (p < 7 || p > 20)
 	{
 		Swal.fire({
-			  title: '<h6>La password deve essere di lunghezza compresa tra 7 e 20 caratteri!</h6>',
+			  title: '<h6>La password deve essere di lunghezza compresa tra 7 e 20 caratteri</h6>',
 			  toast: true,
 			  type: 'error',
 			  position: 'top',
