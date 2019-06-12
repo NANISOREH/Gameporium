@@ -10,7 +10,7 @@ CREATE TABLE prodotto (
     foto			varchar(100),
     titolo			varchar(30),
     disponibilita	int,
-    prezzo			numeric,
+    prezzo			decimal(5,2),
     produttore		varchar(30),
     descrizione		varchar(100),
     IVA				numeric,
