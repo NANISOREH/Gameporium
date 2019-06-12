@@ -2,6 +2,8 @@ function validateLogin(loginform)
 {	
 	var p = loginform.pw.value.length;
 	var u = loginform.un.value.length;
+
+	var pass = /^.{7,}$/;
 	
 	if (p == 0 || u == 0)
 	{
@@ -16,7 +18,8 @@ function validateLogin(loginform)
 		return;
 	}
 	
-	if (p < 7 || p > 20)
+	if (!p.match(pass))
+	{
 		Swal.fire({
 			  title: '<h6>La password deve essere di lunghezza compresa tra 7 e 20 caratteri<h6>',
 			  toast: true,
@@ -25,14 +28,24 @@ function validateLogin(loginform)
 			  timer: 1800,
 			  showConfirmButton: false
 			})
+		loginform.pw.focus();
+	}
+
 	else
-		loginform.submit();
+	{
+		var pword = htmlEscape(loginform.pw.value);
+		var uname = htmlEscape(loginform.un.value);
+		loginform.pw.value = pword;
+		loginform.un.value = uname
+	}
 }
 
 
 function validateRegister(registerform)
 {
 	var n = registerform.elements.length; 
+	var mailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	var pass = /^.{7,}$/;
 	
 	for (var i = 0; i < n - 1; i++) 
 	{		
@@ -48,11 +61,13 @@ function validateRegister(registerform)
 				})
 			return;
 		}
+		else
+			registerform.elements[i].value = htmlEscape(registerform.elements[i].value);
 	}
 	
 	var p = registerform.pass.value.length;
 	
-	if (p < 7 || p > 20)
+	if (!p.match(pass))
 	{
 		Swal.fire({
 			  title: '<h6>La password deve essere di lunghezza compresa tra 7 e 20 caratteri</h6>',
@@ -62,9 +77,10 @@ function validateRegister(registerform)
 			  timer: 2000,
 			  showConfirmButton: false
 			})
+		registerform.pass.focus();
 		return;
 	}
-	else if (!validateEmail(registerform.mail.value))
+	else if (!registerform.mail.value.match(mailReg))
 	{
 		Swal.fire({
 			  title: '<h6>Inserire un indirizzo email valido</h6>',
@@ -74,8 +90,9 @@ function validateRegister(registerform)
 			  timer: 2000,
 			  showConfirmButton: false
 			})
-			registerform.mail.value = "";
-			return;
+		registerform.mail.value = "";
+		registerform.mail.focus();
+		return;
 	}
 	else if (registerform.pass.value != registerform.confirmPass.value)
 	{
@@ -89,6 +106,7 @@ function validateRegister(registerform)
 			})
 		registerform.pass.value = "";
 		registerform.confirmPass.value = "";
+		registerform.pass.focus();
 		return;
 	}
 	else if(!registerform.check.checked)
@@ -101,10 +119,9 @@ function validateRegister(registerform)
 			  timer: 2000,
 			  showConfirmButton: false
 			})
+			registerform.check.focus();	
 			return;
 	}
-	else
-		registerform.submit();
 }
 
 function validateQuantity(quantityform)
@@ -123,12 +140,17 @@ function validateQuantity(quantityform)
 	}
 	else
 	{
+		quantityform.quantita.value = htmlEscape(quantityform.quantita.value);
 		window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
-		registerform.submit();
 	}
 }
 
-function validateEmail(email) {
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
+function htmlEscape(toEscape)
+{
+	toEscape.replace(/>/g, "&gt;");
+	toEscape.replace(/</g, "&lt;");
+	toEscape.replace(/>/g, "&amp;");
+	toEscape.replace(/"/g, "&quot;");
+
+	return toEscape;
 }
