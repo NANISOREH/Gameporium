@@ -19,32 +19,31 @@
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/Includes/header.jsp"%>
+<link rel="stylesheet" href="pagestyle.css" type="text/css">
 </head>
 
-<body style="background-color: #343a40">
-	<div class="container-fluid bg-light" style="margin-top: 0">
+<body>
+	<div class="allpagecontainer container-fluid bg-light">
 		<!-- sistema di colonne -->
 		<div class="row">
 			
 			<!-- colonna sinistra -->
 			<div
-				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light"
-				style="margin-bottom: 500px">
+				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light">
 				<%@include file="/WEB-INF/Includes/leftpanel.jsp"%>
 			</div>
 			<!-- fine colonna sinistra -->
 			
 			<!-- colonna centrale -->
-			<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 bg-light"
-				style="margin-bottom: 1100px; margin-top: 30px">
+			<div id="homecenter" class="col-lg-8 col-md-12 col-sm-12 col-xs-12 bg-light">
 				<%@include file="/WEB-INF/Includes/mobilesearchbar.jsp"%>
 
 				<!-- container novità e offerte -->
 				<div class="container-fluid clearfix">
 			 	
 		      		<!-- Inizio sezione offerte -->
-					<div style="border-bottom:1px black solid;  margin-top: 30px">Offerte
-			          <a href="/Gameporium/productselection.jsp?attribute=offerta&value=true" style=float:right;>Scoprile tutte</a>
+					<div class="sectionstyle">Offerte
+			          <a class="offnovlink" href="/Gameporium/productselection.jsp?attribute=offerta&value=true">Scoprile tutte</a>
 			        </div>      		
 		        	
 		        	<!-- Inizio iterazione cards-->
@@ -53,12 +52,12 @@
 		      			<c:set var="offerte" value='${sessionScope["listaOfferta"]}'/>
 			      		<c:forEach items="${offerte}" var="item">
 		      				<div class="col-lg-4 col-xs-12 bg-light">
-				      			<div class="card" style="margin-top: 30px">
+				      			<div class="productcard card">
 				      				<div class="card-header">
 				      					<a href="singleProduct?selProd=${item.codiceProdotto}&selCat=${item.codCategoria}">${item.titolo}</a>
 				      				</div>
 			          				<div class="card-body">
-				          				<img class="card-img-top img-responsive" src="<c:url value="images/pl.jpg"/>"alt="${item.foto}"/>
+				          				<img class="card-img-top img-responsive" src="images/${item.foto}"alt="${item.foto}">
 			          					<br>
 			       					</div>
 			       					<div class="card-footer">
@@ -73,8 +72,8 @@
 		      	<!-- fine sezione offerte -->
 		      	
 		      	<!-- Inizio sezione novità -->
-					<div style="border-bottom:1px black solid;  margin-top: 30px">Novità
-			          <a href="/Gameporium/productselection.jsp?attribute=novita&value=true" style=float:right;>Scoprile tutte</a>
+					<div class="sectionstyle">Novità
+			          <a class="offnovlink" href="/Gameporium/productselection.jsp?attribute=novita&value=true">Scoprile tutte</a>
 			        </div>      		
 		        <!-- Inizio iterazione cards-->
 		      		<div class="row">
@@ -82,12 +81,12 @@
 		      			<c:set var="novita" value='${sessionScope["listaNovita"]}'/>
 			      		<c:forEach items="${novita}" var="item">
 		      				<div class="col-lg-4 col-xs-12 bg-light">
-				      			<div class="card" style="margin-top: 30px">
+				      			<div class="productcard card">
 				      				<div class="card-header">
 				      					<a href="singleProduct?selProd=${item.codiceProdotto}&selCat=${item.codCategoria}">${item.titolo}</a>
 				      				</div>
 			          				<div class="card-body">
-			          					<img class="card-img-top img-responsive" src="<c:url value="images/pl.jpg"/>"alt="${item.foto}"/>
+			          					<img class="card-img-top img-responsive" src="images/${item.foto}"alt="${item.foto}">
 			          					<br>
 			       					</div>
 			       					<div class="card-footer">
@@ -107,8 +106,7 @@
 
 			<!-- colonna destra -->
 			<div
-				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light"
-				style="margin-bottom: 300px" style="border-left:1px">
+				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light">
 				<%@include file="/WEB-INF/Includes/rightpanel.jsp"%>
 			</div>
 			<!-- fine sistema di colonne -->
