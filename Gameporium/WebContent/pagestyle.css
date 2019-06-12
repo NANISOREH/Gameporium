@@ -1,0 +1,140 @@
+	body
+	{
+		font-family: Verdana, Helvetica, sans-serif; 
+		background-color: #343a40;
+	}
+
+	div.allpagecontainer
+	{
+		margin-top: 0;
+	}
+
+	.form-control
+	{
+		height: 40px;
+		box-shadow: none;
+		color: #969fa4;
+	}
+	
+	.form-control:focus
+	{
+		border-color: #5cb85c;
+	}
+    
+    .form-control, .btn
+    {        
+    	border-radius: 3px;
+    }
+
+    div.productcard
+	{
+		margin-top: 30px;
+	}
+
+	div.sectionstyle
+	/*container per il titolo delle sezioni nelle pagine con una lista di prodotti*/
+	{
+		border-bottom: 1px black solid;  
+		margin-top: 30px;
+	}
+
+
+/*	productpage*/
+	div#centerproductpage
+	{
+		margin-top: 20px;
+	}
+
+	img.fotoprodotto
+	{
+		margin-bottom: 0; 
+		margin-top:30px;
+	}
+
+	div.productinfo
+	{
+		margin-top: 14px;
+	}
+
+	div.nomeriga
+	{
+		font-weight:bold;
+	}
+
+	span.prezzo
+	{
+		font-size: 23px; 
+		font-weight: bold; 
+		color: red;	
+	}
+
+	input.quantInput
+	{
+		width: 100px;
+	}
+
+	button.quantButton
+	{
+		max-width:150px; 
+		align-text: center; 
+		margin-top:20px 
+	}
+/*productpage*/
+
+
+/*mobilelogin*/
+	div.loginform
+	{
+		padding: 5px;
+	}
+
+	div#mlrightcol
+	{
+		border-left: 1px;
+	}
+
+	div#mlcenter
+	{
+		margin-bottom: 20px; 
+		margin-top: 30px;
+	}
+/*mobilelogin*/
+
+/*home*/
+	a.offnovlink
+	{
+		float: right;
+	}
+
+	div#homecenter
+	{
+		margin-top: 30px;
+	}
+/*home*/
+
+/*register*/
+	div#regcenter
+	{
+		margin-top: 30px;
+	}
+
+	div#regbutton
+	{
+		max-width: 400px;
+		float: center;
+	}	
+/*register*/
+
+/*events*/
+	div#evcenter
+	{
+		margin-top: 30px;
+	}
+/*events*/
+
+/*productselection*/
+	div#pscenter
+	{
+		margin-top: 30px;
+	}
+/*productselection*/
