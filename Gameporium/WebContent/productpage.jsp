@@ -25,53 +25,7 @@
 </c:if>
 <title>Gameporium - ${prodotto.titolo}</title>
 
-<style>
-	body
-	{
-		background-color: #343a40;
-	}
-
-	div#center
-	{
-		margin-top: 20px;
-	}
-
-	img.fotoprodotto
-	{
-		margin-bottom: 0; 
-		margin-top:30px;
-	}
-
-	div.productinfo
-	{
-		margin-top: 14px;
-	}
-
-	div.nomeriga
-	{
-		font-weight:bold;
-	}
-
-	span.prezzo
-	{
-		font-size: 23px; 
-		font-weight: bold; 
-		color: red;	
-	}
-
-	input.quantInput
-	{
-		width: 100px;
-	}
-
-	button.quantButton
-	{
-		max-width:150px; 
-		align-text: center; 
-		margin-top:20px 
-	}
-
-</style>
+<link rel="stylesheet" href="pagestyle.css" type="text/css">
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/Includes/header.jsp"%>
 </head>
@@ -79,7 +33,7 @@
 <body>
 <%-- 	<c:set var="currentProduct" value='${requestScope["currentProduct"]}' /> --%>
 
-	<div class="container-fluid bg-light" style="margin-top: 0">
+	<div class="allpagecontainer container-fluid bg-light">
 		<!-- sistema di colonne -->
 		<div class="row">
 			<!-- colonna sinistra -->
@@ -89,7 +43,7 @@
 			<!-- fine colonna sinistra -->
 			
 			<!-- colonna centrale -->	
-			<div id="center" class="col-lg-8 col-md-12 bg-light">
+			<div id="centerproductpage" class="col-lg-8 col-md-12 bg-light">
 			
 				<c:if test='${requestScope["isGioco"]}'>
 					<c:set var="gioco" value='${requestScope["gioco"]}' />
