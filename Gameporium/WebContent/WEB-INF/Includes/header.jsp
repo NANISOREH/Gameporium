@@ -166,19 +166,19 @@
 						<form action="login" method="post" class="form" role="form" name="loginform">
 							
 							<div class="form-group">
-								<input id="emailInput" placeholder="Username" onchange="validateLogin(document.loginform)"
+								<input id="emailInput" placeholder="Username"
 									class="form-control form-control-sm" type="text" name="un" 
 									required autocomplete="off" value="${cookie.saveUser.value}">
 							</div>
 							
 
 							<div class="form-group">
-								<input id="passwordInput" placeholder="Password" onchange="validateLogin(document.loginform)" required
+								<input id="passwordInput" placeholder="Password" oninput="validateLogin(document.loginform.pw)" required
 									class="form-control form-control-sm" type="password" name="pw" autocomplete="off" value="${cookie.savePass.value}">
 							</div>
 							
 							<div class="form-group">
-								<button type="submit" class="btn btn-primary btn-block">Login</button>
+								<button type="submit" id="prova" class="loginbtn btn btn-primary btn-block" disabled="true">Login</button>
 							</div>
 							
 							<div class="form-check text-right">
