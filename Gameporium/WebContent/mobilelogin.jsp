@@ -13,10 +13,9 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script type="text/javascript" src="scripts/formvalidation.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<script type="text/javascript" src="scripts/formvalidation.js"></script>
 <link rel="stylesheet" href="pagestyle.css" type="text/css">
 
 <%@include file="/WEB-INF/Includes/header.jsp"%>
@@ -41,7 +40,7 @@
 							<h2>Accedi</h2>
 						
 							<p class="hint-text">Inizia a fare acquisti su Gameporium!</p>
-							<form action="login" name="thisform" class="form-signin">
+							<form action="login" name="loginmobile" class="form-signin">
 								
 							
 								<div class="loginform form-label-group">
@@ -52,7 +51,7 @@
 
 
 								<div class="loginform form-label-group">
-									<input type="password" id="inputPassword" name="pw"
+									<input type="password" id="inputPassword" name="pw" oninput="validateLogin(document.loginmobile)"
 										class="form-control" placeholder="Password" autocomplete="off" value="${cookie.savePass.value}" required>
 								</div>
 
@@ -63,10 +62,10 @@
 
 								<button
 									class="btn btn-lg btn-primary btn-block text-uppercase"
-									type="button" onclick="validateLogin(document.thisform)">Accedi</button>
+									type="submit" id="loginbtn" disabled="true"	>Accedi</button>
 								<hr class="my-4">
 								<button
-									class="btn btn-md btn-facebook btn-block text-uppercase"
+									class="btn btn-md btn-facebook btn-block text-uppercase" 
 									type="button" onclick="window.location='/Gameporium/register.jsp';">
 									<i class="fab fa-facebook-f mr-2"></i> Registra un nuovo account
 								</button>

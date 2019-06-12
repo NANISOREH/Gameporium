@@ -1,83 +1,26 @@
-function validateLogin(loginform)
+function validateLogin(password)
 
 {	
-
-	var p = loginform.pw.value.length;
-
-	var u = loginform.un.value.length;
-
-
+	var button = document.getElementById("prova");
+	var p = password.value;
+	var pword = htmlEscape(password.value);
+	var uname = htmlEscape(password.value);
+	password.value = pword;
+	password.value = uname;
 
 	var pass = /^.{7,}$/;
-
-	
-
-	if (p == 0 || u == 0)
-
-	{
-
-		Swal.fire({
-
-			  title: '<h6>Riempire entrambi i campi per effettuare il login<h6>',
-
-			  toast: true,
-
-			  type: 'error',
-
-			  position: 'top-end',
-
-			  timer: 1200,
-
-			  showConfirmButton: false
-
-			})
-
-		return;
-
-	}
-
 	
 
 	if (!p.match(pass))
-
 	{
-
-		Swal.fire({
-
-			  title: '<h6>La password deve essere di lunghezza compresa tra 7 e 20 caratteri<h6>',
-
-			  toast: true,
-
-			  type: 'error',
-
-			  position: 'top-end',
-
-			  timer: 1800,
-
-			  showConfirmButton: false
-
-			})
-
-		loginform.pw.focus();
-
+		password.focus();
+		button.setAttribute("disabled", "true");
+		return;
 	}
-
-
-
 	else
-
 	{
-
-		var pword = htmlEscape(loginform.pw.value);
-
-		var uname = htmlEscape(loginform.un.value);
-
-		loginform.pw.value = pword;
-
-		loginform.un.value = uname
-
+		button.setAttribute("disabled", "false");
 	}
-
 }
 
 
