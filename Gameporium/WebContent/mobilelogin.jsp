@@ -17,14 +17,13 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<style>
-</style>
+<link rel="stylesheet" href="pagestyle.css" type="text/css">
 
 <%@include file="/WEB-INF/Includes/header.jsp"%>
 </head>
 
-<body style="background-color: #343a40">
-	<div class="container-fluid bg-light" style="margin-top: 0">
+<body>
+	<div class="allpagecontainer container-fluid bg-light">
 		<!-- sistema di colonne -->
 		<div class="row">
 			<!-- colonna sinistra -->
@@ -33,8 +32,7 @@
 			</div>
 			<!-- fine colonna sinistra -->
 			<!-- colonna centrale -->
-			<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 bg-light"
-				style="margin-bottom: 20px; margin-top: 30px">
+			<div id="mlcenter" class="col-lg-8 col-md-8 col-sm-12 col-xs-12 bg-light">
 
 				<div class="container">
 					<div class="row">
@@ -46,19 +44,19 @@
 							<form action="login" name="thisform" class="form-signin">
 								
 							
-								<div class="form-label-group" style="padding: 5px">
+								<div class="loginform form-label-group">
 									<input type="text" id="inputEmail" name="un"
 										class="form-control" placeholder="Username" autocomplete="off" value="${cookie.saveUser.value}" required
 										autofocus>
 								</div>
 
 
-								<div class="form-label-group" style="padding: 5px">
+								<div class="loginform form-label-group">
 									<input type="password" id="inputPassword" name="pw"
 										class="form-control" placeholder="Password" autocomplete="off" value="${cookie.savePass.value}" required>
 								</div>
 
-								<div class="form-check text-right" style="margin: 17px">
+								<div class="loginform form-check text-right">
 								    <input type="checkbox" class="form-check-input active unchecked" id="exampleCheck1" name="remember">
 								    <label class="form-check-label" for="exampleCheck1">Ricordami</label>
 								</div>
@@ -82,7 +80,7 @@
 			<!-- fine colonna centrale -->
 
 			<!-- colonna destra -->
-			<div class="clearfix col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-md-block" style="border-left:1px">
+			<div id="mlrightcol" class="clearfix col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-md-block">
 				<%@include file="/WEB-INF/Includes/rightpanel.jsp"%>
 			</div>
 			<!-- fine sistema di colonne -->
