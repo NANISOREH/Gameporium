@@ -51,17 +51,19 @@
 		      		<div class="row">
 		      			<jsp:include page="/productHome"/>
 		      			<c:set var="offerte" value='${sessionScope["listaOfferta"]}'/>
-			      		<c:forEach items="${offerte}" var="item">
-		      				<div class="col-lg-4 col-xs-12 bg-light">
-				      			<div class="card" style="margin-top: 30px">
+			      		<c:forEach items="${offerte}" var="item" begin="0" end="5">
+		      				<div class="col-sm-4 col-xs-12 bg-light">
+				      			<div class="card" style="margin-top: 30px; height: 400px">
 				      				<div class="card-header">
 				      					<a href="singleProduct?selProd=${item.codiceProdotto}&selCat=${item.codCategoria}">${item.titolo}</a>
 				      				</div>
 			          				<div class="card-body">
-				          				<img class="card-img-top img-responsive" src="<c:url value="images/pl.jpg"/>"alt="${item.foto}"/>
-			          					<br>
+			          					<div class="container-fluid" style="height: 250px; overflow:hidden">
+				          				<img class="card-img-top img-responsive" style="height:auto" 
+				          				src="<c:url value="images/${item.foto}"/>"alt="${item.foto}"/>
+			          					</div>
 			       					</div>
-			       					<div class="card-footer">
+			       					<div class="card-footer" >
 			       						Prezzo:
 			       						${item.prezzo}
 			       					</div>
@@ -80,17 +82,24 @@
 		      		<div class="row">
 		      			<jsp:include page="/productHome"/>
 		      			<c:set var="novita" value='${sessionScope["listaNovita"]}'/>
-			      		<c:forEach items="${novita}" var="item">
-		      				<div class="col-lg-4 col-xs-12 bg-light">
-				      			<div class="card" style="margin-top: 30px">
-				      				<div class="card-header">
-				      					<a href="singleProduct?selProd=${item.codiceProdotto}&selCat=${item.codCategoria}">${item.titolo}</a>
-				      				</div>
+			      		<c:forEach items="${novita}" var="item" begin="0" end="5">
+		      				<div class="col-sm-4 col-xs-12 bg-light">
+				      			<div class="card" style="margin-top: 30px; height: 400px">
+<!-- 				      				<div class="card-header" style="max-height:50px;"> -->
+				      					<div class="container-fluid" style = "overflow: hidden">
+					      					<a href="singleProduct?selProd=${item.codiceProdotto}&selCat=${item.codCategoria}" 
+					      					style="overflow:hidden">
+					      						${item.titolo}
+					      					</a>
+				      					</div>
+<!-- 				      				</div> -->
 			          				<div class="card-body">
-			          					<img class="card-img-top img-responsive" src="<c:url value="images/pl.jpg"/>"alt="${item.foto}"/>
-			          					<br>
+			          					<div class="container-fluid" style="height: 250px; overflow:hidden">
+					          				<img class="card-img-top img-responsive" style="height:auto" 
+					          				src="<c:url value="images/${item.foto}"/>"alt="${item.foto}"/>
+				          				</div>
 			       					</div>
-			       					<div class="card-footer">
+			       					<div class="card-footer" style="height: 50px">
 			       						Prezzo:
 			       						${item.prezzo}
 			       					</div>

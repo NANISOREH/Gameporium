@@ -46,10 +46,10 @@
 			      				<div class="card-header">
 			      					${item.nome}
 			      				</div>
-		          				<div class="card-body" style="width:400px; height:300 px">
-		          				
-		          				<br>
-		       					</div>
+		          				<div class="card-body">
+				          					<img class="card-img-top img-responsive" src="<c:url value="images/${item.locandina}"/>"alt="${item.locandina}"/>
+				          					<br>
+				       					</div>
 		       					<div class="card-footer">
 		       						${item.luogo}
 		       						${item.ora}

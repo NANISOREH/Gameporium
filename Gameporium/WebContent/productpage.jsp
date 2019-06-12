@@ -185,7 +185,7 @@
 								 	</li>
 								 	
 								 	<li class="list-group-item bg-light">
-									 	<form>
+									 	<form name="quantityForm">
 									 		<div class="row">
 									 			<div class="col-5" style="font-weight:bold">Quantità:
 									 			</div>
@@ -194,7 +194,7 @@
 												</div>
 												<button class="btn btn-sm btn-primary btn-block text-uppercase"
 													style = "max-width:150px; align-text: center; margin-top:20px" 
-													type="submit">Aggiungi al Carrello
+													type="button" onclick="validateQuantity(quantityForm)">Aggiungi al Carrello
 												</button>
 									 		</div>
 									 	</form>
