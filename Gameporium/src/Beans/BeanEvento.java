@@ -7,7 +7,15 @@ import java.util.Date;
 public class BeanEvento extends Bean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	int codiceEvento, numeroPartecipanti;
-	String nome, luogo, descrizione;
+	String nome, luogo, descrizione,locandina;
+	public String getLocandina() {
+		return locandina;
+	}
+
+	public void setLocandina(String locandina) {
+		this.locandina = locandina;
+	}
+
 	Date dataEvento;
 	Time ora;
 	
@@ -20,6 +28,7 @@ public class BeanEvento extends Bean implements Serializable {
 		descrizione="";
 		dataEvento=null;
 		ora=null;
+		locandina="";
 	}
 
 	public int getCodiceEvento() {
