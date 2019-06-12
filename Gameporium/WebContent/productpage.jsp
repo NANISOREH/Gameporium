@@ -26,27 +26,70 @@
 <title>Gameporium - ${prodotto.titolo}</title>
 
 <style>
+	body
+	{
+		background-color: #343a40;
+	}
+
+	div#center
+	{
+		margin-top: 20px;
+	}
+
+	img.fotoprodotto
+	{
+		margin-bottom: 0; 
+		margin-top:30px;
+	}
+
+	div.productinfo
+	{
+		margin-top: 14px;
+	}
+
+	div.nomeriga
+	{
+		font-weight:bold;
+	}
+
+	span.prezzo
+	{
+		font-size: 23px; 
+		font-weight: bold; 
+		color: red;	
+	}
+
+	input.quantInput
+	{
+		width: 100px;
+	}
+
+	button.quantButton
+	{
+		max-width:150px; 
+		align-text: center; 
+		margin-top:20px 
+	}
+
 </style>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/Includes/header.jsp"%>
 </head>
 
-<body style="background-color: #343a40">
+<body>
 <%-- 	<c:set var="currentProduct" value='${requestScope["currentProduct"]}' /> --%>
 
 	<div class="container-fluid bg-light" style="margin-top: 0">
 		<!-- sistema di colonne -->
 		<div class="row">
 			<!-- colonna sinistra -->
-			<div
-				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light"
-				style="margin-bottom: 500px">
+			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light">
 				<%@include file="/WEB-INF/Includes/leftpanel.jsp"%>
 			</div>
 			<!-- fine colonna sinistra -->
-			<!-- colonna centrale -->
 			
-			<div class="col-lg-8 col-md-12 bg-light" style="margin-top: 20px">
+			<!-- colonna centrale -->	
+			<div id="center" class="col-lg-8 col-md-12 bg-light">
 			
 				<c:if test='${requestScope["isGioco"]}'>
 					<c:set var="gioco" value='${requestScope["gioco"]}' />
@@ -55,14 +98,13 @@
 						<div class="row">
 							
 							<div class="col-lg-4 col-xs-12 bg-light">
-								<a class="navbar-brand text-white-80" href="#"><img
-									src="images/pl.jpg" class="rounded mx-auto d-block"
-									alt="Responsive image"
-									style="margin-bottom: 0; margin-top:30px">
+								<a  id="fotoprodotto" href="#"><img
+									src="images/${gioco.foto}.jpg" class="rounded mx-auto d-block fotoprodotto"
+									alt="Responsive image">
 								</a>
 							</div>
 							
-							<div class="col-lg-8 col-xs-12 bg-light" style="margin-top: 14px">
+							<div class="productinfo col-lg-8 col-xs-12 bg-light">
 								 <ul class="list-group list-group-flush" >
 								 	
 								 	<li class="list-group-item bg-light">
@@ -71,40 +113,41 @@
 								 
 								 	<li class="list-group-item bg-light">
 								 		<div class="row">
-								 			<div class="col-lg-5 col-xs-12" style="font-weight:bold">Prezzo:</div>
-									 		<div class="col-lg-7 col-xs-12">
-									 			<span style="font-size: 23px; font-weight: bold; color: red;">
-								 				${gioco.prezzo}€</span> 
-									 		</div>
+								 			<div class="nomeriga col-lg-5 col-xs-12">
+										 		<div class="col-lg-7 col-xs-12">
+										 			<span class="prezzo">
+									 				${gioco.prezzo}€</span> 
+										 		</div>
+										 	</div>
 								 		</div>
 								 	</li>
 								 	<li class="list-group-item bg-light">
 								 		<div class="row">
-								 			<div class="col-lg-5 col-xs-12" style="font-weight:bold">Cod. art.:</div>
+								 			<div class="nomeriga col-lg-5 col-xs-12">Cod. art.:</div>
 									 		<div class="col-lg-7 col-xs-12">#${gioco.codiceProdotto}</div>
 								 		</div>
 								 	</li>
 								 	<li class="list-group-item bg-light">
 								 		<div class="row">
-								 			<div class="col-lg-5" style="font-weight:bold">Marca:</div>
+								 			<div class="nomeriga col-lg-5">Marca:</div>
 									 		<div class="col-lg-7">${gioco.produttore}</div>
 								 		</div>
 								 	</li>
 								 	<li class="list-group-item bg-light">
 								 		<div class="row">
-								 			<div class="col-lg-5" style="font-weight:bold">Durata:</div>
+								 			<div class="nomeriga col-lg-5">Durata:</div>
 									 		<div class="col-lg-7">${gioco.durata}</div>
 								 		</div>
 								 	</li>
 								 	<li class="list-group-item bg-light">
 								 		<div class="row">
-								 			<div class="col-lg-5" style="font-weight:bold">Età consigliata:</div>
+								 			<div class="nomeriga col-lg-5">Età consigliata:</div>
 									 		<div class="col-lg-7">${gioco.etaConsigliata}+ anni</div>
 								 		</div>
 								 	</li>
 								 	<li class="list-group-item bg-light">
 								 		<div class="row">
-								 			<div class="col-lg-5" style="font-weight:bold">Disponibilità:</div>
+								 			<div class="nomeriga col-lg-5">Disponibilità:</div>
 									 		<div class="col-lg-7">#${gioco.disponibilita}</div>
 								 		</div>
 								 	</li>
@@ -112,14 +155,13 @@
 								 	<li class="list-group-item bg-light">
 									 	<form name = "quantityform">
 									 		<div class="row">
-									 			<div class="col-5" style="font-weight:bold">Quantità:
+									 			<div class="nomeriga col-5">Quantità:
 									 			</div>
 										 		<div class="col-7">
-										 			<input type="number" name="quantita" placeholder="1" style="width:100px;">
+										 			<input class="quantInput" type="number" name="quantita" placeholder="1">
 												</div>
 												<div class="text-center col-12">
-												<button class="btn btn-sm btn-primary btn-block text-uppercase"
-													style = "max-width:150px; align-text: center; margin-top:20px" 
+												<button class="quantButton btn btn-sm btn-primary btn-block text-uppercase"
 													onclick="validateQuantity(document.quantityform)" 
 													type="button">Aggiungi al Carrello
 												</button></div>
@@ -143,7 +185,7 @@
 							
 							<div class="col-lg-4 col-xs-12 bg-light">
 								<a class="navbar-brand text-white-80" href="#"><img
-									src="images/pl.jpg" class="rounded mx-auto d-block"
+									src="images/{gioco.foto}" class=" fotoprodotto rounded mx-auto d-block"
 									alt="Responsive image"
 									style="margin-bottom: 0; margin-top:30px">
 								</a>
@@ -158,28 +200,28 @@
 								 	
 								 	<li class="list-group-item bg-light">
 								 		<div class="row">
-								 			<div class="col-lg-5 col-xs-12" style="font-weight:bold">Prezzo:</div>
+								 			<div class="nomeriga col-lg-5 col-xs-12">Prezzo:</div>
 									 		<div class="col-lg-7 col-xs-12">
-									 			<span style="font-size: 23px; font-weight: bold; color: red;">
+									 			<span class="prezzo">
 								 				${gioco.prezzo}€</span> 
 									 		</div>
 								 		</div>
 								 	</li>
 								 	<li class="list-group-item bg-light">
 								 		<div class="row">
-								 			<div class="col-lg-5 col-xs-12" style="font-weight:bold">Cod. art.:</div>
+								 			<div class="nomeriga col-lg-5 col-xs-12">Cod. art.:</div>
 									 		<div class="col-lg-7 col-xs-12">#${gioco.codiceProdotto}</div>
 								 		</div>
 								 	</li>
 								 	<li class="list-group-item bg-light">
 								 		<div class="row">
-								 			<div class="col-lg-5" style="font-weight:bold">Marca:</div>
+								 			<div class="nomeriga col-lg-5">Marca:</div>
 									 		<div class="col-lg-7">${gioco.produttore}</div>
 								 		</div>
 								 	</li>
 								 	<li class="list-group-item bg-light">
 								 		<div class="row">
-								 			<div class="col-lg-5" style="font-weight:bold">Disponibilità:</div>
+								 			<div class="nomeriga col-lg-5">Disponibilità:</div>
 									 		<div class="col-lg-7">#${gioco.disponibilita}</div>
 								 		</div>
 								 	</li>
@@ -187,12 +229,12 @@
 								 	<li class="list-group-item bg-light">
 									 	<form name="quantityForm">
 									 		<div class="row">
-									 			<div class="col-5" style="font-weight:bold">Quantità:
+									 			<div class="nomeriga col-5">Quantità:
 									 			</div>
 										 		<div class="col-7">
-										 			<input type="number" name="quantita" placeholder="1" style="width:100px;">
+										 			<input class="quantInput" type="number" name="quantita" placeholder="1">
 												</div>
-												<button class="btn btn-sm btn-primary btn-block text-uppercase"
+												<button class="quantButton btn btn-sm btn-primary btn-block text-uppercase"
 													style = "max-width:150px; align-text: center; margin-top:20px" 
 													type="button" onclick="validateQuantity(quantityForm)">Aggiungi al Carrello
 												</button>
