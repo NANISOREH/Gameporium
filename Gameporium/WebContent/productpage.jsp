@@ -99,7 +99,7 @@
 							
 							<div class="col-lg-4 col-xs-12 bg-light">
 								<a  id="fotoprodotto" href="#"><img
-									src="images/${gioco.foto}.jpg" class="rounded mx-auto d-block fotoprodotto"
+									src="images/${gioco.foto}" class="rounded mx-auto d-block fotoprodotto"
 									alt="Responsive image">
 								</a>
 							</div>
