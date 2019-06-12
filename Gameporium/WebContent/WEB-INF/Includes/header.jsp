@@ -166,19 +166,19 @@
 						<form action="login" method="post" class="form" role="form" name="loginform">
 							
 							<div class="form-group">
-								<input id="emailInput" placeholder="Username"
+								<input id="emailInput" placeholder="Username" onchange="validateLogin(document.loginform)"
 									class="form-control form-control-sm" type="text" name="un" 
 									required autocomplete="off" value="${cookie.saveUser.value}">
 							</div>
 							
 
 							<div class="form-group">
-								<input id="passwordInput" placeholder="Password" required
+								<input id="passwordInput" placeholder="Password" onchange="validateLogin(document.loginform)" required
 									class="form-control form-control-sm" type="password" name="pw" autocomplete="off" value="${cookie.savePass.value}">
 							</div>
 							
 							<div class="form-group">
-								<button type="button" onclick="validateLogin(document.loginform)" class="btn btn-primary btn-block">Login</button>
+								<button type="submit" class="btn btn-primary btn-block">Login</button>
 							</div>
 							
 							<div class="form-check text-right">
@@ -202,11 +202,12 @@
 						id="navbarDropdown" role="button" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false">
 						 	Benvenuto, <c:out value="${currentUser.username}"/>
-					</div>
-					
+					</div>	
 					<form action="logout" method="get" class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" style="text-align: center" href="#">Area Cliente</a>
-						<a class="dropdown-item" style="text-align: center" href="#">Carrello</a>
+						<a class="dropdown-item" style="text-align: left; " href="/Gameporium/clientpage.jsp?azione=dati">Area Utente</a>
+						<a class="dropdown-item" style="text-align: left" href="/Gameporium/clientpage.jsp?action=2">Dati Anagrafici</a>
+						<a class="dropdown-item" style="text-align: left" href="/Gameporium/clientpage.jsp?action=3">I miei Ordini</a>
+						<a class="dropdown-item" style="text-align: left" href="/Gameporium/clientpage.jsp?action=4">Carrello</a>
 						<div class="dropdown-divider"></div>
 						<div style="text-align: center"><button class="btn btn-primary" type="submit">Logout</button></div>
 					</form>
@@ -217,18 +218,6 @@
 
 	</nav>
 	<!-- end navbar -->
-
-	<script type="text/javascript">
-		function validatePassword(loginform)
-		{	
-			var n = loginform.pw.value.length;
-			
-	 		if (n < 7 || n > 20)
-	 			alert("La password deve essere di lunghezza compresa tra 7 e 20 caratteri!");
-	 		else
-	 			loginform.submit();
-		}
-	</script>
 	
 </body>
 </html>
