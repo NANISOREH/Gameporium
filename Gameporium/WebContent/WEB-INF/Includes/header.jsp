@@ -149,7 +149,7 @@
 						class="form-inline md-form form-sm active-cyan active-cyan-2 mt-2">
 						<i class="fas fa-search" aria-hidden="true"></i> <input
 							class="form-control form-control-sm ml-3 w-75" type="text"
-							placeholder="Search" aria-label="Search">
+							placeholder="Search" aria-label="Search" >
 					</form>
 				</li>
 

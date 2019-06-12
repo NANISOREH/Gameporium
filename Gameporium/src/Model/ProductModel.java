@@ -407,4 +407,48 @@ public class ProductModel implements Model {
 		}
 		return product;
 	}
+	
+	public synchronized Collection<Bean> doRetrieveByResearch(String ricerca) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Collection<Bean> product = new LinkedList<Bean>();
+		
+		String selectSQL = "SELECT * FROM " + ProductModel.TABLE_NAME + " WHERE MATCH (titolo, produttore, descrizione) AGAINST ('"+ricerca+"')";
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				BeanProduct bean = new BeanProduct();
+				bean.setCodiceProdotto(rs.getInt("codiceProdotto"));
+				bean.setCodCategoria(rs.getInt("codiceCategoria"));
+				bean.setFoto(rs.getString("foto"));
+				bean.setTitolo(rs.getString("titolo"));
+				bean.setDisponibilita(rs.getInt("disponibilita"));
+				bean.setPrezzo(rs.getDouble("prezzo"));
+				bean.setProduttore(rs.getString("produttore"));
+				bean.setDescrizione(rs.getString("descrizione"));
+				bean.setIVA(rs.getInt("IVA"));
+				bean.setNovita(rs.getBoolean("novita"));
+				bean.setOfferta(rs.getBoolean("offerta"));
+				product.add(bean);
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return product;
+	}
+	
+	
 }
