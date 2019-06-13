@@ -31,8 +31,14 @@ public class ProductShowServlet extends HttpServlet {
 		String cat=request.getParameter("categoria");
 		String val=request.getParameter("value");
 		String at=request.getParameter("attribute");
+		String ric=request.getParameter("searchtxt");
 		
 		try {
+				if(ric!=null) {
+					bpr=model.doRetrieveByResearch(ric);
+					session.setAttribute("listaRisultati", bpr);
+				}
+							
 				if (at!=null && val!=null) {
 					if (cat == null || cat.equals("")) {
 						bpr= model.doRetrieveByAttribute(at,val);
