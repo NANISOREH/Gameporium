@@ -16,11 +16,13 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
- 
-<c:if test='${requestScope["isGioco"]}'>
+
+<c:set var="sel" value='${requestScope["selCat"]}' />
+
+<c:if test='${sel == 1}'>
 	<c:set var="prodotto" value='${requestScope["gioco"]}' />
 </c:if>
-<c:if test='${requestScope["isAccessorio"]}'>
+<c:if test='${sel == 2}'>
 	<c:set var="prodotto" value='${requestScope["accessorio"]}' />
 </c:if>
 <title>Gameporium - ${prodotto.titolo}</title>
