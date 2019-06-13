@@ -41,7 +41,7 @@ public class EventoModel implements Model {
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + EventoModel.TABLE_NAME
-				+ " (codiceEvento,nome,luogo,descrizione,dataEvento,ora,numeroPartecipanti) VALUES (?, ?, ?, ?, ?, ?, ?)";
+				+ " (codiceEvento,nome,luogo,descrizione,dataEvento,ora,numeroPartecipanti) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		Date dt=new java.sql.Date(e.getData().getTime());
 		try {
 			connection = ds.getConnection();
@@ -53,6 +53,7 @@ public class EventoModel implements Model {
 			preparedStatement.setDate(5, dt);
 			preparedStatement.setTime(6, e.getOra());
 			preparedStatement.setInt(7, e.getNumeroPartecipanti());
+			preparedStatement.setString(8, e.getLocandina());
 			preparedStatement.executeUpdate();
 
 			connection.commit();
@@ -94,6 +95,7 @@ public class EventoModel implements Model {
 				bean.setData(rs.getDate("dataEvento"));
 				bean.setOra(rs.getTime("ora"));
 				bean.setNumeroPartecipanti(rs.getInt("numeroPartecipanti"));
+				bean.setLocandina(rs.getString("locandica"));
 			}
 
 		} finally {
@@ -167,6 +169,7 @@ public class EventoModel implements Model {
 				bean.setData(rs.getDate("dataEvento"));
 				bean.setOra(rs.getTime("ora"));
 				bean.setNumeroPartecipanti(rs.getInt("numeroPartecipanti"));
+				bean.setLocandina(rs.getString("locandina"));
 				Evento.add(bean);
 			}
 

@@ -106,12 +106,8 @@
 					aria-expanded="false"> Eventi </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="/Gameporium/events.jsp">Mostra tutti gli eventi</a>
-						<div class="dropdown-divider"></div>
-						<form class="form-inline md-form form-sm active-cyan active-cyan-2 mt-2">
-						<i class="fas fa-search" aria-hidden="true"></i> 
-						<input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Cerca Città" aria-label="Search">
-					</form>
-					</div></li>
+					</div>
+				</li>
 					
 				
 				
@@ -135,24 +131,20 @@
 				<li class="nav-item d-block d-sm-none"><a class="nav-link"
 					href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Il
 						tuo carrello</a></li>
-
-
 			</ul>
 		</div>
+
 
 		<div class="navbar-collapse collapse w-100 order-3 dual-collapse2 d-none d-md-block"
 			id="collapsibleNavbarRight">
 			<ul class="navbar-nav ml-auto d-none d-md-block">
-
 				<li class="nav-item mr-auto" style="margin-bottom: 5px;">
-					<form
+					<form action="/searchservlet" method="post"
 						class="form-inline md-form form-sm active-cyan active-cyan-2 mt-2">
-						<i class="fas fa-search" aria-hidden="true"></i> <input
-							class="form-control form-control-sm ml-3 w-75" type="text"
-							placeholder="Search" aria-label="Search" >
+						<input class="form-control" type="text" name="searchtxt" placeholder="Search" aria-label="Search">
+      					<button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2" type="submit">Search</button>
 					</form>
 				</li>
-
 			</ul>
 			
 			
@@ -166,19 +158,19 @@
 						<form action="login" method="post" class="form" role="form" name="loginform">
 							
 							<div class="form-group">
-								<input id="emailInput" placeholder="Username"
+								<input id="emailInput" placeholder="Username" oninput="validateLogin(document.loginform.pw, document.loginform.un)"
 									class="form-control form-control-sm" type="text" name="un" 
 									required autocomplete="off" value="${cookie.saveUser.value}">
 							</div>
 							
 
 							<div class="form-group">
-								<input id="passwordInput" placeholder="Password" required
+								<input id="passwordInput" placeholder="Password" oninput="validateLogin(document.loginform.pw, document.loginform.un)" required
 									class="form-control form-control-sm" type="password" name="pw" autocomplete="off" value="${cookie.savePass.value}">
 							</div>
 							
 							<div class="form-group">
-								<button type="button" onclick="validateLogin(document.loginform)" class="btn btn-primary btn-block">Login</button>
+								<button type="submit" class="loginbtn btn btn-primary btn-block" disabled="true">Login</button>
 							</div>
 							
 							<div class="form-check text-right">
@@ -202,11 +194,11 @@
 						id="navbarDropdown" role="button" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false">
 						 	Benvenuto, <c:out value="${currentUser.username}"/>
-					</div>
-					
+					</div>	
 					<form action="logout" method="get" class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" style="text-align: center" href="#">Area Cliente</a>
-						<a class="dropdown-item" style="text-align: center" href="#">Carrello</a>
+						<a class="dropdown-item" style="text-align: left; " href="/Gameporium/clientpage.jsp?azione=dati">Area Utente</a>
+						<a class="dropdown-item" style="text-align: left" href="/Gameporium/clientpage.jsp?azione=ordini">I miei Ordini</a>
+						<a class="dropdown-item" style="text-align: left" href="/Gameporium/clientpage.jsp?azione=carrello">Carrello</a>
 						<div class="dropdown-divider"></div>
 						<div style="text-align: center"><button class="btn btn-primary" type="submit">Logout</button></div>
 					</form>
@@ -217,18 +209,6 @@
 
 	</nav>
 	<!-- end navbar -->
-
-	<script type="text/javascript">
-		function validatePassword(loginform)
-		{	
-			var n = loginform.pw.value.length;
-			
-	 		if (n < 7 || n > 20)
-	 			alert("La password deve essere di lunghezza compresa tra 7 e 20 caratteri!");
-	 		else
-	 			loginform.submit();
-		}
-	</script>
 	
 </body>
 </html>
