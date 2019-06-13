@@ -43,8 +43,6 @@ function validateMLogin (password,username)
 	}
 }
 
-
-
 function validateRegister(registerform)
 
 {
@@ -209,8 +207,6 @@ function validateRegister(registerform)
 
 }
 
-
-
 function validateQuantity(quantityform)
 
 {
@@ -251,8 +247,6 @@ function validateQuantity(quantityform)
 
 }
 
-
-
 function htmlEscape(toEscape)
 
 {
@@ -269,4 +263,14 @@ function htmlEscape(toEscape)
 
 	return toEscape;
 
+}
+
+function gameoraccessory(category){
+
+	if(category=='gioco'){
+		
+	}
+	else if(category=='accessorio'){
+		
+	}
 }

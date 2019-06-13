@@ -17,6 +17,7 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
 <c:set var="sel" value='${requestScope["selCat"]}' />
 
 <c:if test='${sel == 1}'>
