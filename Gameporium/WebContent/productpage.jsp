@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+ 
 <c:if test='${requestScope["isGioco"]}'>
 	<c:set var="prodotto" value='${requestScope["gioco"]}' />
 </c:if>

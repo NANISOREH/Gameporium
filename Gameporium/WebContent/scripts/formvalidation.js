@@ -1,29 +1,47 @@
-function validateLogin(password)
+function validateLogin(password, username)
 
 {	
-	var button = document.getElementById("prova");
 	var p = password.value;
-	var pword = htmlEscape(password.value);
-	var uname = htmlEscape(password.value);
-	password.value = pword;
-	password.value = uname;
+	var u = username.value;
+	
+	password.value = htmlEscape(password.value);
+	username.value = htmlEscape(username.value);
 
 	var pass = /^.{7,}$/;
 	
 
 	if (!p.match(pass))
 	{
-		password.focus();
-		button.setAttribute("disabled", "true");
+		$(".loginbtn").button({ disabled: true });
 		return;
 	}
-	else
+	else if (u.length > 0)
 	{
-		button.setAttribute("disabled", "false");
+		$(".loginbtn").button({ disabled: false });
 	}
 }
 
+function validateMLogin (password,username)
+{
+	var p = password.value;
+	var u = username.value;
+		
+	password.value = htmlEscape(password.value);
+	username.value = htmlEscape(username.value);
 
+	var pass = /^.{7,}$/;
+	
+
+	if (!p.match(pass))
+	{
+		$(".loginbtnm").button({ disabled: true });
+		return;
+	}
+	else if (u.length > 0)
+	{
+		$(".loginbtnm").button({ disabled: false });
+	}
+}
 
 
 

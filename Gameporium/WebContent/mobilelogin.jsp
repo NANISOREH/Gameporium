@@ -44,15 +44,14 @@
 								
 							
 								<div class="loginform form-label-group">
-									<input type="text" id="inputEmail" name="un"
-										class="form-control" placeholder="Username" autocomplete="off" value="${cookie.saveUser.value}" required
-										autofocus>
+									<input type="text" id="inputEmail" name="un" oninput="validateMLogin(document.loginmobile.pw, document.loginmobile.un)"
+										class="form-control" placeholder="Username"  value="${cookie.saveUser.value}" required>
 								</div>
 
 
 								<div class="loginform form-label-group">
-									<input type="password" id="inputPassword" name="pw" oninput="validateLogin(document.loginmobile)"
-										class="form-control" placeholder="Password" autocomplete="off" value="${cookie.savePass.value}" required>
+									<input type="password" id="inputPassword" name="pw" oninput="validateMLogin(document.loginmobile.pw, document.loginmobile.un)"
+										class="form-control" placeholder="Password" value="${cookie.savePass.value}" required>
 								</div>
 
 								<div class="loginform form-check text-right">
@@ -61,8 +60,8 @@
 								</div>
 
 								<button
-									class="btn btn-lg btn-primary btn-block text-uppercase"
-									type="submit" id="loginbtn" disabled="true"	>Accedi</button>
+									class="loginbtnm btn btn-lg btn-primary btn-block text-uppercase"
+									type="submit" disabled="true">Accedi</button>
 								<hr class="my-4">
 								<button
 									class="btn btn-md btn-facebook btn-block text-uppercase" 

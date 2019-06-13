@@ -42,6 +42,10 @@
     <servlet-name>EventShowServlet</servlet-name>
     <servlet-class>Controller.eventsview.EventShowServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>SearchServlet</servlet-name>
+    <servlet-class>Controller.productview.SearchServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>HomeProductServlet</servlet-name>
     <url-pattern>/productHome</url-pattern>
@@ -74,4 +78,9 @@
     <servlet-name>TestProduct</servlet-name>
     <url-pattern>/testproduct</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SearchServlet</servlet-name>
+    <url-pattern>/searchServlet</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

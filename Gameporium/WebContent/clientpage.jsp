@@ -48,20 +48,27 @@
 							<label for="nome">Cognome</label>
 							<input type="text" class="form-control" id="cognome" name="surname" value="${user.cognome}" required>
 						</div>
+						
 						<div class="form-group">
 							<label for="username">Username</label>
 				        	<input type="text" class="form-control" id="username" name="user" value="${user.username}" required>
 				        </div>
 				        
 				        <div class="form-group">
+				        	<label for="recapito">Recapito</label>
 				        	<input type="email" class="form-control" name="mail" value="${user.recapito}" required>
 				        </div>
+				        
 						<div class="form-group">
+							<label for="pw">Password</label>
 				            <input type="password" class="form-control" name="pass" value="${user.passwordU}" required>
 				        </div>
+				        
 						<div class="form-group">
+							<label for="pwconf">Conferma password</label>
 				            <input type="password" class="form-control" name="confirmPass" placeholder="Confirm Password" required>
-				        </div>        
+				        </div>
+				                
 				        <div class="form-group">
 							<label class="checkbox-inline">
 								<input type="checkbox" name="check" required> Accetto i <a href="#">Termini di Uso</a> e le <a href="#">Norme della privacy</a>
@@ -74,6 +81,9 @@
 				    </form>
 			</c:if>
 				
+			<c:if test="${userchoice=='ordini'}" />
+			
+			<c:if test="${userchoice=='carrello'} "/>
 			</div>
 			<!-- fine colonna centrale -->
 
