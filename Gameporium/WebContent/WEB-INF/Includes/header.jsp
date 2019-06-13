@@ -129,7 +129,7 @@
 				</c:if>
 				
 				<li class="nav-item d-block d-sm-none"><a class="nav-link"
-					href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Il
+					href="cart.jsp" id="navbarDropdown" role="button" data-toggle="dropdown">Il
 						tuo carrello</a></li>
 			</ul>
 		</div>
@@ -139,7 +139,7 @@
 			id="collapsibleNavbarRight">
 			<ul class="navbar-nav ml-auto d-none d-md-block">
 				<li class="nav-item mr-auto" style="margin-bottom: 5px;">
-					<form action="/searchservlet" method="post"
+					<form action="productselection.jsp" method="post"
 						class="form-inline md-form form-sm active-cyan active-cyan-2 mt-2">
 						<input class="form-control" type="text" name="searchtxt" placeholder="Search" aria-label="Search">
       					<button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2" type="submit">Search</button>
