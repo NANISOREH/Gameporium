@@ -17,7 +17,7 @@ CREATE TABLE prodotto (
     novita			bool default null,
     offerta 		bool default null,
     primary key (codiceProdotto, codiceCategoria),
-    FULLTEXT(titolo, produttore)
+    FULLTEXT(titolo, produttore,descrizione)
 );
 
 DROP TABLE IF EXISTS cliente;
