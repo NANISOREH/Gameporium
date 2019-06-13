@@ -8,7 +8,7 @@ CREATE TABLE prodotto (
 	codiceProdotto 	int,
     codiceCategoria int,
     foto			varchar(100),
-    titolo			varchar(30),
+    titolo			varchar(100),
     disponibilita	int,
     prezzo			decimal(5,2),
     produttore		varchar(30),
@@ -16,7 +16,8 @@ CREATE TABLE prodotto (
     IVA				numeric,
     novita			bool default null,
     offerta 		bool default null,
-    primary key (codiceProdotto, codiceCategoria)
+    primary key (codiceProdotto, codiceCategoria),
+    FULLTEXT(titolo, produttore,descrizione)
 );
 
 DROP TABLE IF EXISTS cliente;
@@ -43,7 +44,8 @@ CREATE TABLE gioco(
     numGiocatori	varchar(10),
     foreign key (codiceProdotto) references prodotto(codiceProdotto)
 								ON UPDATE CASCADE
-                                ON DELETE CASCADE
+                                ON DELETE CASCADE,
+	FULLTEXT (nomeCategoria, descrizioneCategoria)
 );
 
 DROP TABLE IF EXISTS accessorio;
@@ -54,7 +56,8 @@ CREATE TABLE accessorio(
     descrizioneCategoria	varchar(100),
     foreign key (codiceProdotto) references prodotto(codiceProdotto)
 								ON UPDATE CASCADE
-                                ON DELETE CASCADE
+                                ON DELETE CASCADE,
+	FULLTEXT (nomeCategoria, descrizioneCategoria)
 );
 
 DROP TABLE IF EXISTS recensione;
@@ -80,7 +83,9 @@ CREATE TABLE evento(
     dataEvento		date,
     ora				time,
     numeroPartecipanti int default 0,
-    primary key (codiceEvento)
+    locandina		varchar(20),
+    primary key (codiceEvento),
+    FULLTEXT(nome, luogo, descrizione)
 );
 
 DROP TABLE IF EXISTS partecipazione;
