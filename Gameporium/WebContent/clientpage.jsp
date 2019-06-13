@@ -83,7 +83,10 @@
 				
 			<c:if test="${userchoice=='ordini'}" />
 			
-			<c:if test="${userchoice=='carrello'} "/>
+			<c:if test="${userchoice=='carrello'} ">
+	      		<jsp:include page="/cart.jsp"/>
+	      	</c:if>	
+			
 			</div>
 			<!-- fine colonna centrale -->
 
