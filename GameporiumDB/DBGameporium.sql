@@ -8,7 +8,7 @@ CREATE TABLE prodotto (
 	codiceProdotto 	int,
     codiceCategoria int,
     foto			varchar(100),
-    titolo			varchar(60),
+    titolo			varchar(100),
     disponibilita	int,
     prezzo			decimal(5,2),
     produttore		varchar(30),
@@ -83,6 +83,7 @@ CREATE TABLE evento(
     dataEvento		date,
     ora				time,
     numeroPartecipanti int default 0,
+    locandina		varchar(20),
     primary key (codiceEvento),
     FULLTEXT(nome, luogo, descrizione)
 );

@@ -17,10 +17,12 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<c:if test='${requestScope["isGioco"]}'>
+<c:set var="sel" value='${requestScope["selCat"]}' />
+
+<c:if test='${sel == 1}'>
 	<c:set var="prodotto" value='${requestScope["gioco"]}' />
 </c:if>
-<c:if test='${requestScope["isAccessorio"]}'>
+<c:if test='${sel == 2}'>
 	<c:set var="prodotto" value='${requestScope["accessorio"]}' />
 </c:if>
 <title>Gameporium - ${prodotto.titolo}</title>
@@ -53,7 +55,7 @@
 							
 							<div class="col-lg-4 col-xs-12 bg-light">
 								<a  id="fotoprodotto" href="#"><img
-									src="images/${gioco.foto}.jpg" class="rounded mx-auto d-block fotoprodotto"
+									src="images/${gioco.foto}" class="rounded mx-auto d-block fotoprodotto"
 									alt="Responsive image">
 								</a>
 							</div>
@@ -181,7 +183,7 @@
 								 	</li>
 								 	
 								 	<li class="list-group-item bg-light">
-									 	<form>
+									 	<form name="quantityForm">
 									 		<div class="row">
 									 			<div class="nomeriga col-5">Quantità:
 									 			</div>
@@ -190,7 +192,7 @@
 												</div>
 												<button class="quantButton btn btn-sm btn-primary btn-block text-uppercase"
 													style = "max-width:150px; align-text: center; margin-top:20px" 
-													type="submit">Aggiungi al Carrello
+													type="button" onclick="validateQuantity(quantityForm)">Aggiungi al Carrello
 												</button>
 									 		</div>
 									 	</form>
