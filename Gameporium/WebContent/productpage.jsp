@@ -17,8 +17,8 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<c:set var="sel" value='${requestScope["selCat"]}' />
 
+<c:set var="sel" value='${param["selCat"]}' />
 <c:if test='${sel == 1}'>
 	<c:set var="prodotto" value='${requestScope["gioco"]}' />
 </c:if>
@@ -47,7 +47,7 @@
 			<!-- colonna centrale -->	
 			<div id="centerproductpage" class="col-lg-8 col-md-12 bg-light">
 			
-				<c:if test='${requestScope["isGioco"]}'>
+				<c:if test="${sel=='1'}">
 					<c:set var="gioco" value='${requestScope["gioco"]}' />
 
 					<div class="container-fluid">
@@ -109,17 +109,17 @@
 								 	</li>
 								 	
 								 	<li class="list-group-item bg-light">
-									 	<form name = "quantityform">
+									 	<form name = "quantityform" action="cartservlet">
 									 		<div class="row">
 									 			<div class="nomeriga col-5">Quantità:
 									 			</div>
 										 		<div class="col-7">
-										 			<input class="quantInput" type="number" name="quantita" placeholder="1">
+										 			<input class="quantInput" type="number" name="quantita" value="1">
 												</div>
 												<div class="text-center col-12">
 												<button class="quantButton btn btn-sm btn-primary btn-block text-uppercase"
 													onclick="validateQuantity(document.quantityform)" 
-													type="button">Aggiungi al Carrello
+													type="submit" name="cartbutton" value="addC" >Aggiungi al Carrello
 												</button></div>
 									 		</div>
 									 	</form>
@@ -133,7 +133,7 @@
 					</div>
 				</c:if>
 				
-				<c:if test='${requestScope["isAccessorio"]}'>
+				<c:if test="${sel=='2'}">
 					<c:set var="gioco" value='${requestScope["accessorio"]}' />
 
 					<div class="container-fluid">
