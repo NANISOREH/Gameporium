@@ -25,8 +25,15 @@ function validateLogin(loginform)
 			  timer: 1800,
 			  showConfirmButton: false
 			})
+
 	else
+	{
+		var pword = htmlEscape(loginform.pw.value);
+		var uname = htmlEscape(loginform.un.value);
+		loginform.pw.value = pword;
+		loginform.un.value = uname
 		loginform.submit();
+	}
 }
 
 
@@ -48,6 +55,8 @@ function validateRegister(registerform)
 				})
 			return;
 		}
+		else
+			registerform.elements[i].value = htmlEscape(registerform.elements[i].value);
 	}
 	
 	var p = registerform.pass.value.length;
@@ -75,7 +84,7 @@ function validateRegister(registerform)
 			  showConfirmButton: false
 			})
 			registerform.mail.value = "";
-			return;
+		return;
 	}
 	else if (registerform.pass.value != registerform.confirmPass.value)
 	{
@@ -123,12 +132,24 @@ function validateQuantity(quantityform)
 	}
 	else
 	{
+		quantityform.quantita.value = htmlEscape(quantityform.quantita.value);
 		window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
 		registerform.submit();
 	}
 }
 
-function validateEmail(email) {
+function validateEmail(email) 
+{
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
+}
+
+function htmlEscape(toEscape)
+{
+	toEscape.replace(/>/g, "&gt;");
+	toEscape.replace(/</g, "&lt;");
+	toEscape.replace(/>/g, "&amp;");
+	toEscape.replace(/"/g, "&quot;");
+
+	return toEscape;
 }
