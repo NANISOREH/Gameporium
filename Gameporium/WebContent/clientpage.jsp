@@ -39,8 +39,10 @@
 				style="margin-bottom: 1100px; margin-top: 30px">
 			<c:set var="user" value='${sessionScope["currentSessionUser"]}'/>
 			<c:set var="userchoice" value='${param["azione"]}'/>
-
-			<c:if test="${userchoice== 'dati'}">
+			
+			
+			<c:choose>
+			<c:when test="${userchoice== 'dati'}">
 				<form action="register" name="registerform" method="post" id="reg">				        
 				        <div class="form-group">
 				        	<label for="nome">Nome</label>
@@ -79,13 +81,63 @@
 				            style="max-width:400px;">Modifica dati</button>
 				        </div>
 				    </form>
-			</c:if>
+			</c:when>
 				
-			<c:if test="${userchoice=='ordini'}" />
+			<c:when test="${userchoice=='ordini'}" >
+			I miei ordini
+			</c:when>
 			
-			<c:if test="${userchoice=='carrello'} ">
-	      		<jsp:include page="/cart.jsp"/>
-	      	</c:if>	
+			<c:otherwise>
+	      		Il mio carrello
+			 <!-- Inizio iterazione cards-->
+
+		      		<div class="row">
+
+		      			<jsp:include page="/cartservlet"/>
+
+		      			<c:set var="cartprods" value='${sessionScope["cart"]}'/>
+
+			      		<c:forEach items="${cartprods}" var="item">
+
+		      				<div class="col-lg-4 col-xs-12 bg-light">
+
+				      			<div class="productcard card">
+
+				      				<div class="card-header">
+
+				      					<a href="singleProduct?selProd=${item.codiceProdotto}&selCat=${item.codCategoria}">${item.titolo}</a>
+
+				      				</div>
+
+			          				<div class="card-body">
+
+				          				<img class="card-img-top img-responsive" src="images/${item.foto}"alt="${item.foto}">
+
+			          					<br>
+
+			       					</div>
+
+			       					<div class="card-footer">
+
+			       						Prezzo:
+
+			       						${item.prezzo}
+
+			       					</div>
+
+			       				</div>
+
+		       				</div>
+
+						</c:forEach>
+
+		       		<!-- fine iterazione cards -->
+
+		      		</div>
+
+		      	<!-- fine sezione offerte -->
+	      	</c:otherwise>
+	      	</c:choose>	
 			
 			</div>
 			<!-- fine colonna centrale -->
