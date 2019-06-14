@@ -18,7 +18,7 @@
 
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@include file="/WEB-INF/Includes/headeradmin.jsp"%>
+<%@include file="/WEB-INF/Includes/header.jsp"%>
 </head>
 
 <body style="background-color: #343a40">
