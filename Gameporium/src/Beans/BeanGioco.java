@@ -4,9 +4,9 @@ import java.io.Serializable;
 
 public class BeanGioco extends Bean implements Serializable{
 	private static final long serialVersionUID = 1L;
-	int codiceProdotto, etaConsigliata, disponibilita,codCategoria,IVA;
+	int codiceProdotto, etaConsigliata, disponibilita,IVA;
 	double prezzo;
-	String nomeCategoria, descrizioneCategoria,titolo,descrizione,foto,produttore, durata, numeroGiocatori;
+	String nomeCategoria, descrizioneCategoria,titolo,descrizione,foto,produttore, durata, numeroGiocatori, codCategoria;
 	boolean offerta,novita;
 
 	public int getDisponibilita() {
@@ -17,11 +17,11 @@ public class BeanGioco extends Bean implements Serializable{
 		this.disponibilita = disponibilita;
 	}
 
-	public int getCodCategoria() {
+	public String getCodCategoria() {
 		return codCategoria;
 	}
 
-	public void setCodCategoria(int codCategoria) {
+	public void setCodCategoria(String codCategoria) {
 		this.codCategoria = codCategoria;
 	}
 
@@ -93,7 +93,7 @@ public class BeanGioco extends Bean implements Serializable{
 	{
 		codiceProdotto=-1;
 		disponibilita=0;
-		codCategoria=0;
+		codCategoria="";
 		prezzo=0.00;
 		titolo="";
 		descrizione="";
