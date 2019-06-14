@@ -245,7 +245,6 @@ function validateQuantity(quantityform)
 
 		quantityform.quantita.value = htmlEscape(quantityform.quantita.value);
 
-		window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
 
 	}
 
