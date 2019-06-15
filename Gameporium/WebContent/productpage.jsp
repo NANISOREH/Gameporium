@@ -140,7 +140,7 @@
 							
 							<div class="col-lg-4 col-xs-12 bg-light">
 								<a class="navbar-brand text-white-80" href="#"><img
-									src="images/{gioco.foto}" class=" fotoprodotto rounded mx-auto d-block"
+									src="images/${gioco.foto}" class=" fotoprodotto rounded mx-auto d-block"
 									alt="Responsive image"
 									style="margin-bottom: 0; margin-top:30px">
 								</a>
