@@ -85,7 +85,7 @@
 			 	
 
 		      		<!-- Inizio sezione offerte -->
-
+lkjhgfd
 					<div class="sectionstyle">Il mio carrello
 
 			          <a class="offnovlink" href="/Gameporium/productselection.jsp?attribute=offerta&value=true"></a>

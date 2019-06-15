@@ -109,18 +109,17 @@
 								 	</li>
 								 	
 								 	<li class="list-group-item bg-light">
-									 	<form name = "quantityform" action="cartservlet">
+									 	<form name="quantityForm" action="cartservlet">
 									 		<div class="row">
 									 			<div class="nomeriga col-5">Quantità:
 									 			</div>
 										 		<div class="col-7">
 										 			<input class="quantInput" type="number" name="quantita" value="1">
 												</div>
-												<div class="text-center col-12">
-												<button class="quantButton btn btn-sm btn-primary btn-block text-uppercase"
-													onclick="validateQuantity(document.quantityform)" 
-													type="submit" name="cartbutton" value="addC" >Aggiungi al Carrello
-												</button></div>
+												<button class="quantButton btn btn-sm btn-primary btn-block text-uppercase" name="acquistabtn" id="acquistabtn"
+													style = "max-width:150px; align-text: center; margin-top:20px"  onclick ="validateQuantity(document.quantityForm)"
+													type="submit" name="addC" value='${gioco.codiceProdotto}' >Aggiungi al Carrello
+												</button>
 									 		</div>
 									 	</form>
 								 	</li>
@@ -183,16 +182,16 @@
 								 	</li>
 								 	
 								 	<li class="list-group-item bg-light">
-									 	<form name="quantityForm">
+									 	<form name="quantityForm" action="cartservlet">
 									 		<div class="row">
 									 			<div class="nomeriga col-5">Quantità:
 									 			</div>
 										 		<div class="col-7">
 										 			<input class="quantInput" type="number" name="quantita" placeholder="1">
 												</div>
-												<button class="quantButton btn btn-sm btn-primary btn-block text-uppercase"
-													style = "max-width:150px; align-text: center; margin-top:20px" 
-													type="button" onclick="validateQuantity(quantityForm)">Aggiungi al Carrello
+												<button class="quantButton btn btn-sm btn-primary btn-block text-uppercase" name="acquistabtn" id="acquistabtn"
+													style = "max-width:150px; align-text: center; margin-top:20px"  onclick ="validateQuantity(document.quantityForm)"
+													type="submit" name="addC" value='${gioco.codiceProdotto}' >Aggiungi al Carrello
 												</button>
 									 		</div>
 									 	</form>
