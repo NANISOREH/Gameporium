@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
   	<div class="col-lg-4 col-xs-12 bg-light">
@@ -15,7 +14,7 @@
 		  	<img class="card-img-top" src="images/${item.foto}" alt="Card image cap">
 		  </div>
 		  
-		  <div class="card-body">
+		  <div class="pccardbody card-body">
 		    
 		    <div class="card-title">
 		    	<a href="singleProduct?selProd=${item.codiceProdotto}&selCat=${item.codCategoria}">${item.titolo}</a>

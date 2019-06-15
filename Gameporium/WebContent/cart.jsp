@@ -49,91 +49,34 @@
 <body>
 
 	<div class="allpagecontainer container-fluid bg-light">
-
+		
 		<!-- sistema di colonne -->
-
 		<div class="row">
 
 			
 
 			<!-- colonna sinistra -->
-
 			<div
-
 				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light">
-
 				<%@include file="/WEB-INF/Includes/leftpanel.jsp"%>
-
 			</div>
-
 			<!-- fine colonna sinistra -->
 
-			
-
 			<!-- colonna centrale -->
-
 			<div id="homecenter" class="col-lg-8 col-md-12 col-sm-12 col-xs-12 bg-light">
-
 				<%@include file="/WEB-INF/Includes/mobilesearchbar.jsp"%>
 
-
-
 				<!-- container novità e offerte -->
-
 				<div class="container-fluid clearfix">
-
-			 	
-
-		      		<!-- Inizio sezione offerte -->
-lkjhgfd
-					<div class="sectionstyle">Il mio carrello
-
-			          <a class="offnovlink" href="/Gameporium/productselection.jsp?attribute=offerta&value=true"></a>
-
-			        </div>      		
-
-		        	
 
 		        	<!-- Inizio iterazione cards-->
 
 		      		<div class="row">
 
-		      			<jsp:include page="/productShow"/>
+		      			<c:set var="offerte" value='${sessionScope["cart"]}'/>
 
-		      			<c:set var="cartprods" value='${sessionScope["cart"]}'/>
-
-			      		<c:forEach items="${cartprods}" var="item">
-
-		      				<div class="col-lg-4 col-xs-12 bg-light">
-
-				      			<div class="productcard card">
-
-				      				<div class="card-header">
-
-				      					<a href="singleProduct?selProd=${item.codiceProdotto}&selCat=${item.codCategoria}">${item.titolo}</a>
-
-				      				</div>
-
-			          				<div class="card-body">
-
-				          				<img class="card-img-top img-responsive" src="images/${item.foto}"alt="${item.foto}">
-
-			          					<br>
-
-			       					</div>
-
-			       					<div class="card-footer">
-
-			       						Prezzo:
-
-			       						${item.prezzo}
-
-			       					</div>
-
-			       				</div>
-
-		       				</div>
-
+			      		<c:forEach items="${offerte}" var="item">
+							<%@include file="/WEB-INF/Includes/productcard.jsp"%>
 						</c:forEach>
 
 		       		<!-- fine iterazione cards -->
@@ -142,9 +85,7 @@ lkjhgfd
 
 		      	<!-- fine sezione offerte -->
 
-		      	
 
-		      
 			<!--fine container novità e offerte-->
 
 			</div>
@@ -170,6 +111,7 @@ lkjhgfd
 	</div>
 
 	<%@include file="/WEB-INF/Includes/footer.jsp"%>
+	</div>
 
 </body>
 

@@ -37,7 +37,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
 <link rel="stylesheet" href="pagestyle.css" type="text/css">
-
 <%@include file="/WEB-INF/Includes/header.jsp"%>
 
 </head>

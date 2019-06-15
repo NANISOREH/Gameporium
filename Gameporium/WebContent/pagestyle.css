@@ -30,13 +30,28 @@
     {        
     	border-radius: 3px;
     }
+    
 
-    .productcard
+	
+	div.sectionstyle
+	/*container per il titolo delle sezioni nelle pagine con una lista di prodotti*/
+	{
+		border-bottom: 1px black solid;  
+		margin-top: 50px;
+	}
+
+/* productcard */
+	.productcard
 	{
 		margin-top: 30px;	
 	  	margin: 15px;
 	  	padding: 10px;
   		text-align: center;
+	}
+	
+	.pccardbody
+	{
+		padding:3px;
 	}
 	
 	.card-img-top
@@ -53,14 +68,7 @@
 		height:220px;
 		width:220px;
 	}
-	
-	div.sectionstyle
-	/*container per il titolo delle sezioni nelle pagine con una lista di prodotti*/
-	{
-		border-bottom: 1px black solid;  
-		margin-top: 50px;
-	}
-
+/* productcard */
 
 /*	productpage*/
 	div#centerproductpage
