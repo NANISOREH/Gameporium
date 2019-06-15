@@ -45,13 +45,13 @@
 							
 								<div class="loginform form-label-group">
 									<input type="text" id="inputEmail" name="un" oninput="validateMLogin(document.loginmobile.pw, document.loginmobile.un)"
-										class="form-control" placeholder="Username"  value="${cookie.saveUser.value}" required>
+										class="form-control" placeholder="Username"  value="${cookie.saveUser.value}">
 								</div>
 
 
 								<div class="loginform form-label-group">
 									<input type="password" id="inputPassword" name="pw" oninput="validateMLogin(document.loginmobile.pw, document.loginmobile.un)"
-										class="form-control" placeholder="Password" value="${cookie.savePass.value}" required>
+										class="form-control" placeholder="Password" value="${cookie.savePass.value}">
 								</div>
 
 								<div class="loginform form-check text-right">
@@ -60,8 +60,8 @@
 								</div>
 
 								<button
-									class="loginbtnm btn btn-lg btn-primary btn-block text-uppercase"
-									type="submit" disabled="true">Accedi</button>
+									class="loginbtnm btn btn-lg btn-primary btn-block text-uppercase" id="prova"
+									type="submit" disabled>Accedi</button>
 								<hr class="my-4">
 								<button
 									class="btn btn-md btn-facebook btn-block text-uppercase" 
