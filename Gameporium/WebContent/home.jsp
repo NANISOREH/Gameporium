@@ -174,7 +174,7 @@
 
 			          				<div class="card-body">
 
-			          					<img class="card-img-top img-responsive" src="images/${item.foto}"alt="${item.foto}">
+			          					<img class="card-img-top img-responsive" src="images/${item.foto}" alt="${item.foto}">
 
 			          					<br>
 

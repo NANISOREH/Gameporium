@@ -1,12 +1,13 @@
 package Beans;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public class BeanProduct extends Bean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	int IVA,codiceProdotto,disponibilita,codCategoria;
-	double prezzo;
+	BigDecimal prezzo;
 	boolean offerta, novita;
 
 
@@ -17,7 +18,7 @@ public class BeanProduct extends Bean implements Serializable {
 		codiceProdotto=-1;
 		disponibilita=0;
 		codCategoria=0;
-		prezzo=0.00;
+		prezzo= null;
 		titolo="";
 		descrizione="";
 		foto="";
@@ -63,10 +64,10 @@ public class BeanProduct extends Bean implements Serializable {
 		this.codCategoria=newCodCat;
 	}
 	
-	public double getPrezzo() {
+	public BigDecimal getPrezzo() {
 		return this.prezzo;
 	}
-	public void setPrezzo(double newPrezzo) {
+	public void setPrezzo(BigDecimal newPrezzo) {
 		this.prezzo=newPrezzo;
 	}
 
