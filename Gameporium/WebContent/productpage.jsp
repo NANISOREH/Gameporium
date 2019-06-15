@@ -5,6 +5,7 @@
 <%-- <title>Gameporium - ${currentProduct.titolo}</title> --%>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="scripts/cart.js"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script
@@ -15,6 +16,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
@@ -116,9 +118,9 @@
 										 		<div class="col-7">
 										 			<input class="quantInput" type="number" name="quantita" value="1">
 												</div>
-												<button class="quantButton btn btn-sm btn-primary btn-block text-uppercase" name="acquistabtn" id="acquistabtn"
-													style = "max-width:150px; align-text: center; margin-top:20px"  onclick ="validateQuantity(document.quantityForm)"
-													type="submit" name="addC" value='${gioco.codiceProdotto}' >Aggiungi al Carrello
+												<button class="quantButton btn btn-sm btn-primary btn-block text-uppercase" name="acquistabtn" id="acquistabtn" 
+													onclick ="addToCart(document.quantityForm)"
+													type="button" value='${gioco.codiceProdotto}' >Aggiungi al Carrello
 												</button>
 									 		</div>
 									 	</form>
@@ -189,9 +191,9 @@
 										 		<div class="col-7">
 										 			<input class="quantInput" type="number" name="quantita" placeholder="1">
 												</div>
-												<button class="quantButton btn btn-sm btn-primary btn-block text-uppercase" name="acquistabtn" id="acquistabtn"
-													style = "max-width:150px; align-text: center; margin-top:20px"  onclick ="validateQuantity(document.quantityForm)"
-													type="submit" name="addC" value='${gioco.codiceProdotto}' >Aggiungi al Carrello
+												<button class="quantButton btn btn-sm btn-primary btn-block text-uppercase" name="acquistabtn" id="acquistabtn" 
+													onclick ="addToCart(document.quantityForm)"
+													type="button" value='${gioco.codiceProdotto}' >Aggiungi al Carrello
 												</button>
 									 		</div>
 									 	</form>

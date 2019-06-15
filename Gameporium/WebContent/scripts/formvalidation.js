@@ -125,25 +125,25 @@ function validateRegister(registerform)
 	}
 }
 
-function validateQuantity(quantityform)
-{
-	if (quantityform.quantita.value < 1 || quantityform.quantita.value > 99)
-	{
-		Swal.fire({
-			  title: '<h6>Inserire una quantità compresa tra 1 e 99 prodotti</h6>',
-			  toast: true,
-			  type: 'error',
-			  position: 'top',
-			  timer: 2000,
-			  showConfirmButton: false
-			})
-			return;
-	}
-	else
-	{
-		quantityform.quantita.value = htmlEscape(quantityform.quantita.value);
-	}
-}
+//function validateQuantity(quantityform)
+//{
+//	if (quantityform.quantita.value < 1 || quantityform.quantita.value > 99)
+//	{
+//		Swal.fire({
+//			  title: '<h6>Inserire una quantità compresa tra 1 e 99 prodotti</h6>',
+//			  toast: true,
+//			  type: 'error',
+//			  position: 'top',
+//			  timer: 2000,
+//			  showConfirmButton: false
+//			})
+//			return;
+//	}
+//	else
+//	{
+//		quantityform.quantita.value = htmlEscape(quantityform.quantita.value);
+//	}
+//}
 
 
 function htmlEscape(toEscape)

@@ -7,10 +7,10 @@ import java.util.List;
 
 public class Cart {
 
-	private Collection<Bean> products;
+	private ArrayList<BeanProduct> products;
 	
 	public Cart() {
-		products = new LinkedList<Bean>();
+		products = new ArrayList<BeanProduct>();
 	}
 	
 	public void addProduct(BeanProduct product) {
@@ -27,7 +27,7 @@ public class Cart {
 		}
  	}
 	
-	public Collection<Bean> getProducts() {
-		return  products;
+	public ArrayList<BeanProduct> getProducts() {
+		return products;
 	}
 }
