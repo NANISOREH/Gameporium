@@ -15,7 +15,9 @@
             <c:set var="cart" value='${sessionScope["cartitems"]}'/>
 
 			<c:forEach items="${cart}" var="item">
-				${item.titolo}<br>
+				${item.product.titolo} 
+				(${item.quantita})
+				<br>
 			</c:forEach>
       </div>
 	</div>
