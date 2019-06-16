@@ -1,6 +1,7 @@
 package Controller.adminarea;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -50,7 +51,7 @@ public class adminServlet extends HttpServlet {
 		p.setIVA(Integer.parseInt(iva));
 		p.setNovita(Boolean.parseBoolean(novita));
 		p.setOfferta(Boolean.parseBoolean(offerta));
-		p.setPrezzo(Double.parseDouble(prezzo));;
+		p.setPrezzo(new BigDecimal(prezzo));
 		p.setProduttore(produttore);
 		p.setTitolo(titolo);
 		p.setFoto(foto);

@@ -86,7 +86,7 @@ public class AccessorioModel implements Model {
 				bean.setDisponibilita(rs.getInt("disponibilita"));
 				bean.setFoto(rs.getString("foto"));
 				bean.setTitolo(rs.getString("titolo"));
-				bean.setPrezzo(rs.getDouble("prezzo"));
+				bean.setPrezzo(rs.getBigDecimal("prezzo"));
 				bean.setProduttore(rs.getString("produttore"));
 				bean.setIVA(rs.getInt("IVA"));
 				bean.setNovita(rs.getBoolean("novita"));
@@ -139,7 +139,7 @@ public class AccessorioModel implements Model {
 				bean.setDisponibilita(rs.getInt("disponibilita"));
 				bean.setFoto(rs.getString("foto"));
 				bean.setTitolo(rs.getString("titolo"));
-				bean.setPrezzo(rs.getDouble("prezzo"));
+				bean.setPrezzo(rs.getBigDecimal("prezzo"));
 				bean.setProduttore(rs.getString("produttore"));
 				bean.setIVA(rs.getInt("IVA"));
 				bean.setNovita(rs.getBoolean("novita"));
