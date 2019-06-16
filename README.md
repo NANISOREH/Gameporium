@@ -12,8 +12,8 @@ SEZIONI EXTRA (se avanza tempo)
 - Ricerca avanzata
 - Aggiungere le recensioni alla pagina del prodotto
 - Preordini
+- Gestione date di nascita dei clienti
 
 TO DO LIST
 - Sistemare le immagini
-- Implementare un datepicker in register.jsp e correggere il model per aggiornare il database con la data di nascita degli utenti
 
