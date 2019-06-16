@@ -102,38 +102,8 @@
 
 		      			<c:set var="offerte" value='${sessionScope["listaOfferta"]}'/>
 
-			      		<c:forEach items="${offerte}" var="item">
-
-		      				<div class="col-lg-4 col-xs-12 bg-light">
-
-				      			<div class="productcard card">
-
-				      				<div class="card-header">
-
-				      					<a href="singleProduct?selProd=${item.codiceProdotto}&selCat=${item.codCategoria}">${item.titolo}</a>
-
-				      				</div>
-
-			          				<div class="card-body">
-
-				          				<img class="card-img-top img-responsive" src="images/${item.foto}"alt="${item.foto}">
-
-			          					<br>
-
-			       					</div>
-
-			       					<div class="card-footer">
-
-			       						Prezzo:
-
-			       						${item.prezzo}
-
-			       					</div>
-
-			       				</div>
-
-		       				</div>
-
+			      		<c:forEach items="${offerte}" var="item" begin="0" end="8">
+							<%@include file="/WEB-INF/Includes/productcard.jsp"%>
 						</c:forEach>
 
 		       		<!-- fine iterazione cards -->
@@ -160,38 +130,8 @@
 
 		      			<c:set var="novita" value='${sessionScope["listaNovita"]}'/>
 
-			      		<c:forEach items="${novita}" var="item">
-
-		      				<div class="col-lg-4 col-xs-12 bg-light">
-
-				      			<div class="productcard card">
-
-				      				<div class="card-header">
-
-				      					<a href="singleProduct?selProd=${item.codiceProdotto}&selCat=${item.codCategoria}">${item.titolo}</a>
-
-				      				</div>
-
-			          				<div class="card-body">
-
-			          					<img class="card-img-top img-responsive" src="images/${item.foto}"alt="${item.foto}">
-
-			          					<br>
-
-			       					</div>
-
-			       					<div class="card-footer">
-
-			       						Prezzo:
-
-			       						${item.prezzo}
-
-			       					</div>
-
-			       				</div>
-
-		       				</div>
-
+			      		<c:forEach items="${novita}" var="item" begin="0" end="8">
+							<%@include file="/WEB-INF/Includes/productcard.jsp"%>
 						</c:forEach>
 
 		       		<!-- fine iterazione cards -->

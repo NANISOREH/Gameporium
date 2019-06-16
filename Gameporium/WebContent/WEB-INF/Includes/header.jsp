@@ -5,6 +5,7 @@
 <head>
 <script type="text/javascript" src="scripts/formvalidation.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script src="https://kit.fontawesome.com/48a23e2c00.js"></script>
 <meta charset="UTF-8">
 </head>
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -33,10 +34,18 @@
     background: #343a40;	
 	border-color: transparent
   } 
+  
+  #searchbox
+  {
+  	max-width:180px;
+  	color: white;
+  }
+  
+  #dropdownMenu1
+  {
+  	margin-left:50px;
+  }
   </style>
-
-<%@ page import="javax.servlet.*"%>
-<%@ page import="Beans.*"%>
 
 <body>
 
@@ -141,10 +150,13 @@
 				<li class="nav-item mr-auto" style="margin-bottom: 5px;">
 					<form action="productselection.jsp" method="post"
 						class="form-inline md-form form-sm active-cyan active-cyan-2 mt-2">
-						<input class="form-control" type="text" name="searchtxt" placeholder="Search" aria-label="Search">
-      					<button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2" type="submit">Search</button>
-					</form>
-				</li>
+		      			<button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2" type="submit">
+      						<i class="fas fa-search" aria-hidden="true"></i>
+      					</button>
+						<input class="form-control" type="text" name="searchtxt" 
+						aria-label="Search" id="searchbox" placeholder="Cerca un prodotto">
+					</form> 
+				</li> 
 			</ul>
 			
 			
@@ -170,7 +182,7 @@
 							</div>
 							
 							<div class="form-group">
-								<button type="submit" class="loginbtn btn btn-primary btn-block" disabled="true">Login</button>
+								<button type="submit" class="loginbtn btn btn-primary btn-block" disabled>Login</button>
 							</div>
 							
 							<div class="form-check text-right">

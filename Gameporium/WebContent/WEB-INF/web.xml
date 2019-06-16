@@ -10,6 +10,7 @@
     <res-type>javax.sql.DataSource</res-type>
     <res-auth>Container</res-auth>
   </resource-ref>
+  
   <servlet>
     <servlet-name>HomeProductServlet</servlet-name>
     <servlet-class>Controller.productview.HomeProductServlet</servlet-class>
@@ -48,12 +49,13 @@
   </servlet>
   <servlet>
     <servlet-name>CartServlet</servlet-name>
-    <servlet-class>Controller.productview.CartServlet</servlet-class>
+    <servlet-class>Controller.cart.CartServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>adminServlet</servlet-name>
     <servlet-class>Controller.adminarea.adminServlet</servlet-class>
   </servlet>
+  
   <servlet-mapping>
     <servlet-name>HomeProductServlet</servlet-name>
     <url-pattern>/productHome</url-pattern>

@@ -49,7 +49,7 @@ public class ProductModel implements Model {
 			preparedStatement.setString(3, p.getFoto());
 			preparedStatement.setString(4, p.getTitolo());
 			preparedStatement.setInt(5, p.getDisponibilita());
-			preparedStatement.setDouble(6, p.getPrezzo());
+			preparedStatement.setBigDecimal(6, p.getPrezzo());
 			preparedStatement.setString(7, p.getProduttore());
 			preparedStatement.setString(8, p.getDescrizione());
 			preparedStatement.setInt(9, p.getIVA());
@@ -96,7 +96,7 @@ public class ProductModel implements Model {
 				bean.setFoto(rs.getString("foto"));
 				bean.setTitolo(rs.getString("titolo"));
 				bean.setDisponibilita(rs.getInt("disponibilita"));
-				bean.setPrezzo(rs.getDouble("prezzo"));
+				bean.setPrezzo(rs.getBigDecimal("prezzo"));
 				bean.setProduttore(rs.getString("produttore"));
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setIVA(rs.getInt("IVA"));
@@ -173,7 +173,7 @@ public class ProductModel implements Model {
 				bean.setFoto(rs.getString("foto"));
 				bean.setTitolo(rs.getString("titolo"));
 				bean.setDisponibilita(rs.getInt("disponibilita"));
-				bean.setPrezzo(rs.getDouble("prezzo"));
+				bean.setPrezzo(rs.getBigDecimal("prezzo"));
 				bean.setProduttore(rs.getString("produttore"));
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setIVA(rs.getInt("IVA"));
@@ -216,7 +216,7 @@ public class ProductModel implements Model {
 				bean.setFoto(rs.getString("foto"));
 				bean.setTitolo(rs.getString("titolo"));
 				bean.setDisponibilita(rs.getInt("disponibilita"));
-				bean.setPrezzo(rs.getDouble("prezzo"));
+				bean.setPrezzo(rs.getBigDecimal("prezzo"));
 				bean.setProduttore(rs.getString("produttore"));
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setIVA(rs.getInt("IVA"));
@@ -276,7 +276,7 @@ public class ProductModel implements Model {
 				bean.setFoto(rs.getString("foto"));
 				bean.setTitolo(rs.getString("titolo"));
 				bean.setDisponibilita(rs.getInt("disponibilita"));
-				bean.setPrezzo(rs.getDouble("prezzo"));
+				bean.setPrezzo(rs.getBigDecimal("prezzo"));
 				bean.setProduttore(rs.getString("produttore"));
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setIVA(rs.getInt("IVA"));
@@ -344,7 +344,7 @@ public class ProductModel implements Model {
 				bean.setFoto(rs.getString("foto"));
 				bean.setTitolo(rs.getString("titolo"));
 				bean.setDisponibilita(rs.getInt("disponibilita"));
-				bean.setPrezzo(rs.getDouble("prezzo"));
+				bean.setPrezzo(rs.getBigDecimal("prezzo"));
 				bean.setProduttore(rs.getString("produttore"));
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setIVA(rs.getInt("IVA"));
@@ -387,7 +387,7 @@ public class ProductModel implements Model {
 				bean.setFoto(rs.getString("foto"));
 				bean.setTitolo(rs.getString("titolo"));
 				bean.setDisponibilita(rs.getInt("disponibilita"));
-				bean.setPrezzo(rs.getDouble("prezzo"));
+				bean.setPrezzo(rs.getBigDecimal("prezzo"));
 				bean.setProduttore(rs.getString("produttore"));
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setIVA(rs.getInt("IVA"));
@@ -429,7 +429,7 @@ public class ProductModel implements Model {
 				bean.setFoto(rs.getString("foto"));
 				bean.setTitolo(rs.getString("titolo"));
 				bean.setDisponibilita(rs.getInt("disponibilita"));
-				bean.setPrezzo(rs.getDouble("prezzo"));
+				bean.setPrezzo(rs.getBigDecimal("prezzo"));
 				bean.setProduttore(rs.getString("produttore"));
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setIVA(rs.getInt("IVA"));
