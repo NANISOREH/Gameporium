@@ -37,8 +37,10 @@
 				style="margin-bottom: 1100px; margin-top: 30px">
 				<c:set var="operationchoice" value='${param["operation"]}'/>
 			
+			<c:choose>
+			<c:when test="${operationchoice== '1'}">
+			
 			<!-- Inserimento nuovo prodotto -->
-			<c:if test="${operationchoice== '1'}">
 				<form action="adminservlet" name="addproductform" method="post" id="reg">				        
 				        <div class="form-group">
 				        	<label for="codProd">Codice prodotto:</label>
@@ -55,11 +57,9 @@
 								    </div>
 								  </div>
 						</div>
-						
-						<div class="hideableforms form-group col-7" id="subCat">
-							
+		
+						<div class="hideableforms form-group col-7" id="subCat">					
 							<div class="hidableforms container" id="subCatGioco">
-								
 								<label for="sceltag">Sottocategoria:</label>
 							    <select class="form-control" id="sceltag" name="sceltag">
 							        <option value="ruolo">Gioco di Ruolo</option>
@@ -74,7 +74,6 @@
 							  	<input type="text" class="form-control" id="durata" name="durata"  >
 
 							</div>
-							
 							 <div class="hidableforms container" id="subCatAccessorio">
 							 	  <label for="sceltaa">Sottocategoria:</label>
 							      <select class="form-control" id="sceltaa"  name="sceltaa">
@@ -83,7 +82,6 @@
 							          <option value="tavolo">Accessorio per Gioco da Tavolo</option>
 							      </select>
 							 </div>
-				         
 				        </div>
 				        	
 						<div class="form-group">
@@ -139,8 +137,28 @@
 				            style="max-width:400px;">Carica Prodotto</button>
 				        </div>
 				    </form>
-			</c:if>
-			<!-- Fine Inserimento nuovo prodotto -->
+				</c:when>
+				
+				<c:when test="${operationchoice== '2'}">
+				<!-- Modifica prodotto -->
+				<form action="singleProduct" name="addproductform" method="post" id="reg">				        
+				        <div class="form-group">
+				        	<label for="codProd">Codice prodotto:</label>
+							<input type="text" class="form-control" id="codProd" name="codProd"  >
+						</div>
+						<div class="form-group">
+				       		<div class="upload-btn-wrapper">
+							  <button class="btn">Cerca Prodotto</button>
+							</div>
+				       </div>
+				</form>
+					
+				<!-- Fine Modifica prodotto -->
+				</c:when>
+				<c:otherwise>
+			   	</c:otherwise>
+			</c:choose>
+
 			
 			</div>
 			<!-- fine colonna centrale -->
