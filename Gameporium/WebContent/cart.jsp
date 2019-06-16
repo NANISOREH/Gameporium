@@ -53,8 +53,6 @@
 		<!-- sistema di colonne -->
 		<div class="row">
 
-			
-
 			<!-- colonna sinistra -->
 			<div
 				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light">
@@ -73,7 +71,7 @@
 
 		      		<div class="row">
 
-		      			<c:set var="offerte" value='${sessionScope["cart"]}'/>
+		      			<c:set var="offerte" value='${sessionScope["cartitems"]}'/>
 
 			      		<c:forEach items="${offerte}" var="item">
 							<%@include file="/WEB-INF/Includes/productcard.jsp"%>
@@ -85,13 +83,11 @@
 
 		      	<!-- fine sezione offerte -->
 
-
+				</div>
 			<!--fine container novità e offerte-->
 
 			</div>
-
 			<!-- fine colonna centrale -->
-
 
 
 			<!-- colonna destra -->
