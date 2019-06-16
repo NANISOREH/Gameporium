@@ -220,7 +220,7 @@
 
 			<!-- colonna destra -->
 			<div
-				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light"
+				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light" id="rightpanel"
 				style="margin-bottom: 300px" style="border-left:1px">
 				<%@include file="/WEB-INF/Includes/rightpanel.jsp"%>
 			</div>

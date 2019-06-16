@@ -13,10 +13,12 @@
             Nel carrello:<br>
             
             <c:set var="cart" value='${sessionScope["cartitems"]}'/>
-
-			<c:forEach items="${cart}" var="item">
-				${item.titolo}<br>
-			</c:forEach>
+			
+			<div id="cartitems">
+				<c:forEach items="${cart}" var="item">
+					${item.titolo}<br>
+				</c:forEach>
+			</div>
       </div>
 	</div>
 
