@@ -111,7 +111,7 @@
 								 	</li>
 								 	
 								 	<li class="list-group-item bg-light">
-									 	<form name="quantityForm" action="cartservlet">
+									 	<form name="quantityForm" action="cartservlet" onkeydown="return event.key != 'Enter';">
 									 		<div class="row">
 									 			<div class="nomeriga col-5">Quantità:
 									 			</div>
@@ -184,12 +184,12 @@
 								 	</li>
 								 	
 								 	<li class="list-group-item bg-light">
-									 	<form name="quantityForm" action="cartservlet">
+									 	<form name="quantityForm" action="cartservlet" onkeydown="return event.key != 'Enter';">
 									 		<div class="row">
 									 			<div class="nomeriga col-5">Quantità:
 									 			</div>
 										 		<div class="col-7">
-										 			<input class="quantInput" type="number" name="quantita" placeholder="1">
+										 			<input class="quantInput" type="number" name="quantita" value="1">
 												</div>
 												<button class="quantButton btn btn-sm btn-primary btn-block text-uppercase" name="acquistabtn" id="acquistabtn" 
 													onclick ="addToCart(document.quantityForm)"

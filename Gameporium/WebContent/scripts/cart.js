@@ -32,20 +32,6 @@ function addToCart(quantityform)
 	
 }
 
-function successAlert()
-{
-	Swal.fire({
-		  title: '<h6>Prodotto inserito nel carrello!</h6>',
-		  toast: true,
-		  type: 'success',
-		  position: 'top',
-		  timer: 2000,
-		  showConfirmButton: false
-		})
-		
-		return;
-}
-
 function failAlert()
 {
 	Swal.fire({
@@ -58,4 +44,16 @@ function failAlert()
 		})
 		
 		return;
+}
+
+function preventEnter()
+{
+	$(document).ready(function() {
+		  $(window).keydown(function(event){
+		    if(event.keyCode == 13) {
+		      event.preventDefault();
+		      return false;
+		    }
+		  });
+		});
 }

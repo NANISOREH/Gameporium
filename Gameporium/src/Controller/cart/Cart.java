@@ -29,4 +29,10 @@ public class Cart {
 	public ArrayList<BeanProduct> getProducts() {
 		return  products;
 	}
+	
+	public void printCart () {
+		for(BeanProduct prod : products) {
+			System.out.println(prod);
+		}
+	}
 }

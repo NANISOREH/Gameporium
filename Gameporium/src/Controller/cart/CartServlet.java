@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 
 import Beans.Bean;
 import Beans.BeanProduct;
-import Beans.Cart;
 import Model.ProductModel;
 
 /**
@@ -41,12 +40,13 @@ public class CartServlet extends HttpServlet {
 			session.setAttribute("cart", cart);
 		}
 		
+		
 		int quant=Integer.parseInt (request.getParameter("quantita"));
 		int id=Integer.parseInt(request.getParameter("codice"));
 		
 		try {
 				BeanProduct b = model.doRetrieveByKey(id);
-				for (int i=0; i<quant-1; i++)
+				for (int i=0; i<quant; i++)
 				{
 					cart.addProduct(b);
 				}
@@ -59,10 +59,8 @@ public class CartServlet extends HttpServlet {
 		}
 		
 		ArrayList<BeanProduct> bp = cart.getProducts();
-		for (BeanProduct temp : bp)
-		{
-			System.out.println(temp.toString());
-		}
+		cart.printCart();
+		session.setAttribute("cartitems", bp);
 		
 		response.setStatus(200);
 	}
