@@ -3,11 +3,11 @@ package Controller.cart;
 import Beans.*;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 public class Cart {
 
-	private ArrayList<BeanProduct> products;
+	private Collection<BeanProduct> products;
 	
 	public Cart() {
 		products = new ArrayList<BeanProduct>();
@@ -26,7 +26,7 @@ public class Cart {
 		}
  	}
 	
-	public ArrayList<BeanProduct> getProducts() {
+	public Collection<BeanProduct> getProducts() {
 		return  products;
 	}
 	

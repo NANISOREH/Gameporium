@@ -1,19 +1,14 @@
 package Controller.cart;
 
-import java.awt.List;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Collection;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Beans.Bean;
 import Beans.BeanProduct;
 import Model.ProductModel;
 
@@ -58,8 +53,7 @@ public class CartServlet extends HttpServlet {
 			System.out.println("Error:" + e.getMessage());
 		}
 		
-		ArrayList<BeanProduct> bp = cart.getProducts();
-		cart.printCart();
+		Collection<BeanProduct> bp = cart.getProducts();
 		session.setAttribute("cartitems", bp);
 		
 		response.setStatus(200);
