@@ -19,6 +19,7 @@ function addToCart(quantityform)
 	
 	$.get('cartservlet', {"quantita": q, "codice": c}, 
 			function(){
+				$('#cartitems').load(' #cartitems');
 				Swal.fire({
 				  title: '<h6>Prodotto inserito nel carrello!</h6>',
 				  toast: true,
@@ -29,7 +30,6 @@ function addToCart(quantityform)
 				});
 			}, 
 			failAlert());
-	
 }
 
 function failAlert()
@@ -44,16 +44,4 @@ function failAlert()
 		})
 		
 		return;
-}
-
-function preventEnter()
-{
-	$(document).ready(function() {
-		  $(window).keydown(function(event){
-		    if(event.keyCode == 13) {
-		      event.preventDefault();
-		      return false;
-		    }
-		  });
-		});
 }
