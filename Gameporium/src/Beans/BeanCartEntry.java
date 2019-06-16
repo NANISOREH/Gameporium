@@ -11,6 +11,12 @@ public class BeanCartEntry  extends Bean implements Serializable
 	BeanProduct product;
 	int quantita;
 	
+	public BeanCartEntry(BeanProduct bp, int q)
+	{
+		quantita=q;
+		product=bp;
+	}
+	
 	public BeanProduct getProduct() {
 		return product;
 	}
@@ -27,6 +33,11 @@ public class BeanCartEntry  extends Bean implements Serializable
 	}
 	public void setQuantita(int quantita) {
 		this.quantita = quantita;
+	}
+	
+	public int getCodP()
+	{
+		return product.getCodiceProdotto();
 	}
 
 }
