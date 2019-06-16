@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Beans.BeanCartEntry;
 import Beans.BeanProduct;
 import Model.ProductModel;
 
@@ -41,11 +42,15 @@ public class CartServlet extends HttpServlet {
 		
 		try {
 				BeanProduct b = model.doRetrieveByKey(id);
-				for (int i=0; i<quant; i++)
+				BeanCartEntry bce=new BeanCartEntry(b,quant);
+				if(b.getDisponibilita()>=quant)//popup e va decrementata la disponibilità!
 				{
-					cart.addProduct(b);
+				 if(cart.cartContains(bce)) {
+					        System.out.println("già c sta bucchi, ora sommo "+bce.getQuantita()+"a "+quant);
+					        cart.setQuant(bce, quant);
+				 						    }
+				 else cart.addProduct(bce);
 				}
-				
 				session.setAttribute("cart", cart);
 			}
 		
@@ -53,9 +58,10 @@ public class CartServlet extends HttpServlet {
 			System.out.println("Error:" + e.getMessage());
 		}
 		
-		Collection<BeanProduct> bp = cart.getProducts();
-		session.setAttribute("cartitems", bp);
-		
+		Collection<BeanCartEntry> bce = cart.getProducts();
+		session.setAttribute("cartitems", bce);
+		cart.printCart();
+
 		response.setStatus(200);
 	}
 
