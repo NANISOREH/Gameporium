@@ -14,6 +14,6 @@ SEZIONI EXTRA (se avanza tempo)
 - Preordini
 
 TO DO LIST
-- Sistemare le immagini in home (TUTTE)
-- Implementare un datepicker in register.jsp e correggere il model per aggiornare il database con la data di nascita degli utenti.
+- Sistemare le immagini
+- Implementare un datepicker in register.jsp e correggere il model per aggiornare il database con la data di nascita degli utenti
 
