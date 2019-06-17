@@ -450,5 +450,33 @@ public class ProductModel implements Model {
 		return product;
 	}
 	
+	public synchronized void doUpdate(String column, int code, int quant) throws SQLException
+	{
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		String selectSQL = "UPDATE "+ ProductModel.TABLE_NAME + " as p SET "+column+"="+quant+" WHERE p.codiceProdotto=?";
+
+		try {
+				connection = ds.getConnection();
+				preparedStatement = connection.prepareStatement(selectSQL);
+				preparedStatement.setInt(1, code);
+
+				preparedStatement.executeUpdate();
+				connection.commit();
+		    }
+
+	    finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+	    		}
+	}
+		
+	
 	
 }
