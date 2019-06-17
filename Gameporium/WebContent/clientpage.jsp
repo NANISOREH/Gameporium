@@ -19,6 +19,7 @@
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/Includes/header.jsp"%>
+<link rel="stylesheet" href="pagestyle.css" type="text/css">
 </head>
 
 <body style="background-color: #343a40">
@@ -90,32 +91,45 @@
 			<c:set var="cartprods" value='${sessionScope["cartitems"]}'/>
 		      			
 		      			<c:forEach items="${cartprods}" var="item" begin="0" end="8">
-								<div class="col-lg-4 col-xs-12 bg-light">
-	
-		<div class="productcard card d-block mx-auto">
-		  
-		  <div class="prodimg d-block mx-auto">
-		  	<img class="card-img-top" src="images/${item.product.foto}" alt="Card image cap">
-		  </div>
-		  
-		  <div class="pccardbody card-body">
-		    
-		    <div class="card-title">
-		    	<a href="singleProduct?selProd=${item.product.codiceProdotto}&selCat=${item.product.codCategoria}">${item.product.titolo}</a>
-		    </div>
-		    
-		    <div class="price">
- 				${item.product.prezzo}€
-			</div>
-			
-			 <div class="quantity">
- 				Quantità: ${item.quantita}
-			</div>
-		  
-		  </div>
-		</div>
-	
-  	</div>
+								<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mt-3">
+            <div class="card">
+                <div class="card-horizontal">
+                    <div class="img-square-wrapper">
+                        <img class="card-img" src="images/${item.product.foto }" alt="Card image cap" >
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">${item.product.titolo }</h4>
+                        <p class="card-text">Quantità: <span class="a-dropdown-container">
+                            	<label class="a-native-dropdown">
+                            <span class="sc-offscreen-label" aria-label="Quantità">
+                            </span>
+                            </label>
+                            <select name="quantity" id="cartquant" data-a-touch-header="Quantità" tabindex="-1" class="a-native-dropdown a-button-span8">
+                              <option value="" selected disabled >${item.quantita }</option>
+                               <option> 1  </option>
+                                 <option> 2 </option>
+                                   <option> 3  </option>
+                                     <option> 4  </option>
+                                       <option> 5  </option>
+                                         <option> 6  </option>
+                                           <option> 7  </option>
+                                             <option> 8  </option>
+                                               <option> 9  </option>
+                                                 <option> 10+  </option>
+                            </select>
+                            	
+                                    </span></p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Rimuovi</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 						</c:forEach>
 			
 			</div>

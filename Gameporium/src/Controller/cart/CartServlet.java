@@ -18,8 +18,6 @@ import Model.ProductModel;
  */
 public class CartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-
 	static ProductModel model= new ProductModel();
 
 	
@@ -43,10 +41,10 @@ public class CartServlet extends HttpServlet {
 		try {
 				BeanProduct b = model.doRetrieveByKey(id);
 				BeanCartEntry bce=new BeanCartEntry(b,quant);
-				if(b.getDisponibilita()>=quant)//popup e va decrementata la disponibilità!
+				if(b.getDisponibilita()>=quant)//popup
 				{
+				 model.doUpdate("disponibilita",bce.getCodP(),b.getDisponibilita()-quant);
 				 if(cart.cartContains(bce)) {
-					        System.out.println("già c sta bucchi, ora sommo "+bce.getQuantita()+"a "+quant);
 					        cart.setQuant(bce, quant);
 				 						    }
 				 else cart.addProduct(bce);
@@ -60,7 +58,7 @@ public class CartServlet extends HttpServlet {
 		
 		Collection<BeanCartEntry> bce = cart.getProducts();
 		session.setAttribute("cartitems", bce);
-		cart.printCart();
+		//cart.printCart();
 
 		response.setStatus(200);
 	}
