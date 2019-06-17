@@ -96,7 +96,7 @@
         <div class="col-12 mt-3">
             <div class="card">
                 <div class="card-horizontal">
-                    <div class="img-square-wrapper">
+                    <div class="img-square-wrapper" style="max-width:340px;">
                         <img class="card-img" src="images/${item.product.foto }" alt="Card image cap" >
                     </div>
                     <div class="card-body">
