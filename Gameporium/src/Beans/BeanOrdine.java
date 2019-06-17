@@ -1,12 +1,13 @@
 package Beans;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 public class BeanOrdine extends Bean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	int codiceOrdine, codiceSpedizione, codicePagamento;
 	String indirizzoSpedizione, tipoSpedizione,metodo, indirizzoFatturazione;
-	java.sql.Date dataSpedizione;
+	LocalDate dataSpedizione;
 	double importo;
 	
 	public BeanOrdine()
@@ -16,7 +17,7 @@ public class BeanOrdine extends Bean implements Serializable {
 		codicePagamento=-1;
 		indirizzoSpedizione="";
 		tipoSpedizione="";
-		dataSpedizione=null;
+		dataSpedizione=LocalDate.now();
 		importo=-1;
 		metodo="";
 		indirizzoFatturazione="";
@@ -86,11 +87,11 @@ public class BeanOrdine extends Bean implements Serializable {
 		this.tipoSpedizione = newTipoSpedizione;
 	}
 
-	public java.sql.Date getDataSpedizione() {
+	public LocalDate getDataSpedizione() {
 		return dataSpedizione;
 	}
 
-	public void setDataSpedizione(java.sql.Date newDataSpedizione) {
+	public void setDataSpedizione(LocalDate newDataSpedizione) {
 		this.dataSpedizione = newDataSpedizione;
 	}
 
