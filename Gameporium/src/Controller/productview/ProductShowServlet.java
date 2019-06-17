@@ -26,6 +26,23 @@ public class ProductShowServlet extends HttpServlet {
 			throws ServletException, IOException {
 	
 		HttpSession session = request.getSession();
+		
+		//home
+		if (request.getAttribute("home") != null)
+		{
+			try {
+				Collection <Bean> bpo= model.doRetrieveByBool("offerta",true);
+				request.setAttribute("offerteHome", bpo);
+				Collection <Bean> bpn= model.doRetrieveByBool("novita",true);
+				request.setAttribute("novitaHome", bpn);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			return;
+		}
+		//home
+	
 		Collection <Bean> bpr;
 		
 		String cat=request.getParameter("categoria");
