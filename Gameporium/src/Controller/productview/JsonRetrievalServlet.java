@@ -37,7 +37,7 @@ public class JsonRetrievalServlet extends HttpServlet {
 		BeanProduct bp= new BeanProduct();
 		BeanGioco bg=new BeanGioco();
 		BeanAccessorio ba=new BeanAccessorio();
-		String codProd= request.getParameter("codiceProdotto");
+		String codProd= request.getParameter("codProdotto");
 		String jsonBean = null;
 		try {
 			bp =model.doRetrieveByKey(Integer.parseInt(codProd));
