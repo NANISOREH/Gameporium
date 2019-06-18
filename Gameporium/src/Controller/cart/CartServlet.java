@@ -1,6 +1,7 @@
 package Controller.cart;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.Collection;
 import javax.servlet.ServletException;
@@ -16,7 +17,7 @@ import Model.ProductModel;
 /**
  * Servlet implementation class ProductControl
  */
-public class CartServlet extends HttpServlet {
+public class CartServlet extends HttpServlet implements Serializable {
 	private static final long serialVersionUID = 1L;
 	static ProductModel model= new ProductModel();
 
@@ -61,6 +62,7 @@ public class CartServlet extends HttpServlet {
 
 		response.setStatus(200);
 	}
+	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
