@@ -43,7 +43,6 @@ public class CartServlet extends HttpServlet {
 				BeanCartEntry bce=new BeanCartEntry(b,quant);
 				if(b.getDisponibilita()>=quant)//popup
 				{
-				 model.doUpdate("disponibilita",bce.getCodP(),b.getDisponibilita()-quant);
 				 if(cart.cartContains(bce)) {
 					        cart.setQuant(bce, quant);
 				 						    }

@@ -50,36 +50,75 @@
 <body>
 
 	
-	<c:set var="loginFail" value='${requestScope["loginFail"]}' />
+	<c:set var="loginFail" value='${param["loginFail"]}' />
 	<c:set var="registered" value='${requestScope["registered"]}' />	
 	<c:set var="accessDone" value='${sessionScope["accessDone"]}' />
+	<c:set var="loginSuccess" value='${param["loginSuccess"]}' />
 	<c:set var="currentUser" value='${sessionScope["currentSessionUser"]}' />
+	<c:set var="logoutDone" value='${requestScope["logoutDone"]}' />
 			
 	<c:if test="${loginFail}">
-		<div class="alert alert-warning alert-dismissible fade-in" role="alert">
+		<div class="popup alert alert-warning alert-dismissible fade-in" role="alert">
 		  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		  <strong>Attenzione,</strong> dati di login errati, riprovare!
 		</div>
 	</c:if>
+	
+	<c:if test="${logoutDone}">
+		<div class="popup alert alert-success alert-dismissible fade-in" role="success">
+		  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		  Logout effettuato correttamente, alla prossima!
+		</div>
+	</c:if>
+	
+	<c:if test="${loginSuccess}">
+		<div class="popup alert alert-success alert-dismissible fade-in" role="success">
+		  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		  Sei loggato come <c:out value="${currentUser.username}"/>
+		</div>
+	</c:if>
 		
 	<c:if test="${registered}">
-		<div class="alert alert-success alert-dismissible fade-in" role="alert">
+		<div class="popup alert alert-success alert-dismissible fade-in" role="alert">
 		  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		  <strong>Complimenti!</strong> Sei registrato a Gameporium, effettua l'accesso usando il tasto Login.
 		</div>
 	</c:if>
+	
+		<script type="text/javascript">
+			window.setTimeout(function() {
+			    $(".popup").fadeTo(300, 0).slideUp(300, function(){
+			        $(this).remove(); 
+			    });
+			}, 4000);
+		</script>
 
 	<!-- navbar -->
-	<nav class="navbar navbar-dark navbar-expand-sm"
+	<nav class="navbar navbar-dark navbar-expand-lg"
 		style="margin-top: 0px">
 		<a class="navbar-brand text-white-80" href="/Gameporium/home.jsp"><img
 			src="images/LOGOPLACEH.png" class="rounded mx-auto d-block"
 			alt="Responsive image"
 			style="margin-bottom: 0; max-width: 200px; max-height: 50%"></a>
+	
+	<!-- 				ricerca mobile -->
+			<div class = "nav-item d-block d-lg-none mx-auto" style = "margin-bottom: 30px;">
+				<form action="productselection.jsp" method="post"
+					class="form-inline md-form form-sm active-cyan active-cyan-2 mt-2">
+	      			<button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2" type="submit">
+   						<i class="fas fa-search" aria-hidden="true"></i>
+   					</button>
+					<input class="form-control" type="text" name="searchtxt" 
+					aria-label="Search" id="searchbox" placeholder="Cerca un prodotto">
+				</form> 
+			</div>
+<!-- 				ricerca mobile -->
+		
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#collapsibleNavbar">
 			<span class="navbar-toggler-icon"></span>
 		</button>
+		
 
 		<div class="collapse navbar-collapse" id="collapsibleNavbar">
 			<ul class="navbar-nav">
@@ -117,36 +156,36 @@
 						<a class="dropdown-item" href="/Gameporium/events.jsp">Mostra tutti gli eventi</a>
 					</div>
 				</li>
-					
-				
 				
 				<c:if test="${accessDone}">
-					<li class="nav-item d-block d-sm-none"
+					<li class="nav-item d-block d-lg-none"
 						style="border-top: 1px solid #000000"><a class="nav-link"
 						href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Area Utente</a>
 					</li>
 				</c:if>
 	
 				<c:if test="${accessDone != true}">
-					<li class="nav-item d-block d-sm-none"
+					<li class="nav-item d-block d-lg-none"
 						style="border-top: 1px solid #000000"><a class="nav-link"
 						href="/Gameporium/mobilelogin.jsp" id="navbarDropdown" role="button">Accedi</a>
 					</li>
-					<li class="nav-item d-block d-sm-none"><a class="nav-link"
+					<li class="nav-item d-block d-lg-none"><a class="nav-link"
 						href="/Gameporium/register.jsp" id="navbarDropdown" role="button">Registrati</a>
 					</li>
 				</c:if>
 				
-				<li class="nav-item d-block d-sm-none"><a class="nav-link"
+				<li class="nav-item d-block d-lg-none"><a class="nav-link"
 					href="cart.jsp" id="navbarDropdown" role="button" data-toggle="dropdown">Il
 						tuo carrello</a></li>
 			</ul>
 		</div>
 
 
-		<div class="navbar-collapse collapse w-100 order-3 dual-collapse2 d-none d-md-block"
+		<div class="navbar-collapse collapse w-100 order-3 dual-collapse2 d-none d-lg-block"
 			id="collapsibleNavbarRight">
-			<ul class="navbar-nav ml-auto d-none d-md-block">
+			
+<!-- 			ricerca desktop -->
+			<ul class="navbar-nav ml-auto d-none d-lg-block">
 				<li class="nav-item mr-auto" style="margin-bottom: 5px;">
 					<form action="productselection.jsp" method="post"
 						class="form-inline md-form form-sm active-cyan active-cyan-2 mt-2">
@@ -158,11 +197,12 @@
 					</form> 
 				</li> 
 			</ul>
+<!-- 			ricerca desktop -->
 			
 			
 			<c:if test="${accessDone == null}">
 				<button type="button" id="dropdownMenu1" data-toggle="dropdown"
-					class="btn btn-outline-secondary dropdown-toggle">
+					class="btn btn-outline-secondary dropdown-toggle" onclick="validateLogin(document.loginform.pw, document.loginform.un)">
 					Accedi o registrati <span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu dropdown-menu-right mt-2">
