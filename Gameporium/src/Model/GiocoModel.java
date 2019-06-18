@@ -89,7 +89,7 @@ public class GiocoModel implements Model {
 				bean.setDurata(rs.getString("durata"));
 				bean.setEtaConsigliata(rs.getInt("etaConsigliata"));
 				bean.setNumeroGiocatori(rs.getString("numGiocatori"));
-				bean.setCodCategoria(rs.getString("codiceCategoria"));
+				bean.setCodCategoria(rs.getInt("codiceCategoria"));
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setDisponibilita(rs.getInt("disponibilita"));
 				bean.setFoto(rs.getString("foto"));
@@ -146,7 +146,7 @@ public class GiocoModel implements Model {
 				bean.setDurata(rs.getString("durata"));
 				bean.setEtaConsigliata(rs.getInt("etaConsigliata"));
 				bean.setNumeroGiocatori(rs.getString("numGiocatori"));
-				bean.setCodCategoria(rs.getString("codiceCategoria"));
+				bean.setCodCategoria(rs.getInt("codiceCategoria"));
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setDisponibilita(rs.getInt("disponibilita"));
 				bean.setFoto(rs.getString("foto"));

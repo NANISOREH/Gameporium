@@ -43,8 +43,8 @@
 			<!-- Inserimento nuovo prodotto -->
 				<form action="adminservlet" name="addproductform" method="post" id="reg">				        
 				        <div class="form-group">
-				        	<label for="codProd">Codice prodotto:</label>
-							<input type="text" class="form-control" id="codProd" name="codProd"  >
+				        	<label for="codiceProdotto">Codice prodotto:</label>
+							<input type="text" class="form-control" id="codiceProdotto" name="codiceProdotto"  >
 							<label for="codCat">Categoria:</label>
 								  <div id="prova">
 								    <div class="form-check form-check-inline categoria">
@@ -62,9 +62,9 @@
 							<div class="hidableforms container" id="subCatGioco">
 								<label for="sceltag">Sottocategoria:</label>
 							    <select class="form-control" id="sceltag" name="sceltag">
-							        <option value="ruolo">Gioco di Ruolo</option>
-							        <option value="carte">Gioco di Carte</option>
-							        <option value="tavolo">Gioco da Tavolo</option>
+							        <option value="Gioco di ruolo">Gioco di Ruolo</option>
+							        <option value="Gioco di carte">Gioco di Carte</option>
+							        <option value="Gioco da tavolo">Gioco da Tavolo</option>
 							    </select>
 							  	<label for="eta">Età:</label>
 							  	<input type="text" class="form-control" id="eta" name="eta"  >
@@ -77,9 +77,9 @@
 							 <div class="hidableforms container" id="subCatAccessorio">
 							 	  <label for="sceltaa">Sottocategoria:</label>
 							      <select class="form-control" id="sceltaa"  name="sceltaa">
-							          <option value="ruolo">Accessorio per Gioco di Ruolo</option>
-							          <option value="carte">Accessorio per Gioco di Carte</option>
-							          <option value="tavolo">Accessorio per Gioco da Tavolo</option>
+							          <option value="Accessori per giochi di ruolo">Accessorio per Gioco di Ruolo</option>
+							          <option value="Accessori per giochi di carte">Accessorio per Gioco di Carte</option>
+							          <option value="Accessori per giochi da tavolo">Accessorio per Gioco da Tavolo</option>
 							      </select>
 							 </div>
 				        </div>
@@ -111,7 +111,7 @@
 
 						<div class="form-group">
 				        	<label for="iva">IVA:</label>
-				        	<input type="text" class="form-control" name="iva" style="width:80px"  >
+				        	<input type="text" class="form-control" name="IVA" style="width:80px"  >
 				        </div>
 				        
 				        <div class="form-group">
@@ -141,18 +141,120 @@
 				
 				<c:when test="${operationchoice== '2'}">
 				<!-- Modifica prodotto -->
-				<form action="singleProduct" name="addproductform" method="post" id="reg">				        
+				<form id="modproductform">				        
 				        <div class="form-group">
-				        	<label for="codProd">Codice prodotto:</label>
-							<input type="text" class="form-control" id="codProd" name="codProd"  >
+				        	<label for="codProdotto">Codice prodotto:</label>
+							<input type="text" class="form-control" id="codProdotto" name="codProdotto">
 						</div>
 						<div class="form-group">
 				       		<div class="upload-btn-wrapper">
-							  <button class="btn">Cerca Prodotto</button>
+							  <button type="submit" class="btn" id="cercaCRUD">Cerca Prodotto</button>
 							</div>
 				       </div>
 				</form>
+				
+				
+				<form action="adminservlet" name="modproductformhidden" method="post" id="modproductformhidden">				        
+				     <div class="form-group" id="modproductformhidden">
+				        <div class="form-group" id="codiciProdotto">
+				        	<label for="codiceProdotto">Codice prodotto:</label>
+							<input type="text" class="form-control" id="codiceProdotto" name="codiceProdotto" readonly="readonly"  >
+							<label for="codCat">Categoria:</label>
+								  <div id="prova">
+								    <div class="form-check form-check-inline categoria">
+								      <input name="nomeCategoria" type="radio" id="gioco" value="Gioco" disabled="disabled" onclick="gameoraccessory(id)">
+								      <label for="gioco">Gioco</label>
+								    </div>
+								    <div class="form-check form-check-inline categoria">
+								      <input name="nomeCategoria" type="radio" id="accessorio" value="Accessorio" disabled="disabled" onclick="gameoraccessory(id)">
+								      <label for="accessorio">Accessorio</label>
+								    </div>
+								  </div>
+						</div>
 					
+						<div class="form-group col-7" id="subCat">					
+							<div class="hidableforms container" id="subCatGioco">
+								<label for="sceltag">Sottocategoria:</label>
+							    <select class="form-control" id="descrizioneCategoriaGiochi" name="descrizioneCategoriaGiochi" disabled="disabled">
+							        <option value="Gioco di ruolo">Gioco di Ruolo</option>
+							        <option value="Gioco di carte">Gioco di Carte</option>
+							        <option value="Gioco da tavolo">Gioco da Tavolo</option>
+							    </select>
+							  	<label for="eta">Età:</label>
+							  	<input type="text"  class="form-control" id="eta" name="eta" readonly="readonly" >
+								<label for="ngiocatori">Numero giocatori:</label>
+							  	<input type="text" class="form-control" id="numeroGiocatori" name="numeroGiocatori" readonly="readonly" >
+							  	<label for="durata">Durata:</label>
+							  	<input type="text" class="form-control" id="durata" name="durata" readonly="readonly" >
+
+							</div>
+							 <div class="hidableforms container" id="subCatAccessorio">
+							 	  <label for="sceltaa">Sottocategoria:</label>
+							      <select class="form-control" id="descrizioneCategoriaAccessori"  name="descrizioneCategoriaAccessi" disabled="disabled">
+							          <option value="Accessori per giochi di ruolo">Accessorio per Gioco di Ruolo</option>
+							          <option value="Accessori per giochi di carte">Accessorio per Gioco di Carte</option>
+							          <option value="Accessori per giochi da tavolo">Accessorio per Gioco da Tavolo</option>
+							      </select>
+							 </div>
+				        </div>
+				        	
+						<div class="form-group">
+							<label for="titolo">Titolo:</label>
+				        	<input type="text" class="form-control" id="titolo" name="titolo" readonly="readonly" >
+				        </div>
+				        
+						<div class="form-group">
+							<label for="produttore">Produttore:</label>
+				            <input type="text" class="form-control"  id="produttore" name="produttore" readonly="readonly" >
+				        </div>
+				        
+						<div class="form-group">
+							<label for="descrizione">Descrizione:</label>
+				            <textarea id="descrizione" class="form-control" name="descrizione" style="height: 100px" readonly="readonly"></textarea>
+				        </div>
+				                
+				        <div class="form-group">
+							<label for="quantita">Disponibilità:</label>
+				            <input type="text" class="form-control" name="disponibilita" id="disponibilita" style="width:80px"  readonly="readonly">
+				        </div>
+				        
+						<div class="form-group">
+				        	<label for="prezzo">Prezzo:</label>
+				        	<input type="text" class="form-control" id="prezzo" name="prezzo" style="width:80px" readonly="readonly" >
+				        </div>
+
+						<div class="form-group">
+				        	<label for="iva">IVA:</label>
+				        	<input type="text" class="form-control" id="IVA" name="IVA" style="width:80px"  readonly="readonly">
+				        </div>
+				        
+				        <div class="form-group">
+					        <label class="container">Offerta
+							  <input type="checkbox" value="true" id="offerta" name="offerta" disabled="disabled">
+							  <span class="checkmark"></span>
+							</label>
+							<label class="container">Novità
+							  <input type="checkbox" value="true" id="novita" name="novita" disabled="disabled">
+							  <span class="checkmark"></span>
+							</label>
+				        </div>
+				       
+				       <div class="form-group">
+				        	<label for="iva">Foto:</label>
+				        	<input type="text" class="form-control" id="foto" name="foto" readonly="readonly" >
+				        </div>
+				       
+						<div class="form-group" style="float: center">
+				            <button type="submit" class="btn btn-success btn-lg btn-block" onclick="enablemod(modproductformhidden)" 
+				            style="max-width:400px;">Modifica Prodotto</button>
+				        </div>
+				        <div class="form-group" style="float: center">
+				            <button type="submit" class="btn btn-success btn-lg btn-block" id="modbtn" disabled="disabled" 
+				            style="max-width:400px;">Salva Modifiche</button>
+				        </div>
+				   		</div>
+				    </form>
+				
 				<!-- Fine Modifica prodotto -->
 				</c:when>
 				<c:otherwise>

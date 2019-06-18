@@ -32,14 +32,17 @@ public class adminServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String op=request.getParameter("operation");
+		System.out.println(op);
+		
 		BeanProduct p =new BeanProduct();
-		int codP=Integer.parseInt(request.getParameter("codProd"));
+		int codP=Integer.parseInt(request.getParameter("codiceProdotto"));
 		String titolo=request.getParameter("titolo");
 		String produttore=request.getParameter("produttore");
 		String descrizione=request.getParameter("descrizione");
 		String prezzo=request.getParameter("prezzo");
 		String quantita=request.getParameter("quantita");
-		String iva=request.getParameter("iva");
+		String iva=request.getParameter("IVA");
 		String novita=request.getParameter("novita");
 		String offerta=request.getParameter("offerta");
 		String foto=request.getParameter("foto");
@@ -56,26 +59,27 @@ public class adminServlet extends HttpServlet {
 		p.setTitolo(titolo);
 		p.setFoto(foto);
 		System.out.println(p.toString());
-		
-		String nGiocatori=request.getParameter("ngiocatori");
-		String eta=request.getParameter("eta");
-		String durata=request.getParameter("durata");
 
 		
 		String nomeCat=request.getParameter("categoria");
 		if (nomeCat.equalsIgnoreCase("Gioco")) {
 			p.setCodCategoria(1);
-			String desCat=request.getParameter("sceltag");
+		
 			BeanGioco g=new BeanGioco();
+			String nGiocatori=request.getParameter("ngiocatori");
+			String eta=request.getParameter("eta");
+			String durata=request.getParameter("durata");
+			String desCat=request.getParameter("sceltag");
+			
+		
 			g.setNomeCategoria(nomeCat);
 			g.setCodiceProdotto(codP);
 			g.setDescrizioneCategoria(desCat);
 			g.setDurata(durata);
 			g.setNumeroGiocatori(nGiocatori);
-			System.out.println(g.toString());
 			g.setEtaConsigliata(Integer.parseInt(eta));
-
 			System.out.println(g.toString());
+			
 			try {
 				model.doSave(p);
 				modelg.doSave(g);
@@ -86,12 +90,17 @@ public class adminServlet extends HttpServlet {
 		}
 		else if(nomeCat.equalsIgnoreCase("Accessorio")) {
 			p.setCodCategoria(2);
+			
 			BeanAccessorio a=new BeanAccessorio();
+			
 			String desCat=request.getParameter("sceltaa");
 			a.setDescrizioneCategoria(desCat);
+			a.setCodiceProdotto(codP);
+			a.setNomeCategoria(nomeCat);
 			try {
 				model.doSave(p);
 				modela.doSave(a);
+				System.out.println(a.toString());
 			}
 			catch (SQLException e) {
 				e.printStackTrace();

@@ -5,9 +5,10 @@ import java.math.BigDecimal;
 
 public class BeanGioco extends Bean implements Serializable{
 	private static final long serialVersionUID = 1L;
-	int codiceProdotto, etaConsigliata, disponibilita,IVA;
+	int codiceProdotto, eta, disponibilita,IVA;
 	BigDecimal prezzo;
-	String nomeCategoria, descrizioneCategoria,titolo,descrizione,foto,produttore, durata, numeroGiocatori, codCategoria;
+	String nomeCategoria, descrizioneCategoria,titolo,descrizione,foto,produttore, durata, numeroGiocatori;
+	int codCategoria;
 	boolean offerta,novita;
 
 	public int getDisponibilita() {
@@ -18,12 +19,12 @@ public class BeanGioco extends Bean implements Serializable{
 		this.disponibilita = disponibilita;
 	}
 
-	public String getCodCategoria() {
+	public int getCodCategoria() {
 		return codCategoria;
 	}
 
-	public void setCodCategoria(String codCategoria) {
-		this.codCategoria = codCategoria;
+	public void setCodCategoria(int i) {
+		this.codCategoria = i;
 	}
 
 	public int getIVA() {
@@ -94,7 +95,7 @@ public class BeanGioco extends Bean implements Serializable{
 	{
 		codiceProdotto=-1;
 		disponibilita=0;
-		codCategoria="";
+		codCategoria=0;
 		prezzo=null;
 		titolo="";
 		descrizione="";
@@ -104,7 +105,7 @@ public class BeanGioco extends Bean implements Serializable{
 		offerta=false;
 		novita=false;
 		numeroGiocatori="-1";
-		etaConsigliata=-1;
+		eta=-1;
 		nomeCategoria="";
 		descrizioneCategoria="";
 		durata=null;
@@ -127,11 +128,11 @@ public class BeanGioco extends Bean implements Serializable{
 	}
 
 	public int getEtaConsigliata() {
-		return etaConsigliata;
+		return eta;
 	}
 
 	public void setEtaConsigliata(int newEtaConsigliata) {
-		this.etaConsigliata = newEtaConsigliata;
+		this.eta = newEtaConsigliata;
 	}
 
 	public String getNomeCategoria() {
@@ -161,7 +162,7 @@ public class BeanGioco extends Bean implements Serializable{
 	@Override
 	public String toString() {
 		return "BeanGioco [codiceProdotto=" + codiceProdotto + ", numeroGiocatori=" + numeroGiocatori
-				+ ", etaConsigliata=" + etaConsigliata + ", nomeCategoria=" + nomeCategoria + ", descrizioneCategoria="
+				+ ", etaConsigliata=" + eta + ", nomeCategoria=" + nomeCategoria + ", descrizioneCategoria="
 				+ descrizioneCategoria + ", durata=" + durata + "]";
 	}
 	
