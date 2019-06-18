@@ -97,10 +97,11 @@
 		        	<!-- Inizio iterazione cards-->
 
 		      		<div class="row">
+		      			<c:set var="home" scope="request" value="true"/>
 
-		      			<jsp:include page="/productHome"/>
+ 		      			<jsp:include page="/productShow"/> 
 
-		      			<c:set var="offerte" value='${sessionScope["listaOfferta"]}'/>
+		      			<c:set var="offerte" value='${requestScope["offerteHome"]}'/>
 
 			      		<c:forEach items="${offerte}" var="item" begin="0" end="8">
 							<%@include file="/WEB-INF/Includes/productcard.jsp"%>
@@ -126,9 +127,7 @@
 
 		      		<div class="row">
 
-		      			<jsp:include page="/productHome"/>
-
-		      			<c:set var="novita" value='${sessionScope["listaNovita"]}'/>
+		      			<c:set var="novita" value='${requestScope["novitaHome"]}'/>
 
 			      		<c:forEach items="${novita}" var="item" begin="0" end="8">
 							<%@include file="/WEB-INF/Includes/productcard.jsp"%>

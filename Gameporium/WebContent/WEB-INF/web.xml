@@ -10,10 +10,9 @@
     <res-type>javax.sql.DataSource</res-type>
     <res-auth>Container</res-auth>
   </resource-ref>
-  <servlet>
-    <servlet-name>HomeProductServlet</servlet-name>
-    <servlet-class>Controller.productview.HomeProductServlet</servlet-class>
-  </servlet>
+ <session-config>
+    <session-timeout>1000</session-timeout>
+</session-config>
   <servlet>
     <servlet-name>SingleProductServlet</servlet-name>
     <servlet-class>Controller.productview.SingleProductServlet</servlet-class>
@@ -58,10 +57,6 @@
     <servlet-name>JsonRetrievalServlet</servlet-name>
     <servlet-class>Controller.productview.JsonRetrievalServlet</servlet-class>
   </servlet>
-  <servlet-mapping>
-    <servlet-name>HomeProductServlet</servlet-name>
-    <url-pattern>/productHome</url-pattern>
-  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>SingleProductServlet</servlet-name>
     <url-pattern>/singleProduct</url-pattern>

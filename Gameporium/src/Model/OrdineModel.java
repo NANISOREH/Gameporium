@@ -2,6 +2,7 @@ package Model;
 import Beans.Bean;
 import Beans.BeanOrdine;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -47,7 +48,7 @@ public class OrdineModel implements Model {
 			preparedStatement.setInt(1, o.getCodiceOrdine());
 			preparedStatement.setString(2, o.getIndirizzoSpedizione());
 			preparedStatement.setString(3, o.getTipoSpedizione());
-			preparedStatement.setDate(4, o.getDataSpedizione());
+			preparedStatement.setDate(4, Date.valueOf(o.getDataSpedizione()));
 			preparedStatement.setInt(6, o.getCodiceSpedizione());
 			preparedStatement.setInt(7, o.getCodicePagamento());
 			preparedStatement.setDouble(8, o.getImporto());
@@ -89,7 +90,7 @@ public class OrdineModel implements Model {
 				bean.setCodiceOrdine(rs.getInt("codiceOrdine"));
 				bean.setIndirizzoSpedizione(rs.getString("indirizzoSpedizione"));
 				bean.setTipoSpedizione(rs.getString("tipoSpedizione"));
-				bean.setDataSpedizione(rs.getDate("dataSpedizione"));
+				bean.setDataSpedizione(rs.getDate("dataSpedizione").toLocalDate());
 				bean.setCodiceSpedizione(rs.getInt("codiceSpedizione"));
 				bean.setCodicePagamento(rs.getInt("codicePagamento"));
 				bean.setImporto(rs.getDouble("importo"));
@@ -164,7 +165,7 @@ public class OrdineModel implements Model {
 				bean.setCodiceOrdine(rs.getInt("codiceOrdine"));
 				bean.setIndirizzoSpedizione(rs.getString("indirizzoSpedizione"));
 				bean.setTipoSpedizione(rs.getString("tipoSpedizione"));
-				bean.setDataSpedizione(rs.getDate("dataSpedizione"));
+				bean.setDataSpedizione(rs.getDate("dataSpedizione").toLocalDate());
 				bean.setCodiceSpedizione(rs.getInt("codiceSpedizione"));
 				bean.setCodicePagamento(rs.getInt("codicePagamento"));
 				bean.setImporto(rs.getDouble("importo"));

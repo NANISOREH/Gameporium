@@ -4,12 +4,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 </head>
 <body>
 
 	<div class="card" style="font-size: small; margin-top: 30px">
       <div class="card-body">
-            Carrello e pannello utente placeholder
+            Nel carrello:<br>
+            
+            <c:set var="cart" value='${sessionScope["cartitems"]}'/>
+			
+			<div id="cartitems">
+				<c:forEach items="${cart}" var="item">
+					${item.product.titolo} 
+					(${item.quantita})
+					<br>
+				</c:forEach>
+			</div>
       </div>
 	</div>
 
