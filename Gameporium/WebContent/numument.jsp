@@ -1,13 +1,19 @@
-<div class="card mb-3" style="max-width: 540px;">
-  <div class="row no-gutters">
-    <div class="col-md-4">
-      <img src="images/${item.product.foto}" class="card-img" alt="product image">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">${item.product.titolo }</h5>
-        <p class="card-text">Quantità:
-          <span class="a-dropdown-container">
+  	<div class="col-lg-4 col-xs-12 bg-light">
+	
+		<div class="productcard card d-block mx-auto">
+		  
+		  <div class="prodimg d-block mx-auto">
+		  	<img class="card-img-top" src="images/${item.foto}" alt="Card image cap">
+		  </div>
+		  
+		  <div class="pccardbody card-body">
+		    
+		    <div class="card-title">
+		    	<a href="singleProduct?selProd=${item.codiceProdotto}&selCat=${item.codCategoria}">${item.titolo}</a>
+		    </div>
+		    
+		    <div class="price">
+ 				<p class="card-text">Quantità: <span class="a-dropdown-container">
                             	<label class="a-native-dropdown">
                             <span class="sc-offscreen-label" aria-label="Quantità">
                             </span>
@@ -26,10 +32,10 @@
                                                  <option> 10+  </option>
                             </select>
                             	
-                                    </span>
-        </p>
-        <a class="remove" href="#"><small class="text-muted">Rimuovi</small></a>
-      </div>
-    </div>
-  </div>
-</div>
+                                    </span></p>
+			</div>
+		  
+		  </div>
+		</div>
+	
+  	</div>

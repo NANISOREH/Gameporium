@@ -185,5 +185,31 @@
 	
 /* productoperation */
 
+/*clientpage */
 
+	#cartcard
+	{
+		height: 220px;
+		margin-top: 30px;	
+	  	margin: 15px;
+	  	padding-top: 2px;
+  		padding-bottom:2px;
+  	}	
+  	
+  	.img-square-wrapper
+  	{
+  		margin-top:3px;
+  		margin-bottom:3px;
+  		margin-left:6px;
+  		vertical-align: middle;
+  	}
+	
+    #cartimg
+    {
+     height: auto;
+     max-height: 210px;
+     max-width: 150px;
+    }
+    
+    
 
