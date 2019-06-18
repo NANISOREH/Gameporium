@@ -41,7 +41,7 @@
 			<c:when test="${operationchoice== '1'}">
 			
 			<!-- Inserimento nuovo prodotto -->
-				<form action="adminservlet" name="addproductform" method="post" id="reg">				        
+				<form action="adminservlet?operation=1" name="addproductform" method="post" id="reg">				        
 				        <div class="form-group">
 				        	<label for="codiceProdotto">Codice prodotto:</label>
 							<input type="text" class="form-control" id="codiceProdotto" name="codiceProdotto"  >
@@ -133,7 +133,7 @@
 				       </div>
 				        
 						<div class="form-group" style="float: center">
-				            <button type="submit" class="btn btn-success btn-lg btn-block" 
+				            <button type="submit" id ="caricabtn" name= "caricabtn" class="btn btn-success btn-lg btn-block" value="1"
 				            style="max-width:400px;">Carica Prodotto</button>
 				        </div>
 				    </form>
@@ -154,7 +154,7 @@
 				</form>
 				
 				
-				<form action="adminservlet" name="modproductformhidden" method="post" id="modproductformhidden">				        
+				<form action="adminservlet?operation=2" name="modproductformhidden" method="post" id="modproductformhidden">				        
 				     <div class="form-group" id="modproductformhidden">
 				        <div class="form-group" id="codiciProdotto">
 				        	<label for="codiceProdotto">Codice prodotto:</label>
@@ -190,7 +190,7 @@
 							</div>
 							 <div class="hidableforms container" id="subCatAccessorio">
 							 	  <label for="sceltaa">Sottocategoria:</label>
-							      <select class="form-control" id="descrizioneCategoriaAccessori"  name="descrizioneCategoriaAccessi" disabled="disabled">
+							      <select class="form-control" id="descrizioneCategoriaAccessori"  name="descrizioneCategoriaAccessori" disabled="disabled">
 							          <option value="Accessori per giochi di ruolo">Accessorio per Gioco di Ruolo</option>
 							          <option value="Accessori per giochi di carte">Accessorio per Gioco di Carte</option>
 							          <option value="Accessori per giochi da tavolo">Accessorio per Gioco da Tavolo</option>
@@ -220,7 +220,7 @@
 				        
 						<div class="form-group">
 				        	<label for="prezzo">Prezzo:</label>
-				        	<input type="text" class="form-control" id="prezzo" name="prezzo" style="width:80px" readonly="readonly" >
+				        	<input type="text" step=".01" class="form-control" id="prezzo" name="prezzo" style="width:80px" readonly="readonly" >
 				        </div>
 
 						<div class="form-group">
@@ -249,7 +249,7 @@
 				            style="max-width:400px;">Modifica Prodotto</button>
 				        </div>
 				        <div class="form-group" style="float: center">
-				            <button type="submit" class="btn btn-success btn-lg btn-block" id="modbtn" disabled="disabled" 
+				            <button type="submit" class="btn btn-success btn-lg btn-block" name="modbtn" id="modbtn" disabled="disabled" value="2" 
 				            style="max-width:400px;">Salva Modifiche</button>
 				        </div>
 				   		</div>
