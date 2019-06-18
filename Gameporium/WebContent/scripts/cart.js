@@ -1,5 +1,4 @@
-function addToCart(quantityform)
-{
+function addToCart(quantityform){
 	var q = quantityform.quantita.value;
 	var c = quantityform.acquistabtn.value;
 	
@@ -30,6 +29,14 @@ function addToCart(quantityform)
 				});
 			}, 
 			failAlert());
+}
+
+function reloadCart(quant,price){
+ var result=quant*price;
+ alert(quant);
+ $('.nico').each(function(){
+	 $(this).html(result);
+ })
 }
 
 function failAlert()
