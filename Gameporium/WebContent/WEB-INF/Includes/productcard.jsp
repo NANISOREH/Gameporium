@@ -23,7 +23,7 @@
 			    </div>
 			
 			
-			<div class="row">
+			<div class="row form-group">
 				
 				<div class="col-6">	
 					<div class="price">
