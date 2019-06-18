@@ -76,7 +76,7 @@ public class LoginServlet extends HttpServlet
 		if (cliente.getPasswordU() != "" && cliente.getUsername() != "")
 		{
 			newSession.setAttribute("currentSessionUser", cliente);
-			newSession.setAttribute("accessDone", true);
+			newSession.setAttribute("accessDone", true);	
 			
 			if (rem != null)
 			{
@@ -88,12 +88,11 @@ public class LoginServlet extends HttpServlet
 				response.addCookie(saveUser);
 			}
 				
-			response.sendRedirect("/Gameporium/home.jsp"); 
+			response.sendRedirect("/Gameporium/home.jsp?loginSuccess=true"); 
 		}
 		else
 		{
-			request.setAttribute("loginFail", true);
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/home.jsp");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/home.jsp?loginFail=true");
 			dispatcher.forward(request, response);
 		}
 		

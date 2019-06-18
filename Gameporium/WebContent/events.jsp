@@ -62,8 +62,6 @@
 
 		<div class="container-fluid clearfix">		  	
 
-			<%@include file="/WEB-INF/Includes/mobilesearchbar.jsp" %> 
-
 			
 
 	      	<!-- Inizio sezione risultati -->
