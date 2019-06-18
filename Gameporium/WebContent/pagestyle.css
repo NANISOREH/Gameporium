@@ -49,9 +49,20 @@
   		text-align: center;
 	}
 	
+	.price
+	{
+		color: red;
+		margin-top:22px;
+	}
+	
 	.pccardbody
 	{
 		padding:3px;
+	}
+	
+	.addtocart
+	{
+		font-size:small;
 	}
 	
 	.card-img-top

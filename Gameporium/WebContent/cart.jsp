@@ -62,7 +62,6 @@
 
 			<!-- colonna centrale -->
 			<div id="homecenter" class="col-lg-8 col-md-12 col-sm-12 col-xs-12 bg-light">
-				<%@include file="/WEB-INF/Includes/mobilesearchbar.jsp"%>
 
 				<!-- container novità e offerte -->
 				<div class="container-fluid clearfix">

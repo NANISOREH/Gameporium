@@ -1,7 +1,8 @@
-function addToCart(quantityform)
+function addToCart(idform)
 {
-	var q = quantityform.quantita.value;
-	var c = quantityform.acquistabtn.value;
+	var c = idform;
+	var form = document.getElementById(idform);
+	var q = form.quantita.value;
 	
 	if (q<1 || q >99)
 		{

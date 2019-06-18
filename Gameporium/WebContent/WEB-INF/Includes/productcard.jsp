@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript" src="scripts/cart.js"></script>
+<%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <meta charset="UTF-8">
 </head>
 <body>
@@ -15,18 +17,36 @@
 		  </div>
 		  
 		  <div class="pccardbody card-body">
-		    
-		    <div class="card-title">
-		    	<a href="singleProduct?selProd=${item.codiceProdotto}&selCat=${item.codCategoria}">${item.titolo}</a>
-		    </div>
-		    
-		    <div class="price">
- 				${item.prezzo}€
+
+			    <div class="card-title">
+			    	<a href="singleProduct?selProd=${item.codiceProdotto}&selCat=${item.codCategoria}">${item.titolo}</a>
+			    </div>
+			
+			
+			<div class="row">
+				
+				<div class="col-6">	
+					<div class="price">
+			 			<h5>${item.prezzo}€</h5>
+					</div>
+				</div>
+				
+				<div class = "col-6">				
+				 	<form name="quantity" id="${item.codiceProdotto}" action="cartservlet" onkeydown="return event.key != 'Enter';">
+			 			<input class="quantInput" type="number" name="quantita" value="1">
+						<button class="quantButton text-uppercase" name="acquistabtn" id="acquistabtn" 
+							onclick ="addToCart(this.value)" 
+							type="button" value="${item.codiceProdotto}" ><i class="fas fa-shopping-cart"></i>
+						</button>
+				 	</form>
+				</div>
 			</div>
-		  
-		  </div>
+			
+
 		</div>
 	
+  		</div>
+  	
   	</div>
 </body>
 </html>

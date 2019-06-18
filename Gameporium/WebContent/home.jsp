@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 
@@ -60,7 +59,7 @@
 
 			<div
 
-				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light">
+				class="col-lg-2 col-xs-12 d-none d-lg-block bg-light">
 
 				<%@include file="/WEB-INF/Includes/leftpanel.jsp"%>
 
@@ -73,10 +72,6 @@
 			<!-- colonna centrale -->
 
 			<div id="homecenter" class="col-lg-8 col-md-12 col-sm-12 col-xs-12 bg-light">
-
-				<%@include file="/WEB-INF/Includes/mobilesearchbar.jsp"%>
-
-
 
 				<!-- container novità e offerte -->
 
@@ -153,7 +148,7 @@
 
 			<div
 
-				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light">
+				class="col-lg-2 col-xs-12 d-none d-lg-block bg-light">
 
 				<%@include file="/WEB-INF/Includes/rightpanel.jsp"%>
 
