@@ -44,6 +44,18 @@ public class Cart {
 		}
 	}
 	
+	public int cartCardinality()
+	{
+		int result = 0;
+		
+		for(BeanCartEntry p: products)
+		{
+			result = result + p.getQuantita();
+		}
+		
+		return result;
+	}
+	
 	public boolean cartContains(BeanCartEntry bce)
 	{
 		for(BeanCartEntry p: products)

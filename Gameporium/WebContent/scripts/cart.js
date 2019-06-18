@@ -21,24 +21,25 @@ function addToCart(idform)
 	$.get('cartservlet', {"quantita": q, "codice": c}, 
 			function(){
 				$('#cartitems').load(' #cartitems');
+				$('.carticon').load(' .carticon');
 				Swal.fire({
 				  title: '<h6>Prodotto inserito nel carrello!</h6>',
-				  toast: true,
 				  type: 'success',
-				  position: 'top',
+				  position: 'top-end',
 				  timer: 2000,
-				  showConfirmButton: false
+				  showConfirmButton: false 
 				});
 			}, 
 			failAlert());
 }
 
-function reloadCart(quant,price){
- var result=quant*price;
- alert(quant);
- $('.nico').each(function(){
-	 $(this).html(result);
- })
+function reloadCart(quant,price)
+{
+	 var result=quant*price;
+	 alert(quant);
+	 $('.nico').each(function(){
+		 $(this).html(result);
+	 })
 }
 
 function failAlert()

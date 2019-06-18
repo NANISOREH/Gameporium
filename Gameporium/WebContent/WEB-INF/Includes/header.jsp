@@ -33,8 +33,21 @@
     border-bottom: 1px solid #4dd0e1;
     box-shadow: 0 1px 0 0 #4dd0e1;
     background: #343a40;	
-	border-color: transparent
+	border-color: transparent;
   } 
+  
+  .msearch
+  {
+  	margin-bottom: 20px;
+  	margin-right:0px;
+  }
+  
+  .carticon
+  {
+	margin-left: 35px;
+	margin-right: 0px;
+	color:white;
+  }
   
   #searchbox
   {
@@ -88,7 +101,7 @@
 	
 		<script type="text/javascript">
 			window.setTimeout(function() {
-			    $(".popup").fadeTo(300, 0).slideUp(300, function(){
+			    $(".popup").fadeTo(150, 0).slideUp(150, function(){
 			        $(this).remove(); 
 			    });
 			}, 4000);
@@ -97,13 +110,14 @@
 	<!-- navbar -->
 	<nav class="navbar navbar-dark navbar-expand-lg"
 		style="margin-top: 0px">
-		<a class="navbar-brand text-white-80" href="/Gameporium/home.jsp"><img
-			src="images/LOGOPLACEH.png" class="rounded mx-auto d-block"
-			alt="Responsive image"
-			style="margin-bottom: 0; max-width: 200px; max-height: 50%"></a>
-	
+		
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		
 	<!-- 				ricerca mobile -->
-			<div class = "nav-item d-block d-lg-none mx-auto" style = "margin-bottom: 30px;">
+			<div class = "msearch nav-item d-block d-lg-none mx-auto">
 				<form action="productselection.jsp" method="post"
 					class="form-inline md-form form-sm active-cyan active-cyan-2 mt-2">
 	      			<button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2" type="submit">
@@ -115,10 +129,10 @@
 			</div>
 <!-- 				ricerca mobile -->
 		
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#collapsibleNavbar">
-			<span class="navbar-toggler-icon"></span>
-		</button>
+		<a class="navbar-brand text-white-80" href="/Gameporium/home.jsp"><img
+			src="images/LOGOPLACEH.png" class="rounded mx-auto d-block"
+			alt="Responsive image"
+			style="margin-bottom: 0; max-width: 200px; max-height: 50%"></a>
 		
 
 		<div class="collapse navbar-collapse" id="collapsibleNavbar">
@@ -176,7 +190,7 @@
 				</c:if>
 				
 				<li class="nav-item d-block d-lg-none"><a class="nav-link"
-					href="cart.jsp" id="navbarDropdown" role="button" data-toggle="dropdown">Il
+					href="/Gameporium/clientpage.jsp?azione=carrello" id="navbarDropdown" role="button" data-toggle="dropdown">Il
 						tuo carrello</a></li>
 			</ul>
 		</div>
@@ -198,7 +212,18 @@
 					</form> 
 				</li> 
 			</ul>
-<!-- 			ricerca desktop -->
+			<!-- 			ricerca desktop -->
+			
+			<c:set var="cartcard" value='${sessionScope["cartcardinality"]}' />
+			<ul class="navbar-nav">
+				<li class="nav-item mr-auto carticon">
+					<a href="/Gameporium/clientpage.jsp?azione=carrello">
+      					<i class="fas fa-shopping-cart" aria-hidden="true"></i>
+      					<c:out value="${cartcard}"/> prod.
+      				</a>
+				</li> 
+			</ul>
+
 			
 			
 			<c:if test="${accessDone == null}">
@@ -243,15 +268,15 @@
 			<c:if test="${accessDone}">
 				<div class="navbar-nav nav-item dropdown">
 					
-					<div class="nav-link dropdown-toggle text-center" 
-						id="navbarDropdown" role="button" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false">
-						 	Benvenuto, <c:out value="${currentUser.username}"/>
-					</div>	
+				<button type="button" id="dropdownMenu1" data-toggle="dropdown"
+					class="btn btn-outline-secondary dropdown-toggle">
+					Benvenuto, <c:out value="${currentUser.username}"/> <span class="caret"></span>
+				</button>
+				
 					<form action="logout" method="get" class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" style="text-align: left; " href="/Gameporium/clientpage.jsp?azione=dati">Area Utente</a>
+						<a class="dropdown-item" style="text-align: left; " href="/Gameporium/clientpage.jsp?azione=dati">Dati Utente</a>
 						<a class="dropdown-item" style="text-align: left" href="/Gameporium/clientpage.jsp?azione=ordini">I miei Ordini</a>
-						<a class="dropdown-item" style="text-align: left" href="/Gameporium/clientpage.jsp?azione=carrello">Carrello</a>
+						<a class="dropdown-item" style="text-align: left" href="#">Pagamento e Spedizione</a>
 						<div class="dropdown-divider"></div>
 						<div style="text-align: center"><button class="btn btn-primary" type="submit">Logout</button></div>
 					</form>

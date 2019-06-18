@@ -38,6 +38,7 @@
 	{
 		border-bottom: 1px black solid;  
 		margin-top: 50px;
+		margin-bottom:20px;
 	}
 
 /* productcard */
@@ -217,10 +218,15 @@
 	
     #cartimg
     {
-     height: auto;
-     max-height: 210px;
-     max-width: 150px;
+	     height: auto;
+	     max-height: 210px;
+	     max-width: 150px;
     }
     
+    .dataform
+    {
+    	margin-top: 40px;
+    }
+/* clientpage */
     
 
