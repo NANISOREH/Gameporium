@@ -1,5 +1,4 @@
-function addToCart(quantityform)
-{
+function addToCart(quantityform){
 	var q = quantityform.quantita.value;
 	var c = quantityform.acquistabtn.value;
 	
@@ -19,6 +18,7 @@ function addToCart(quantityform)
 	
 	$.get('cartservlet', {"quantita": q, "codice": c}, 
 			function(){
+				$('#cartitems').load(' #cartitems');
 				Swal.fire({
 				  title: '<h6>Prodotto inserito nel carrello!</h6>',
 				  toast: true,
@@ -29,7 +29,14 @@ function addToCart(quantityform)
 				});
 			}, 
 			failAlert());
-	
+}
+
+function reloadCart(quant,price){
+ var result=quant*price;
+ alert(quant);
+ $('.nico').each(function(){
+	 $(this).html(result);
+ })
 }
 
 function failAlert()
@@ -44,16 +51,4 @@ function failAlert()
 		})
 		
 		return;
-}
-
-function preventEnter()
-{
-	$(document).ready(function() {
-		  $(window).keydown(function(event){
-		    if(event.keyCode == 13) {
-		      event.preventDefault();
-		      return false;
-		    }
-		  });
-		});
 }

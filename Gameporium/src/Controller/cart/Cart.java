@@ -3,36 +3,54 @@ package Controller.cart;
 import Beans.*;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 public class Cart {
 
-	private ArrayList<BeanProduct> products;
+	private Collection<BeanCartEntry> products;
 	
 	public Cart() {
-		products = new ArrayList<BeanProduct>();
+		products = new ArrayList<BeanCartEntry>();
+	}
+
+	public synchronized void addProduct(BeanCartEntry bce) {
+			products.add(bce);
 	}
 	
-	public void addProduct(BeanProduct product) {
-		products.add(product);
-	}
 	
-	public void deleteProduct(BeanProduct product) {
-		for(BeanProduct prod : products) {
-			if(prod.getCodiceProdotto() == product.getCodiceProdotto()) {
+	public void deleteProduct(BeanCartEntry bce) {
+		for(BeanCartEntry prod : products) {
+			if(prod.getCodP() == bce.getCodP()) {
 				products.remove(prod);
-				break;
 			}
 		}
  	}
 	
-	public ArrayList<BeanProduct> getProducts() {
-		return  products;
+	public void setQuant(BeanCartEntry bce,int quant)
+	{
+		for(BeanCartEntry b: products)
+			if(bce.getCodP()==b.getCodP())
+				b.setQuantita(b.getQuantita()+quant);
+	
+	}
+	
+	public Collection<BeanCartEntry> getProducts() {
+		return products;
 	}
 	
 	public void printCart () {
-		for(BeanProduct prod : products) {
-			System.out.println(prod);
+		for(BeanCartEntry bce : products) {
+			System.out.println(bce.toString());
 		}
+	}
+	
+	public boolean cartContains(BeanCartEntry bce)
+	{
+		for(BeanCartEntry p: products)
+		{
+			if(p.getCodP()==bce.getCodP())
+				return true;
+		}
+		return false;
 	}
 }

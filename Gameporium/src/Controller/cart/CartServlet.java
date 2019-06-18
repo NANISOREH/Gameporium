@@ -1,29 +1,24 @@
 package Controller.cart;
 
-import java.awt.List;
 import java.io.IOException;
+import java.io.Serializable;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Collection;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Beans.Bean;
+import Beans.BeanCartEntry;
 import Beans.BeanProduct;
 import Model.ProductModel;
 
 /**
  * Servlet implementation class ProductControl
  */
-public class CartServlet extends HttpServlet {
+public class CartServlet extends HttpServlet implements Serializable {
 	private static final long serialVersionUID = 1L;
-
-
 	static ProductModel model= new ProductModel();
 
 	
@@ -46,11 +41,15 @@ public class CartServlet extends HttpServlet {
 		
 		try {
 				BeanProduct b = model.doRetrieveByKey(id);
-				for (int i=0; i<quant; i++)
+				BeanCartEntry bce=new BeanCartEntry(b,quant);
+				if(b.getDisponibilita()>=quant)//popup
 				{
-					cart.addProduct(b);
+				// model.doUpdate("disponibilita",bce.getCodP(),b.getDisponibilita()-quant);
+				 if(cart.cartContains(bce)) {
+					        cart.setQuant(bce, quant);
+				 						    }
+				 else cart.addProduct(bce);
 				}
-				
 				session.setAttribute("cart", cart);
 			}
 		
@@ -58,12 +57,13 @@ public class CartServlet extends HttpServlet {
 			System.out.println("Error:" + e.getMessage());
 		}
 		
-		ArrayList<BeanProduct> bp = cart.getProducts();
-		cart.printCart();
-		session.setAttribute("cartitems", bp);
-		
+		Collection<BeanCartEntry> bce = cart.getProducts();
+		session.setAttribute("cartitems", bce);
+		//cart.printCart();
+
 		response.setStatus(200);
 	}
+	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
