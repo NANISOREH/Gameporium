@@ -43,8 +43,9 @@ public class AccessorioModel implements Model {
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setInt(3, a.getCodiceProdotto());
-			preparedStatement.setString(1, a.getDescrizioneCategoria());
+			preparedStatement.setInt(1, a.getCodiceProdotto());
+			preparedStatement.setString(2, a.getNomeCategoria());
+			preparedStatement.setString(3, a.getDescrizioneCategoria());
 			preparedStatement.executeUpdate();
 
 			connection.commit();

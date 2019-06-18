@@ -163,15 +163,3 @@ function htmlEscape(toEscape)
 	return toEscape;
 
 }
-
-function gameoraccessory(category){	
-	if(category=='gioco'){
-		document.getElementById("subCatGioco").style.display="block";
-		document.getElementById("subCatAccessorio").style.display="none";
-	}
-	else if(category=='accessorio'){
-		document.getElementById("subCatGioco").style.display="none";
-		document.getElementById("subCatAccessorio").style.display="block";
-
-	}
-}

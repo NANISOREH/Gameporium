@@ -13,6 +13,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import com.google.gson.Gson;
+
 public class ProductModel implements Model {
 
 	private static DataSource ds;
@@ -449,6 +451,5 @@ public class ProductModel implements Model {
 		}
 		return product;
 	}
-	
 	
 }
