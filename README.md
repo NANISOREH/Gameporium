@@ -7,6 +7,7 @@ SEZIONI ANCORA DA COPRIRE
 - Finalizzazione acquisti
 - Aggraziare e riempire il footer
 - Riempire i pannelli laterali
+- Animazioni prodotti on hover
 
 SEZIONI EXTRA (se avanza tempo)
 - Ricerca avanzata
