@@ -16,5 +16,4 @@ SEZIONI EXTRA (se avanza tempo)
 
 TO DO LIST
 - Sistemare le immagini
-- Allungare la vita delle sessioni per il carrello 
 
