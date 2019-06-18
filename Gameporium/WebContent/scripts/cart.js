@@ -33,6 +33,14 @@ function addToCart(idform)
 			failAlert());
 }
 
+function reloadCart(quant,price){
+ var result=quant*price;
+ alert(quant);
+ $('.nico').each(function(){
+	 $(this).html(result);
+ })
+}
+
 function failAlert()
 {
 	Swal.fire({

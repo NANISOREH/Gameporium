@@ -13,7 +13,7 @@ public class Cart {
 		products = new ArrayList<BeanCartEntry>();
 	}
 
-	public void addProduct(BeanCartEntry bce) {
+	public synchronized void addProduct(BeanCartEntry bce) {
 			products.add(bce);
 	}
 	
