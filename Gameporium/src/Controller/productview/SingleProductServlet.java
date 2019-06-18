@@ -42,7 +42,6 @@ public class SingleProductServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		System.out.println("sono nella Get");
 		String numProd = request.getParameter("selProd");
 		String selCat =request.getParameter("selCat");
 		BeanGioco bg = new BeanGioco();

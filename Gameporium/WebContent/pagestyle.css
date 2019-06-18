@@ -38,6 +38,7 @@
 	{
 		border-bottom: 1px black solid;  
 		margin-top: 50px;
+		margin-bottom:20px;
 	}
 
 /* productcard */
@@ -49,9 +50,20 @@
   		text-align: center;
 	}
 	
+	.price
+	{
+		color: red;
+		margin-top:22px;
+	}
+	
 	.pccardbody
 	{
 		padding:3px;
+	}
+	
+	.addtocart
+	{
+		font-size:small;
 	}
 	
 	.card-img-top
@@ -206,10 +218,15 @@
 	
     #cartimg
     {
-     height: auto;
-     max-height: 210px;
-     max-width: 150px;
+	     height: auto;
+	     max-height: 210px;
+	     max-width: 150px;
     }
     
+    .dataform
+    {
+    	margin-top: 40px;
+    }
+/* clientpage */
     
 

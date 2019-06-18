@@ -37,14 +37,19 @@
 			<!-- fine colonna sinistra -->
 
 			<!-- colonna centrale -->
-			<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 bg-light"
-				style="margin-bottom: 1100px; margin-top: 30px">
+			<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 bg-light">
+				
+				
 				<c:set var="user" value='${sessionScope["currentSessionUser"]}' />
 				<c:set var="userchoice" value='${param["azione"]}' />
 
 
 				<c:choose>
 					<c:when test="${userchoice== 'dati'}">
+					
+					<div class="sectionstyle">Dati utente</div>
+					
+					<div class="dataform">
 						<form action="register" name="registerform" method="post" id="reg">
 							<div class="form-group">
 								<label for="nome">Nome</label> <input type="text"
@@ -91,6 +96,7 @@
 									style="max-width: 400px;">Modifica dati</button>
 							</div>
 						</form>
+					</div>
 					</c:when>
 
 					<c:when test="${userchoice=='carrello'}">
@@ -129,7 +135,8 @@
 					</c:when>
 
 					<c:when test="${userchoice=='ordini'}">
-			I miei ordini
+			
+			<div class="sectionstyle">I miei ordini</div>
 		
 			</c:when>
 

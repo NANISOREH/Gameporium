@@ -33,6 +33,7 @@ public class CartServlet extends HttpServlet implements Serializable {
 		if(cart == null) {
 			cart = new Cart();
 			session.setAttribute("cart", cart);
+			session.setAttribute("cartcardinality", cart.cartCardinality());
 		}
 		
 		
@@ -44,13 +45,13 @@ public class CartServlet extends HttpServlet implements Serializable {
 				BeanCartEntry bce=new BeanCartEntry(b,quant);
 				if(b.getDisponibilita()>=quant)//popup
 				{
-				// model.doUpdate("disponibilita",bce.getCodP(),b.getDisponibilita()-quant);
 				 if(cart.cartContains(bce)) {
 					        cart.setQuant(bce, quant);
 				 						    }
 				 else cart.addProduct(bce);
 				}
 				session.setAttribute("cart", cart);
+				session.setAttribute("cartcardinality", cart.cartCardinality());
 			}
 		
 		 catch (SQLException e) {
