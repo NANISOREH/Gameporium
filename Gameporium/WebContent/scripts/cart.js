@@ -3,7 +3,6 @@ function addToCart(idform)
 	var c = idform;
 	var form = document.getElementById(idform);
 	var q = form.quantita.value;
-	
 	if (q<1 || q >99)
 		{
 			Swal.fire({
@@ -36,8 +35,7 @@ function addToCart(idform)
 function reloadCart(quant,price)
 {
 	 var result=quant*price;
-	 alert(quant);
-	 $('.nico').each(function(){
+	 $('.cartreload').each(function(){
 		 $(this).html(result);
 	 })
 }

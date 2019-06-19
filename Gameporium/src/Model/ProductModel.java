@@ -1,6 +1,8 @@
 package Model;
 import Beans.Bean;
 import Beans.BeanProduct;
+
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -77,7 +79,6 @@ public class ProductModel implements Model {
 	public synchronized BeanProduct doRetrieveByKey(Object codice) throws SQLException {
 		
 		int code=(int) codice;
-		System.out.println(code);
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -91,7 +92,6 @@ public class ProductModel implements Model {
 			preparedStatement.setInt(1, code);
 
 			ResultSet rs = preparedStatement.executeQuery();
-
 			while (rs.next()) {
 				bean.setCodiceProdotto(rs.getInt("codiceProdotto"));
 				bean.setCodCategoria(rs.getInt("codiceCategoria"));
@@ -122,9 +122,9 @@ public class ProductModel implements Model {
 	public synchronized boolean doDelete(Object codice) throws SQLException {
 		
 		int code=(int) codice;
+		System.out.println(code);
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-
 		int result = 0;
 
 		String deleteSQL = "DELETE FROM " + ProductModel.TABLE_NAME + " WHERE codiceProdotto = ?";
@@ -133,8 +133,9 @@ public class ProductModel implements Model {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setInt(1, code);
-
 			result = preparedStatement.executeUpdate();
+			System.out.println(deleteSQL);
+			connection.commit();
 
 		} finally {
 			try {
@@ -224,7 +225,9 @@ public class ProductModel implements Model {
 				bean.setIVA(rs.getInt("IVA"));
 				bean.setNovita(rs.getBoolean("novita"));
 				bean.setOfferta(rs.getBoolean("offerta"));
-				product.add(bean);
+				if(bean.getDisponibilita()!=0) {
+					product.add(bean);
+												}
 			}
 
 		} finally {
@@ -452,18 +455,38 @@ public class ProductModel implements Model {
 		return product;
 	}
 	
-	public synchronized void doUpdate(String column, int code, int quant) throws SQLException
+	public synchronized void doUpdate(String column, int code, Object value) throws SQLException
 	{
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
-		String selectSQL = "UPDATE "+ ProductModel.TABLE_NAME + " as p SET "+column+"="+quant+" WHERE p.codiceProdotto=?";
+		String selectSQL = "UPDATE "+ ProductModel.TABLE_NAME + " as p SET "+column+"= ? WHERE p.codiceProdotto="+code;
 
 		try {
 				connection = ds.getConnection();
 				preparedStatement = connection.prepareStatement(selectSQL);
-				preparedStatement.setInt(1, code);
-
+				
+				if(value instanceof String) {
+					String val = (String) value;
+					preparedStatement.setString(1, val);
+				}
+				if(value instanceof Integer) {
+					int val= (Integer) value;
+					preparedStatement.setInt(1, val);
+				}
+				if(value instanceof Double) {
+					double val=(Double) value;
+					preparedStatement.setDouble(1, val);
+				}
+				if(value instanceof Boolean) {
+					Boolean val=(Boolean) value;
+					preparedStatement.setBoolean(1, val);
+				}
+				if(value instanceof BigDecimal) {
+					BigDecimal val=(BigDecimal) value;
+					preparedStatement.setBigDecimal(1, val);
+				}
+				System.out.println(preparedStatement);
 				preparedStatement.executeUpdate();
 				connection.commit();
 		    }
