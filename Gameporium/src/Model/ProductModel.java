@@ -79,7 +79,6 @@ public class ProductModel implements Model {
 	public synchronized BeanProduct doRetrieveByKey(Object codice) throws SQLException {
 		
 		int code=(int) codice;
-		System.out.println(code);
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -93,7 +92,6 @@ public class ProductModel implements Model {
 			preparedStatement.setInt(1, code);
 
 			ResultSet rs = preparedStatement.executeQuery();
-
 			while (rs.next()) {
 				bean.setCodiceProdotto(rs.getInt("codiceProdotto"));
 				bean.setCodCategoria(rs.getInt("codiceCategoria"));
@@ -124,9 +122,9 @@ public class ProductModel implements Model {
 	public synchronized boolean doDelete(Object codice) throws SQLException {
 		
 		int code=(int) codice;
+		System.out.println(code);
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-
 		int result = 0;
 
 		String deleteSQL = "DELETE FROM " + ProductModel.TABLE_NAME + " WHERE codiceProdotto = ?";
@@ -135,8 +133,9 @@ public class ProductModel implements Model {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setInt(1, code);
-
 			result = preparedStatement.executeUpdate();
+			System.out.println(deleteSQL);
+			connection.commit();
 
 		} finally {
 			try {
@@ -459,7 +458,7 @@ public class ProductModel implements Model {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
-		String selectSQL = "UPDATE "+ ProductModel.TABLE_NAME + " as p SET "+column+"=? WHERE p.codiceProdotto="+code;
+		String selectSQL = "UPDATE "+ ProductModel.TABLE_NAME + " as p SET "+column+"= ? WHERE p.codiceProdotto="+code;
 
 		try {
 				connection = ds.getConnection();
@@ -478,7 +477,7 @@ public class ProductModel implements Model {
 					preparedStatement.setDouble(1, val);
 				}
 				if(value instanceof Boolean) {
-					boolean val=(Boolean) value;
+					Boolean val=(Boolean) value;
 					preparedStatement.setBoolean(1, val);
 				}
 				if(value instanceof BigDecimal) {

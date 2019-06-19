@@ -36,6 +36,7 @@
 			<div class="col-lg-8 col-md-8 col-sm-6 col-xs-6 bg-light"
 				style="margin-bottom: 1100px; margin-top: 30px">
 				<c:set var="operationchoice" value='${param["operation"]}'/>
+				
 			
 			<c:choose>
 			<c:when test="${operationchoice== '1'}">
@@ -142,40 +143,37 @@
 				<c:when test="${operationchoice== '2'}">
 				<!-- Modifica prodotto -->
 				<form id="modproductform">				        
-				        <div class="form-group">
-				        	<label for="codProdotto">Codice prodotto:</label>
-							<input type="text" class="form-control" id="codProdotto" name="codProdotto">
+			        <div class="form-group">
+			        	<label for="codProdotto">Codice prodotto:</label>
+						<input type="text" class="form-control" id="codProdotto" name="codProdotto">
+					</div>
+					<div class="form-group">
+			       		<div class="upload-btn-wrapper">
+						  <button type="submit" class="btn" id="cercaCRUD">Cerca Prodotto</button>
 						</div>
-						<div class="form-group">
-				       		<div class="upload-btn-wrapper">
-							  <button type="submit" class="btn" id="cercaCRUD">Cerca Prodotto</button>
-							</div>
-				       </div>
+			       </div>
 				</form>
 				
 				
 				<form action="adminservlet?operation=2" name="modproductformhidden" method="post" id="modproductformhidden">				        
-				     <div class="form-group" id="modproductformhidden">
+				     <div class="form-group">
 				        <div class="form-group" id="codiciProdotto">
 				        	<label for="codiceProdotto">Codice prodotto:</label>
 							<input type="text" class="form-control" id="codiceProdotto" name="codiceProdotto" readonly="readonly"  >
 							<label for="codCat">Categoria:</label>
 								  <div id="prova">
-								    <div class="form-check form-check-inline categoria">
-								      <input name="nomeCategoria" type="radio" id="gioco" value="Gioco" disabled="disabled" onclick="gameoraccessory(id)">
-								      <label for="gioco">Gioco</label>
-								    </div>
-								    <div class="form-check form-check-inline categoria">
-								      <input name="nomeCategoria" type="radio" id="accessorio" value="Accessorio" disabled="disabled" onclick="gameoraccessory(id)">
-								      <label for="accessorio">Accessorio</label>
-								    </div>
+								    <select class="form-control" id="nomeCategoria" name="nomeCategoria" disabled="disabled" onclick="gameoraccessory(value)" >
+								    	<option value="" selected>-</option>
+								        <option value="gioco">Gioco</option>
+								        <option value="accessorio">Accessorio</option>
+							    	</select>
 								  </div>
 						</div>
 					
 						<div class="form-group col-7" id="subCat">					
 							<div class="hidableforms container" id="subCatGioco">
 								<label for="sceltag">Sottocategoria:</label>
-							    <select class="form-control" id="descrizioneCategoriaGiochi" name="descrizioneCategoriaGiochi" disabled="disabled">
+							    <select class="form-control" id="descrizioneCategoriaGiochi" name="descrizioneCategoriaGiochi" disabled="disabled" >
 							        <option value="Gioco di ruolo">Gioco di Ruolo</option>
 							        <option value="Gioco di carte">Gioco di Carte</option>
 							        <option value="Gioco da tavolo">Gioco da Tavolo</option>
@@ -229,34 +227,164 @@
 				        </div>
 				        
 				        <div class="form-group">
-					        <label class="container">Offerta
-							  <input type="checkbox" value="true" id="offerta" name="offerta" disabled="disabled">
-							  <span class="checkmark"></span>
-							</label>
-							<label class="container">Novità
-							  <input type="checkbox" value="true" id="novita" name="novita" disabled="disabled">
-							  <span class="checkmark"></span>
-							</label>
+					        <label class="container">Offerta</label>
+							   <select class="form-control" id="offerta" name="offerta" disabled="disabled">
+								        <option value="true">In offerta</option>
+								        <option value="false">Non in offerta</option>
+							    </select>
+							
+							<label class="container">Novità</label>
+							  <select class="form-control" id="novita" name="novita" disabled="disabled">
+								        <option value="true">Novità</option>
+								        <option value="false">Non novità</option>
+							    </select>
+							
 				        </div>
 				       
-				       <div class="form-group">
-				        	<label for="iva">Foto:</label>
-				        	<input type="text" class="form-control" id="foto" name="foto" readonly="readonly" >
-				        </div>
-				       
-						<div class="form-group" style="float: center">
-				            <button type="submit" class="btn btn-success btn-lg btn-block" onclick="enablemod(modproductformhidden)" 
-				            style="max-width:400px;">Modifica Prodotto</button>
-				        </div>
-				        <div class="form-group" style="float: center">
-				            <button type="submit" class="btn btn-success btn-lg btn-block" name="modbtn" id="modbtn" disabled="disabled" value="2" 
-				            style="max-width:400px;">Salva Modifiche</button>
-				        </div>
+					       <div class="form-group">
+					        	<label for="iva">Foto:</label>
+					        	<input type="text" class="form-control" id="foto" name="foto" readonly="readonly" >
+					        </div>
+					       
+							<div class="form-group" style="float: center">
+					            <button type="submit" class="btn btn-success btn-lg btn-block" onclick="enablemod(modproductformhidden)" 
+					            style="max-width:400px;">Modifica Prodotto</button>
+					        </div>
+					        <div class="form-group" style="float: center">
+					            <button type="submit" class="btn btn-success btn-lg btn-block" name="modbtn" id="modbtn" disabled="disabled" 
+					            style="max-width:400px;">Salva Modifiche</button>
+					        </div>
 				   		</div>
 				    </form>
 				
 				<!-- Fine Modifica prodotto -->
 				</c:when>
+				
+				<c:when test="${operationchoice== '3'}">
+				<form id="modproductform">				        
+			        <div class="form-group">
+			        	<label for="codProdotto">Codice prodotto:</label>
+						<input type="text" class="form-control" id="codProdotto" name="codProdotto">
+					</div>
+					<div class="form-group">
+			       		<div class="upload-btn-wrapper">
+						  <button type="submit" class="btn" id="cercaCRUD">Cerca Prodotto</button>
+						</div>
+			       </div>
+				</form>
+				
+				
+				<form action="adminservlet?operation=3" name="modproductformhidden" method="post" id="modproductformhidden">				        
+				     <div class="form-group">
+				        <div class="form-group" id="codiciProdotto">
+				        	<label for="codiceProdotto">Codice prodotto:</label>
+							<input type="text" class="form-control" id="codiceProdotto" name="codiceProdotto" readonly="readonly"  >
+							<label for="codCat">Categoria:</label>
+								  <div id="prova">
+								    <select class="form-control" id="nomeCategoria" name="nomeCategoria" disabled="disabled" onclick="gameoraccessory(value)" >
+								    	<option value="" selected>-</option>
+								        <option value="gioco">Gioco</option>
+								        <option value="accessorio">Accessorio</option>
+							    	</select>
+								  </div>
+						</div>
+					
+						<div class="form-group col-7" id="subCat">					
+							<div class="hidableforms container" id="subCatGioco">
+								<label for="sceltag">Sottocategoria:</label>
+							    <select class="form-control" id="descrizioneCategoriaGiochi" name="descrizioneCategoriaGiochi" disabled="disabled" >
+							        <option value="Gioco di ruolo">Gioco di Ruolo</option>
+							        <option value="Gioco di carte">Gioco di Carte</option>
+							        <option value="Gioco da tavolo">Gioco da Tavolo</option>
+							    </select>
+							  	<label for="eta" class="d-none">Età:</label>
+							  	<input type="text"  class="d-none form-control" id="eta" name="eta" readonly="readonly" >
+								<label for="ngiocatori" class="d-none">Numero giocatori:</label>
+							  	<input type="text" class="d-none form-control" id="numeroGiocatori" name="numeroGiocatori" readonly="readonly" >
+							  	<label for="durata"class="d-none">Durata:</label>
+							  	<input type="text" class="d-none form-control" id="durata" name="durata" readonly="readonly" >
+
+							</div>
+							 <div class="hidableforms container" id="subCatAccessorio">
+							 	  <label for="sceltaa">Sottocategoria:</label>
+							      <select class="form-control" id="descrizioneCategoriaAccessori"  name="descrizioneCategoriaAccessori" disabled="disabled">
+							          <option value="Accessori per giochi di ruolo">Accessorio per Gioco di Ruolo</option>
+							          <option value="Accessori per giochi di carte">Accessorio per Gioco di Carte</option>
+							          <option value="Accessori per giochi da tavolo">Accessorio per Gioco da Tavolo</option>
+							      </select>
+							 </div>
+				        </div>
+				        	
+						<div class="form-group">
+							<label for="titolo">Titolo:</label>
+				        	<input type="text" class="form-control" id="titolo" name="titolo" readonly="readonly" >
+				        </div>
+				        
+						<div class="form-group">
+							<label for="produttore">Produttore:</label>
+				            <input type="text" class="form-control"  id="produttore" name="produttore" readonly="readonly" >
+				        </div>
+				        
+						<div class="form-group">
+							<label for="descrizione">Descrizione:</label>
+				            <textarea id="descrizione" class="form-control" name="descrizione" style="height: 100px" readonly="readonly"></textarea>
+				        </div>
+				                
+				        <div class="d-none form-group">
+							<label for="quantita">Disponibilità:</label>
+				            <input type="text" class="form-control" name="disponibilita" id="disponibilita" style="width:80px"  readonly="readonly">
+				        </div>
+				        
+						<div class="form-group">
+				        	<label for="prezzo">Prezzo:</label>
+				        	<input type="text" step=".01" class="form-control" id="prezzo" name="prezzo" style="width:80px" readonly="readonly" >
+				        </div>
+
+						<div class="d-none form-group">
+				        	<label for="iva">IVA:</label>
+				        	<input type="text" class="form-control" id="IVA" name="IVA" style="width:80px"  readonly="readonly">
+				        </div>
+				        
+				        <div class="form-group">
+					        <label class="d-none container">Offerta</label>
+							   <select class="d-none form-control" id="offerta" name="offerta" disabled="disabled">
+								        <option value="true">In offerta</option>
+								        <option value="false">Non in offerta</option>
+							    </select>
+							
+							<label class="d-none container">Novità</label>
+							  <select class=" d-none form-control" id="novita" name="novita" disabled="disabled">
+								        <option value="true">Novità</option>
+								        <option value="false">Non novità</option>
+							    </select>
+							
+				        </div>
+				       
+					       <div class="d-none form-group">
+					        	<label for="iva">Foto:</label>
+					        	<input type="text" class="form-control" id="foto" name="foto" readonly="readonly" >
+					        </div>
+					       
+							<div class="form-group" style="float: center">
+					            <button type="submit" class="btn btn-success btn-lg btn-block" 
+					            style="max-width:400px;">Elimina Prodotto</button>
+					        </div>	        
+				   		</div>
+				    </form>
+				</c:when>
+				
+				<c:when test="${operationchoice== '4'}">
+					<jsp:include page="/adminServlet"/>
+					<c:set var="prodotto" value='${requestScope["elencoProdotti"]}'/>
+						<div class="container">
+ 							<h2>Elenco prodotti</h2>
+  							<p></p>
+  						</div>      
+					<c:forEach items="${prodotto}" var="item">
+						<%@include file="/WEB-INF/Includes/producttable.jsp"%>
+					</c:forEach>
+				</c:when>
+				
 				<c:otherwise>
 			   	</c:otherwise>
 			</c:choose>
