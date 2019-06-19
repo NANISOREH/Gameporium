@@ -226,7 +226,9 @@ public class ProductModel implements Model {
 				bean.setIVA(rs.getInt("IVA"));
 				bean.setNovita(rs.getBoolean("novita"));
 				bean.setOfferta(rs.getBoolean("offerta"));
-				product.add(bean);
+				if(bean.getDisponibilita()!=0) {
+					product.add(bean);
+												}
 			}
 
 		} finally {
