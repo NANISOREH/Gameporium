@@ -30,7 +30,8 @@
 			 			<h5>${item.prezzo}€</h5>
 					</div>
 				</div>
-				
+				<c:choose>
+				<c:when test="${item.disponibilita>0 }">
 				<div class = "col-6">				
 				 	<form name="quantity" id="${item.codiceProdotto}" action="cartservlet" onkeydown="return event.key != 'Enter';">
 			 			<input class="quantInput" type="number" name="quantita" value="1">
@@ -40,6 +41,13 @@
 						</button>
 				 	</form>
 				</div>
+				</c:when>
+				<c:otherwise>
+					<div class="col-6">
+						<div class="notAvailable">Non disponibile</div>
+					</div>
+				</c:otherwise>
+				</c:choose>
 			</div>
 			
 
