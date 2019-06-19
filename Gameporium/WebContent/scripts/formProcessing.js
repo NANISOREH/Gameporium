@@ -1,3 +1,21 @@
+/*function myFunct(op,cod){
+	alert(cod)
+	window.location.href ="/Gameporium/productoperation.jsp?operation="+op+"&codiceProdotto="+cod
+	$(document).ready(function mammt(){
+		alert("mannagg")
+		alert("u patatern")
+		document.getElementById("cercaCRUD").click();
+		alert("e a maronn");
+	})
+}*/
+function myFunct(){
+	alert("mannag")
+	var cod=document.getElementById("codProdotto");
+	if(cod!=null){
+		document.getElementById("cercaCRUD").click();
+	}
+}
+
 function enablemod(){
 	event.preventDefault()
 	document.getElementById("codiceProdotto").removeAttribute("readonly");	
