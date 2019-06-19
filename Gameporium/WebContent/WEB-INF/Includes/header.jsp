@@ -49,7 +49,7 @@
 	color:white;
   }
   
-  #searchbox
+  .searchbox
   {
   	max-width:180px;
   	color: white;
@@ -123,8 +123,8 @@
 	      			<button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2" type="submit">
    						<i class="fas fa-search" aria-hidden="true"></i>
    					</button>
-					<input class="form-control" type="text" name="searchtxt" 
-					aria-label="Search" id="searchbox" placeholder="Cerca un prodotto">
+					<input class="searchbox form-control" type="text" name="searchtxt" 
+					aria-label="Search" placeholder="Cerca un prodotto">
 				</form> 
 			</div>
 <!-- 				ricerca mobile -->
@@ -207,8 +207,8 @@
 		      			<button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2" type="submit">
       						<i class="fas fa-search" aria-hidden="true"></i>
       					</button>
-						<input class="form-control" type="text" name="searchtxt" 
-						aria-label="Search" id="searchbox" placeholder="Cerca un prodotto">
+						<input class="searchbox form-control" type="text" name="searchtxt" 
+						aria-label="Search" placeholder="Cerca un prodotto">
 					</form> 
 				</li> 
 			</ul>
