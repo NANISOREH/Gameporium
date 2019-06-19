@@ -115,7 +115,16 @@
 			data-target="#collapsibleNavbar">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		
+
+			<c:set var="cartcard" value='${sessionScope["cartcardinality"]}' />
+			<ul class="navbar-nav">
+				<li class="nav-item mr-auto carticon d-lg-none">
+					<a href="/Gameporium/cart.jsp">
+      					<i class="fas fa-shopping-cart" aria-hidden="true"></i>
+      					<c:out value="${cartcard}"/> prod.
+      				</a>
+				</li> 
+			</ul>		
 	<!-- 				ricerca mobile -->
 			<div class = "msearch nav-item d-block d-lg-none mx-auto">
 				<form action="productselection.jsp" method="post"
@@ -128,12 +137,12 @@
 				</form> 
 			</div>
 <!-- 				ricerca mobile -->
+
 		
 		<a class="navbar-brand text-white-80" href="/Gameporium/home.jsp"><img
 			src="images/LOGOPLACEH.png" class="rounded mx-auto d-block"
 			alt="Responsive image"
 			style="margin-bottom: 0; max-width: 200px; max-height: 50%"></a>
-		
 
 		<div class="collapse navbar-collapse" id="collapsibleNavbar">
 			<ul class="navbar-nav">
@@ -173,10 +182,17 @@
 				</li>
 				
 				<c:if test="${accessDone}">
-					<li class="nav-item d-block d-lg-none"
-						style="border-top: 1px solid #000000"><a class="nav-link"
-						href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Area Utente</a>
-					</li>
+					<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> Area utente </a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" style="text-align: left; " href="/Gameporium/clientpage.jsp?azione=dati">Dati Utente</a>
+						<a class="dropdown-item" style="text-align: left" href="/Gameporium/clientpage.jsp?azione=ordini">I miei Ordini</a>
+						<a class="dropdown-item" style="text-align: left" href="#">Pagamento e Spedizione</a>
+						<div class="dropdown-divider"></div>
+						<div style="text-align: center"><button class="btn btn-primary" type="submit">Logout</button></div>
+					</div></li>
 				</c:if>
 	
 				<c:if test="${accessDone != true}">
@@ -189,9 +205,6 @@
 					</li>
 				</c:if>
 				
-				<li class="nav-item d-block d-lg-none"><a class="nav-link"
-					href="/Gameporium/clientpage.jsp?azione=carrello" id="navbarDropdown" role="button" data-toggle="dropdown">Il
-						tuo carrello</a></li>
 			</ul>
 		</div>
 
@@ -216,8 +229,8 @@
 			
 			<c:set var="cartcard" value='${sessionScope["cartcardinality"]}' />
 			<ul class="navbar-nav">
-				<li class="nav-item mr-auto carticon">
-					<a href="/Gameporium/clientpage.jsp?azione=carrello">
+				<li class="nav-item mr-auto carticon d-block">
+					<a href="/Gameporium/cart.jsp">
       					<i class="fas fa-shopping-cart" aria-hidden="true"></i>
       					<c:out value="${cartcard}"/> prod.
       				</a>

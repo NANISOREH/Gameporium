@@ -80,6 +80,13 @@
 		height:220px;
 		width:220px;
 	}
+	
+	.notAvailable
+	{
+		color: red;	
+		font-size: 12px;
+		margin-top: 25px;
+	}
 /* productcard */
 
 /*	productpage*/
@@ -114,7 +121,7 @@
 
 	input.quantInput
 	{
-		width: 100px;
+		width: 40px;
 	}
 
 	button.quantButton
