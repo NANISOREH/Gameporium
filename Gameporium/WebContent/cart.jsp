@@ -11,6 +11,8 @@
 <meta charset="utf-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="scripts/cart.js"></script>
+
 
 <link rel="stylesheet"
 
@@ -70,11 +72,37 @@
 
 		      		<div class="row">
 
-		      			<c:set var="offerte" value='${sessionScope["cartitems"]}'/>
+		      			   <div class="row col-lg-12 md-12 sm-12">Il mio carrello</div>
+							<c:set var="cartprods" value='${sessionScope["cartitems"]}' />
+							<div class="container fluid">
 
-			      		<c:forEach items="${offerte}" var="item">
-							<%@include file="/WEB-INF/Includes/productcard.jsp"%>
-						</c:forEach>
+							<c:forEach items="${cartprods}" var="item" begin="0" end="8">
+									<div class="cartcard card col-lg-12 md-12 sm-12" id="cartcard">
+										<div class="row ">
+											<div class="col-lg-3 col-md-4 sm-12 ">
+												<div class="img-square-wrapper">
+													<img class="card-img mx-auto" id="cartimg" src="images/${item.product.foto }"
+														alt="Card image cap">
+												</div>
+											</div>
+											<div class="col-lg-6 col-md-4 sm-12">
+												<div class="card-body">
+													<h4 class="card-title">${item.product.titolo }</h4>
+													<p class="card-text">
+													Quantità:<div class="col">
+										 			<input class="quantInput" type="number" name="quantita" value="${item.quantita }" id="${item.quantita}" onchange="reloadCart(value,${item.product.prezzo })"/>
+													</div>
+											
+												</div>
+									
+											</div>
+										
+											<div class="col-lg-3 col-md-4 sm-12 cartreload" id="cartquantity">
+												${item.product.prezzo*item.quantita}</div>
+										</div>
+								</div>
+							</c:forEach>
+</div>
 
 		       		<!-- fine iterazione cards -->
 
