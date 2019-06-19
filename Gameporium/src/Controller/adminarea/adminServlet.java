@@ -3,13 +3,16 @@ package Controller.adminarea;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.util.Collection;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Beans.Bean;
 import Beans.BeanAccessorio;
 import Beans.BeanGioco;
 import Beans.BeanProduct;
@@ -35,7 +38,20 @@ public class adminServlet extends HttpServlet {
 		String op=request.getParameter("operation");
 		int operation=Integer.parseInt(op);
 		
-		if(operation==1) {
+		if(operation==3) {
+			System.out.println("cancellazione");
+			int codP=Integer.parseInt(request.getParameter("codiceProdotto"));
+			System.out.println(codP);
+			
+			try {
+				model.doDelete(codP);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return;
+		}
+		
+		else if(operation==1) {
 			BeanProduct p =new BeanProduct();
 			int codP=Integer.parseInt(request.getParameter("codiceProdotto"));
 			String titolo=request.getParameter("titolo");
@@ -45,7 +61,9 @@ public class adminServlet extends HttpServlet {
 			String quantita=request.getParameter("quantita");
 			String iva=request.getParameter("IVA");
 			String novita=request.getParameter("novita");
+			System.out.println(novita);
 			String offerta=request.getParameter("offerta");
+			System.out.println(offerta);
 			String foto=request.getParameter("foto");
 			
 		
@@ -88,6 +106,7 @@ public class adminServlet extends HttpServlet {
 				catch (SQLException e) {
 					e.printStackTrace();
 				}
+				
 			}
 			else if(nomeCat.equalsIgnoreCase("Accessorio")) {
 				p.setCodCategoria(2);
@@ -108,6 +127,7 @@ public class adminServlet extends HttpServlet {
 				}
 			}
 			response.getWriter().append("Served at: ").append(request.getContextPath());
+			return;
 		}
 		else if(operation ==2) {
 			BeanProduct bp= new BeanProduct();
@@ -143,10 +163,7 @@ public class adminServlet extends HttpServlet {
 				}
 			}
 			String prezzo=request.getParameter("prezzo");
-		
 			BigDecimal price=new BigDecimal(prezzo);
-	
-
 			if((price)!=(bp.getPrezzo())) {
 				try {
 					model.doUpdate("prezzo", codP, price);
@@ -171,17 +188,19 @@ public class adminServlet extends HttpServlet {
 				}
 			}
 			String novita=request.getParameter("novita");
+			System.out.println(novita);
 			if(Boolean.parseBoolean(novita)!=bp.isNovita()) {
 				try {
-					model.doUpdate("novita", codP, novita);
+					model.doUpdate("novita", codP, Boolean.parseBoolean(novita));
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
 			String offerta=request.getParameter("offerta");
+			System.out.println(offerta);
 			if(Boolean.parseBoolean(offerta)!=bp.isOfferta()) {
 				try {
-					model.doUpdate("offerta", codP, offerta);
+					model.doUpdate("offerta", codP, Boolean.parseBoolean(offerta));
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
@@ -252,8 +271,18 @@ public class adminServlet extends HttpServlet {
 				}
 				
 			}
+			return;
 		}
-		
+			System.out.println("operazione 4");
+			Collection <Bean> bpr = null;
+			try {
+				bpr=model.doRetrieveAll("codiceProdotto");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			request.setAttribute("elencoProdotti", bpr);
+
+			return;
 	}
 
 
