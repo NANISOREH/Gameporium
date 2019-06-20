@@ -19,7 +19,7 @@
 <%@include file="/WEB-INF/Includes/header.jsp"%>
 </head>
 
-<body style="background-color: #343a40">
+<body onload ="myFunct()" style="background-color: #343a40">
 	<div class="container-fluid bg-light" style="margin-top: 0">
 		<!-- sistema di colonne -->
 		<div class="row">
@@ -157,7 +157,7 @@
 			       </div>
 				</form>
 				
-				<form onload ="myFunct()" action="adminservlet?operation=2" name="modproductformhidden" method="post" id="modproductformhidden">				        
+				<form action="adminservlet?operation=2" name="modproductformhidden" method="post" id="modproductformhidden">				        
 				     <div class="form-group">
 				        <div class="form-group" id="codiciProdotto">
 				        	<label for="codiceProdotto">Codice prodotto:</label>
@@ -384,8 +384,8 @@
   							  <table class="table">
 							    <thead>
 							      <tr>
-							        <th>Codice Prodotto</th>
-							        <th>Titolo</th>						
+							        <th>Titolo</th>
+							        <th>Codice Prodotto</th>						
 							        <th>Prezzo</th>
 							        <th></th>
 							        <th></th>

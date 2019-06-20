@@ -216,10 +216,10 @@ INSERT INTO gioco (codiceProdotto,nomeCategoria,descrizioneCategoria,durata,etaC
 
 
     
-INSERT INTO ordine(codiceOrdine,indirizzoSpedizione,tipoSpedizione,dataSpedizione,codiceSpedizione,codicePagamento,importo,metodo,indirizzoFatturazione) VALUES
-	(00001,'Via Paolo Uccello 8','Raccomandata','2019/07/05',0010,1,15.3, 'Carta di credito','Via Paolo Uccello 8'),
-    (00002,'Via Podgora 4','Prioritaria','2019/06/22',0011,2,35, 'Bonifico','Via Uguale 0'),
-    (00003,'Via Lemure 88','Celere','2019/05/08',0022,3,28, 'Paypal', 'Corso Umberto 27');
+INSERT INTO ordine(codiceOrdine,indirizzoSpedizione,tipoSpedizione,dataOrdine,dataSpedizione,codiceSpedizione,codicePagamento,importo,metodo,indirizzoFatturazione) VALUES
+	(00001,'Via Paolo Uccello 8','Raccomandata','2019/07/02','2019/07/05',0010,1,15.3, 'Carta di credito','Via Paolo Uccello 8'),
+    (00002,'Via Podgora 4','Prioritaria','2019/06/15','2019/06/22',0011,2,35, 'Bonifico','Via Uguale 0'),
+    (00003,'Via Lemure 88','Celere','2019/05/01','2019/05/08',0022,3,28, 'Paypal', 'Corso Umberto 27');
     
     
 INSERT INTO effettua(username,codiceOrdine) VALUES
