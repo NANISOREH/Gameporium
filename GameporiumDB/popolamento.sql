@@ -1,7 +1,7 @@
-INSERT INTO cliente(nome,cognome,dataNascita,username,passwordU,recapito) VALUES
-	('Sara','Corrente','1990/01/10','Brontolo','Pippo','3394004520'),
-	('Fabiana','Gatto','1992/06/11','Cucciolo','Pluto','3384596321'),
-    ('Vincenzo','Monzo','1990/08/22','Mammolo','Topolino','3384558321'),
+INSERT INTO cliente(nome,cognome,dataNascita,username,passwordU,recapito,cartaPred) VALUES
+	('Sara','Corrente','1990/01/10','Brontolo','Pippo','3394004520', '1010'),
+	('Fabiana','Gatto','1992/06/11','Cucciolo','Pluto','3384596321','1100'),
+    ('Vincenzo','Monzo','1990/08/22','Mammolo','Topolino','3384558321','111'),
     ('Maria','De Luca','1995/02/01','Pisolo','Minnie','3849675843'),
     ('Giovanni','Chiariello','1993/04/24', 'Eolo','ZioPaperone','3397835226'),
     ('Andrea','Palladino','1992/08/05','Dotto','Qui','3569472315'),
@@ -222,6 +222,18 @@ INSERT INTO ordine(codiceOrdine,indirizzoSpedizione,tipoSpedizione,dataOrdine,da
     (00003,'Via Lemure 88','Celere','2019/05/01','2019/05/08',0022,3,28, 'Paypal', 'Corso Umberto 27');
     
     
+INSERT INTO ind_Spedizione(codSPedizione,città,indirizzo,civico, cap) VALUES
+    (01,'Aversa','via Dalle Palle', 53, 80200),
+    (02,'Napoli','via Vittorio Emanuele',89,80010),
+    (03,'Pompei', 'via eruzione',70,83020),
+    (04,'Scampia','via dal carcere',25,82120);
+    
+INSERT INTO mod_Pagamento(codiceP,circuito,numCarta,cvv) VALUES
+	(111,'visa',1234321,119),
+    (112,'mastercard',5678765,773),
+    (113,'american express',3456543,223);
+    
+    
 INSERT INTO effettua(username,codiceOrdine) VALUES
 	('Brontolo',00001),
     ('Athos',00002),
@@ -245,3 +257,14 @@ INSERT INTO composizione(codiceOrdine,codiceProdotto,quantita) VALUES
     (00002,0001,1),
     (00002,0006,1),
     (00003,0005,3);-- ipotizziamo uno sconto che da 30€ mi fa pagare 28
+    
+    
+INSERT INTO pagamento(username,codiceP) VALUES
+	('Mammolo',111),
+    ('Mammolo',112),
+    ('Mammolo',113);
+
+
+INSERT INTO spedizione(username,codSpedizione) VALUES
+	('Mammolo',01),
+    ('Mammolo',04);
