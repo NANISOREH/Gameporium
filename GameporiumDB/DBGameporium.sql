@@ -107,7 +107,7 @@ USE GameporiumDB;
 CREATE TABLE ind_Spedizione(
 	codSPedizione int,
     città varchar(20),
-    indirizzo varchar(20),
+    indirizzo varchar(50),
     civico int,
 	cap int,
     primary key (codSpedizione)
