@@ -13,17 +13,20 @@ public class Cart {
 		products = new ArrayList<BeanCartEntry>();
 	}
 
-	public synchronized void addProduct(BeanCartEntry bce) {
+	public void addProduct(BeanCartEntry bce) {
 			products.add(bce);
 	}
 	
 	
 	public void deleteProduct(BeanCartEntry bce) {
+		Collection<BeanCartEntry> toRemove=new ArrayList<BeanCartEntry>();
 		for(BeanCartEntry prod : products) {
 			if(prod.getCodP() == bce.getCodP()) {
-				products.remove(prod);
+				toRemove.add(prod);
 			}
 		}
+		
+		products.removeAll(toRemove);
  	}
 	
 	public void setQuant(BeanCartEntry bce,int quant)
