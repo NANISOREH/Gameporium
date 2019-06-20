@@ -24,14 +24,13 @@
 </head>
 
 <body style="background-color: #343a40">
-	<div class="container-fluid bg-light" style="margin-top: 0">
+	<div class="allpagecontainer container-fluid bg-light">
 		<!-- sistema di colonne -->
 		<div class="row">
 
 			<!-- colonna sinistra -->
 			<div
-				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light"
-				style="margin-bottom: 500px">
+				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light">
 				<%@include file="/WEB-INF/Includes/leftpanel.jsp"%>
 			</div>
 			<!-- fine colonna sinistra -->
@@ -108,11 +107,69 @@
 					<div class="sectionstyle">I miei metodi di pagamento</div>
 						
 					<div class="row">
-						<div class="col-lg-6 col-xs-12">
+						<div class="col-lg-2"></div>
+						<div class="col-lg-8 col-xs-12">
 							
 <%-- 							<c:forEach items="${cartprods}" var="item"> --%>
 									<%@include file="/WEB-INF/Includes/creditcard.jsp"%>				
 <%-- 							</c:forEach> --%>
+
+							
+							<a data-toggle="collapse" href="#newcard" role="button" aria-expanded="false" aria-controls="newcard">
+								<i class="fas fa-caret-down"></i> Nuova carta
+							</a>
+
+								<div class="row">
+									<div class="col">
+										<div class="collapse multi-collapse" id="newcard">
+
+											<div class="card card-body">
+												<form>
+													<div class="form-row">
+														<div class="form-group col-md-3">
+															<label>Intestatario</label> <input type="text"
+																class="form-control">
+														</div>
+														<div class="form-group col-md-4">
+															<label>Numero</label> <input type="text"
+																class="form-control">
+														</div>
+														<div class="form-group col-md-3">
+															<label>Scadenza</label> <input type="date"
+																class="form-control">
+														</div>
+														<div class="form-group col-md-2">
+															<label>CVV</label> <input type="text"
+																class="form-control">
+														</div>
+
+													</div>
+
+													<a class="btn btn-primary" data-toggle="collapse"
+														href="#multiCollapseExample1" role="button"
+														aria-expanded="false"
+														aria-controls="multiCollapseExample1">Aggiungi</a>
+												
+
+												</form>
+											</div>
+											
+
+
+										</div>
+										
+
+									</div>
+
+								</div>
+							
+							<br><br>
+							<label for="sceltag">Seleziona predefinita</label>
+							<select class="form-control" id="sceltag" name="sceltag">
+						        <option>Carta 1</option>
+						        <option>Carta 2</option>
+						        <option>carta 3</option>
+						    </select>
 						
 						</div>
 					</div>
@@ -130,8 +187,7 @@
 
 			<!-- colonna destra -->
 			<div
-				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light"
-				style="margin-bottom: 300px" style="border-left:1px">
+				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light">
 				<%@include file="/WEB-INF/Includes/rightpanel.jsp"%>
 			</div>
 			<!-- fine sistema di colonne -->
