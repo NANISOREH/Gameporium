@@ -35,53 +35,52 @@
 			<!-- colonna centrale -->
 			<div class="col-lg-8 col-md-8 col-sm-6 col-xs-6 bg-light"
 				style="margin-bottom: 1100px; margin-top: 30px">
+				<c:set var="ordine" value='${requestScope["listaOrdini"]}'/>
+				<!-- Visualizza ordine -->
 				<c:set var="operationchoice" value='${param["operation"]}'/>
 				
-			
-			<c:choose>
-			<c:when test="${operationchoice== '1'}">
-			<jsp:include page="/adminorder"/>
-			<c:set var="ordine" value='${requestScope["listaOrdini"]}'/>
-				<!-- Visualizza ordine -->
-
-				<form action="adminorder" method="post" id="modorderform" >				        
-			        <div class="form-group">
-			        	<label for="codiceOrdine">Codice cliente:</label>
-						<input type="text" class="form-control" placeholder="username" id="username" name="username" value="${user}"  >
-					</div>
-					<div class="form-group">
-			       		<div class="upload-btn-wrapper">
-						  <button type="submit" class="btn" id="cercaCRUD">Cerca ordini</button>
-						</div>
-			       </div>
-				</form>
-				<div class="container">
-						<h2>Elenco ordini</h2>
-							<p></p>
-							  <table class="table">
-					    <thead>
-					      <tr>
-					        <th>Codice Ordine</th>
-					        <th>Username</th>						
-					        <th>Data Ordine</th>
-					        <th>Data Spedizione</th>
-					        <th>Importo</th>					
-					        <th>Indirizzo Spedizione</th>
-					        <th>Indirizzo Fatturazione</th>
-					        <th>Tipo Spedizione</th>
-					        <th>Codice Spedizione</th>
-					        <th>Codice Pagamento</th>
-					        <th>Metodo Pagamento</th>
-					      </tr>
- 							    </thead>
-					      <tbody>
-					     	<c:forEach items="${ordine}" var="item">
-								<%@include file="/WEB-INF/Includes/ordertable.jsp"%>
-							</c:forEach>
-				        </tbody>
-								</table>
-						</div> 
+				<jsp:include page="/adminorder" flush="true"/>
+<%-- 				   <jsp:param name="username" value="Smith" /> --%>
+<%-- 				   <jsp:param name="userempno" value="9876" /> --%>
+<%-- 				</jsp:include> --%>
 				
+					<form id="modorderform" >				        
+				        <div class="form-group">
+				        	<label for="codiceOrdine">Codice cliente:</label>
+							<input type="text" class="form-control" placeholder="username" id="username" name="username" value="${user}"  >
+						</div>
+						<div class="form-group">
+				       		<div class="upload-btn-wrapper">
+							  <button type="button" class="btn" id="cercaCRUD" onclick="ajaxOrder()">Cerca ordini</button>
+							</div>
+				       </div>
+					</form>
+					<div class="container">
+							<h2>Elenco ordini</h2>
+								<p></p>
+								  <table class="table" id="ordertable">
+						    <thead>
+						      <tr>
+						        <th>Codice Ordine</th>
+						        <th>Username</th>						
+						        <th>Data Ordine</th>
+						        <th>Data Spedizione</th>
+						        <th>Importo</th>					
+						        <th>Indirizzo Spedizione</th>
+						        <th>Indirizzo Fatturazione</th>
+						        <th>Tipo Spedizione</th>
+						        <th>Codice Spedizione</th>
+						        <th>Codice Pagamento</th>
+						        <th>Metodo Pagamento</th>
+						      </tr>
+	 							    </thead>
+						      <tbody>
+						     	<c:forEach items="${ordine}" var="item">
+									<%@include file="/WEB-INF/Includes/ordertable.jsp"%>
+								</c:forEach>
+					        </tbody>
+									</table>
+							</div> 
 				
 				
 				
@@ -116,11 +115,6 @@
 				    </form> -->
 				
 				<!-- Fine visualizza Ordine -->
-				</c:when>
-				<c:otherwise>
-			   	</c:otherwise>
-			</c:choose>
-
 			
 			</div>
 			<!-- fine colonna centrale -->
