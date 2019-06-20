@@ -48,7 +48,7 @@
 	color:white;
   }
   
-  #searchbox
+  .searchbox
   {
   	max-width:180px;
   	color: white;
@@ -69,6 +69,8 @@
 	<c:set var="loginSuccess" value='${param["loginSuccess"]}' />
 	<c:set var="currentUser" value='${sessionScope["currentSessionUser"]}' />
 	<c:set var="logoutDone" value='${requestScope["logoutDone"]}' />
+	<c:set var="isAdmin" value='${sessionScope["isAdmin"]}' />
+	
 			
 	<c:if test="${loginFail}">
 		<div class="popup alert alert-warning alert-dismissible fade-in" role="alert">
@@ -85,16 +87,25 @@
 	</c:if>
 	
 	<c:if test="${loginSuccess}">
-		<div class="popup alert alert-success alert-dismissible fade-in" role="success">
-		  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		  Sei loggato come <c:out value="${currentUser.username}"/>
-		</div>
+		<c:if test="${isAdmin == null}">
+			<div class="popup alert alert-success alert-dismissible fade-in" role="success">
+			  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			  Sei loggato come <c:out value="${currentUser.username}"/>
+			</div>
+		</c:if>
 	</c:if>
 		
 	<c:if test="${registered}">
 		<div class="popup alert alert-success alert-dismissible fade-in" role="alert">
 		  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		  <strong>Complimenti!</strong> Sei registrato a Gameporium, effettua l'accesso usando il tasto Login.
+		</div>
+	</c:if>
+	
+	<c:if test="${isAdmin}">
+		<div class="alert alert-warning alert-dismissible" role="alert">
+		  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		  <strong>Attenzione!</strong> Sei loggato come amministratore (${currentUser.username}).
 		</div>
 	</c:if>
 	
@@ -131,8 +142,8 @@
 	      			<button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2" type="submit">
    						<i class="fas fa-search" aria-hidden="true"></i>
    					</button>
-					<input class="form-control" type="text" name="searchtxt" 
-					aria-label="Search" id="searchbox" placeholder="Cerca un prodotto">
+					<input class="searchbox form-control" type="text" name="searchtxt" 
+					aria-label="Search" placeholder="Cerca un prodotto">
 				</form> 
 			</div>
 <!-- 				ricerca mobile -->
@@ -181,14 +192,15 @@
 				</li>
 				
 				<c:if test="${accessDone}">
-					<li class="nav-item dropdown"><a
+					<li class="nav-item dropdown d-lg-none"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"> Area utente </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" style="text-align: left; " href="/Gameporium/clientpage.jsp?azione=dati">Dati Utente</a>
 						<a class="dropdown-item" style="text-align: left" href="/Gameporium/clientpage.jsp?azione=ordini">I miei Ordini</a>
-						<a class="dropdown-item" style="text-align: left" href="#">Pagamento e Spedizione</a>
+						<a class="dropdown-item" style="text-align: left" href="/Gameporium/clientpage.jsp?azione=pagamento">Metodi di Pagamento</a>
+						<a class="dropdown-item" style="text-align: left" href="/Gameporium/clientpage.jsp?azione=indirizzi">Indirizzi</a>
 						<div class="dropdown-divider"></div>
 						<div style="text-align: center"><button class="btn btn-primary" type="submit">Logout</button></div>
 					</div></li>
@@ -219,8 +231,8 @@
 		      			<button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2" type="submit">
       						<i class="fas fa-search" aria-hidden="true"></i>
       					</button>
-						<input class="form-control" type="text" name="searchtxt" 
-						aria-label="Search" id="searchbox" placeholder="Cerca un prodotto">
+						<input class="searchbox form-control" type="text" name="searchtxt" 
+						aria-label="Search" placeholder="Cerca un prodotto">
 					</form> 
 				</li> 
 			</ul>
@@ -237,7 +249,7 @@
 			</ul>
 
 			
-			
+<!-- 			login popup -->
 			<c:if test="${accessDone == null}">
 				<button type="button" id="dropdownMenu1" data-toggle="dropdown"
 					class="btn btn-outline-secondary dropdown-toggle" onclick="validateLogin(document.loginform.pw, document.loginform.un)">
@@ -276,23 +288,45 @@
 					</li>
 				</ul>
 			</c:if>
+<!-- 			login popup -->
 				
 			<c:if test="${accessDone}">
-				<div class="navbar-nav nav-item dropdown">
-					
-				<button type="button" id="dropdownMenu1" data-toggle="dropdown"
-					class="btn btn-outline-secondary dropdown-toggle">
-					Benvenuto, <c:out value="${currentUser.username}"/> <span class="caret"></span>
-				</button>
 				
-					<form action="logout" method="get" class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" style="text-align: left; " href="/Gameporium/clientpage.jsp?azione=dati">Dati Utente</a>
-						<a class="dropdown-item" style="text-align: left" href="/Gameporium/clientpage.jsp?azione=ordini">I miei Ordini</a>
-						<a class="dropdown-item" style="text-align: left" href="#">Pagamento e Spedizione</a>
-						<div class="dropdown-divider"></div>
-						<div style="text-align: center"><button class="btn btn-primary" type="submit">Logout</button></div>
-					</form>
-				</div>
+				<c:if test="${isAdmin == null}">
+					<div class="navbar-nav nav-item dropdown">
+						
+					<button type="button" id="dropdownMenu1" data-toggle="dropdown"
+						class="btn btn-outline-secondary dropdown-toggle">
+						Benvenuto, <c:out value="${currentUser.username}"/> <span class="caret"></span>
+					</button>
+					
+						<form action="logout" method="get" class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" style="text-align: left; " href="/Gameporium/clientpage.jsp?azione=dati">Dati Utente</a>
+							<a class="dropdown-item" style="text-align: left" href="/Gameporium/clientpage.jsp?azione=ordini">I miei Ordini</a>
+							<a class="dropdown-item" style="text-align: left" href="/Gameporium/clientpage.jsp?azione=pagamento">Metodi di Pagamento</a>
+							<a class="dropdown-item" style="text-align: left" href="/Gameporium/clientpage.jsp?azione=indirizzi">Indirizzi</a>
+							<div class="dropdown-divider"></div>
+							<div style="text-align: center"><button class="btn btn-primary" type="submit">Logout</button></div>
+						</form>
+					</div>
+				</c:if>
+				
+				<c:if test="${isAdmin == true}">
+					<div class="navbar-nav nav-item dropdown">
+						
+					<button type="button" id="dropdownMenu1" data-toggle="dropdown"
+						class="btn btn-outline-secondary dropdown-toggle">
+						Benvenuto, amministratore! <span class="caret"></span>
+					</button>
+					
+						<form action="logout" method="get" class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" style="text-align: left; " href="/Gameporium/adminpage.jsp">Area Amministratore</a>
+							<div class="dropdown-divider"></div>
+							<div style="text-align: center"><button class="btn btn-primary" type="submit">Logout</button></div>
+						</form>
+					</div>
+				</c:if>
+				
 			</c:if>
 		
 		</div>

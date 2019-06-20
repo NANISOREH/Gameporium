@@ -18,3 +18,4 @@ SEZIONI EXTRA (se avanza tempo)
 TO DO LIST
 - Sistemare le immagini
 - Far sopravvivere il carrello alla morte della session
+- Il login non dovrebbe riportarti in home
