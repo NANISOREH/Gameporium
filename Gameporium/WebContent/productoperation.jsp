@@ -141,11 +141,14 @@
 				</c:when>
 				
 				<c:when test="${operationchoice== '2'}">
+				<c:set var="cod" value='${param["codiceProdotto"]}'/>
 				<!-- Modifica prodotto -->
+
 				<form id="modproductform">				        
 			        <div class="form-group">
 			        	<label for="codProdotto">Codice prodotto:</label>
-						<input type="text" class="form-control" id="codProdotto" name="codProdotto">
+						<input type="text" class="form-control" id="codProdotto" name="codProdotto" value="${cod}"  >
+						
 					</div>
 					<div class="form-group">
 			       		<div class="upload-btn-wrapper">
@@ -154,8 +157,7 @@
 			       </div>
 				</form>
 				
-				
-				<form action="adminservlet?operation=2" name="modproductformhidden" method="post" id="modproductformhidden">				        
+				<form onload ="myFunct()" action="adminservlet?operation=2" name="modproductformhidden" method="post" id="modproductformhidden">				        
 				     <div class="form-group">
 				        <div class="form-group" id="codiciProdotto">
 				        	<label for="codiceProdotto">Codice prodotto:</label>
@@ -268,7 +270,7 @@
 					</div>
 					<div class="form-group">
 			       		<div class="upload-btn-wrapper">
-						  <button type="submit" class="btn" id="cercaCRUD">Cerca Prodotto</button>
+						  <button type="submit" class="btn" id="cercaCRUDe">Cerca Prodotto</button>
 						</div>
 			       </div>
 				</form>
@@ -379,10 +381,24 @@
 						<div class="container">
  							<h2>Elenco prodotti</h2>
   							<p></p>
+  							  <table class="table">
+							    <thead>
+							      <tr>
+							        <th>Codice Prodotto</th>
+							        <th>Titolo</th>						
+							        <th>Prezzo</th>
+							        <th></th>
+							        <th></th>
+							      </tr>
+   							    </thead>
+							      <tbody>
+							     	<c:forEach items="${prodotto}" var="item">
+										<%@include file="/WEB-INF/Includes/producttable.jsp"%>
+									</c:forEach>
+						        </tbody>
+  								</table>
   						</div>      
-					<c:forEach items="${prodotto}" var="item">
-						<%@include file="/WEB-INF/Includes/producttable.jsp"%>
-					</c:forEach>
+					
 				</c:when>
 				
 				<c:otherwise>
