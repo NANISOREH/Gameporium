@@ -6,10 +6,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="pagestyle.css" type="text/css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -17,78 +21,73 @@
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/Includes/header.jsp"%>
+<jsp:include page="/adminorder" flush="true" />
 </head>
 
 <body style="background-color: #343a40">
-	<div class="container-fluid bg-light" style="margin-top: 0">
+	<div class="allpagecontainer container-fluid bg-light">
 		<!-- sistema di colonne -->
 		<div class="row">
-			
+
 			<!-- colonna sinistra -->
-			<div
-				class="col-lg-4 col-md-4 col-sm-6 col-xs-6 bg-light"
-				style="margin-bottom: 500px">
+			<div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 bg-light" style = "margin-bottom:200px;">
 				<%@include file="/WEB-INF/Includes/leftpaneladmin.jsp"%>
 			</div>
 			<!-- fine colonna sinistra -->
-			
+
 			<!-- colonna centrale -->
-			<div class="col-lg-8 col-md-8 col-sm-6 col-xs-6 bg-light"
-				style="margin-bottom: 1100px; margin-top: 30px">
-				<c:set var="ordine" value='${requestScope["listaOrdini"]}'/>
+			<div class="col-lg-10 col-md-6 col-sm-12 col-xs-12 bg-light">
+				<c:set var="ordine" value='${sessionScope["listaOrdini"]}' />
 				<!-- Visualizza ordine -->
-				<c:set var="operationchoice" value='${param["operation"]}'/>
-				
-				<jsp:include page="/adminorder" flush="true"/>
-<%-- 				   <jsp:param name="username" value="Smith" /> --%>
-<%-- 				   <jsp:param name="userempno" value="9876" /> --%>
-<%-- 				</jsp:include> --%>
-				
-					<form id="modorderform" >				        
-				        <div class="form-group">
-				        	<label for="codiceOrdine">Codice cliente:</label>
-							<input type="text" class="form-control" placeholder="username" id="username" name="username" value="${user}"  >
+				<div class="sectionstyle">Visualizza ordini</div>
+
+				<form id="modorderform">
+					<div class="form-group">
+						<label for="codiceOrdine">Codice cliente:</label> <input
+							type="text" class="form-control" placeholder="username"
+							id="username" name="username" value="${user}">
+					</div>
+					<div class="form-group">
+						<div class="upload-btn-wrapper">
+							<button type="button" class="btn" id="cercaCRUD"
+								onclick="ajaxOrder()">Cerca ordini</button>
 						</div>
-						<div class="form-group">
-				       		<div class="upload-btn-wrapper">
-							  <button type="button" class="btn" id="cercaCRUD" onclick="ajaxOrder()">Cerca ordini</button>
-							</div>
-				       </div>
-					</form>
-					<div class="container">
-							<h2>Elenco ordini</h2>
-								<p></p>
-								  <table class="table" id="ordertable">
-						    <thead>
-						      <tr>
-						        <th>Codice Ordine</th>
-						        <th>Username</th>						
-						        <th>Data Ordine</th>
-						        <th>Data Spedizione</th>
-						        <th>Importo</th>					
-						        <th>Indirizzo Spedizione</th>
-						        <th>Indirizzo Fatturazione</th>
-						        <th>Tipo Spedizione</th>
-						        <th>Codice Spedizione</th>
-						        <th>Codice Pagamento</th>
-						        <th>Metodo Pagamento</th>
-						      </tr>
-	 							    </thead>
-						      <tbody>
-						     	<c:forEach items="${ordine}" var="item">
-									<%@include file="/WEB-INF/Includes/ordertable.jsp"%>
-								</c:forEach>
-					        </tbody>
-									</table>
-							</div> 
-				
-				
-				
-				
-				
-				
-				
-				
+					</div>
+				</form>
+				<div class="container-fluid" id="contable">
+					<h2>Elenco ordini</h2>
+					<p></p>
+					<table class="table" id="ordertable">
+						<thead>
+							<tr>
+								<th>Codice Ordine</th>
+								<th>Username</th>
+								<th>Data Ordine</th>
+								<th>Data Spedizione</th>
+								<th>Importo</th>
+								<th>Indirizzo Spedizione</th>
+								<th>Indirizzo Fatturazione</th>
+								<th>Tipo Spedizione</th>
+								<th>Codice Spedizione</th>
+								<th>Codice Pagamento</th>
+								<th>Metodo Pagamento</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${ordine}" var="item">
+								<%@include file="/WEB-INF/Includes/ordertable.jsp"%>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+
+
+
+
+
+
+
+
 				<!-- <form action="adminorder?operation=1" name="modorderformhidden" method="post" id="modorderformhidden">				        
 				     <div class="form-group">
 				        <div class="form-group" id="codiciOrdine">
@@ -113,9 +112,9 @@
 						</div>
 					</div>
 				    </form> -->
-				
+
 				<!-- Fine visualizza Ordine -->
-			
+
 			</div>
 			<!-- fine colonna centrale -->
 

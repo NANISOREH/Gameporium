@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Beans.Bean;
 import Beans.BeanOrdine;
@@ -29,14 +30,14 @@ public class adminOrderServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			HttpSession session = request.getSession();
 			String username=request.getParameter("username");
 			Collection<Bean> bo=null;
 			if(username!=null) {
 				System.out.println("asfdas");
 				try {
 					bo=om.doRetrieveByUser(username);
-					request.setAttribute("listaOrdini", bo);
-					System.out.println("PARZIALE\n" + bo.toString());
+					session.setAttribute("listaOrdini", bo);
 //					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/orderoperation.jsp");
 //					dispatcher.forward(request, response);
 					response.setStatus(200);
@@ -48,13 +49,11 @@ public class adminOrderServlet extends HttpServlet {
 			if(username==null) {
 					try {
 						bo=om.doRetrieveAll("codiceOrdine");
-						System.out.println("TOTALE\n" + bo.toString());
-						request.setAttribute("listaOrdini", bo);
+						session.setAttribute("listaOrdini", bo);
 					}catch (SQLException e) {
 						e.printStackTrace();
 					}
 				
-				System.out.println(bo.toString());
 //				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/orderoperation.jsp");
 //				dispatcher.forward(request, response);
 				response.setStatus(200);
