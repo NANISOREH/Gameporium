@@ -147,7 +147,8 @@ public class OrdineModel implements Model {
 
 		Collection<Bean> Ordine = new LinkedList<Bean>();
 
-		String selectSQL = "SELECT * FROM " + OrdineModel.TABLE_NAME +" as o JOIN effettua as e on o.codiceOrdine=e.codiceOrdine";
+		String selectSQL = "SELECT o.codiceOrdine, o.indirizzoSpedizione, o.tipoSpedizione, o.dataOrdine, o.dataSpedizione, o.codiceSpedizione, o.codicePagamento, o.importo, o.metodo, o.indirizzoFatturazione, e.username\r\n" + 
+				" FROM " + OrdineModel.TABLE_NAME +" as o JOIN effettua as e on o.codiceOrdine=e.codiceOrdine";
 
 		if (order != null && !order.equals("")) {
 			selectSQL += " ORDER BY " + order;

@@ -45,7 +45,7 @@ function gameoraccessory(category){
 	}
 }
 
-/*questa funzione->chiedere a Luca Topo*/
+/*questa funzione permette all'admin di arrivare alla pagina di modifica prodotto con i dati del prodotto già inseriti*/
 $(document).ready(function() {	
 	
     $("#modproductform").submit(function(event) {
@@ -131,3 +131,15 @@ $(document).ready(function() {
             });
     });  
 });
+
+
+function ajaxOrder()
+{
+	var u =document.getElementById("username").value
+  $.get('adminorder', {"username": u}, 
+      function(){
+        $("#ordertable").load(' #ordertable');
+        alert("prova");
+      }, 
+      failAlert()); 
+}
