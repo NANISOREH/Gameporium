@@ -17,6 +17,11 @@ public class BeanCartEntry  extends Bean implements Serializable
 		product=bp;
 	}
 	
+	public BeanCartEntry(BeanProduct bp)
+	{
+		product=bp;
+	}
+	
 	public BeanProduct getProduct() {
 		return product;
 	}

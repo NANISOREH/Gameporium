@@ -205,6 +205,9 @@
 /* productoperation */
 
 /*clientpage */
+/* clientpage */
+  
+/*cart*/
 
 	#cartcard
 	{
@@ -234,6 +237,10 @@
     {
     	margin-top: 40px;
     }
-/* clientpage */
     
+    .cartreload
+    {
+    color:red;
+    }
+
 

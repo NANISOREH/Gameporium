@@ -32,13 +32,12 @@ function addToCart(idform)
 			failAlert());
 }
 
-function reloadCart(quant,price)
+function reloadCart(quant, price, id)
 {
-	 var result=quant*price;
-	 $('.cartreload').each(function(){
-		 $(this).html(result);
-	 })
+   var result=quant*price;
+   $("#" + id).html("Prezzo: "+result);
 }
+
 
 function failAlert()
 {

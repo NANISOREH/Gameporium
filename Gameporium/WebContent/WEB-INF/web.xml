@@ -10,9 +10,9 @@
     <res-type>javax.sql.DataSource</res-type>
     <res-auth>Container</res-auth>
   </resource-ref>
- <session-config>
+  <session-config>
     <session-timeout>1000</session-timeout>
-</session-config>
+  </session-config>
   <servlet>
     <servlet-name>SingleProductServlet</servlet-name>
     <servlet-class>Controller.productview.SingleProductServlet</servlet-class>
@@ -49,6 +49,10 @@
     <servlet-name>CartServlet</servlet-name>
     <servlet-class>Controller.cart.CartServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>CartRemoveServlet</servlet-name>
+    <servlet-class>Controller.cart.CartRemoveServlet</servlet-class>
+ </servlet>
   <servlet>
     <servlet-name>adminServlet</servlet-name>
     <servlet-class>Controller.adminarea.adminServlet</servlet-class>
@@ -89,8 +93,12 @@
     <servlet-name>adminServlet</servlet-name>
     <url-pattern>/adminservlet</url-pattern>
   </servlet-mapping>
-    <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>JsonRetrievalServlet</servlet-name>
     <url-pattern>/jsonretrieval</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CartRemoveServlet</servlet-name>
+    <url-pattern>/cartremove</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -36,14 +36,14 @@ public class CartServlet extends HttpServlet implements Serializable {
 			session.setAttribute("cartcardinality", cart.cartCardinality());
 		}
 		
-		
 		int quant=Integer.parseInt (request.getParameter("quantita"));
 		int id=Integer.parseInt(request.getParameter("codice"));
-		
+																		
+	
 		try {
 				BeanProduct b = model.doRetrieveByKey(id);
 				BeanCartEntry bce=new BeanCartEntry(b,quant);
-				if(b.getDisponibilita()>=quant)//popup
+				if(b.getDisponibilita()>=quant)
 				{
 				 if(cart.cartContains(bce)) {
 					        cart.setQuant(bce, quant);
