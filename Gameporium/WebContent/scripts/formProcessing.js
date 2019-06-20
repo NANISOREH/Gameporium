@@ -1,7 +1,7 @@
 /*questa funzione carica i dati nel form #modproductform quando ci si arriva via "Visualizza prodotti"*/
 function myFunct(){
 	//ci vuole un altro if che faccia partire la funzione solo quando il form è quello giusto altrimenti cercherà sempre il button
-	var cod=document.getElementById("codProdotto");
+	var cod=document.getElementById("codProdotto").value;
 	if(!isNaN(cod)){
 		document.getElementById("cercaCRUD").click();
 	}
