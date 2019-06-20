@@ -139,17 +139,13 @@ CREATE TABLE effettua(
 DROP TABLE IF EXISTS amministratore;
 USE GameporiumDB;
 CREATE TABLE amministratore(
-	CF				varchar(16),
     dataNascita		date,
     nome			varchar(20),
     cognome			varchar(30),
     username		varchar(15),
     passwordU		varchar(20),
     recapito		varchar(30),
-    cap				int,
-    via				varchar(40),
-    provincia		varchar(2),
-    primary key(CF)
+    primary key(username)
 );
 
 DROP TABLE IF EXISTS composizione;
