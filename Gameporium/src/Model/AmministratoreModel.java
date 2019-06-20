@@ -1,6 +1,8 @@
 package Model;
 import Beans.Bean;
 import Beans.BeanAmministratore;
+import Beans.BeanCliente;
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -8,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.time.*;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -139,6 +142,43 @@ public class AmministratoreModel implements Model {
 			}
 		}
 		return (result != 0);
+	}
+	
+	public synchronized BeanAmministratore doRetrieveByUserPass(String user, String pass) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		BeanAmministratore bean = new BeanAmministratore();
+
+		String selectSQL = "SELECT * FROM " + AmministratoreModel.TABLE_NAME + " WHERE username = ? AND PasswordU = ?";
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, user);
+			preparedStatement.setString(2, pass);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				bean.setCognome(rs.getString("cognome"));
+				/* bean.setDataNascita((rs.getDate("dataNascita")).toLocalDate()); */
+				bean.setNome(rs.getString("nome"));
+				bean.setPasswordU(rs.getString("passwordU"));
+				bean.setRecapito(rs.getString("recapito"));
+				bean.setUsername(rs.getString("username"));
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return bean;
 	}
 
 	@Override

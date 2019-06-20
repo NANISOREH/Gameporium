@@ -189,7 +189,7 @@
 								 	<li class="list-group-item bg-light">
 								 		<div class="row">
 								 			<div class="nomeriga col-lg-5">Disponibilità:</div>
-									 		<div class="col-lg-7">#${gioco.disponibilita}</div>
+									 		<div class="col-lg-7">${gioco.disponibilita}</div>
 								 		</div>
 								 	</li>
 								 	
@@ -230,8 +230,7 @@
 
 			<!-- colonna destra -->
 			<div
-				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light" id="rightpanel"
-				style="margin-bottom: 300px" style="border-left:1px">
+				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light" id="rightpanel">
 				<%@include file="/WEB-INF/Includes/rightpanel.jsp"%>
 			</div>
 			<!-- fine sistema di colonne -->

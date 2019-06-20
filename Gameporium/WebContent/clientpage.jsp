@@ -47,67 +47,81 @@
 				<c:choose>
 					<c:when test="${userchoice== 'dati'}">
 					
-					<div class="sectionstyle">Dati utente</div>
-					
-					<div class="dataform">
-						<form action="register" name="registerform" method="post" id="reg">
-							<div class="form-group">
-								<label for="nome">Nome</label> <input type="text"
-									class="form-control" id="nome" name="name" value="${user.nome}"
-									required> <label for="nome">Cognome</label> <input
-									type="text" class="form-control" id="cognome" name="surname"
-									value="${user.cognome}" required>
-							</div>
-
-							<div class="form-group">
-								<label for="username">Username</label> <input type="text"
-									class="form-control" id="username" name="user"
-									value="${user.username}" required>
-							</div>
-
-							<div class="form-group">
-								<label for="recapito">Recapito</label> <input type="email"
-									class="form-control" name="mail" value="${user.recapito}"
-									required>
-							</div>
-
-							<div class="form-group">
-								<label for="pw">Password</label> <input type="password"
-									class="form-control" name="pass" value="${user.passwordU}"
-									required>
-							</div>
-
-							<div class="form-group">
-								<label for="pwconf">Conferma password</label> <input
-									type="password" class="form-control" name="confirmPass"
-									placeholder="Confirm Password" required>
-							</div>
-
-							<div class="form-group">
-								<label class="checkbox-inline"> <input type="checkbox"
-									name="check" required> Accetto i <a href="#">Termini
-										di Uso</a> e le <a href="#">Norme della privacy</a>
-								</label>
-							</div>
-							<div class="form-group" style="float: center">
-								<button type="button"
-									onclick="validateRegister(document.registerform)"
-									class="btn btn-success btn-lg btn-block"
-									style="max-width: 400px;">Modifica dati</button>
-							</div>
-						</form>
-					</div>
-					</c:when>
-
-					<c:when test="${userchoice=='carrello'}">
-			
+						<div class="sectionstyle">Dati utente</div>
+						
+						<div class="dataform">
+							<form action="register" name="registerform" method="post" id="reg">
+								<div class="form-group">
+									<label for="nome">Nome</label> <input type="text"
+										class="form-control" id="nome" name="name" value="${user.nome}"
+										required> <label for="nome">Cognome</label> <input
+										type="text" class="form-control" id="cognome" name="surname"
+										value="${user.cognome}" required>
+								</div>
+	
+								<div class="form-group">
+									<label for="username">Username</label> <input type="text"
+										class="form-control" id="username" name="user"
+										value="${user.username}" required>
+								</div>
+	
+								<div class="form-group">
+									<label for="recapito">Recapito</label> <input type="email"
+										class="form-control" name="mail" value="${user.recapito}"
+										required>
+								</div>
+	
+								<div class="form-group">
+									<label for="pw">Password</label> <input type="password"
+										class="form-control" name="pass" value="${user.passwordU}"
+										required>
+								</div>
+	
+								<div class="form-group">
+									<label for="pwconf">Conferma password</label> <input
+										type="password" class="form-control" name="confirmPass"
+										placeholder="Confirm Password" required>
+								</div>
+	
+								<div class="form-group">
+									<label class="checkbox-inline"> <input type="checkbox"
+										name="check" required> Accetto i <a href="#">Termini
+											di Uso</a> e le <a href="#">Norme della privacy</a>
+									</label>
+								</div>
+								<div class="form-group" style="float: center">
+									<button type="button"
+										onclick="validateRegister(document.registerform)"
+										class="btn btn-success btn-lg btn-block"
+										style="max-width: 400px;">Modifica dati</button>
+								</div>
+							</form>
+						</div>
 					</c:when>
 
 					<c:when test="${userchoice=='ordini'}">
 			
-			<div class="sectionstyle">I miei ordini</div>
-		
-			</c:when>
+					</c:when>
+
+					<c:when test="${userchoice=='pagamento'}">
+			
+					<div class="sectionstyle">I miei metodi di pagamento</div>
+						
+					<div class="row">
+						<div class="col-lg-6 col-xs-12">
+							
+<%-- 							<c:forEach items="${cartprods}" var="item"> --%>
+									<%@include file="/WEB-INF/Includes/creditcard.jsp"%>				
+<%-- 							</c:forEach> --%>
+						
+						</div>
+					</div>
+				
+					</c:when>
+					
+					<c:when test="${userchoice=='indirizzi'}">
+			
+					</c:when>
 
 				</c:choose>
 
