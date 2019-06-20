@@ -108,6 +108,7 @@ CREATE TABLE ordine(
 	codiceOrdine	int,
     indirizzoSpedizione	varchar(50),
     tipoSpedizione	varchar(15),
+    dataOrdine		date,
     dataSpedizione	date,
     codiceSpedizione	int,
     codicePagamento	int references pagamento(codicePagamento),

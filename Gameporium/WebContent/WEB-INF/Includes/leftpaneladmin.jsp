@@ -37,16 +37,7 @@
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="#">Inserisci ordine</a>
-                </li>
-                <li>
-                  <a href="#">Modifica ordine</a>
-                </li>
-                <li>
-                  <a href="#">Elimina ordine</a>
-                </li>
-                <li>
-                  <a href="#">Visualizza ordini</a>
+                  <a href="/Gameporium/orderoperation.jsp?operation=1">Visualizza ordini</a>
                 </li>
               </ul>
             </div>

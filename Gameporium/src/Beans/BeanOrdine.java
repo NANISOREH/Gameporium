@@ -6,8 +6,8 @@ import java.time.LocalDate;
 public class BeanOrdine extends Bean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	int codiceOrdine, codiceSpedizione, codicePagamento;
-	String indirizzoSpedizione, tipoSpedizione,metodo, indirizzoFatturazione;
-	LocalDate dataSpedizione;
+	String indirizzoSpedizione, tipoSpedizione,metodo, indirizzoFatturazione, username;
+	LocalDate dataSpedizione,dataOrdine;
 	double importo;
 	
 	public BeanOrdine()
@@ -18,9 +18,11 @@ public class BeanOrdine extends Bean implements Serializable {
 		indirizzoSpedizione="";
 		tipoSpedizione="";
 		dataSpedizione=LocalDate.now();
+		dataOrdine=LocalDate.now();
 		importo=-1;
 		metodo="";
 		indirizzoFatturazione="";
+		username="";
 	}
 
 	public String getMetodo() {
@@ -94,10 +96,24 @@ public class BeanOrdine extends Bean implements Serializable {
 	public void setDataSpedizione(LocalDate newDataSpedizione) {
 		this.dataSpedizione = newDataSpedizione;
 	}
+	public LocalDate getDataOrdine() {
+		return dataOrdine;
+	}
 
+	public void setDataOrdine(LocalDate newDataOrdine) {
+		this.dataOrdine = newDataOrdine;
+	}
+	
+	public String getUsername() {
+		return username;
+	}
+	
+	public void setUsername(String newUsername) {
+		this.username=newUsername;
+	}
 	@Override
 	public String toString() {
-		return "BeanOrdine [codiceOrdine=" + codiceOrdine + ", codiceSpedizione=" + codiceSpedizione
+		return "BeanOrdine [codiceOrdine=" + codiceOrdine + ", Username="+username+", dataOrdine=" + dataOrdine +", codiceSpedizione=" + codiceSpedizione
 				+ ", codicePagamento=" + codicePagamento + ", indirizzoSpedizione=" + indirizzoSpedizione
 				+ ", tipoSpedizione=" + tipoSpedizione + ", dataSpedizione=" + dataSpedizione + "]";
 	}
