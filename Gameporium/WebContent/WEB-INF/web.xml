@@ -10,9 +10,9 @@
     <res-type>javax.sql.DataSource</res-type>
     <res-auth>Container</res-auth>
   </resource-ref>
- <session-config>
+  <session-config>
     <session-timeout>1000</session-timeout>
-</session-config>
+  </session-config>
   <servlet>
     <servlet-name>SingleProductServlet</servlet-name>
     <servlet-class>Controller.productview.SingleProductServlet</servlet-class>
@@ -53,6 +53,10 @@
     <servlet-name>adminServlet</servlet-name>
     <servlet-class>Controller.adminarea.adminServlet</servlet-class>
   </servlet>
+   <servlet>
+    <servlet-name>adminOrderServlet</servlet-name>
+    <servlet-class>Controller.adminarea.adminOrderServlet</servlet-class>
+  </servlet>
   <servlet>
     <servlet-name>JsonRetrievalServlet</servlet-name>
     <servlet-class>Controller.productview.JsonRetrievalServlet</servlet-class>
@@ -90,6 +94,10 @@
     <url-pattern>/adminservlet</url-pattern>
   </servlet-mapping>
     <servlet-mapping>
+    <servlet-name>adminOrderServlet</servlet-name>
+    <url-pattern>/adminorder</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>JsonRetrievalServlet</servlet-name>
     <url-pattern>/jsonretrieval</url-pattern>
   </servlet-mapping>
