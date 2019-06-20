@@ -3,7 +3,7 @@
 SEZIONI ANCORA DA COPRIRE
 - Area cliente (metodi pagamento e spedizione)
 - Area amministratore
-- Pagina del carrello e styling della sezione carrello nelle varie pagine
+- Pagina del carrello
 - Finalizzazione acquisti
 - Aggraziare e riempire il footer
 - Riempire i pannelli laterali
