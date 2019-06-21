@@ -119,6 +119,7 @@ CREATE TABLE   mod_Pagamento(
     circuito    char(20),
     numCarta    int,
     cvv  int,
+    scadenza varchar(7),
     primary key(codiceP)
     );
 	

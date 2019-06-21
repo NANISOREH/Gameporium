@@ -39,7 +39,7 @@ public class PagamentoModel implements Model {
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + PagamentoModel.TABLE_NAME
-				+ " (codiceP,numCarta,cvv,circuito) VALUES (?, ?, ?, ?, ?)";
+				+ " (codiceP,numCarta,cvv,circuito,scadenza) VALUES (?, ?, ?, ?, ?,?)";
 		
 		try {
 			connection = ds.getConnection();
@@ -48,6 +48,7 @@ public class PagamentoModel implements Model {
 			preparedStatement.setInt(2, c.getNumCarta());
 			preparedStatement.setInt(3, c.getCvv());
 			preparedStatement.setString(4, c.getCircuito());
+			preparedStatement.setString(5, c.getScadenza());
 			preparedStatement.executeUpdate();
 		} finally {
 			try {
@@ -83,6 +84,7 @@ public class PagamentoModel implements Model {
 				bean.setNumCarta((rs.getInt("numCarta")));
 				bean.setCvv(rs.getInt("cvv"));
 				bean.setCircuito(rs.getString("circuito"));
+				bean.setScadenza(rs.getString("scadenza"));
 			}
 
 		} finally {
@@ -154,6 +156,7 @@ public class PagamentoModel implements Model {
 				bean.setNumCarta((rs.getInt("numCarta")));
 				bean.setCvv(rs.getInt("cvv"));
 				bean.setCircuito(rs.getString("circuito"));
+				bean.setScadenza(rs.getString("scadenza"));
 				Pagamento.add(bean);
 			}
 
