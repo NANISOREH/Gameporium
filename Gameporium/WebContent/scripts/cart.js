@@ -34,13 +34,9 @@ function addToCart(idform)
 
 function reloadCart(quant, price, id)
 {
-<<<<<<< HEAD
    var result=quant*price;
    $("#" + id).html("Prezzo: "+result);
-=======
-	 var result=quant*price;
-	 $("#" + id).html(result);
->>>>>>> 95d9d335f05d8d319eb96d21c3c62b9d9ce97f67
+
 }
 
 
