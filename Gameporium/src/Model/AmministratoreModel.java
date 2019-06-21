@@ -2,9 +2,7 @@ package Model;
 import Beans.Bean;
 import Beans.BeanAmministratore;
 import Beans.BeanCliente;
-
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -42,21 +40,16 @@ public class AmministratoreModel implements Model {
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + AmministratoreModel.TABLE_NAME
-				+ " (CF, dataNascita,nome,cognome,username,passwordU,recapito,cap,via,provincia) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		Date dt=new java.sql.Date(a.getDataNascita().getTime());
+				+ " (nome,cognome,username,passwordU,recapito) VALUES (?, ?, ?, ?, ?)";
+
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setString(1, a.getCF());
-			preparedStatement.setDate(2, dt);
 			preparedStatement.setString(3, a.getNome());
 			preparedStatement.setString(4, a.getCognome());
 			preparedStatement.setString(5, a.getUsername());
 			preparedStatement.setString(6, a.getPasswordU());
 			preparedStatement.setString(7, a.getRecapito());
-			preparedStatement.setInt(8, a.getCap());
-			preparedStatement.setString(9, a.getVia());
-			preparedStatement.setString(10, a.getVia());
 			preparedStatement.executeUpdate();
 
 			connection.commit();
@@ -74,32 +67,27 @@ public class AmministratoreModel implements Model {
 	@Override
 	public synchronized BeanAmministratore doRetrieveByKey(Object codice) throws SQLException {
 		
-		String CF=(String) codice;
+		String username=(String) codice;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
 		BeanAmministratore bean = new BeanAmministratore();
 
-		String selectSQL = "SELECT * FROM " + AmministratoreModel.TABLE_NAME + " WHERE CF = ?";
+		String selectSQL = "SELECT * FROM " + AmministratoreModel.TABLE_NAME + " WHERE username = ?";
 
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setString(1, CF);
+			preparedStatement.setString(1, username);
 
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				bean.setCF(rs.getString("CF"));
-				bean.setCap(rs.getInt("cap"));
 				bean.setCognome(rs.getString("cognome"));
-				bean.setDataNascita(rs.getDate("dataNascita"));
 				bean.setNome(rs.getString("nome"));
 				bean.setPasswordU(rs.getString("passwordU"));
-				bean.setProvincia(rs.getString("provincia"));
 				bean.setRecapito(rs.getString("recapito"));
 				bean.setUsername(rs.getString("username"));
-				bean.setVia(rs.getString("via"));
 			}
 
 		} finally {
@@ -117,18 +105,18 @@ public class AmministratoreModel implements Model {
 	@Override
 	public synchronized boolean doDelete(Object codice) throws SQLException {
 		
-		String CF=(String) codice;
+		String username=(String) codice;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
 		int result = 0;
 
-		String deleteSQL = "DELETE FROM " + AmministratoreModel.TABLE_NAME + " WHERE CF = ?";
+		String deleteSQL = "DELETE FROM " + AmministratoreModel.TABLE_NAME + " WHERE username = ?";
 
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
-			preparedStatement.setString(1, CF);
+			preparedStatement.setString(1, username);
 
 			result = preparedStatement.executeUpdate();
 
@@ -162,7 +150,6 @@ public class AmministratoreModel implements Model {
 
 			while (rs.next()) {
 				bean.setCognome(rs.getString("cognome"));
-				/* bean.setDataNascita((rs.getDate("dataNascita")).toLocalDate()); */
 				bean.setNome(rs.getString("nome"));
 				bean.setPasswordU(rs.getString("passwordU"));
 				bean.setRecapito(rs.getString("recapito"));
@@ -203,16 +190,11 @@ public class AmministratoreModel implements Model {
 			while (rs.next()) {
 				BeanAmministratore bean = new BeanAmministratore();
 
-				bean.setCF(rs.getString("CF"));
-				bean.setCap(rs.getInt("cap"));
 				bean.setCognome(rs.getString("cognome"));
-				bean.setDataNascita(rs.getDate("dataNascita"));
 				bean.setNome(rs.getString("nome"));
 				bean.setPasswordU(rs.getString("passwordU"));
-				bean.setProvincia(rs.getString("provincia"));
 				bean.setRecapito(rs.getString("recapito"));
 				bean.setUsername(rs.getString("username"));
-				bean.setVia(rs.getString("via"));
 				Amministratore.add(bean);
 			}
 
