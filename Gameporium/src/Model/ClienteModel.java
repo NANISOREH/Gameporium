@@ -2,7 +2,6 @@ package Model;
 import Beans.Bean;
 import Beans.BeanCliente;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,18 +38,19 @@ public class ClienteModel implements Model {
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + ClienteModel.TABLE_NAME
-				+ " (dataNascita,nome,cognome,username,passwordU,recapito) VALUES (?, ?, ?, ?, ?, ?)";
+				+ " (nome,cognome,username,passwordU,recapito,cartaPred) VALUES (?, ?, ?, ?, ?, ?)";
 		
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setDate(1, Date.valueOf(c.getDataNascita()));
-			preparedStatement.setString(2, c.getNome());
-			preparedStatement.setString(3, c.getCognome());
-			preparedStatement.setString(4, c.getUsername());
-			preparedStatement.setString(5, c.getPasswordU());
-			preparedStatement.setString(6, c.getRecapito());
+			preparedStatement.setString(1, c.getNome());
+			preparedStatement.setString(2, c.getCognome());
+			preparedStatement.setString(3, c.getUsername());
+			preparedStatement.setString(4, c.getPasswordU());
+			preparedStatement.setString(5, c.getRecapito());
+			preparedStatement.setInt(6, c.getCartaPred());
 			preparedStatement.executeUpdate();
+			connection.commit();
 		} finally {
 			try {
 				if (preparedStatement != null)
@@ -82,7 +82,6 @@ public class ClienteModel implements Model {
 
 			while (rs.next()) {
 				bean.setCognome(rs.getString("cognome"));
-				bean.setDataNascita((rs.getDate("dataNascita")).toLocalDate());
 				bean.setNome(rs.getString("nome"));
 				bean.setPasswordU(rs.getString("passwordU"));
 				bean.setRecapito(rs.getString("recapito"));
@@ -118,7 +117,6 @@ public class ClienteModel implements Model {
 
 			while (rs.next()) {
 				bean.setCognome(rs.getString("cognome"));
-				bean.setDataNascita((rs.getDate("dataNascita")).toLocalDate());
 				bean.setNome(rs.getString("nome"));
 				bean.setPasswordU(rs.getString("passwordU"));
 				bean.setRecapito(rs.getString("recapito"));
@@ -155,7 +153,6 @@ public class ClienteModel implements Model {
 
 			while (rs.next()) {
 				bean.setCognome(rs.getString("cognome"));
-				bean.setDataNascita((rs.getDate("dataNascita")).toLocalDate());
 				bean.setNome(rs.getString("nome"));
 				bean.setPasswordU(rs.getString("passwordU"));
 				bean.setRecapito(rs.getString("recapito"));
@@ -177,18 +174,18 @@ public class ClienteModel implements Model {
 	@Override
 	public synchronized boolean doDelete(Object codice) throws SQLException {
 		
-		int code=(int) codice;
+		String username=(String) codice;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
 		int result = 0;
 
-		String deleteSQL = "DELETE FROM " + ClienteModel.TABLE_NAME + " WHERE CF = ?";
+		String deleteSQL = "DELETE FROM " + ClienteModel.TABLE_NAME + " WHERE username = ?";
 
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
-			preparedStatement.setInt(1, code);
+			preparedStatement.setString(1, username);
 
 			result = preparedStatement.executeUpdate();
 
@@ -227,7 +224,6 @@ public class ClienteModel implements Model {
 				BeanCliente bean = new BeanCliente();
 
 				bean.setCognome(rs.getString("cognome"));
-				bean.setDataNascita((rs.getDate("dataNascita")).toLocalDate());
 				bean.setNome(rs.getString("nome"));
 				bean.setPasswordU(rs.getString("passwordU"));
 				bean.setRecapito(rs.getString("recapito"));

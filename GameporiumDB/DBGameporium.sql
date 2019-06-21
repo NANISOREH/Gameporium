@@ -23,7 +23,6 @@ CREATE TABLE prodotto (
 DROP TABLE IF EXISTS cliente;
 USE GameporiumDB;
 CREATE TABLE cliente(
-	dataNascita		date,
     nome			varchar(20),
     cognome			varchar(30),
     username		varchar(15),
@@ -102,15 +101,15 @@ CREATE TABLE partecipazione(
                                 ON DELETE CASCADE
 );
 
-DROP TABLE IF EXISTS ind_Spedizione;
+DROP TABLE IF EXISTS indirizzo;
 USE GameporiumDB;
-CREATE TABLE ind_Spedizione(
-	codSPedizione int,
-    città varchar(20),
-    indirizzo varchar(50),
+CREATE TABLE indirizzo(
+	codiceIndirizzo int,
+    citta varchar(20),
+    via varchar(30),
     civico int,
 	cap int,
-    primary key (codSpedizione)
+    primary key (codiceIndirizzo)
     );
     
 DROP TABLE IF EXISTS mod_Pagamento;
@@ -127,9 +126,9 @@ DROP TABLE IF EXISTS spedizione;
 USE GameporiumDB;
 CREATE TABLE spedizione(
 	username	varchar(16),
-    codSpedizione	int,
+    codiceIndirizzo	int,
     testo			varchar(200),
-    foreign key (codSpedizione) references ind_Spedizione (codSpedizione)
+    foreign key (codiceIndirizzo) references indirizzo (codiceIndirizzo)
 								ON UPDATE CASCADE
                                 ON DELETE CASCADE,
     foreign key (username) references cliente (username)
@@ -153,14 +152,14 @@ DROP TABLE IF EXISTS ordine;
 USE GameporiumDB;
 CREATE TABLE ordine(
 	codiceOrdine	int,
-    indirizzoSpedizione	varchar(50) references ind_Spedizione(codSpedizione),
+    indirizzoSpedizione	varchar(50) references indirizzo(codiceIndirizzo),
     tipoSpedizione	varchar(15),
     dataOrdine		date,
     dataSpedizione	date,
     codiceSpedizione	int,
-    codicePagamento	int references pagamento(codicePagamento),
+    codicePagamento	int ,
     importo			numeric,
-    metodo			varchar(20),
+    metodo			int references pagamento(codicePagamento),
     indirizzoFatturazione	varchar (50),
     primary key (codiceOrdine)
 );

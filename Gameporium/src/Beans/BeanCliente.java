@@ -1,12 +1,19 @@
 package Beans;
-import java.time.*;
 import java.io.Serializable;
 
 public class BeanCliente extends Bean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	String nome, cognome, username, passwordU, recapito;
-	LocalDate dataNascita;
+	int cartaPred;
 	
+	public int getCartaPred() {
+		return cartaPred;
+	}
+
+	public void setCartaPred(int cartaPred) {
+		this.cartaPred = cartaPred;
+	}
+
 	public BeanCliente()
 	{
 		nome="";
@@ -14,7 +21,7 @@ public class BeanCliente extends Bean implements Serializable {
 		username="";
 		passwordU="";
 		recapito="";
-		dataNascita = LocalDate.now();
+		cartaPred=-1;
 	}
 
 	public String getNome() {
@@ -57,18 +64,10 @@ public class BeanCliente extends Bean implements Serializable {
 		this.recapito = newRecapito;
 	}
 
-	public LocalDate getDataNascita() {
-		return dataNascita;
-	}
-
-	public void setDataNascita(LocalDate newDataNascita) {
-		this.dataNascita = newDataNascita;
-	}
-
 	@Override
 	public String toString() {
 		return "BeanCliente [nome=" + nome + ", cognome=" + cognome + ", username=" + username + ", passwordU="
-				+ passwordU + ", recapito=" + recapito + ", dataNascita=" + dataNascita + "]";
+				+ passwordU + ", recapito=" + recapito + ", cartaPred=" + cartaPred + "]";
 	}
 
 }
