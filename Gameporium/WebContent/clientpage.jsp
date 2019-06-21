@@ -135,8 +135,33 @@
 																class="form-control">
 														</div>
 														<div class="form-group col-md-3">
-															<label>Scadenza</label> <input type="date"
-																class="form-control">
+															<label for="mesescadenza">Scadenza</label>
+															<select class="form-control" id="mesescadenza" name="mesescadenza">
+														        <option>01</option>
+														        <option>02</option>
+														        <option>03</option>
+														        <option>04</option>
+														        <option>05</option>
+														        <option>06</option>
+														        <option>07</option>
+														        <option>08</option>
+														        <option>09</option>
+														        <option>10</option>
+														        <option>11</option>
+														        <option>12</option>
+														    </select>
+														    <select class="form-control" id="annoscadenza" name="annoscadenza">
+														        <option>2019</option>
+														        <option>2020</option>
+														        <option>2021</option>
+														        <option>2022</option>
+														        <option>2023</option>
+														        <option>2024</option>
+														        <option>2025</option>
+														        <option>2026</option>
+														        <option>2027</option>
+														        <option>2028</option>
+														    </select>
 														</div>
 														<div class="form-group col-md-2">
 															<label>CVV</label> <input type="text"

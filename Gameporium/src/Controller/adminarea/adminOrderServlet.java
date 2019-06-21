@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Beans.Bean;
 import Beans.BeanOrdine;
@@ -29,43 +30,39 @@ public class adminOrderServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		String op=request.getParameter("operation");
-//		int operation=Integer.parseInt(op);
-		String user=request.getParameter("username");
-		//if(operation==1) {
+			HttpSession session = request.getSession();
+			String username=request.getParameter("username");
 			Collection<Bean> bo=null;
-			try {
-				bo=om.doRetrieveAll(user);
-			} catch (SQLException e) {
-				e.printStackTrace();
+			if(username!=null) {
+				System.out.println("asfdas");
+				try {
+					bo=om.doRetrieveByUser(username);
+					session.setAttribute("listaOrdini", bo);
+//					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/orderoperation.jsp");
+//					dispatcher.forward(request, response);
+					response.setStatus(200);
+					return;
+				}catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
-			request.setAttribute("listaOrdini", bo);
-			System.out.println(bo.toString());
-		/*}
-		else {
-			Collection<Bean> bo=null;
-			try {
-				bo=om.doRetrieveByUser(user);
-			} catch (SQLException e) {
-				e.printStackTrace();
+			if(username==null) {
+					try {
+						bo=om.doRetrieveAll("codiceOrdine");
+						session.setAttribute("listaOrdini", bo);
+					}catch (SQLException e) {
+						e.printStackTrace();
+					}
+				
+//				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/orderoperation.jsp");
+//				dispatcher.forward(request, response);
+				response.setStatus(200);
 			}
-			request.setAttribute("listaOrdini", bo);
-			System.out.println(bo.toString());
-		}*/
-	}
+		}
+	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String user=request.getParameter("username");
-		Collection<Bean> bo=null;
-		try {
-			bo=om.doRetrieveByUser(user);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		request.setAttribute("listaOrdini", bo);
-		System.out.println(bo.toString());
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/orderoperation.jsp");
-		dispatcher.forward(request, response);
+		doGet(request,response);
 	}
 
 }

@@ -37,7 +37,7 @@
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="/Gameporium/orderoperation.jsp?operation=1">Visualizza ordini</a>
+                  <a href="/Gameporium/orderoperation.jsp">Visualizza ordini</a>
                 </li>
               </ul>
             </div>

@@ -97,14 +97,11 @@
     <servlet-name>adminServlet</servlet-name>
     <url-pattern>/adminservlet</url-pattern>
   </servlet-mapping>
-<<<<<<< HEAD
-=======
-    <servlet-mapping>
-    <servlet-name>adminOrderServlet</servlet-name>
+  <servlet-mapping>
+ <servlet-name>adminOrderServlet</servlet-name>
     <url-pattern>/adminorder</url-pattern>
   </servlet-mapping>
->>>>>>> 95d9d335f05d8d319eb96d21c3c62b9d9ce97f67
-  <servlet-mapping>
+<servlet-mapping>
     <servlet-name>JsonRetrievalServlet</servlet-name>
     <url-pattern>/jsonretrieval</url-pattern>
   </servlet-mapping>

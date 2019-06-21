@@ -1,7 +1,7 @@
 /*questa funzione carica i dati nel form #modproductform quando ci si arriva via "Visualizza prodotti"*/
 function myFunct(){
 	//ci vuole un altro if che faccia partire la funzione solo quando il form è quello giusto altrimenti cercherà sempre il button
-	var cod=document.getElementById("codProdotto");
+	var cod=document.getElementById("codProdotto").value;
 	if(!isNaN(cod)){
 		document.getElementById("cercaCRUD").click();
 	}
@@ -45,7 +45,7 @@ function gameoraccessory(category){
 	}
 }
 
-/*questa funzione->chiedere a Luca Topo*/
+/*questa funzione permette all'admin di arrivare alla pagina di modifica prodotto con i dati del prodotto già inseriti*/
 $(document).ready(function() {	
 	
     $("#modproductform").submit(function(event) {
@@ -131,3 +131,15 @@ $(document).ready(function() {
             });
     });  
 });
+
+
+function ajaxOrder()
+{
+	var u =document.getElementById("username").value
+  $.get('adminorder', {"username": u}, 
+      function(){
+        $("#ordertable").load(' #ordertable');
+        alert("prova");
+      }, 
+      failAlert()); 
+}

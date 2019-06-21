@@ -3,7 +3,9 @@
 	<table class="table">
 	  <tbody>
 	    <tr>
-	      <th scope="row"><i class="far fa-credit-card"></i></th>
+	      <th scope="row">
+	      	<i class="far fa-credit-card"></i>
+	      </th>
 	      <td>${item.circuito}</td>
 	      <td>termina con ${item.numeroSicuro}</td>
 	      <td>scade il ${item.scadenza}</td>
