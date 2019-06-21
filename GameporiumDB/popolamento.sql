@@ -245,7 +245,14 @@ INSERT INTO mod_Pagamento(codiceP,circuito,numCarta,cvv,scadenza) VALUES
 INSERT INTO effettua(username,codiceOrdine) VALUES
 	('Brontolo',00001),
     ('Athos',00002),
-    ('Eolo',00003);
+    ('Eolo',00003),
+    ('Dotto',00004),
+    ('Mammolo',00005),
+    ('Gongolo',00006),
+    ('Cucciolo',00007),
+    ('Athos',00008),
+    ('Pisolo',00009),
+    ('Portos',00010);
     
 INSERT INTO partecipazione(codiceEvento,username) VALUES
 	(001,'Portos'),
@@ -265,7 +272,6 @@ INSERT INTO composizione(codiceOrdine,codiceProdotto,quantita) VALUES
     (00002,0001,1),
     (00002,0006,1),
     (00003,0005,3);-- ipotizziamo uno sconto che da 30€ mi fa pagare 28
-    
     
 INSERT INTO pagamento(username,codiceP) VALUES
 	('Mammolo',111),
