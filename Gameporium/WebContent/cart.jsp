@@ -73,6 +73,7 @@
 		      		<div class="row">
 		
 
+<<<<<<< HEAD
 		      			   <div class="row col-lg-12 md-12 sm-12">Il mio carrello</div>
 							<c:set var="cartprods" value='${sessionScope["cartitems"]}' />
 							
@@ -95,10 +96,38 @@
 										 			<input class="quantInput" type="number" name="quantita"quantita" value="${item.quantita }" id="${item.quantita}" onchange="reloadCart(value,${item.product.prezzo}, ${item.product.codiceProdotto}})"/>
 													</div>
 											
-												</div>
-									
+=======
+	      			   <div class="row col-lg-12 md-12 sm-12 sectionstyle">Il mio carrello</div>
+						<c:set var="cartprods" value='${sessionScope["cartitems"]}' />
+						<div class="container fluid">
+
+						<c:forEach items="${cartprods}" var="item">
+								<div class="cartcard card col-lg-12 md-12 sm-12" id="cartcard">
+									<div class="row ">
+										<div class="col-lg-3 col-md-4 sm-12 ">
+											<div class="img-square-wrapper">
+												<img class="card-img mx-auto" id="cartimg" src="images/${item.product.foto}"
+													alt="Card image cap">
 											</div>
+										</div>
+										<div class="col-lg-6 col-md-4 sm-12">
+											<div class="card-body">
+												<h4 class="card-title">${item.product.titolo }</h4>
+												<p class="card-text">
+												Quantità:<div class="col">
+									 			<input class="quantInput" type="number" name="quantita" value="${item.quantita }" id="${item.quantita}" onchange="reloadCart(value,${item.product.prezzo}, ${item.product.codiceProdotto})"/>
+>>>>>>> 95d9d335f05d8d319eb96d21c3c62b9d9ce97f67
+												</div>
 										
+											</div>
+								
+										</div>
+									
+										<div class="col-lg-3 col-md-4 sm-12 cartreload" id="${item.product.codiceProdotto}">
+											
+											${item.product.prezzo*item.quantita}
+										
+<<<<<<< HEAD
 					    <div class="col-lg-3 col-md-4 sm-12 cartreload" id="${item.product.codiceProdotto}">Prezzo: ${item.product.prezzo*item.quantita}
                         <form action="cartremove" method="post" name="removefrm">
                         <button  class="quantButton btn btn-sm btn-primary btn-block text-uppercase" name="rimuovibtn" id="rimuovibtn" 
@@ -114,6 +143,15 @@
 								</div>
 							</c:forEach>
 </div>
+=======
+										</div>
+											
+
+									</div>
+							</div>
+						</c:forEach>
+					</div>
+>>>>>>> 95d9d335f05d8d319eb96d21c3c62b9d9ce97f67
 
 		       		<!-- fine iterazione cards -->
 

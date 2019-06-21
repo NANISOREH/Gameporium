@@ -3,7 +3,7 @@
 SEZIONI ANCORA DA COPRIRE
 - Area cliente (metodi pagamento e spedizione)
 - Area amministratore
-- Pagina del carrello e styling della sezione carrello nelle varie pagine
+- Pagina del carrello
 - Finalizzazione acquisti
 - Aggraziare e riempire il footer
 - Riempire i pannelli laterali
@@ -18,3 +18,4 @@ SEZIONI EXTRA (se avanza tempo)
 TO DO LIST
 - Sistemare le immagini
 - Far sopravvivere il carrello alla morte della session
+- Il login non dovrebbe riportarti in home

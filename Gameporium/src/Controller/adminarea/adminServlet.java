@@ -39,10 +39,7 @@ public class adminServlet extends HttpServlet {
 		int operation=Integer.parseInt(op);
 		
 		if(operation==3) {
-			System.out.println("cancellazione");
 			int codP=Integer.parseInt(request.getParameter("codiceProdotto"));
-			System.out.println(codP);
-			
 			try {
 				model.doDelete(codP);
 			} catch (SQLException e) {
@@ -273,7 +270,6 @@ public class adminServlet extends HttpServlet {
 			}
 			return;
 		}
-			System.out.println("operazione 4");
 			Collection <Bean> bpr = null;
 			try {
 				bpr=model.doRetrieveAll("codiceProdotto");

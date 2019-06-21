@@ -12,7 +12,7 @@
           <li class="sidebar-dropdown">
               <i class="fa fa-tachometer-alt"></i>
               <span>Gestione prodotti</span>
-            </a>
+
             <div class="sidebar-submenu">
               <ul>
                 <li>
@@ -33,20 +33,11 @@
           <li class="sidebar-dropdown">
               <i class="fa fa-shopping-cart"></i>
               <span>Gestione ordini</span>
-            </a>
+
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="#">Inserisci ordine</a>
-                </li>
-                <li>
-                  <a href="#">Modifica ordine</a>
-                </li>
-                <li>
-                  <a href="#">Elimina ordine</a>
-                </li>
-                <li>
-                  <a href="#">Visualizza ordini</a>
+                  <a href="/Gameporium/orderoperation.jsp?operation=1">Visualizza ordini</a>
                 </li>
               </ul>
             </div>
@@ -54,7 +45,7 @@
           <li class="sidebar-dropdown">
               <i class="far fa-gem"></i>
               <span>Gestione eventi</span>
-            </a>
+
             <div class="sidebar-submenu">
               <ul>
                 <li>
@@ -75,7 +66,7 @@
           <li class="sidebar-dropdown">
               <i class="fa fa-chart-line"></i>
               <span>Gestione utenti</span>
-            </a>
+
             <div class="sidebar-submenu">
               <ul>
                 <li>
