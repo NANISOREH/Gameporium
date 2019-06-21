@@ -123,6 +123,8 @@ function validateRegister(registerform)
 			registerform.check.focus();	
 			return;
 	}
+	
+	registerform.submit();
 }
 
 
