@@ -5,8 +5,8 @@
         auth="Container"
         driverClassName="com.mysql.cj.jdbc.Driver"
         type="javax.sql.DataSource"
-        username="root"
-        password="Rayearth90"
+        username="nico"
+        password="password"
         defaultAutoCommit="false"
         url="jdbc:mysql://localhost:3306/GameporiumDB?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=CET"/>
 </Context>
