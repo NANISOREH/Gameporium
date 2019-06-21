@@ -21,6 +21,8 @@ function addToCart(idform)
 			function(){
 				$('#cartitems').load(' #cartitems');
 				$('.carticon').load(' .carticon');
+				$('.cartorder').load(' .cartorder');
+
 				Swal.fire({
 				  title: '<h6>Prodotto inserito nel carrello!</h6>',
 				  type: 'success',
@@ -30,13 +32,35 @@ function addToCart(idform)
 				});
 			}, 
 			failAlert());
+	
 }
 
-function reloadCart(quant, price, id)
+function reloadCart(quantita, codice)
 {
-   var result=quant*price;
-   $("#" + id).html("Prezzo: "+result);
+	
+	if (quantita<1 || quantita >99)
+		{
+			Swal.fire({
+				  title: '<h6>Inserire una quantità compresa tra 1 e 99 prodotti</h6>',
+				  toast: true,
+				  type: 'error',
+				  position: 'top',
+				  timer: 2000,
+				  showConfirmButton: false
+				})
+				
+				return;
+		}
+	
+	$.get('cartupdate', {"quantita": quantita, "productId": codice}, 
+			function(){
+				$('#cartitems').load(' #cartitems');
+				$('.carticon').load(' .carticon');
+				$('.cartreload').load(' .cartreload');
+				$('.cartorder').load(' .cartorder');
 
+
+			});
 }
 
 
