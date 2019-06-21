@@ -209,6 +209,17 @@
   
 /*cart*/
 
+	div.credcard
+	{
+		max-height:50px;
+	}
+	
+	.credcard-el
+	{
+		display:inline-block;
+		padding-right:80px;
+	}
+	
 	#cartcard
 	{
 		height: 220px;

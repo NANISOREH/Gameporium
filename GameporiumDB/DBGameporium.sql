@@ -29,6 +29,7 @@ CREATE TABLE cliente(
     username		varchar(15),
     passwordU		varchar(20),
     recapito		varchar(30),
+    cartaPred       int references mod_Pagamento (codiceP),
     primary key(username)
 );
 
@@ -101,13 +102,60 @@ CREATE TABLE partecipazione(
                                 ON DELETE CASCADE
 );
 
+DROP TABLE IF EXISTS ind_Spedizione;
+USE GameporiumDB;
+CREATE TABLE ind_Spedizione(
+	codSPedizione int,
+    città varchar(20),
+    indirizzo varchar(20),
+    civico int,
+	cap int,
+    primary key (codSpedizione)
+    );
+    
+DROP TABLE IF EXISTS mod_Pagamento;
+USE GameporiumDB;
+CREATE TABLE   mod_Pagamento(
+	codiceP     int,
+    circuito    char(20),
+    numCarta    int,
+    cvv  int,
+    primary key(codiceP)
+    );
+	
+DROP TABLE IF EXISTS spedizione;
+USE GameporiumDB;
+CREATE TABLE spedizione(
+	username	varchar(16),
+    codSpedizione	int,
+    testo			varchar(200),
+    foreign key (codSpedizione) references ind_Spedizione (codSpedizione)
+								ON UPDATE CASCADE
+                                ON DELETE CASCADE,
+    foreign key (username) references cliente (username)
+								ON UPDATE CASCADE
+                                ON DELETE CASCADE);
+                                
+DROP TABLE IF EXISTS pagamento;
+USE GameporiumDB;
+CREATE TABLE pagamento(
+	username	varchar(16),
+    codiceP	    int,
+    foreign key (codiceP) references mod_Pagamento (codiceP)
+								ON UPDATE CASCADE
+                                ON DELETE CASCADE,
+    foreign key (username) references cliente (username)
+								ON UPDATE CASCADE
+                                ON DELETE CASCADE);
+
 
 DROP TABLE IF EXISTS ordine;
 USE GameporiumDB;
 CREATE TABLE ordine(
 	codiceOrdine	int,
-    indirizzoSpedizione	varchar(50),
+    indirizzoSpedizione	varchar(50) references ind_Spedizione(codSpedizione),
     tipoSpedizione	varchar(15),
+    dataOrdine		date,
     dataSpedizione	date,
     codiceSpedizione	int,
     codicePagamento	int references pagamento(codicePagamento),
@@ -139,17 +187,13 @@ CREATE TABLE effettua(
 DROP TABLE IF EXISTS amministratore;
 USE GameporiumDB;
 CREATE TABLE amministratore(
-	CF				varchar(16),
     dataNascita		date,
     nome			varchar(20),
     cognome			varchar(30),
     username		varchar(15),
     passwordU		varchar(20),
     recapito		varchar(30),
-    cap				int,
-    via				varchar(40),
-    provincia		varchar(2),
-    primary key(CF)
+    primary key(username)
 );
 
 DROP TABLE IF EXISTS composizione;

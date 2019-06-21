@@ -1,21 +1,13 @@
-/*function myFunct(op,cod){
-	alert(cod)
-	window.location.href ="/Gameporium/productoperation.jsp?operation="+op+"&codiceProdotto="+cod
-	$(document).ready(function mammt(){
-		alert("mannagg")
-		alert("u patatern")
-		document.getElementById("cercaCRUD").click();
-		alert("e a maronn");
-	})
-}*/
+/*questa funzione carica i dati nel form #modproductform quando ci si arriva via "Visualizza prodotti"*/
 function myFunct(){
-	alert("mannag")
+	//ci vuole un altro if che faccia partire la funzione solo quando il form è quello giusto altrimenti cercherà sempre il button
 	var cod=document.getElementById("codProdotto");
-	if(cod!=null){
+	if(!isNaN(cod)){
 		document.getElementById("cercaCRUD").click();
 	}
 }
 
+/*questa funzione abilita tutti i campi del form quando l'admin vuole modificare i dati di un prodotto*/
 function enablemod(){
 	event.preventDefault()
 	document.getElementById("codiceProdotto").removeAttribute("readonly");	
@@ -37,7 +29,7 @@ function enablemod(){
 	document.getElementById("modbtn").removeAttribute("disabled");	
 }
 
-
+/*questa funzione mostra e/o nasconde gli attributi delle categorie del prodotto*/
 function gameoraccessory(category){	
 	if(category=='gioco'){
 		document.getElementById("subCatGioco").style.display="block";
@@ -53,7 +45,7 @@ function gameoraccessory(category){
 	}
 }
 
-
+/*questa funzione->chiedere a Luca Topo*/
 $(document).ready(function() {	
 	
     $("#modproductform").submit(function(event) {
@@ -124,7 +116,7 @@ $(document).ready(function() {
       							document.getElementById("descrizioneCategoriaAccessori").selectedIndex="2"
       							break;
     						  default:
-    						    console.log("Stai sbagliann coccos" );
+    						    console.log("Errore" );
     						}
     					}
     					else{

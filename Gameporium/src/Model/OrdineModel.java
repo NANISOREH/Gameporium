@@ -147,7 +147,7 @@ public class OrdineModel implements Model {
 
 		Collection<Bean> Ordine = new LinkedList<Bean>();
 
-		String selectSQL = "SELECT * FROM " + OrdineModel.TABLE_NAME;
+		String selectSQL = "SELECT * FROM " + OrdineModel.TABLE_NAME +" as o JOIN effettua as e on o.codiceOrdine=e.codiceOrdine";
 
 		if (order != null && !order.equals("")) {
 			selectSQL += " ORDER BY " + order;
@@ -171,6 +171,7 @@ public class OrdineModel implements Model {
 				bean.setImporto(rs.getDouble("importo"));
 				bean.setMetodo(rs.getString("metodo"));
 				bean.setIndirizzoFatturazione(rs.getString("indirizzoFatturazione"));
+				bean.setUsername(rs.getString("username"));
 				Ordine.add(bean);
 			}
 
@@ -186,4 +187,45 @@ public class OrdineModel implements Model {
 		return Ordine;
 	}
 
+	public synchronized Collection<Bean> doRetrieveByUser(String user) throws SQLException{
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Collection<Bean> Ordine = new LinkedList<Bean>();
+
+		String selectSQL = "SELECT * FROM " + OrdineModel.TABLE_NAME +" as o JOIN effettua as e on o.codiceOrdine=e.codiceOrdine WHERE username=?";
+		
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, user);
+
+			ResultSet rs = preparedStatement.executeQuery();
+			while (rs.next()) {
+				BeanOrdine bean = new BeanOrdine();
+
+				bean.setCodiceOrdine(rs.getInt("codiceOrdine"));
+				bean.setIndirizzoSpedizione(rs.getString("indirizzoSpedizione"));
+				bean.setTipoSpedizione(rs.getString("tipoSpedizione"));
+				bean.setDataOrdine(rs.getDate("dataOrdine").toLocalDate());
+				bean.setDataSpedizione(rs.getDate("dataSpedizione").toLocalDate());
+				bean.setCodiceSpedizione(rs.getInt("codiceSpedizione"));
+				bean.setCodicePagamento(rs.getInt("codicePagamento"));
+				bean.setImporto(rs.getDouble("importo"));
+				bean.setMetodo(rs.getString("metodo"));
+				bean.setIndirizzoFatturazione(rs.getString("indirizzoFatturazione"));
+				bean.setUsername(rs.getString("username"));
+				Ordine.add(bean);
+			}
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+	}
+		return Ordine;
+	}
 }
