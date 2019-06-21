@@ -2,16 +2,16 @@ INSERT INTO cliente(nome,cognome,dataNascita,username,passwordU,recapito,cartaPr
 	('Sara','Corrente','1990/01/10','Brontolo','Pippo','3394004520', '1010'),
 	('Fabiana','Gatto','1992/06/11','Cucciolo','Pluto','3384596321','1100'),
     ('Vincenzo','Monzo','1990/08/22','Mammolo','Topolino','3384558321','111'),
-    ('Maria','De Luca','1995/02/01','Pisolo','Minnie','3849675843'),
-    ('Giovanni','Chiariello','1993/04/24', 'Eolo','ZioPaperone','3397835226'),
-    ('Andrea','Palladino','1992/08/05','Dotto','Qui','3569472315'),
-    ('Carmela','Volpe','1989/11/30','Gongolo','Quo','3896475147'),
-    ('Claudia','Torre','1989/06/20','Aramis','Qua','3336244859'),
-    ('Francesco','Perozziello','1992/02/26','Portos','Paperina','3329957128'),
-    ('Michela','De Lucia','1992/10/09','Athos','Paperino','3694752198');
+    ('Maria','De Luca','1995/02/01','Pisolo','Minnie','3849675843', '100'),
+    ('Giovanni','Chiariello','1993/04/24', 'Eolo','ZioPaperone','3397835226', '101'),
+    ('Andrea','Palladino','1992/08/05','Dotto','Qui','3569472315', '102'),
+    ('Carmela','Volpe','1989/11/30','Gongolo','Quo','3896475147', '103'),
+    ('Claudia','Torre','1989/06/20','Aramis','Qua','3336244859', '104'),
+    ('Francesco','Perozziello','1992/02/26','Portos','Paperina','3329957128', '105'),
+    ('Michela','De Lucia','1992/10/09','Athos','Paperino','3694752198', '106');
     
-INSERT INTO amministratore(CF,nome,cognome,dataNascita,username,passwordU,recapito,via,cap,provincia) VALUES
-	('SSTCNA70A01Y123Z','Caino','Savastano','1970/01/01','Broslayer','hostatoio','123456789','Via dall Eden', 12345, 'TB');
+INSERT INTO amministratore(nome,cognome,dataNascita,username,passwordU,recapito) VALUES
+	('Caino','Savastano','1970/01/01','Broslayer','hostatoio','123456789');
     
 INSERT INTO corriere(codiceCorriere, costoSpedizione,nome) VALUES
 	(001, 5, 'BRT'),
@@ -223,7 +223,7 @@ INSERT INTO ordine(codiceOrdine,indirizzoSpedizione,tipoSpedizione,dataOrdine,da
     
     
 INSERT INTO ind_Spedizione(codSPedizione,città,indirizzo,civico, cap) VALUES
-    (01,'Aversa','via Dalle Palle', 53, 80200),
+    (01,'Aversa','via dalla Università', 53, 80200),
     (02,'Napoli','via Vittorio Emanuele',89,80010),
     (03,'Pompei', 'via eruzione',70,83020),
     (04,'Scampia','via dal carcere',25,82120);
