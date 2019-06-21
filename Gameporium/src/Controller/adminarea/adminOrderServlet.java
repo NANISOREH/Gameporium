@@ -29,6 +29,7 @@ public class adminOrderServlet extends HttpServlet {
 
     }
 
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			HttpSession session = request.getSession();
 			String username=request.getParameter("username");
@@ -38,8 +39,6 @@ public class adminOrderServlet extends HttpServlet {
 				try {
 					bo=om.doRetrieveByUser(username);
 					session.setAttribute("listaOrdini", bo);
-//					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/orderoperation.jsp");
-//					dispatcher.forward(request, response);
 					response.setStatus(200);
 					return;
 				}catch (SQLException e) {
@@ -53,10 +52,7 @@ public class adminOrderServlet extends HttpServlet {
 					}catch (SQLException e) {
 						e.printStackTrace();
 					}
-				
-//				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/orderoperation.jsp");
-//				dispatcher.forward(request, response);
-				response.setStatus(200);
+					response.setStatus(200);
 			}
 		}
 	
