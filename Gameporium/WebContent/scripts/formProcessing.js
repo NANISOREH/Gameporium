@@ -135,11 +135,13 @@ $(document).ready(function() {
 
 function ajaxOrder()
 {
-	var u =document.getElementById("username").value
-  $.get('adminorder', {"username": u}, 
-      function(){
-        $("#ordertable").load(' #ordertable');
-        alert("prova");
-      }, 
-      failAlert()); 
+	$("#modorderform").submit(function(event)
+		{
+			var u =document.getElementById("username").value
+			$.get('adminorder', {"username": u}, 
+		      function(){
+		        $("#ordertable").load(' #ordertable');
+		      }, 
+		      failAlert()); 
+		});
 }

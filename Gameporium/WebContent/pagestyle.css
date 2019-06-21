@@ -254,4 +254,20 @@
     color:red;
     }
 
+/* orderoperation */
+	#ordertable {
+		overflow: scroll;
+		overflow-x: scroll;
+		overflow-y: hidden;
+		font-size: small;
+		padding: 5px;
+	}
+	
+	#contable {
+		overflow: scroll;
+		overflow-x: scroll;
+		overflow-y: hidden;
+		float: left;
+	}
 
+/* orderoperation */
