@@ -73,7 +73,6 @@
 		      		<div class="row">
 		
 
-<<<<<<< HEAD
 		      			   <div class="row col-lg-12 md-12 sm-12">Il mio carrello</div>
 							<c:set var="cartprods" value='${sessionScope["cartitems"]}' />
 							
@@ -96,7 +95,6 @@
 										 			<input class="quantInput" type="number" name="quantita"quantita" value="${item.quantita }" id="${item.quantita}" onchange="reloadCart(value,${item.product.prezzo}, ${item.product.codiceProdotto}})"/>
 													</div>
 											
-=======
 	      			   <div class="row col-lg-12 md-12 sm-12 sectionstyle">Il mio carrello</div>
 						<c:set var="cartprods" value='${sessionScope["cartitems"]}' />
 						<div class="container fluid">
