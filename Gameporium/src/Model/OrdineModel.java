@@ -1,4 +1,4 @@
-package Model;
+<>package Model;
 import Beans.Bean;
 import Beans.BeanOrdine;
 import java.sql.Connection;
