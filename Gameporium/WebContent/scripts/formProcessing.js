@@ -6,7 +6,13 @@ function myFunct(){
 		document.getElementById("cercaCRUD").click();
 	}
 }
-
+function myFunctEvento(){
+	//ci vuole un altro if che faccia partire la funzione solo quando il form è quello giusto altrimenti cercherà sempre il button
+	var cod=document.getElementById("codEvento").value;
+	if(!isNaN(cod)){
+		document.getElementById("cercaCRUD").click();
+	}
+}
 /*questa funzione abilita tutti i campi del form quando l'admin vuole modificare i dati di un prodotto*/
 function enablemod(){
 	event.preventDefault()
@@ -28,6 +34,21 @@ function enablemod(){
 	document.getElementById("descrizioneCategoriaAccessori").removeAttribute("disabled");
 	document.getElementById("modbtn").removeAttribute("disabled");	
 }
+
+/*questa funzione abilita tutti i campi del form quando l'admin vuole modificare i dati di un evento*/
+function enablemodevent(){
+	event.preventDefault()
+	document.getElementById("codiceEvento").removeAttribute("readonly");
+	document.getElementById("numeroPartecipanti").removeAttribute("readonly")
+	document.getElementById("descrizione").removeAttribute("readonly");	
+	document.getElementById("nome").removeAttribute("readonly");	
+	document.getElementById("locandina").removeAttribute("readonly");	
+	document.getElementById("dataEvento").removeAttribute("readonly");	
+	document.getElementById("ora").removeAttribute("readonly");	
+	document.getElementById("luogo").removeAttribute("readonly");
+	document.getElementById("caricabtn").removeAttribute("disabled");
+}
+
 
 /*questa funzione mostra e/o nasconde gli attributi delle categorie del prodotto*/
 function gameoraccessory(category){	
@@ -132,14 +153,79 @@ $(document).ready(function() {
     });  
 });
 
+/*questa funzione permette all'admin di arrivare alla pagina di modifica eventi con i dati dell'evento già inseriti*/
+$(document).ready(function() {	
+	
+    $("#modeventform").submit(function(event) {
+    	event.preventDefault()
+    	var formContents = $('#modeventform').serializeArray();
+    	var codE = formContents.find(x => x.name == "codEvento").value
+    	
+    	$("#modeventform input").each(function(){
+    		var inputn=$(this);
+    		console.log(inputn.attr('name'));
+    	});
+    
+    	$.getJSON('jsonretrievalevent', {codEvento: codE},
+            function(response) { 
+    			var formProduct=$("#modeventformhidden").serializeArray().map(x => x.name);
+    			console.log(response)
+    			for (var key in response){
+    				console.log(key)
+    				if (response.hasOwnProperty(key)){
+    					if(key=="dataEvento"){
+    						var y=response[key].year
+    						var date=y+"-"
+    						if(response[key].month<=9){
+    							date=date+"0"+response[key].month+"-"}
+    						else{
+    							date=date+response[key].month+"-"
+    						}
+    						if(response[key].day<=9){
+    							date=date+"0"+response[key].day}
+    						else{
+    							date=date+response[key].day
+    						}
+    						console.log(date)
+    						document.getElementById(key).value=date;
+    						}		
+    					else if(key=="ora"){
+    						var time="";
+    						if(response[key].hour<=9){
+    							time=time+"0"+response[key].hour+":"}
+    						else{
+    							time=time+response[key].hour+":"
+    						}
+    						if(response[key].minute<=9){
+    							time=time+"0"+response[key].minute+":00"}
+    						else{
+    							time=time+response[key].minute+":00"
+    						}
+    						console.log(time)
+    						document.getElementById(key).value=time
+    						}
+    					else{
+    						console.log(key)
+    						document.getElementById(key).value=response[key];
+    					}
+    				}
+    			}
+            })
+            .fail(function(error) { 
+                console.error(error)
+            });
+    });  
+});
 
 function ajaxOrder()
 {
-	var u =document.getElementById("username").value
-  $.get('adminorder', {"username": u}, 
-      function(){
-        $("#ordertable").load(' #ordertable');
-        alert("prova");
-      }, 
-      failAlert()); 
+	$("#modorderform").submit(function(event)
+		{
+			var u =document.getElementById("username").value
+			$.get('adminorder', {"username": u}, 
+		      function(){
+		        $("#ordertable").load(' #ordertable');
+		      }, 
+		      failAlert()); 
+		});
 }
