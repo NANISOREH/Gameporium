@@ -126,10 +126,10 @@
 											<div class="card card-body">
 												<form>
 													<div class="form-row">
-														<div class="form-group col-md-3">
-															<label>Intestatario</label> <input type="text"
-																class="form-control">
-														</div>
+<!-- 														<div class="form-group col-md-3"> -->
+<!-- 															<label>Intestatario</label> <input type="text" -->
+<!-- 																class="form-control"> -->
+<!-- 														</div> -->
 														<div class="form-group col-md-4">
 															<label>Numero</label> <input type="text"
 																class="form-control">

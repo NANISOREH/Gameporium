@@ -7,7 +7,7 @@
 	      	<i class="far fa-credit-card"></i>
 	      </th>
 	      <td>${item.circuito}</td>
-	      <td>termina con ${item.numeroSicuro}</td>
+	      <td>termina con ${item.secureCode}</td>
 	      <td>scade il ${item.scadenza}</td>
 	      <td><a href="#">Elimina</a></td>
 	    </tr>

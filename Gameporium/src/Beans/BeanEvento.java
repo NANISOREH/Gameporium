@@ -2,22 +2,16 @@ package Beans;
 
 import java.io.Serializable;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 
 public class BeanEvento extends Bean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	int codiceEvento, numeroPartecipanti;
 	String nome, luogo, descrizione,locandina;
-	public String getLocandina() {
-		return locandina;
-	}
-
-	public void setLocandina(String locandina) {
-		this.locandina = locandina;
-	}
-
-	Date dataEvento;
-	Time ora;
+	LocalDate dataEvento;
+	LocalTime ora;
 	
 	public BeanEvento()
 	{
@@ -29,6 +23,14 @@ public class BeanEvento extends Bean implements Serializable {
 		dataEvento=null;
 		ora=null;
 		locandina="";
+	}
+	
+	public String getLocandina() {
+		return locandina;
+	}
+
+	public void setLocandina(String locandina) {
+		this.locandina = locandina;
 	}
 
 	public int getCodiceEvento() {
@@ -71,26 +73,26 @@ public class BeanEvento extends Bean implements Serializable {
 		this.descrizione = newDescrizione;
 	}
 
-	public Date getData() {
+	public LocalDate getDataEvento() {
 		return dataEvento;
 	}
 
-	public void setData(Date newData) {
+	public void setDataEvento(LocalDate newData) {
 		this.dataEvento = newData;
 	}
 
-	public Time getOra() {
+	public LocalTime getOra() {
 		return ora;
 	}
 
-	public void setOra(Time time) {
+	public void setOra(LocalTime time) {
 		this.ora = time;
 	}
 
 	@Override
 	public String toString() {
 		return "BeanEvento [codiceEvento=" + codiceEvento + ", numeroPartecipanti=" + numeroPartecipanti + ", nome="
-				+ nome + ", luogo=" + luogo + ", descrizione=" + descrizione + ", data=" + dataEvento + ", ora=" + ora + "]";
+				+ nome + ", luogo=" + luogo + ", descrizione=" + descrizione + ", dataEvento=" + dataEvento + ", ora=" + ora + "]";
 	}
 	
 	

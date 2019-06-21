@@ -5,6 +5,10 @@ SEZIONI ANCORA DA COPRIRE
 - Area amministratore
 - Pagina del carrello
 - Finalizzazione acquisti
+- Visualizzazione ordini effettuati
+- Svacantamento carrello
+- Visualizzare ordini dalla data alla data
+- Validazione form e messaggi di errore
 - Aggraziare e riempire il footer
 - Riempire i pannelli laterali
 - Animazioni prodotti on hover

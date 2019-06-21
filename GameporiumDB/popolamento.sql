@@ -1,17 +1,17 @@
-INSERT INTO cliente(nome,cognome,dataNascita,username,passwordU,recapito,cartaPred) VALUES
-	('Sara','Corrente','1990/01/10','Brontolo','Pippo','3394004520', '1010'),
-	('Fabiana','Gatto','1992/06/11','Cucciolo','Pluto','3384596321','1100'),
-    ('Vincenzo','Monzo','1990/08/22','Mammolo','Topolino','3384558321','111'),
-    ('Maria','De Luca','1995/02/01','Pisolo','Minnie','3849675843', '100'),
-    ('Giovanni','Chiariello','1993/04/24', 'Eolo','ZioPaperone','3397835226', '101'),
-    ('Andrea','Palladino','1992/08/05','Dotto','Qui','3569472315', '102'),
-    ('Carmela','Volpe','1989/11/30','Gongolo','Quo','3896475147', '103'),
-    ('Claudia','Torre','1989/06/20','Aramis','Qua','3336244859', '104'),
-    ('Francesco','Perozziello','1992/02/26','Portos','Paperina','3329957128', '105'),
-    ('Michela','De Lucia','1992/10/09','Athos','Paperino','3694752198', '106');
+INSERT INTO cliente(nome,cognome,username,passwordU,recapito,cartaPred) VALUES
+	('Sara','Corrente','Brontolo','Pippo','3394004520', '1010'),
+	('Fabiana','Gatto','Cucciolo','Pluto','3384596321','1100'),
+    ('Vincenzo','Monzo','Mammolo','Topolino','3384558321','111'),
+    ('Maria','De Luca','Pisolo','Minnie','3849675843', '100'),
+    ('Giovanni','Chiariello','Eolo','ZioPaperone','3397835226', '101'),
+    ('Andrea','Palladino','Dotto','Qui','3569472315', '102'),
+    ('Carmela','Volpe','Gongolo','Quo','3896475147', '103'),
+    ('Claudia','Torre','Aramis','Qua','3336244859', '104'),
+    ('Francesco','Perozziello','Portos','Paperina','3329957128', '105'),
+    ('Michela','De Lucia','Athos','Paperino','3694752198', '106');
     
-INSERT INTO amministratore(nome,cognome,dataNascita,username,passwordU,recapito) VALUES
-	('Caino','Savastano','1970/01/01','Broslayer','hostatoio','123456789');
+INSERT INTO amministratore(nome,cognome,username,passwordU,recapito) VALUES
+	('Caino','Savastano','Broslayer','hostatoio','123456789');
     
 INSERT INTO corriere(codiceCorriere, costoSpedizione,nome) VALUES
 	(001, 5, 'BRT'),
@@ -217,21 +217,29 @@ INSERT INTO gioco (codiceProdotto,nomeCategoria,descrizioneCategoria,durata,etaC
 
     
 INSERT INTO ordine(codiceOrdine,indirizzoSpedizione,tipoSpedizione,dataOrdine,dataSpedizione,codiceSpedizione,codicePagamento,importo,metodo,indirizzoFatturazione) VALUES
-	(00001,'Via Paolo Uccello 8','Raccomandata','2019/07/02','2019/07/05',0010,1,15.3, 'Carta di credito','Via Paolo Uccello 8'),
-    (00002,'Via Podgora 4','Prioritaria','2019/06/15','2019/06/22',0011,2,35, 'Bonifico','Via Uguale 0'),
-    (00003,'Via Lemure 88','Celere','2019/05/01','2019/05/08',0022,3,28, 'Paypal', 'Corso Umberto 27');
+	(00001,02,'Raccomandata','2019/07/02','2019/07/05',0010,1,15.3,112,'Via Paolo Uccello 8'),
+    (00002, 04,'Prioritaria','2019/06/15','2019/06/22',0011,2,35, 111,'Via Uguale 0'),
+    (00003, 04,'Celere','2019/05/01','2019/05/08',0022,3,28, 113, 'Corso Umberto 27'),
+    (00004, 03,'Celere','2019/06/26','2019/07/03',0034,5,25, 111, 'Corso Maratona 28' ),
+    (00005, 01,'Prioritaria','2019/07/4','2019/07/11',025,7,40,112,'Via della morte 06'),
+    (00006, 03,'Raccomandata','2019/09/1','2019/09/08',044,9,90.95,111,'Via Napoleone 01'),
+    (00007, 03,'Raccomandata','2019/08/10','2019/08/17',059,8,64,113,'Via Verdi 45'),
+    (00008, 02,'Celere','2019/08/05','2019/08/12',012,14,30,112,'Via Condotti 22'),
+    (00009, 04,'Prioritaria','2019/10/12','2019/10/19',01,28,34,113,'Via Pitagora 90'),
+    (00010, 01,'Prioritaria','2019/11/21','2019/11/28',026,41,55,111,'Via Uguale 54');
     
     
-INSERT INTO ind_Spedizione(codSPedizione,città,indirizzo,civico, cap) VALUES
-    (01,'Aversa','via dalla Università', 53, 80200),
-    (02,'Napoli','via Vittorio Emanuele',89,80010),
-    (03,'Pompei', 'via eruzione',70,83020),
-    (04,'Scampia','via dal carcere',25,82120);
     
-INSERT INTO mod_Pagamento(codiceP,circuito,numCarta,cvv) VALUES
-	(111,'visa',1234321,119),
-    (112,'mastercard',5678765,773),
-    (113,'american express',3456543,223);
+INSERT INTO indirizzo(codiceIndirizzo,via,civico,citta, cap) VALUES
+    (01,'via dall Università', 53,'Aversa', 80200),
+    (02,'via Vittorio Emanuele',89,'Napoli',80010),
+    (03, 'via eruzione',70,'Pompei',83020),
+    (04,'via dal carcere',25,'Scampia',82120);
+    
+INSERT INTO mod_Pagamento(codiceP,circuito,numCarta,cvv,scadenza) VALUES
+	(111,'visa',1234321,119,'12/2019'),
+    (112,'mastercard',5678765,773,'01/2022'),
+    (113,'american express',3456543,223,'01/2024');
     
     
 INSERT INTO effettua(username,codiceOrdine) VALUES
@@ -265,6 +273,6 @@ INSERT INTO pagamento(username,codiceP) VALUES
     ('Mammolo',113);
 
 
-INSERT INTO spedizione(username,codSpedizione) VALUES
+INSERT INTO spedizione(username,codiceIndirizzo) VALUES
 	('Mammolo',01),
     ('Mammolo',04);

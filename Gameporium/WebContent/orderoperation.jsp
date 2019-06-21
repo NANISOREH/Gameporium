@@ -21,6 +21,7 @@
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/Includes/header.jsp"%>
+<link rel="stylesheet" href="pagestyle.css" type="text/css">
 <jsp:include page="/adminorder" flush="true" />
 </head>
 
@@ -38,6 +39,7 @@
 			<!-- colonna centrale -->
 			<div class="col-lg-10 col-md-6 col-sm-12 col-xs-12 bg-light">
 				<c:set var="ordine" value='${sessionScope["listaOrdini"]}' />
+				
 				<!-- Visualizza ordine -->
 				<div class="sectionstyle">Visualizza ordini</div>
 
@@ -49,8 +51,7 @@
 					</div>
 					<div class="form-group">
 						<div class="upload-btn-wrapper">
-							<button type="button" class="btn" id="cercaCRUD"
-								onclick="ajaxOrder()">Cerca ordini</button>
+							<button type="submit" class="btn" id="cercaCRUD">Cerca ordini</button>
 						</div>
 					</div>
 				</form>
@@ -74,6 +75,7 @@
 							</tr>
 						</thead>
 						<tbody>
+							<c:set var="ordine" value='${sessionScope["listaOrdini"]}' />
 							<c:forEach items="${ordine}" var="item">
 								<%@include file="/WEB-INF/Includes/ordertable.jsp"%>
 							</c:forEach>

@@ -77,6 +77,7 @@ public class RegisterServlet extends HttpServlet
 			try 
 			{
 				cm.doSave(cliente);
+				System.out.println(cliente);
 			} 
 			catch (SQLException e) 
 			{
