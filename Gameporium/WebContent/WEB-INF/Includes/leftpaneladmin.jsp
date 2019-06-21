@@ -49,16 +49,16 @@
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="#">Inserisci evento</a>
+                  <a href="/Gameporium/eventoperation.jsp?operation=1">Inserisci evento</a>
                 </li>
                 <li>
-                  <a href="#">Modifica evento</a>
+                  <a href="/Gameporium/eventoperation.jsp?operation=2">Modifica evento</a>
                 </li>
                 <li>
-                  <a href="#">Elimina evento</a>
+                  <a href="/Gameporium/eventoperation.jsp?operation=3">Elimina evento</a>
                 </li>
                 <li>
-                  <a href="#">Visualizza eventi</a>
+                  <a href="/Gameporium/eventoperation.jsp?operation=4">Visualizza eventi</a>
                 </li>
               </ul>
             </div>
