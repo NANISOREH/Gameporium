@@ -1,6 +1,7 @@
 package Beans;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public class BeanCartEntry  extends Bean implements Serializable
 {
@@ -10,11 +11,21 @@ public class BeanCartEntry  extends Bean implements Serializable
 	private static final long serialVersionUID = 1L;
 	BeanProduct product;
 	int quantita;
+	BigDecimal prezzoTotale;
 	
+	public BigDecimal getPrezzoTotale() {
+		return prezzoTotale;
+	}
+
+	public void setPrezzoTotale(BigDecimal prezzoTotale) {
+		this.prezzoTotale = prezzoTotale;
+	}
+
 	public BeanCartEntry(BeanProduct bp, int q)
 	{
 		quantita=q;
 		product=bp;
+		prezzoTotale=bp.getPrezzo().multiply(new BigDecimal(q));
 	}
 	
 	public BeanCartEntry(BeanProduct bp)
@@ -28,7 +39,7 @@ public class BeanCartEntry  extends Bean implements Serializable
 	
 	@Override
 	public String toString() {
-		return "BeanCartEntry [product=" + product + ", quantita=" + quantita + "]";
+		return "BeanCartEntry [product=" + product + ", quantita=" + quantita + ", prezzoTotale=" + prezzoTotale + "]";
 	}
 	public void setProduct(BeanProduct product) {
 		this.product = product;

@@ -50,8 +50,8 @@
     <servlet-class>Controller.cart.CartServlet</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>CartRemoveServlet</servlet-name>
-    <servlet-class>Controller.cart.CartRemoveServlet</servlet-class>
+    <servlet-name>CartUpdateServlet</servlet-name>
+    <servlet-class>Controller.cart.CartUpdateServlet</servlet-class>
  </servlet>
   <servlet>
     <servlet-name>adminServlet</servlet-name>
@@ -122,7 +122,7 @@
     <url-pattern>/jsonretrievalevent</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>CartRemoveServlet</servlet-name>
-    <url-pattern>/cartremove</url-pattern>
+    <servlet-name>CartUpdateServlet</servlet-name>
+    <url-pattern>/cartupdate</url-pattern>
   </servlet-mapping>
 </web-app>
