@@ -7,7 +7,7 @@ import java.io.Serializable;
 	public class BeanPagamento extends Bean implements Serializable{
 		private static final long serialVersionUID = 1L;
 		int codiceP, numCarta, cvv;
-		String circuito;
+		String circuito,scadenza;
 		
 		public BeanPagamento()
 		{
@@ -15,6 +15,15 @@ import java.io.Serializable;
 			numCarta= -1;
 			cvv = -1;
 			circuito="";
+			scadenza="";
+		}
+
+		public String getScadenza() {
+			return scadenza;
+		}
+
+		public void setScadenza(String scadenza) {
+			this.scadenza = scadenza;
 		}
 
 		public int getCodiceP() {
@@ -52,8 +61,8 @@ import java.io.Serializable;
 		
 		@Override
 		public String toString() {
-			return "BeanPagamento [codiceP=" + codiceP + ", numCarta=" + numCarta + ", cvv="
-					+ cvv + ",circuito= " + circuito + "]";
+			return "BeanPagamento [codiceP=" + codiceP + ", numCarta=" + numCarta + ", cvv=" + cvv + ", circuito="
+					+ circuito + ", scadenza=" + scadenza + "]";
 		}
 
 

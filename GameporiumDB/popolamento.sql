@@ -236,10 +236,10 @@ INSERT INTO indirizzo(codiceIndirizzo,via,civico,citta, cap) VALUES
     (03, 'via eruzione',70,'Pompei',83020),
     (04,'via dal carcere',25,'Scampia',82120);
     
-INSERT INTO mod_Pagamento(codiceP,circuito,numCarta,cvv) VALUES
-	(111,'visa',1234321,119),
-    (112,'mastercard',5678765,773),
-    (113,'american express',3456543,223);
+INSERT INTO mod_Pagamento(codiceP,circuito,numCarta,cvv,scadenza) VALUES
+	(111,'visa',1234321,119,'12/2019'),
+    (112,'mastercard',5678765,773,'01/2022'),
+    (113,'american express',3456543,223,'01/2024');
     
     
 INSERT INTO effettua(username,codiceOrdine) VALUES
