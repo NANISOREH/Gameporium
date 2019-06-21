@@ -1,28 +1,19 @@
 package Controller.adminarea;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Beans.Bean;
-import Beans.BeanAccessorio;
 import Beans.BeanEvento;
-import Beans.BeanGioco;
-import Beans.BeanProduct;
-import Model.AccessorioModel;
 import Model.EventoModel;
-import Model.GiocoModel;
-import Model.ProductModel;
 
 /**
  * Servlet implementation class adminServlet
@@ -42,6 +33,7 @@ public class adminEventServlet extends HttpServlet {
 		int operation=Integer.parseInt(op);
 		
 		if(operation==3) {
+			System.out.println("operation: "+operation);
 			int codE=Integer.parseInt(request.getParameter("codiceEvento"));
 			try {
 				model.doDelete(codE);
@@ -80,6 +72,7 @@ public class adminEventServlet extends HttpServlet {
 			return;
 		}
 		else if(operation ==2) {
+			System.out.println("operazione 2");
 			BeanEvento be= new BeanEvento();
 			int codE=Integer.parseInt(request.getParameter("codiceEvento"));
 			try {
@@ -124,7 +117,7 @@ public class adminEventServlet extends HttpServlet {
 			LocalDate de= LocalDate.parse(dataEvento);
 			if((de)!=be.getDataEvento()) {
 				try {
-					model.doUpdate("disponibilita", codE, de);
+					model.doUpdate("dataEvento", codE, de);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
@@ -133,7 +126,7 @@ public class adminEventServlet extends HttpServlet {
 			LocalTime o= LocalTime.parse(ora);
 			if((o)!=be.getOra()) {
 				try {
-					model.doUpdate("disponibilita", codE, o);
+					model.doUpdate("ora", codE, o);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
