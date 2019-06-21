@@ -62,6 +62,10 @@
     <servlet-class>Controller.adminarea.adminOrderServlet</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>adminEventServlet</servlet-name>
+    <servlet-class>Controller.adminarea.adminEventServlet</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>JsonRetrievalServlet</servlet-name>
     <servlet-class>Controller.productview.JsonRetrievalServlet</servlet-class>
   </servlet>
@@ -93,14 +97,18 @@
     <servlet-name>CartServlet</servlet-name>
     <url-pattern>/cartservlet</url-pattern>
   </servlet-mapping>
-  <servlet-mapping>
+<servlet-mapping>
     <servlet-name>adminServlet</servlet-name>
     <url-pattern>/adminservlet</url-pattern>
-  </servlet-mapping>
+</servlet-mapping>
   <servlet-mapping>
- <servlet-name>adminOrderServlet</servlet-name>
-    <url-pattern>/adminorder</url-pattern>
+<servlet-name>adminOrderServlet</servlet-name>
+  <url-pattern>/adminorder</url-pattern>
   </servlet-mapping>
+<servlet-mapping>
+ 	<servlet-name>adminEventServlet</servlet-name>
+    <url-pattern>/adminevent</url-pattern>
+</servlet-mapping>
 <servlet-mapping>
     <servlet-name>JsonRetrievalServlet</servlet-name>
     <url-pattern>/jsonretrieval</url-pattern>
