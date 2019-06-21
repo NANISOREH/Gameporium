@@ -99,7 +99,7 @@ public class EventoModel implements Model {
 				bean.setDataEvento(rs.getDate("dataEvento").toLocalDate());
 				bean.setOra(rs.getTime("ora").toLocalTime());
 				bean.setNumeroPartecipanti(rs.getInt("numeroPartecipanti"));
-				bean.setLocandina(rs.getString("locandica"));
+				bean.setLocandina(rs.getString("locandina"));
 			}
 
 		} finally {
@@ -131,7 +131,7 @@ public class EventoModel implements Model {
 			preparedStatement.setInt(1, code);
 
 			result = preparedStatement.executeUpdate();
-
+			connection.commit();
 		} finally {
 			try {
 				if (preparedStatement != null)
