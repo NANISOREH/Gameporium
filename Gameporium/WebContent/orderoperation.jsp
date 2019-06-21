@@ -40,6 +40,7 @@
 			<div class="col-lg-10 col-md-6 col-sm-12 col-xs-12 bg-light">
 				<c:set var="ordine" value='${sessionScope["listaOrdini"]}' />
 				
+				
 				<!-- Visualizza ordine -->
 				<div class="sectionstyle">Visualizza ordini</div>
 
@@ -82,38 +83,6 @@
 						</tbody>
 					</table>
 				</div>
-
-
-
-
-
-
-
-
-				<!-- <form action="adminorder?operation=1" name="modorderformhidden" method="post" id="modorderformhidden">				        
-				     <div class="form-group">
-				        <div class="form-group" id="codiciOrdine">
-				        	<label for="codiceOrdine">Codice ordine:</label>
-							<input type="text" class="form-control" id="codiceOrdine" name="codiceOrdine" readonly="readonly"  >
-							<label for="indirizzoSpedizione">Indirizzo spedizione:</label>
-							<input type="text" class="form-control" id="indirizzoSpedizione" name="indirizzoSpedizione" readonly="readonly"  >				
-							<label for="indirizzoFatturazione">Indirizzo fatturazione:</label>
-							<input type="text" class="form-control" id="indirizzoFatturazione" name="indirizzoFatturazione" readonly="readonly"  >				
-							<label for="tipoSpedizione">Tipologia spedizione:</label>
-							<input type="text" class="form-control" id="tipoSpedizione" name="tipoSpedizione" readonly="readonly">
-							<label for="dataSpedizione">Data spedizione:</label>
-							<input type="date" class="form-control" id="dataSpedizione" name="dataSpedizione" min="2018-01-01" max="2019-12-31" readonly="readonly"  >				
-							<label for="codiceSpedione">Codice spedizione:</label>
-							<input type="text" class="form-control" id="codiceSpedizione" name="codiceSpedizione" readonly="readonly">
-							<label for="codicePagamento">Codice pagamento:</label>
-							<input type="text" class="form-control" id="codicePagamento" name="codicePagamento" readonly="readonly"  >
-							<label for="metodoPagamento">Metodo pagamento:</label>
-							<input type="text" class="form-control" id="metodoPagamento" name="metodoPagamento" readonly="readonly"  >
-							<label for="importo">Importo:</label>
-							<input type="text" class="form-control" id="importo" name="importo" readonly="readonly" >
-						</div>
-					</div>
-				    </form> -->
 
 				<!-- Fine visualizza Ordine -->
 

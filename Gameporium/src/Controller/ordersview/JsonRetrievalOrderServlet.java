@@ -1,8 +1,5 @@
 package Controller.ordersview;
-import Model.AccessorioModel;
-import Model.GiocoModel;
 import Model.OrdineModel;
-import Model.ProductModel;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -13,10 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import Beans.BeanAccessorio;
-import Beans.BeanGioco;
 import Beans.BeanOrdine;
-import Beans.BeanProduct;
 /**
  * Servlet implementation class ProductControl
  */
@@ -38,6 +32,7 @@ public class JsonRetrievalOrderServlet extends HttpServlet {
 		try {
 			bo =om.doRetrieveByKey(username);
 			jsonBean= new Gson().toJson(bo);
+			System.out.println(jsonBean);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

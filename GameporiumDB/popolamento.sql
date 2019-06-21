@@ -245,7 +245,8 @@ INSERT INTO mod_Pagamento(codiceP,circuito,numCarta,cvv,scadenza) VALUES
 INSERT INTO effettua(username,codiceOrdine) VALUES
 	('Brontolo',00001),
     ('Athos',00002),
-    ('Eolo',00003);
+    ('Eolo',00003),
+    ('Brontolo',00004);
     
 INSERT INTO partecipazione(codiceEvento,username) VALUES
 	(001,'Portos'),

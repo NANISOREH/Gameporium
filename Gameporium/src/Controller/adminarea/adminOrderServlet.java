@@ -19,7 +19,7 @@ import Model.OrdineModel;
 /**
  * Servlet implementation class adminOrderServlet
  */
-@WebServlet("/adminOrderServlet")
+//@WebServlet("/adminOrderServlet")
 public class adminOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     static OrdineModel om=new OrdineModel();   
@@ -35,7 +35,6 @@ public class adminOrderServlet extends HttpServlet {
 			String username=request.getParameter("username");
 			Collection<Bean> bo=null;
 			if(username!=null) {
-				System.out.println("asfdas");
 				try {
 					bo=om.doRetrieveByUser(username);
 					session.setAttribute("listaOrdini", bo);
@@ -46,9 +45,11 @@ public class adminOrderServlet extends HttpServlet {
 				}
 			}
 			if(username==null) {
+				System.out.println("lista totale");
 					try {
 						bo=om.doRetrieveAll("codiceOrdine");
 						session.setAttribute("listaOrdini", bo);
+						System.out.println(bo);
 					}catch (SQLException e) {
 						e.printStackTrace();
 					}
