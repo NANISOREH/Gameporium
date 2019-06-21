@@ -29,6 +29,19 @@ function enablemod(){
 	document.getElementById("modbtn").removeAttribute("disabled");	
 }
 
+/*questa funzione abilita tutti i campi del form quando l'admin vuole modificare i dati di un evento*/
+function enablemodevent(){
+	event.preventDefault()
+	document.getElementById("codiceEvento").removeAttribute("readonly");	
+	document.getElementById("descrizione").removeAttribute("readonly");	
+	document.getElementById("nome").removeAttribute("readonly");	
+	document.getElementById("locandina").removeAttribute("readonly");	
+	document.getElementById("dataEvento").removeAttribute("readonly");	
+	document.getElementById("ora").removeAttribute("readonly");	
+	document.getElementById("luogo").removeAttribute("readonly");	
+}
+
+
 /*questa funzione mostra e/o nasconde gli attributi delle categorie del prodotto*/
 function gameoraccessory(category){	
 	if(category=='gioco'){
@@ -132,6 +145,44 @@ $(document).ready(function() {
     });  
 });
 
+/*questa funzione permette all'admin di arrivare alla pagina di modifica eventi con i dati dell'evento già inseriti*/
+$(document).ready(function() {	
+	
+    $("#modeventform").submit(function(event) {
+    	event.preventDefault()
+    	var formContents = $('#modeventform').serializeArray();
+    	var codE = formContents.find(x => x.name == "codEvento").value
+    	
+    	$("#modeventform input").each(function(){
+    		var inputn=$(this);
+    		console.log(inputn.attr('name'));
+    	});
+    
+    	$.getJSON('jsonretrievalevent', {codEvento: codE},
+            function(response) { 
+    			var formProduct=$("#modeventformhidden").serializeArray().map(x => x.name);
+    			console.log(response)
+    			for (var key in response){
+    				
+    				if (response.hasOwnProperty(key)){
+    					if(key=="dataEvento"){	
+    						//setta la data
+    						}		
+    					else if(key=="ora"){
+    						//setta l'ora
+    						}
+    					else{
+    						console.log(key)
+    						document.getElementById(key).value=response[key];
+    					}
+    				}
+    			}
+            })
+            .fail(function(error) { 
+                console.error(error)
+            });
+    });  
+});
 
 function ajaxOrder()
 {
