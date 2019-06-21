@@ -19,6 +19,8 @@
         <td>${item.dataEvento}</td>
         <td>${item.ora}</td>
         <td>${item.numeroPartecipanti }</td>
+        <td><a href="/Gameporium/adminevent?operation=3&codiceEvento=${item.codiceEvento}">Cancella</a></td>
+        <td><a href="/Gameporium/eventoperation.jsp?operation=2&codiceEvento=${item.codiceEvento}">Modifica</a></td>
       </tr>
 
 
