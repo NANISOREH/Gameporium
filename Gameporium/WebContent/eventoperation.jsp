@@ -19,7 +19,7 @@
 <%@include file="/WEB-INF/Includes/header.jsp"%>
 </head>
 
-<body style="background-color: #343a40">
+<body onload="myFunctEvento()" style="background-color: #343a40">
 	<div class="container-fluid bg-light" style="margin-top: 0">
 		<!-- sistema di colonne -->
 		<div class="row">
@@ -102,7 +102,15 @@
 			       </div>
 				</form>
 			    
-				<form action="adminevent?operation=2" name="modeventformhidden" method="post" id="modeventformhidden">				         	
+				<form action="adminevent?operation=2" name="modeventformhidden" method="post" id="modeventformhidden">
+					<div class="form-group">
+			        	<label for="codEvento">Codice Evento:</label>
+						<input type="text" class="form-control" id="codiceEvento" name="codiceEvento" readonly="readonly"  >						
+					</div>		
+					<div class="form-group">
+			        	<label for="codEvento">Numero Partecipanti:</label>
+						<input type="text" class="form-control" id="numeroPartecipanti" name="numeroPartecipanti" readonly="readonly"  >						
+					</div>		         	
 						<div class="form-group">
 							<label for="nome">Nome:</label>
 				        	<input type="text" class="form-control" id="nome" name="nome" readonly="readonly"  >
@@ -137,7 +145,7 @@
 					            style="max-width:400px;">Modifica Evento</button>
 					        </div>	        
 						<div class="form-group" style="float: center">
-				            <button type="submit" id ="caricabtn" name= "caricabtn" class="btn btn-success btn-lg btn-block" value="1"
+				            <button type="submit" id ="caricabtn" name= "caricabtn" disabled="disabled" class="btn btn-success btn-lg btn-block" value="1"
 				            style="max-width:400px;">Carica Evento</button>
 				        </div>
 				    </form>
@@ -146,10 +154,10 @@
 				</c:when>
 				
 				<c:when test="${operationchoice== '3'}">
-				<form id="eliminateeventform">				        
+				<form id="modeventform">				        
 			        <div class="form-group">
 			        	<label for="codEvento">Codice Evento:</label>
-						<input type="text" class="form-control" id="codiceEvento" name="codiceEvento">
+						<input type="text" class="form-control" id="codEvento" name="codEvento">
 					</div>
 					<div class="form-group">
 			       		<div class="upload-btn-wrapper">
@@ -159,7 +167,16 @@
 				</form>
 				
 				
-				<form action="adminservlet?operation=3" name="modproductformhidden" method="post" id="modproductformhidden">				        
+				<form action="adminevent?operation=3" name="modeventformhidden" method="post" id="modeventformhidden">				        
+					<div class="form-group">
+			        	<label for="codEvento">Codice Evento:</label>
+						<input type="text" class="form-control" id="codiceEvento" name="codiceEvento" readonly="readonly"  >						
+					</div>		
+					<div class="form-group">
+			        	<label for="codEvento">Numero Partecipanti:</label>
+						<input type="text" class="form-control" id="numeroPartecipanti" name="numeroPartecipanti" readonly="readonly"  >						
+					</div>		         	
+					
 					<div class="form-group">
 							<label for="nome">Nome:</label>
 				        	<input type="text" class="form-control" id="nome" name="nome" readonly="readonly"  >
@@ -190,7 +207,7 @@
 				        	<input type="text" class="form-control" name="locandina" id="locandina" readonly="readonly" style="width:80px"  >
 				        </div>        
 						<div class="form-group" style="float: center">
-				            <button type="submit" id ="caricabtn" name= "caricabtn" class="btn btn-success btn-lg btn-block" value="1"
+				            <button type="submit" id ="eliminabtn" name= "eliminabtn" class="btn btn-success btn-lg btn-block" value="1"
 				            style="max-width:400px;">Elimina Evento</button>
 				        </div>
 				    </form>
@@ -207,11 +224,14 @@
 							    <thead>
 							      <tr>
 							        <th>Codice evento</th>
-							        <th>Nome</th>						
+							        <th>Nome</th>
+							        <th>Luogo</th>						
 							        <th>Descrizione</th>
 							        <th>Data</th>
 							        <th>Ora</th>
 							        <th>Numero partecipanti</th>
+							        <th></th>
+							        <th></th>
 							      </tr>
    							    </thead>
 							      <tbody>
