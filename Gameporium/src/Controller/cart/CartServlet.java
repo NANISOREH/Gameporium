@@ -34,10 +34,13 @@ public class CartServlet extends HttpServlet implements Serializable {
 			cart = new Cart();
 			session.setAttribute("cart", cart);
 			session.setAttribute("cartcardinality", cart.cartCardinality());
+			session.setAttribute("totale", cart.getTotale());
 		}
 		
 		int quant=Integer.parseInt (request.getParameter("quantita"));
 		int id=Integer.parseInt(request.getParameter("codice"));
+		
+		System.out.println(id + quant + "DEBUG");
 																		
 	
 		try {
@@ -52,6 +55,8 @@ public class CartServlet extends HttpServlet implements Serializable {
 				}
 				session.setAttribute("cart", cart);
 				session.setAttribute("cartcardinality", cart.cartCardinality());
+				session.setAttribute("totale", cart.getTotale());
+
 			}
 		
 		 catch (SQLException e) {
