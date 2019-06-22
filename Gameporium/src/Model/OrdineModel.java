@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -144,7 +145,7 @@ public class OrdineModel implements Model {
 	public synchronized Collection<Bean> doRetrieveAll(String order) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-
+		System.out.println(order);
 		Collection<Bean> Ordine = new LinkedList<Bean>();
 
 		String selectSQL = "SELECT o.codiceOrdine, o.indirizzoSpedizione, o.tipoSpedizione, o.dataOrdine, o.dataSpedizione, o.codiceSpedizione, o.codicePagamento, o.importo, o.metodo, o.indirizzoFatturazione, e.username\r\n" + 
@@ -200,6 +201,88 @@ public class OrdineModel implements Model {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setString(1, user);
+			System.out.println(selectSQL);
+			ResultSet rs = preparedStatement.executeQuery();
+			while (rs.next()) {
+				BeanOrdine bean = new BeanOrdine();
+
+				bean.setCodiceOrdine(rs.getInt("codiceOrdine"));
+				bean.setIndirizzoSpedizione(rs.getString("indirizzoSpedizione"));
+				bean.setTipoSpedizione(rs.getString("tipoSpedizione"));
+				bean.setDataOrdine(rs.getDate("dataOrdine").toLocalDate());
+				bean.setDataSpedizione(rs.getDate("dataSpedizione").toLocalDate());
+				bean.setCodiceSpedizione(rs.getInt("codiceSpedizione"));
+				bean.setCodicePagamento(rs.getInt("codicePagamento"));
+				bean.setImporto(rs.getDouble("importo"));
+				bean.setMetodo(rs.getString("metodo"));
+				bean.setIndirizzoFatturazione(rs.getString("indirizzoFatturazione"));
+				bean.setUsername(rs.getString("username"));
+				Ordine.add(bean);
+			}
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+	}
+		return Ordine;
+	}
+
+	public synchronized Collection<Bean> doRetrieveByDateFrom(LocalDate da) throws SQLException{
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Collection<Bean> Ordine = new LinkedList<Bean>();
+
+		String selectSQL = "SELECT * FROM " + OrdineModel.TABLE_NAME + " as o JOIN effettua as e on e.codiceOrdine=o.codiceOrdine WHERE dataOrdine >='" + da+"'";
+		
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			System.out.println(selectSQL);
+			ResultSet rs = preparedStatement.executeQuery();
+			while (rs.next()) {
+				BeanOrdine bean = new BeanOrdine();
+
+				bean.setCodiceOrdine(rs.getInt("codiceOrdine"));
+				bean.setIndirizzoSpedizione(rs.getString("indirizzoSpedizione"));
+				bean.setTipoSpedizione(rs.getString("tipoSpedizione"));
+				bean.setDataOrdine(rs.getDate("dataOrdine").toLocalDate());
+				bean.setDataSpedizione(rs.getDate("dataSpedizione").toLocalDate());
+				bean.setCodiceSpedizione(rs.getInt("codiceSpedizione"));
+				bean.setCodicePagamento(rs.getInt("codicePagamento"));
+				bean.setImporto(rs.getDouble("importo"));
+				bean.setMetodo(rs.getString("metodo"));
+				bean.setIndirizzoFatturazione(rs.getString("indirizzoFatturazione"));
+				bean.setUsername(rs.getString("username"));
+				Ordine.add(bean);
+			}
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+	}
+		return Ordine;
+	}
+
+	public synchronized Collection<Bean> doRetrieveByDateTo(LocalDate a) throws SQLException{
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Collection<Bean> Ordine = new LinkedList<Bean>();
+
+		String selectSQL = "SELECT * FROM " + OrdineModel.TABLE_NAME + " as o JOIN effettua as e on e.codiceOrdine=o.codiceOrdine WHERE dataOrdine <='" + a +"'";
+		System.out.println(selectSQL);
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
 
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
@@ -231,4 +314,88 @@ public class OrdineModel implements Model {
 	}
 		return Ordine;
 	}
+
+	public synchronized Collection<Bean> doRetrieveByDateBetween(LocalDate da, LocalDate a) throws SQLException{
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Collection<Bean> Ordine = new LinkedList<Bean>();
+
+		String selectSQL = "SELECT * FROM " + OrdineModel.TABLE_NAME + " as o JOIN effettua as e on e.codiceOrdine=o.codiceOrdine WHERE dataOrdine between " + da + " and " + a;
+		
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+
+			ResultSet rs = preparedStatement.executeQuery();
+			while (rs.next()) {
+				BeanOrdine bean = new BeanOrdine();
+
+				bean.setCodiceOrdine(rs.getInt("codiceOrdine"));
+				bean.setIndirizzoSpedizione(rs.getString("indirizzoSpedizione"));
+				bean.setTipoSpedizione(rs.getString("tipoSpedizione"));
+				bean.setDataOrdine(rs.getDate("dataOrdine").toLocalDate());
+				bean.setDataSpedizione(rs.getDate("dataSpedizione").toLocalDate());
+				bean.setCodiceSpedizione(rs.getInt("codiceSpedizione"));
+				bean.setCodicePagamento(rs.getInt("codicePagamento"));
+				bean.setImporto(rs.getDouble("importo"));
+				bean.setMetodo(rs.getString("metodo"));
+				bean.setIndirizzoFatturazione(rs.getString("indirizzoFatturazione"));
+				bean.setUsername(rs.getString("username"));
+				Ordine.add(bean);
+			}
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+	}
+		return Ordine;
+	}
+
+
+	public synchronized Collection<Bean> doRetrieveByUserBetweenDate(LocalDate da, LocalDate a, String username) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Collection<Bean> Ordine = new LinkedList<Bean>();
+
+		String selectSQL = "SELECT * FROM " + OrdineModel.TABLE_NAME + " as o JOIN effettua as e on o.codiceOrdine=e.codiceOrdine WHERE username="+ username +" and dataOrdine between '" + da + "' and '" + a + "'";
+		
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			System.out.println(selectSQL);
+			ResultSet rs = preparedStatement.executeQuery();
+			while (rs.next()) {
+				BeanOrdine bean = new BeanOrdine();
+
+				bean.setCodiceOrdine(rs.getInt("codiceOrdine"));
+				bean.setIndirizzoSpedizione(rs.getString("indirizzoSpedizione"));
+				bean.setTipoSpedizione(rs.getString("tipoSpedizione"));
+				bean.setDataOrdine(rs.getDate("dataOrdine").toLocalDate());
+				bean.setDataSpedizione(rs.getDate("dataSpedizione").toLocalDate());
+				bean.setCodiceSpedizione(rs.getInt("codiceSpedizione"));
+				bean.setCodicePagamento(rs.getInt("codicePagamento"));
+				bean.setImporto(rs.getDouble("importo"));
+				bean.setMetodo(rs.getString("metodo"));
+				bean.setIndirizzoFatturazione(rs.getString("indirizzoFatturazione"));
+				bean.setUsername(rs.getString("username"));
+				Ordine.add(bean);
+			}
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+	}
+		return Ordine;
+	}
+
 }
