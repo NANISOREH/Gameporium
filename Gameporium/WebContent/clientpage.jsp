@@ -134,6 +134,12 @@
 					</c:when>
 
 					<c:when test="${userchoice=='pagamento'}">
+					
+					<jsp:include page="/pagamenti">
+					 <jsp:param name="username" value="${sessionScope.currentSessionUser.username}"/>
+					</jsp:include>
+					
+					<c:set var="metodi" value='${sessionScope["metodi"]}' />
 			
 					<div class="sectionstyle">I miei metodi di pagamento</div>
 						
@@ -141,9 +147,9 @@
 						<div class="col-lg-2"></div>
 						<div class="col-lg-8 col-xs-12">
 							
-<%-- 							<c:forEach items="${cartprods}" var="item"> --%>
+							<c:forEach items="${metodi}" var="item"> 
 									<%@include file="/WEB-INF/Includes/creditcard.jsp"%>				
-<%-- 							</c:forEach> --%>
+							</c:forEach>
 
 							
 							<a data-toggle="collapse" href="#newcard" role="button" aria-expanded="false" aria-controls="newcard">
@@ -220,9 +226,9 @@
 							<br><br>
 							<label for="sceltag">Seleziona predefinita</label>
 							<select class="form-control" id="sceltag" name="sceltag">
-						        <option>Carta 1</option>
-						        <option>Carta 2</option>
-						        <option>carta 3</option>
+						       <c:forEach items="${metodi}" var="item"> 
+						        	<option>${item.circuito} che termina con ${item.secureCode}</option>
+						       </c:forEach>
 						    </select>
 						
 						</div>
