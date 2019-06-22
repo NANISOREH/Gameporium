@@ -8,19 +8,40 @@
 </head>
 <body>
 
-	<div class="card" style="font-size: small; margin-top: 30px">
-		<div class="card-body cartorder">
-		
-		<c:set var="totale" value='${sessionScope["totale"]}' />
-	
-			Totale: EUR ${totale }
-			<button
-				class="quantButton btn btn-sm btn-primary btn-block text-uppercase"
-				name="ordinebtn" id="ordinebtn"
-			    type="submit"
-				value='${item.product.codiceProdotto}'>Procedi all'ordine</button>
+	<c:set var="accessDone" value='${sessionScope["accessDone"]}' />
+	<c:set var="totale" value='${sessionScope["totale"]}' />
+
+
+
+	<!-- inizio right panel -->
+
+
+	<c:if test="${accessDone}">
+
+		<div class="card" style="font-size: small; margin-top: 30px">
+			<div class="card-body cartorder">
+
+
+
+				Totale:<strong>EUR ${totale }</strong>
+				<form action="order" method="post" name="orderfrm">
+					<button
+						class="quantButton btn btn-sm btn-primary btn-block text-uppercase"
+						name="ordinebtn" id="ordinebtn" type="submit"
+						value='${item.product.codiceProdotto}'>Procedi all'ordine</button></form>
+			</div>
 		</div>
-	</div>
+
+	</c:if>
+
+	<c:if test="${accessDone != true}">
+		<div class="card" style="font-size: small; margin-top: 30px">
+			<div class="card-body cartorder">
+				Totale:<strong>EUR ${totale }</strong> <br> <strong>Attenzione,</strong>
+				devi accedere o registrarti per procedere all'ordine.
+			</div>
+		</div>
+	</c:if>
 
 	<div class="card" style="margin-top: 30px">
 		<div class="card-body">Lorem ipsum dolor sit amet, consectetur
