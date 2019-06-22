@@ -1,4 +1,4 @@
-<>package Model;
+package Model;
 import Beans.Bean;
 import Beans.BeanOrdine;
 import java.sql.Connection;
@@ -217,6 +217,8 @@ public class OrdineModel implements Model {
 				bean.setIndirizzoFatturazione(rs.getString("indirizzoFatturazione"));
 				bean.setUsername(rs.getString("username"));
 				Ordine.add(bean);
+				
+				System.out.println(Ordine);
 			}
 		} finally {
 			try {

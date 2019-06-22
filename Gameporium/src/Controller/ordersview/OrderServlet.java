@@ -1,8 +1,9 @@
-package Controller.adminarea;
+package Controller.ordersview;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,11 +21,11 @@ import Model.OrdineModel;
  * Servlet implementation class adminOrderServlet
  */
 //@WebServlet("/adminOrderServlet")
-public class adminOrderServlet extends HttpServlet {
+public class OrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     static OrdineModel om=new OrdineModel();   
  
-    public adminOrderServlet() {
+    public OrderServlet() {
         super();
 
     }
@@ -37,7 +38,8 @@ public class adminOrderServlet extends HttpServlet {
 			if(username!=null) {
 				try {
 					bo=om.doRetrieveByUser(username);
-					session.setAttribute("listaOrdini", bo);
+					Collection<Bean> temp = bo.stream().distinct().collect(Collectors.toList());
+					session.setAttribute("listaOrdini", temp);
 					response.setStatus(200);
 					return;
 				}catch (SQLException e) {
@@ -48,8 +50,8 @@ public class adminOrderServlet extends HttpServlet {
 				System.out.println("lista totale");
 					try {
 						bo=om.doRetrieveAll("codiceOrdine");
-						session.setAttribute("listaOrdini", bo);
-						System.out.println(bo);
+						Collection<Bean> temp = bo.stream().distinct().collect(Collectors.toList());
+						session.setAttribute("listaOrdini", temp);
 					}catch (SQLException e) {
 						e.printStackTrace();
 					}
