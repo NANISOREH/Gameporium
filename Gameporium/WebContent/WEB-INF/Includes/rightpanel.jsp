@@ -12,36 +12,58 @@
 	<c:set var="totale" value='${sessionScope["totale"]}' />
 
 
-
 	<!-- inizio right panel -->
 
+	<div class="cartorder">
+		<c:set var="totale" value='${sessionScope["totale"]}' />
+		<c:set var="cartprods" value='${sessionScope["cartitems"]}' />
 
-	<c:if test="${accessDone}">
+		<c:if test="${totale != null && totale != '0.00'}">
+			<div class="card" style="font-size: small; margin-top: 30px">
+				<div class="card-body">
+					<c:forEach items="${cartprods}" var="item" begin="0"
+						end="${cartitems.size() }">
+						
+						<div class="cartable">
+						
+							<table class="table" style="padding:0px; font-size:12,5px;">
+							  <tbody>
+									<tr>
+										<td><i class="fas fa-shopping-cart"></i></td>
+										<td scope="row" class="col-lg-4"><a
+											href="singleProduct?selProd=${item.product.codiceProdotto}&selCat=${item.product.codCategoria}">${item.product.titolo }</a>
+										</td>
+										<td class="text-center col-lg-4">
+											<input class="quantInput" type="number" name="quantita"
+															value="${item.quantita }" id="${item.quantita}"
+															onchange="reloadCart(value, ${item.product.codiceProdotto})" />
+										</td>
+									</tr>
+								</tbody>
+							</table>		
+						
+						</div>
+					
+					</c:forEach>
 
-		<div class="card" style="font-size: small; margin-top: 30px">
-			<div class="card-body cartorder">
-
-
-
-				Totale:<strong>EUR ${totale }</strong>
-				<form action="order" method="post" name="orderfrm">
+					<br>
+					<br>
+					<br>
+					<br> Totale: EUR ${totale }
+					<c:if test="${accessDone}">
 					<button
 						class="quantButton btn btn-sm btn-primary btn-block text-uppercase"
 						name="ordinebtn" id="ordinebtn" type="submit"
-						value='${item.product.codiceProdotto}'>Procedi all'ordine</button></form>
-			</div>
-		</div>
-
-	</c:if>
-
-	<c:if test="${accessDone != true}">
-		<div class="card" style="font-size: small; margin-top: 30px">
-			<div class="card-body cartorder">
-				Totale:<strong>EUR ${totale }</strong> <br> <strong>Attenzione,</strong>
+						value='${item.product.codiceProdotto}'>Procedi all'ordine</button></c:if>
+							<c:if test="${accessDone != true}">
+							<strong>Attenzione,</strong>
 				devi accedere o registrarti per procedere all'ordine.
+				</c:if>
+						
+				</div>
 			</div>
-		</div>
-	</c:if>
+		</c:if>
+	</div>
 
 	<div class="card" style="margin-top: 30px">
 		<div class="card-body">Lorem ipsum dolor sit amet, consectetur
