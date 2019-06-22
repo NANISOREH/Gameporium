@@ -31,30 +31,38 @@ public class PagamentoModel implements Model {
 
 	private static final String TABLE_NAME = "metodoPagamento";
 
-	@Override
-	public synchronized void doSave(Bean pagamento) throws SQLException {
+	public synchronized void customDoSave(Bean pagamento, String username) throws SQLException {
 		BeanPagamento c= (BeanPagamento) pagamento;
+		System.out.println(c);
 		Connection connection = null;
-		PreparedStatement preparedStatement = null;
+		PreparedStatement entStatement = null;
+		PreparedStatement relStatement = null;
 
 		String insertSQL = "INSERT INTO " + PagamentoModel.TABLE_NAME
-				+ " (codiceMetodo,numCarta,cvv,circuito,scadenza) VALUES (?, ?, ?, ?, ?)";
+				+ " (circuito,numCarta,cvv,scadenza) VALUES (?, ?, ?, ?)";
+		
+		String insertRel = "INSERT INTO possiede(username,numCarta) VALUES (?, ?)";
 		
 		try {
 			connection = ds.getConnection();
-			preparedStatement = connection.prepareStatement(insertSQL);
+			entStatement = connection.prepareStatement(insertSQL);
+			entStatement.setString(1, c.getCircuito());
+			entStatement.setLong(2, c.getNumCarta());
+			entStatement.setInt(3, c.getCvv());
+			entStatement.setString(4, c.getScadenza());
+			entStatement.executeUpdate();
 			
-			preparedStatement.setInt(1, c.getCodiceMetodo());
-			preparedStatement.setLong(2, c.getNumCarta());
-			preparedStatement.setInt(3, c.getCvv());
-			preparedStatement.setString(4, c.getCircuito());
-			preparedStatement.setString(5, c.getScadenza());
-			preparedStatement.executeUpdate();
+			relStatement = connection.prepareStatement(insertRel);
+			relStatement.setString(1, username);
+			relStatement.setLong(2, c.getNumCarta());
+			relStatement.executeUpdate();
+			
 			connection.commit();
 		} finally {
 			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
+				if (entStatement != null && relStatement!= null)
+					entStatement.close();
+				relStatement.close();
 			} finally {
 				if (connection != null)
 					connection.close();
@@ -71,7 +79,7 @@ public class PagamentoModel implements Model {
 
 		BeanPagamento bean = new BeanPagamento();
 
-		String selectSQL = "SELECT * FROM " + PagamentoModel.TABLE_NAME + " WHERE codiceMetodo = ?";
+		String selectSQL = "SELECT * FROM " + PagamentoModel.TABLE_NAME + " WHERE numCarta = ?";
 
 		try {
 			connection = ds.getConnection();
@@ -81,7 +89,6 @@ public class PagamentoModel implements Model {
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				bean.setCodiceMetodo(rs.getInt("codiceMetodo"));
 				bean.setNumCarta((rs.getLong("numCarta")));
 				bean.setCvv(rs.getInt("cvv"));
 				bean.setCircuito(rs.getString("circuito"));
@@ -110,7 +117,7 @@ public class PagamentoModel implements Model {
 
 		int result = 0;
 
-		String deleteSQL = "DELETE FROM " + PagamentoModel.TABLE_NAME + " WHERE CodiceMetodo = ?";
+		String deleteSQL = "DELETE FROM " + PagamentoModel.TABLE_NAME + " WHERE numCarta = ?";
 
 		try {
 			connection = ds.getConnection();
@@ -153,7 +160,6 @@ public class PagamentoModel implements Model {
 			while (rs.next()) {
 				BeanPagamento bean = new BeanPagamento();
 
-				bean.setCodiceMetodo(rs.getInt("codiceMetodo"));
 				bean.setNumCarta((rs.getLong("numCarta")));
 				bean.setCvv(rs.getInt("cvv"));
 				bean.setCircuito(rs.getString("circuito"));
@@ -179,7 +185,7 @@ public class PagamentoModel implements Model {
 
 		Collection<Bean> Pagamento = new LinkedList<Bean>();
 
-		String selectSQL = "SELECT * FROM " + PagamentoModel.TABLE_NAME +" as p JOIN possiede as po on p.codiceMetodo=po.codiceMetodo WHERE username=?";
+		String selectSQL = "SELECT * FROM " + PagamentoModel.TABLE_NAME +" as p JOIN possiede as po on p.numCarta=po.numCarta WHERE username=?";
 		
 		try {
 			connection = ds.getConnection();
@@ -190,7 +196,6 @@ public class PagamentoModel implements Model {
 			while (rs.next()) {
 				BeanPagamento bean = new BeanPagamento();
 
-				bean.setCodiceMetodo(rs.getInt("codiceMetodo"));
 				bean.setCircuito(rs.getString("circuito"));
 				bean.setNumCarta(rs.getLong("numCarta"));
 				bean.setCvv(rs.getInt("cvv"));
@@ -206,7 +211,14 @@ public class PagamentoModel implements Model {
 					connection.close();
 			}
 	}
+		System.out.println(Pagamento);
 		return Pagamento;
+	}
+
+	@Override
+	public void doSave(Bean bean) throws SQLException {
+		// TODO Auto-generated method stub
+		
 	}
 }
 

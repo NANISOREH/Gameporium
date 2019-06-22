@@ -36,12 +36,10 @@ public class PagamentiServlet extends HttpServlet {
 		String username=request.getParameter("username");
 		Collection<Bean> bo=null;
 		
-		
 		if(username!=null) {
 			try {
 				bo=pm.doRetrieveByUser(username);
-				Collection<Bean> temp = bo.stream().distinct().collect(Collectors.toList());
-				session.setAttribute("metodi", temp);
+				session.setAttribute("metodi", bo);
 				response.setStatus(200);
 				return;
 			}catch (SQLException e) {
@@ -54,12 +52,8 @@ public class PagamentiServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println(request.getParameter("numero"));
-		System.out.println(request.getParameter("cvv"));
-		
 		BeanPagamento metodo = new BeanPagamento();
-		Random r = new Random();
-		int random = r.nextInt(10000000);
+
 		if(request.getParameter("insert").equals("true"))
 		{
 			metodo.setNumCarta(Long.parseLong(request.getParameter("numero")));
@@ -67,16 +61,10 @@ public class PagamentiServlet extends HttpServlet {
 			metodo.setCircuito(request.getParameter("circuito"));
 			metodo.setScadenza(request.getParameter("scadenza"));
 			try {
-				while (pm.doRetrieveByKey(random).getCodiceMetodo() != -1)
-				{
-					random = r.nextInt(10000000);
-				}
-				metodo.setCodiceMetodo(random);
-				pm.doSave(metodo);
+				pm.customDoSave(metodo, request.getParameter("username"));
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			System.out.println(metodo);
 			
 			
 			response.sendRedirect("/Gameporium/clientpage.jsp?azione=pagamento&creditCardSuccess=true"); 
