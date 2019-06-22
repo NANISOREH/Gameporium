@@ -8,18 +8,49 @@
 </head>
 <body>
 
-	<div class="card" style="font-size: small; margin-top: 30px">
-		<div class="card-body cartorder">
-		
+	<div class="cartorder">
 		<c:set var="totale" value='${sessionScope["totale"]}' />
-	
-			Totale: EUR ${totale }
-			<button
-				class="quantButton btn btn-sm btn-primary btn-block text-uppercase"
-				name="ordinebtn" id="ordinebtn"
-			    type="submit"
-				value='${item.product.codiceProdotto}'>Procedi all'ordine</button>
-		</div>
+		<c:set var="cartprods" value='${sessionScope["cartitems"]}' />
+
+		<c:if test="${totale != null && totale != '0.00'}">
+			<div class="card" style="font-size: small; margin-top: 30px">
+				<div class="card-body">
+					<c:forEach items="${cartprods}" var="item" begin="0"
+						end="${cartitems.size() }">
+						
+						<div class="cartable">
+						
+							<table class="table">
+							  <tbody>
+									<tr>
+										<td><i class="fas fa-shopping-cart"></i></td>
+										<td scope="row" class="col-lg-4"><a
+											href="singleProduct?selProd=${item.product.codiceProdotto}&selCat=${item.product.codCategoria}">${item.product.titolo }</a>
+										</td>
+										<td class="text-center col-lg-4">
+											<input class="quantInput" type="number" name="quantita"
+															value="${item.quantita }" id="${item.quantita}"
+															onchange="reloadCart(value, ${item.product.codiceProdotto})" />
+										</td>
+									</tr>
+								</tbody>
+							</table>		
+						
+						</div>
+					
+					</c:forEach>
+
+					<br>
+					<br>
+					<br>
+					<br> Totale: EUR ${totale }
+					<button
+						class="quantButton btn btn-sm btn-primary btn-block text-uppercase"
+						name="ordinebtn" id="ordinebtn" type="submit"
+						value='${item.product.codiceProdotto}'>Procedi all'ordine</button>
+				</div>
+			</div>
+		</c:if>
 	</div>
 
 	<div class="card" style="margin-top: 30px">
