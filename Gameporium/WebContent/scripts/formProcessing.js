@@ -1,4 +1,4 @@
-/*questa funzione carica i dati nel form #modproductform quando ci si arriva via "Visualizza prodotti"*/
+/*queste funzioni caricano i dati nel form  quando ci si arriva via "Visualizza"*/
 function myFunct(){
 	//ci vuole un altro if che faccia partire la funzione solo quando il form è quello giusto altrimenti cercherà sempre il button
 	var cod=document.getElementById("codProdotto").value;
@@ -66,7 +66,7 @@ function gameoraccessory(category){
 	}
 }
 
-/*questa funzione permette all'admin di arrivare alla pagina di modifica prodotto con i dati del prodotto già inseriti*/
+/*questa funzione permette all'admin di arrivare alla pagina di modifica/elimina prodotto con i dati del prodotto già inseriti*/
 $(document).ready(function() {	
 	
     $("#modproductform").submit(function(event) {
@@ -153,7 +153,7 @@ $(document).ready(function() {
     });  
 });
 
-/*questa funzione permette all'admin di arrivare alla pagina di modifica eventi con i dati dell'evento già inseriti*/
+/*questa funzione permette all'admin di arrivare alla pagina di modifica/elimina eventi con i dati dell'evento già inseriti*/
 $(document).ready(function() {	
 	
     $("#modeventform").submit(function(event) {
@@ -216,6 +216,39 @@ $(document).ready(function() {
             });
     });  
 });
+
+
+/*questa funzione permette all'admin di arrivare alla pagina di modifica/elimina clienti con i dati dell'evento già inseriti*/
+$(document).ready(function() {	
+	
+    $("#modclienteform").submit(function(event) {
+    	event.preventDefault()
+    	var formContents = $('#modclienteform').serializeArray();
+    	var codC = formContents.find(x => x.name == "user").value
+    	
+    	$("#modclienteform input").each(function(){
+    		var inputn=$(this);
+    		console.log(inputn.attr('name'));
+    	});
+
+    	$.getJSON('jsonretrievalcliente', {user: codC},
+            function(response) { 
+    			var formProduct=$("#modclienteformhidden").serializeArray().map(x => x.name);
+    			console.log(response)
+    			for (var key in response){
+    				console.log(key)
+    				if (response.hasOwnProperty(key)){
+   						console.log(key)
+   						document.getElementById(key).value=response[key];
+    				}
+    			}
+            })
+            .fail(function(error) { 
+                console.error(error)
+            });
+    });  
+});
+
 
 function ajaxOrder()
 {
