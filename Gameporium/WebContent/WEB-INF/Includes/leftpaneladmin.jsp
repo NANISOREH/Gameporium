@@ -70,16 +70,10 @@
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="#">Inserisci utente</a>
+                  <a href="/Gameporium/clienteoperation.jsp?operation=3">Elimina utente</a>
                 </li>
                 <li>
-                  <a href="#">Modifica utente</a>
-                </li>
-                <li>
-                  <a href="#">Elimina utente</a>
-                </li>
-                <li>
-                  <a href="#">Visualizza utenti</a>
+                  <a href="/Gameporium/clienteoperation.jsp?operation=4">Visualizza utenti</a>
                 </li>
               </ul>
             </div>

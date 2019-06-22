@@ -86,6 +86,7 @@ public class ClienteModel implements Model {
 				bean.setPasswordU(rs.getString("passwordU"));
 				bean.setRecapito(rs.getString("recapito"));
 				bean.setUsername(rs.getString("username"));
+				bean.setCartaPred(rs.getInt("cartaPred"));
 			}
 
 		} finally {
@@ -122,7 +123,7 @@ public class ClienteModel implements Model {
 				bean.setRecapito(rs.getString("recapito"));
 				bean.setUsername(rs.getString("username"));
 			}
-
+			connection.commit();
 		} finally {
 			try {
 				if (preparedStatement != null)
@@ -188,7 +189,7 @@ public class ClienteModel implements Model {
 			preparedStatement.setString(1, username);
 
 			result = preparedStatement.executeUpdate();
-
+			connection.commit();
 		} finally {
 			try {
 				if (preparedStatement != null)
