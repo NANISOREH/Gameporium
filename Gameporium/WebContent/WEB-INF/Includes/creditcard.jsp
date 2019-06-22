@@ -1,12 +1,9 @@
 <div class="credcard">
 
-	<table class="table">
+	<table class="table fixedtable">
 	  <tbody>
 	    <tr>
-	      <th scope="row">
-	      	<i class="far fa-credit-card"></i>
-	      </th>
-	      <td>${item.circuito}</td>
+	      <td ><i class="far fa-credit-card"></i> ${item.circuito}</td>
 	      <td>termina con ${item.secureCode}</td>
 	      <td>scade il ${item.scadenza}</td>
 	      <td><a href="#">Elimina</a></td>
