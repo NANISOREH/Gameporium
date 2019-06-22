@@ -36,12 +36,10 @@ public class PagamentiServlet extends HttpServlet {
 		String username=request.getParameter("username");
 		Collection<Bean> bo=null;
 		
-		
 		if(username!=null) {
 			try {
 				bo=pm.doRetrieveByUser(username);
-				Collection<Bean> temp = bo.stream().distinct().collect(Collectors.toList());
-				session.setAttribute("metodi", temp);
+				session.setAttribute("metodi", bo);
 				response.setStatus(200);
 				return;
 			}catch (SQLException e) {
@@ -63,7 +61,7 @@ public class PagamentiServlet extends HttpServlet {
 			metodo.setCircuito(request.getParameter("circuito"));
 			metodo.setScadenza(request.getParameter("scadenza"));
 			try {
-				pm.doSave(metodo);
+				pm.customDoSave(metodo, request.getParameter("username"));
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

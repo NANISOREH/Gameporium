@@ -1,5 +1,5 @@
 INSERT INTO cliente(nome,cognome,username,passwordU,recapito,cartaPred) VALUES
-	('Sara','Corrente','Brontolo','Pippo','3394004520', '1010'),
+	('Sara','Corrente','Brontolo','Pippolo','3394004520', '1010'),
 	('Fabiana','Gatto','Cucciolo','Pluto','3384596321','1100'),
     ('Vincenzo','Monzo','Mammolo','Topolino','3384558321','111'),
     ('Maria','De Luca','Pisolo','Minnie','3849675843', '100'),

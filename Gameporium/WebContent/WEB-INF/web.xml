@@ -77,14 +77,13 @@
     <servlet-name>JsonRetrievalEventServlet</servlet-name>
     <servlet-class>Controller.eventsview.JsonRetrievalEventServlet</servlet-class>
   </servlet>
-  <servlet>
-<<<<<<< HEAD
-    <servlet-name>JsonRetrievalClienteServlet</servlet-name>
-    <servlet-class>Controller.userarea.JsonRetrievalClienteServlet</servlet-class>
-=======
+    <servlet>
     <servlet-name>PagamentiServlet</servlet-name>
     <servlet-class>Controller.userarea.PagamentiServlet</servlet-class>
->>>>>>> 01addcd2eb14a312bb4af6561a1612a39280b92d
+  </servlet>
+  <servlet>
+    <servlet-name>JsonRetrievalClienteServlet</servlet-name>
+    <servlet-class>Controller.userarea.JsonRetrievalClienteServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SingleProductServlet</servlet-name>
