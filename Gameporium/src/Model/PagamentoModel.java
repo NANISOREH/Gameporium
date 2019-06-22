@@ -2,7 +2,6 @@ package Model;
 import Beans.Bean;
 import Beans.BeanPagamento;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,7 +29,7 @@ public class PagamentoModel implements Model {
 		}
 	}
 
-	private static final String TABLE_NAME = "pagamento";
+	private static final String TABLE_NAME = "metodoPagamento";
 
 	@Override
 	public synchronized void doSave(Bean pagamento) throws SQLException {
@@ -39,17 +38,19 @@ public class PagamentoModel implements Model {
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + PagamentoModel.TABLE_NAME
-				+ " (codiceP,numCarta,cvv,circuito,scadenza) VALUES (?, ?, ?, ?, ?,?)";
+				+ " (codiceMetodo,numCarta,cvv,circuito,scadenza) VALUES (?, ?, ?, ?, ?)";
 		
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setInt(1, c.getCodiceP());
-			preparedStatement.setInt(2, c.getNumCarta());
+			
+			preparedStatement.setInt(1, c.getCodiceMetodo());
+			preparedStatement.setLong(2, c.getNumCarta());
 			preparedStatement.setInt(3, c.getCvv());
 			preparedStatement.setString(4, c.getCircuito());
 			preparedStatement.setString(5, c.getScadenza());
 			preparedStatement.executeUpdate();
+			connection.commit();
 		} finally {
 			try {
 				if (preparedStatement != null)
@@ -64,24 +65,24 @@ public class PagamentoModel implements Model {
 	@Override
 	public synchronized BeanPagamento doRetrieveByKey(Object key) throws SQLException {
 		
-		int codiceP= (int) key;
+		int CodiceMetodo= (int) key;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
 		BeanPagamento bean = new BeanPagamento();
 
-		String selectSQL = "SELECT * FROM " + PagamentoModel.TABLE_NAME + " WHERE codiceP = ?";
+		String selectSQL = "SELECT * FROM " + PagamentoModel.TABLE_NAME + " WHERE codiceMetodo = ?";
 
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setInt(1, codiceP);
+			preparedStatement.setInt(1, CodiceMetodo);
 
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				bean.setCodiceP(rs.getInt("codiceP"));
-				bean.setNumCarta((rs.getInt("numCarta")));
+				bean.setCodiceMetodo(rs.getInt("codiceMetodo"));
+				bean.setNumCarta((rs.getLong("numCarta")));
 				bean.setCvv(rs.getInt("cvv"));
 				bean.setCircuito(rs.getString("circuito"));
 				bean.setScadenza(rs.getString("scadenza"));
@@ -109,7 +110,7 @@ public class PagamentoModel implements Model {
 
 		int result = 0;
 
-		String deleteSQL = "DELETE FROM " + PagamentoModel.TABLE_NAME + " WHERE codiceP = ?";
+		String deleteSQL = "DELETE FROM " + PagamentoModel.TABLE_NAME + " WHERE CodiceMetodo = ?";
 
 		try {
 			connection = ds.getConnection();
@@ -152,8 +153,8 @@ public class PagamentoModel implements Model {
 			while (rs.next()) {
 				BeanPagamento bean = new BeanPagamento();
 
-				bean.setCodiceP(rs.getInt("codiceP"));
-				bean.setNumCarta((rs.getInt("numCarta")));
+				bean.setCodiceMetodo(rs.getInt("codiceMetodo"));
+				bean.setNumCarta((rs.getLong("numCarta")));
 				bean.setCvv(rs.getInt("cvv"));
 				bean.setCircuito(rs.getString("circuito"));
 				bean.setScadenza(rs.getString("scadenza"));
@@ -171,5 +172,41 @@ public class PagamentoModel implements Model {
 		}
 		return Pagamento;
 	}
+
+	public synchronized Collection<Bean> doRetrieveByUser(String user) throws SQLException{
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Collection<Bean> Pagamento = new LinkedList<Bean>();
+
+		String selectSQL = "SELECT * FROM " + PagamentoModel.TABLE_NAME +" as p JOIN possiede as po on p.codiceMetodo=po.codiceMetodo WHERE username=?";
+		
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, user);
+
+			ResultSet rs = preparedStatement.executeQuery();
+			while (rs.next()) {
+				BeanPagamento bean = new BeanPagamento();
+
+				bean.setCodiceMetodo(rs.getInt("codiceMetodo"));
+				bean.setCircuito(rs.getString("circuito"));
+				bean.setNumCarta(rs.getLong("numCarta"));
+				bean.setCvv(rs.getInt("cvv"));
+				bean.setScadenza(rs.getString("scadenza"));
+				Pagamento.add(bean);
+			}
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
 	}
+		return Pagamento;
+	}
+}
 

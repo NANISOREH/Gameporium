@@ -300,6 +300,8 @@ public class OrdineModel implements Model {
 				bean.setIndirizzoFatturazione(rs.getString("indirizzoFatturazione"));
 				bean.setUsername(rs.getString("username"));
 				Ordine.add(bean);
+				
+				System.out.println(Ordine);
 			}
 		} finally {
 			try {
