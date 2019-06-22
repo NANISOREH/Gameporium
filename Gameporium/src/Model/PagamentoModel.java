@@ -34,21 +34,21 @@ public class PagamentoModel implements Model {
 	@Override
 	public synchronized void doSave(Bean pagamento) throws SQLException {
 		BeanPagamento c= (BeanPagamento) pagamento;
+		System.out.println(c);
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + PagamentoModel.TABLE_NAME
-				+ " (codiceMetodo,numCarta,cvv,circuito,scadenza) VALUES (?, ?, ?, ?, ?)";
+				+ " (circuito,numCarta,cvv,scadenza) VALUES (?, ?, ?, ?)";
 		
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
 			
-			preparedStatement.setInt(1, c.getCodiceMetodo());
+			preparedStatement.setString(1, c.getCircuito());
 			preparedStatement.setLong(2, c.getNumCarta());
 			preparedStatement.setInt(3, c.getCvv());
-			preparedStatement.setString(4, c.getCircuito());
-			preparedStatement.setString(5, c.getScadenza());
+			preparedStatement.setString(4, c.getScadenza());
 			preparedStatement.executeUpdate();
 			connection.commit();
 		} finally {
@@ -71,7 +71,7 @@ public class PagamentoModel implements Model {
 
 		BeanPagamento bean = new BeanPagamento();
 
-		String selectSQL = "SELECT * FROM " + PagamentoModel.TABLE_NAME + " WHERE codiceMetodo = ?";
+		String selectSQL = "SELECT * FROM " + PagamentoModel.TABLE_NAME + " WHERE numCarta = ?";
 
 		try {
 			connection = ds.getConnection();
@@ -81,7 +81,6 @@ public class PagamentoModel implements Model {
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				bean.setCodiceMetodo(rs.getInt("codiceMetodo"));
 				bean.setNumCarta((rs.getLong("numCarta")));
 				bean.setCvv(rs.getInt("cvv"));
 				bean.setCircuito(rs.getString("circuito"));
@@ -110,7 +109,7 @@ public class PagamentoModel implements Model {
 
 		int result = 0;
 
-		String deleteSQL = "DELETE FROM " + PagamentoModel.TABLE_NAME + " WHERE CodiceMetodo = ?";
+		String deleteSQL = "DELETE FROM " + PagamentoModel.TABLE_NAME + " WHERE numCarta = ?";
 
 		try {
 			connection = ds.getConnection();
@@ -153,7 +152,6 @@ public class PagamentoModel implements Model {
 			while (rs.next()) {
 				BeanPagamento bean = new BeanPagamento();
 
-				bean.setCodiceMetodo(rs.getInt("codiceMetodo"));
 				bean.setNumCarta((rs.getLong("numCarta")));
 				bean.setCvv(rs.getInt("cvv"));
 				bean.setCircuito(rs.getString("circuito"));
@@ -179,7 +177,7 @@ public class PagamentoModel implements Model {
 
 		Collection<Bean> Pagamento = new LinkedList<Bean>();
 
-		String selectSQL = "SELECT * FROM " + PagamentoModel.TABLE_NAME +" as p JOIN possiede as po on p.codiceMetodo=po.codiceMetodo WHERE username=?";
+		String selectSQL = "SELECT * FROM " + PagamentoModel.TABLE_NAME +" as p JOIN possiede as po on p.numCarta=po.numCarta WHERE username=?";
 		
 		try {
 			connection = ds.getConnection();
@@ -190,7 +188,6 @@ public class PagamentoModel implements Model {
 			while (rs.next()) {
 				BeanPagamento bean = new BeanPagamento();
 
-				bean.setCodiceMetodo(rs.getInt("codiceMetodo"));
 				bean.setCircuito(rs.getString("circuito"));
 				bean.setNumCarta(rs.getLong("numCarta"));
 				bean.setCvv(rs.getInt("cvv"));
