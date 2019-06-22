@@ -99,7 +99,38 @@
 					</c:when>
 
 					<c:when test="${userchoice=='ordini'}">
-			
+					<jsp:include page="/adminorder">
+					 <jsp:param name="username" value="${sessionScope.currentSessionUser.username}"/>
+					</jsp:include>
+						<div class="sectionstyle">I miei ordini</div>
+
+						<div class="container-fluid" id="contable">
+							<h2>Elenco ordini</h2>
+							<p></p>
+							<table class="table" id="ordertable">
+								<thead>
+									<tr>
+										<th>Codice Ordine</th>
+										<th>Username</th>
+										<th>Data Ordine</th>
+										<th>Data Spedizione</th>
+										<th>Importo</th>
+										<th>Indirizzo Spedizione</th>
+										<th>Indirizzo Fatturazione</th>
+										<th>Tipo Spedizione</th>
+										<th>Codice Spedizione</th>
+										<th>Codice Pagamento</th>
+										<th>Metodo Pagamento</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:set var="ordine" value='${sessionScope["listaOrdini"]}' />
+									<c:forEach items="${ordine}" var="item">
+										<%@include file="/WEB-INF/Includes/ordertable.jsp"%>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
 					</c:when>
 
 					<c:when test="${userchoice=='pagamento'}">
@@ -126,15 +157,11 @@
 											<div class="card card-body">
 												<form>
 													<div class="form-row">
-<!-- 														<div class="form-group col-md-3"> -->
-<!-- 															<label>Intestatario</label> <input type="text" -->
-<!-- 																class="form-control"> -->
-<!-- 														</div> -->
-														<div class="form-group col-md-4">
+														<div class="form-group col-md-6">
 															<label>Numero</label> <input type="text"
 																class="form-control">
 														</div>
-														<div class="form-group col-md-3">
+														<div class="form-group col-md-4">
 															<label for="mesescadenza">Scadenza</label>
 															<select class="form-control" id="mesescadenza" name="mesescadenza">
 														        <option>01</option>
@@ -161,6 +188,8 @@
 														        <option>2026</option>
 														        <option>2027</option>
 														        <option>2028</option>
+														        <option>2029</option>
+														        <option>2030</option>
 														    </select>
 														</div>
 														<div class="form-group col-md-2">
@@ -202,6 +231,72 @@
 					</c:when>
 					
 					<c:when test="${userchoice=='indirizzi'}">
+					
+						<div class="sectionstyle">I miei indirizzi di spedizione</div>
+							
+						<div class="row">
+							<div class="col-lg-2"></div>
+							<div class="col-lg-8 col-xs-12">
+								
+	<%-- 							<c:forEach items="${cartprods}" var="item"> --%>
+										<%@include file="/WEB-INF/Includes/indirizzo.jsp"%>				
+	<%-- 							</c:forEach> --%>
+	
+								
+								<a data-toggle="collapse" href="#newcard" role="button" aria-expanded="false" aria-controls="newcard">
+									<i class="fas fa-caret-down"></i> Nuovo indirizzo
+								</a>
+	
+									<div class="row">
+										<div class="col">
+											<div class="collapse multi-collapse" id="newcard">
+	
+												<div class="card card-body">
+													<form>
+														<div class="form-row">
+															<div class="form-group col-md-3">
+																<label>Città</label> <input type="text"
+																	class="form-control">
+															</div>
+															<div class="form-group col-md-4">
+																<label>Via</label> <input type="text"
+																	class="form-control">
+															</div>
+															<div class="form-group col-md-1"></div>
+															<div class="form-group col-md-2">
+																<label>N. civ.</label> <input type="text"
+																	class="form-control">
+															</div>
+															<div class="form-group col-md-2">
+																<label>CAP</label> <input type="text"
+																	class="form-control">
+															</div>
+														</div>
+	
+														<a class="btn btn-primary" data-toggle="collapse"
+															href="#multiCollapseExample1" role="button"
+															aria-expanded="false"
+															aria-controls="multiCollapseExample1">Aggiungi</a>
+	
+													</form>
+												</div>							
+	
+											</div>
+	
+										</div>
+	
+									</div>
+								
+								<br><br>
+								<label for="sceltag">Seleziona predefinito</label>
+								<select class="form-control" id="sceltag" name="sceltag">
+							        <option>Indirizzo 1</option>
+							        <option>Indirizzo 2</option>
+							        <option>Indirizzo 3</option>
+							    </select>
+							
+							</div>
+						</div>
 			
 					</c:when>
 

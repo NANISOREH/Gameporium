@@ -59,7 +59,7 @@
   </servlet>
    <servlet>
     <servlet-name>adminOrderServlet</servlet-name>
-    <servlet-class>Controller.adminarea.adminOrderServlet</servlet-class>
+    <servlet-class>Controller.ordersview.OrderServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>adminEventServlet</servlet-name>

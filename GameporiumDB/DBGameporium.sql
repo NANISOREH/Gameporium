@@ -28,7 +28,7 @@ CREATE TABLE cliente(
     username		varchar(15),
     passwordU		varchar(20),
     recapito		varchar(30),
-    cartaPred       int references mod_Pagamento (codiceP),
+    cartaPred       int references metodoPagamento (codiceMetodo),
     primary key(username)
 );
 
@@ -112,15 +112,15 @@ CREATE TABLE indirizzo(
     primary key (codiceIndirizzo)
     );
     
-DROP TABLE IF EXISTS mod_Pagamento;
+DROP TABLE IF EXISTS metodoPagamento;
 USE GameporiumDB;
-CREATE TABLE   mod_Pagamento(
-	codiceP     int,
+CREATE TABLE   metodoPagamento(
+	codiceMetodo     int,
     circuito    char(20),
     numCarta    int,
     cvv  int,
     scadenza varchar(7),
-    primary key(codiceP)
+    primary key(codiceMetodo)
     );
 	
 DROP TABLE IF EXISTS spedizione;
@@ -136,7 +136,7 @@ CREATE TABLE spedizione(
 								ON UPDATE CASCADE
                                 ON DELETE CASCADE);
                                 
-DROP TABLE IF EXISTS pagamento;
+/*DROP TABLE IF EXISTS pagamento;
 USE GameporiumDB;
 CREATE TABLE pagamento(
 	username	varchar(16),
@@ -146,7 +146,19 @@ CREATE TABLE pagamento(
                                 ON DELETE CASCADE,
     foreign key (username) references cliente (username)
 								ON UPDATE CASCADE
-                                ON DELETE CASCADE);
+                                ON DELETE CASCADE);*/
+                                
+DROP TABLE IF EXISTS possiede;
+USE GameporiumDB;
+CREATE TABLE possiede(
+	username varchar(16),
+    codiceMetodo int,
+    foreign key (codiceMetodo) references metodoPagamento(codiceMetodo)
+									ON UPDATE CASCADE
+								    ON DELETE CASCADE,
+	foreign key(username) references cliente(username)
+									ON UPDATE CASCADE
+                                    ON DELETE CASCADE);
 
 
 DROP TABLE IF EXISTS ordine;
@@ -160,7 +172,7 @@ CREATE TABLE ordine(
     codiceSpedizione	int,
     codicePagamento	int ,
     importo			numeric,
-    metodo			int references pagamento(codicePagamento),
+    metodo			int references metodoPagamento(codiceMetodo),
     indirizzoFatturazione	varchar (50),
     primary key (codiceOrdine)
 );

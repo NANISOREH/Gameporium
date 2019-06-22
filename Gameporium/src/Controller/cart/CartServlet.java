@@ -39,8 +39,6 @@ public class CartServlet extends HttpServlet implements Serializable {
 		
 		int quant=Integer.parseInt (request.getParameter("quantita"));
 		int id=Integer.parseInt(request.getParameter("codice"));
-		
-		System.out.println(id + quant + "DEBUG");
 																		
 	
 		try {
@@ -65,7 +63,6 @@ public class CartServlet extends HttpServlet implements Serializable {
 		
 		Collection<BeanCartEntry> bce = cart.getProducts();
 		session.setAttribute("cartitems", bce);
-		//cart.printCart();
 
 		response.setStatus(200);
 	}
