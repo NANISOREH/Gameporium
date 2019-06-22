@@ -157,7 +157,20 @@
 						<div class="col-lg-8 col-xs-12">
 							
 							<c:forEach items="${metodi}" var="item"> 
-									<%@include file="/WEB-INF/Includes/creditcard.jsp"%>				
+								<div class="credcard">
+								
+									<table class="table fixedtable">
+									  <tbody>
+									    <tr>
+									      <td ><i class="far fa-credit-card"></i> ${item.circuito}</td>
+									      <td>termina con ${item.secureCode}</td>
+									      <td>scade il ${item.scadenza}</td>
+									      <td><a href="#">Elimina</a></td>
+									    </tr>
+									  </tbody>
+									</table>		
+								
+								</div>			
 							</c:forEach>
 
 							
@@ -176,6 +189,7 @@
 															<label for="mesescadenza">Circuito</label>
 															<select class="form-control" id="circuito" name="circuito">
 														        <option>Visa</option>
+														        <option>American Express</option>
 																<option>MasterCard</option>
 														    </select>
 														</div>
@@ -216,6 +230,7 @@
 														    
 														    <input type="hidden" id="scadenza" name="scadenza" value="01/2020">
 														    <input type="hidden" id="insert" name="insert" value="true">
+														    <input type="hidden" id="username" name="username" value="${currentSessionUser.username}">
 														</div>
 														<div class="form-group col-md-2">
 															<label>CVV</label> 
