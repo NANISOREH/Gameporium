@@ -6,11 +6,12 @@ import java.io.Serializable;
 
 	public class BeanPagamento extends Bean implements Serializable{
 		private static final long serialVersionUID = 1L;
-		int codiceMetodo, numCarta, cvv;
+		int codiceMetodo, cvv;
+		long numCarta;
 		String circuito,scadenza, secureCode;
 		
 		public String getSecureCode() {
-			String cod = Integer.toString(numCarta);
+			String cod = Long.toString(numCarta);
 			return cod.substring(cod.length() - 4);
 		}
 
@@ -43,12 +44,12 @@ import java.io.Serializable;
 			this.codiceMetodo = newCodiceMetodo;
 		}
 
-		public int getNumCarta() {
+		public long getNumCarta() {
 			return numCarta;
 		}
 
-		public void setNumCarta(int newNumCarta) {
-			this.numCarta = newNumCarta;
+		public void setNumCarta(long l) {
+			this.numCarta = l;
 		}
 		
 		public int getCvv() {

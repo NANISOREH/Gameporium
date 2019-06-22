@@ -38,17 +38,19 @@ public class PagamentoModel implements Model {
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + PagamentoModel.TABLE_NAME
-				+ " (codiceMetodo,numCarta,cvv,circuito,scadenza) VALUES (?, ?, ?, ?, ?,?)";
+				+ " (codiceMetodo,numCarta,cvv,circuito,scadenza) VALUES (?, ?, ?, ?, ?)";
 		
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
+			
 			preparedStatement.setInt(1, c.getCodiceMetodo());
-			preparedStatement.setInt(2, c.getNumCarta());
+			preparedStatement.setLong(2, c.getNumCarta());
 			preparedStatement.setInt(3, c.getCvv());
 			preparedStatement.setString(4, c.getCircuito());
 			preparedStatement.setString(5, c.getScadenza());
 			preparedStatement.executeUpdate();
+			connection.commit();
 		} finally {
 			try {
 				if (preparedStatement != null)
@@ -80,7 +82,7 @@ public class PagamentoModel implements Model {
 
 			while (rs.next()) {
 				bean.setCodiceMetodo(rs.getInt("codiceMetodo"));
-				bean.setNumCarta((rs.getInt("numCarta")));
+				bean.setNumCarta((rs.getLong("numCarta")));
 				bean.setCvv(rs.getInt("cvv"));
 				bean.setCircuito(rs.getString("circuito"));
 				bean.setScadenza(rs.getString("scadenza"));
@@ -152,7 +154,7 @@ public class PagamentoModel implements Model {
 				BeanPagamento bean = new BeanPagamento();
 
 				bean.setCodiceMetodo(rs.getInt("codiceMetodo"));
-				bean.setNumCarta((rs.getInt("numCarta")));
+				bean.setNumCarta((rs.getLong("numCarta")));
 				bean.setCvv(rs.getInt("cvv"));
 				bean.setCircuito(rs.getString("circuito"));
 				bean.setScadenza(rs.getString("scadenza"));
@@ -190,12 +192,10 @@ public class PagamentoModel implements Model {
 
 				bean.setCodiceMetodo(rs.getInt("codiceMetodo"));
 				bean.setCircuito(rs.getString("circuito"));
-				bean.setNumCarta(rs.getInt("numCarta"));
+				bean.setNumCarta(rs.getLong("numCarta"));
 				bean.setCvv(rs.getInt("cvv"));
 				bean.setScadenza(rs.getString("scadenza"));
 				Pagamento.add(bean);
-				
-				System.out.println(Pagamento);
 			}
 		} finally {
 			try {
