@@ -40,7 +40,9 @@ public class CartServlet extends HttpServlet implements Serializable {
 		int quant=Integer.parseInt (request.getParameter("quantita"));
 		int id=Integer.parseInt(request.getParameter("codice"));
 		
-		System.out.println(id + quant + "DEBUG");
+		System.out.println("ECCCOOOOOOOOOOOOOOOOOO");
+		
+		//System.out.println(id + quant + "DEBUG");
 																		
 	
 		try {
@@ -49,6 +51,7 @@ public class CartServlet extends HttpServlet implements Serializable {
 				if(b.getDisponibilita()>=quant)
 				{
 				 if(cart.cartContains(bce)) {
+					        System.out.println("OH");
 					        cart.setQuant(bce, quant);
 				 						    }
 				 else cart.addProduct(bce);
