@@ -66,12 +66,20 @@
     <servlet-class>Controller.adminarea.adminEventServlet</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>adminClienteServlet</servlet-name>
+    <servlet-class>Controller.adminarea.adminClienteServlet</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>JsonRetrievalServlet</servlet-name>
     <servlet-class>Controller.productview.JsonRetrievalServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>JsonRetrievalEventServlet</servlet-name>
     <servlet-class>Controller.eventsview.JsonRetrievalEventServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>JsonRetrievalClienteServlet</servlet-name>
+    <servlet-class>Controller.userarea.JsonRetrievalClienteServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SingleProductServlet</servlet-name>
@@ -114,12 +122,20 @@
     <url-pattern>/adminevent</url-pattern>
 </servlet-mapping>
 <servlet-mapping>
+ 	<servlet-name>adminClienteServlet</servlet-name>
+    <url-pattern>/admincliente</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
     <servlet-name>JsonRetrievalServlet</servlet-name>
     <url-pattern>/jsonretrieval</url-pattern>
   </servlet-mapping>
 <servlet-mapping>
     <servlet-name>JsonRetrievalEventServlet</servlet-name>
     <url-pattern>/jsonretrievalevent</url-pattern>
+  </servlet-mapping>
+<servlet-mapping>
+    <servlet-name>JsonRetrievalClienteServlet</servlet-name>
+    <url-pattern>/jsonretrievalcliente</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>CartUpdateServlet</servlet-name>

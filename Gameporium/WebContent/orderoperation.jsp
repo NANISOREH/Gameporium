@@ -51,11 +51,20 @@
 							id="username" name="username" value="${user}">
 					</div>
 					<div class="form-group">
+						<label for="dataOrdine">Data da:</label>
+						<input type="date" class="form-control" name="dataDa" id="dataDa" style="width:100px"  >
+					</div>
+					<div class="form-group">
+						<label for="dataOrdine"> a:</label>
+						<input type="date" class="form-control" name="dataA" id="dataA" style="width:100px"  >
+					</div>
+					<div class="form-group">
 						<div class="upload-btn-wrapper">
 							<button type="submit" class="btn" id="cercaCRUD">Cerca ordini</button>
 						</div>
 					</div>
 				</form>
+				
 				<div class="container-fluid" id="contable">
 					<h2>Elenco ordini</h2>
 					<p></p>
