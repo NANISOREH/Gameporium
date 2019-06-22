@@ -21,6 +21,7 @@
 <%@include file="/WEB-INF/Includes/header.jsp"%>
 <link rel="stylesheet" href="pagestyle.css" type="text/css">
 <script src="scripts/cart.js" type="text/javascript"></script>
+<script src="scripts/formvalidation.js" type="text/javascript"></script>
 </head>
 
 <body style="background-color: #343a40">
@@ -139,6 +140,14 @@
 					 <jsp:param name="username" value="${sessionScope.currentSessionUser.username}"/>
 					</jsp:include>
 					
+					<c:set var="creditCardSuccess" value='${param["creditCardSuccess"]}' />
+					<c:if test="${creditCardSuccess}">
+						<div class="popup alert alert-success alert-dismissible fade-in" role="success">
+						  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						  Hai aggiunto una nuova carta di credito!
+						</div>
+					</c:if>
+					
 					<c:set var="metodi" value='${sessionScope["metodi"]}' />
 			
 					<div class="sectionstyle">I miei metodi di pagamento</div>
@@ -161,11 +170,18 @@
 										<div class="collapse multi-collapse" id="newcard">
 
 											<div class="card card-body">
-												<form>
+												<form action="pagamenti" id="insertform" name="insertform" method="post">
 													<div class="form-row">
-														<div class="form-group col-md-6">
+														<div class="form-group col-md-2">
+															<label for="mesescadenza">Circuito</label>
+															<select class="form-control" id="circuito" name="circuito">
+														        <option>Visa</option>
+																<option>MasterCard</option>
+														    </select>
+														</div>
+														<div class="form-group col-md-4">
 															<label>Numero</label> <input type="text"
-																class="form-control">
+																class="form-control" name="numero">
 														</div>
 														<div class="form-group col-md-4">
 															<label for="mesescadenza">Scadenza</label>
@@ -185,7 +201,7 @@
 														    </select>
 														    <select class="form-control" id="annoscadenza" name="annoscadenza">
 														        <option>2019</option>
-														        <option>2020</option>
+														        <option selected ="selected">2020</option>
 														        <option>2021</option>
 														        <option>2022</option>
 														        <option>2023</option>
@@ -197,18 +213,20 @@
 														        <option>2029</option>
 														        <option>2030</option>
 														    </select>
+														    
+														    <input type="hidden" id="scadenza" name="scadenza" value="01/2020">
+														    <input type="hidden" id="insert" name="insert" value="true">
 														</div>
 														<div class="form-group col-md-2">
-															<label>CVV</label> <input type="text"
-																class="form-control">
+															<label>CVV</label> 
+															<input type="text" name="cvv" id="cvv" oninput="limitCvv(document.insertform.cvv)"
+																class="form-control" min="3" max="3">
 														</div>
 
 													</div>
 
-													<a class="btn btn-primary" data-toggle="collapse"
-														href="#multiCollapseExample1" role="button"
-														aria-expanded="false"
-														aria-controls="multiCollapseExample1">Aggiungi</a>
+													<button class="btn btn-primary" data-toggle="collapse"
+														type="button" onclick="validateCreditCard(document.insertform)">Aggiungi</button>
 												
 
 												</form>

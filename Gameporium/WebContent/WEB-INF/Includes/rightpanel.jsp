@@ -20,7 +20,7 @@
 						
 						<div class="cartable">
 						
-							<table class="table">
+							<table class="table" style="padding:0px; font-size:12,5px;">
 							  <tbody>
 									<tr>
 										<td><i class="fas fa-shopping-cart"></i></td>
