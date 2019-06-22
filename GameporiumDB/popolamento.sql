@@ -236,10 +236,10 @@ INSERT INTO indirizzo(codiceIndirizzo,via,civico,citta, cap) VALUES
     (03, 'via eruzione',70,'Pompei',83020),
     (04,'via dal carcere',25,'Scampia',82120);
     
-INSERT INTO metodoPagamento(codiceMetodo,circuito,numCarta,cvv,scadenza) VALUES
-	(111,'visa',1234321,119,'12/2019'),
-    (112,'mastercard',5678765,773,'01/2022'),
-    (113,'american express',3456543,223,'01/2024');
+INSERT INTO metodoPagamento(circuito,numCarta,cvv,scadenza) VALUES
+	('visa',1234321,119,'12/2019'),
+    ('mastercard',5678765,773,'01/2022'),
+    ('american express',3456543,223,'01/2024');
     
     
 INSERT INTO effettua(username,codiceOrdine) VALUES
@@ -279,13 +279,10 @@ INSERT INTO composizione(codiceOrdine,codiceProdotto,quantita) VALUES
     ('Mammolo',113);*/
 
 
-INSERT INTO possiede(username,codiceMetodo) VALUES
-	('Mammolo',111),
-    ('Mammolo',113),
-    ('Dotto',112),
-    ('Dotto',113),
-    ('Aramis',111),
-    ('Aramis',112);
+INSERT INTO possiede(username,numCarta) VALUES
+	('Mammolo',1234321),
+    ('Mammolo',5678765),
+    ('Mammolo',3456543);
 
 
 INSERT INTO spedizione(username,codiceIndirizzo) VALUES

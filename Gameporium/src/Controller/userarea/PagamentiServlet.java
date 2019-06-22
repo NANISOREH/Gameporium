@@ -54,12 +54,8 @@ public class PagamentiServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println(request.getParameter("numero"));
-		System.out.println(request.getParameter("cvv"));
-		
 		BeanPagamento metodo = new BeanPagamento();
-		Random r = new Random();
-		int random = r.nextInt(10000000);
+
 		if(request.getParameter("insert").equals("true"))
 		{
 			metodo.setNumCarta(Long.parseLong(request.getParameter("numero")));
@@ -67,16 +63,10 @@ public class PagamentiServlet extends HttpServlet {
 			metodo.setCircuito(request.getParameter("circuito"));
 			metodo.setScadenza(request.getParameter("scadenza"));
 			try {
-				while (pm.doRetrieveByKey(random).getCodiceMetodo() != -1)
-				{
-					random = r.nextInt(10000000);
-				}
-				metodo.setCodiceMetodo(random);
 				pm.doSave(metodo);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			System.out.println(metodo);
 			
 			
 			response.sendRedirect("/Gameporium/clientpage.jsp?azione=pagamento&creditCardSuccess=true"); 
