@@ -12,19 +12,16 @@
 	
 		<div class="productcard card d-block mx-auto">
 		  
-		  <div class="prodimg d-block mx-auto">
-		  	<img class="card-img-top" src="images/${item.foto}" alt="Card image cap">
+		  <div class="prodimg d-block mx-auto ">
+		  	<a href="singleProduct?selProd=${item.codiceProdotto}&selCat=${item.codCategoria}"><img class="card-img-top" src="images/${item.foto}" alt="Card image cap"></a>
+		  <!-- onhover property -->
+         
 		  </div>
-		  
 		  <div class="pccardbody card-body">
-
 			    <div class="card-title">
 			    	<a href="singleProduct?selProd=${item.codiceProdotto}&selCat=${item.codCategoria}">${item.titolo}</a>
 			    </div>
-			
-			
 			<div class="row form-group">
-				
 				<div class="col-6">	
 					<div class="price">
 			 			<h5>${item.prezzo}€</h5>
