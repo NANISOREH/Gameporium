@@ -220,4 +220,3 @@ CREATE TABLE composizione(
     foreign key (codiceOrdine) references ordine (codiceOrdine)
                                 ON UPDATE CASCADE
                                 ON DELETE CASCADE);
-

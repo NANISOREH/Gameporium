@@ -1,3 +1,8 @@
+var input = document.getElementById("emailInput");
+input.addEventListener("focus", function () {
+  this.style.backgroundColor = "red";  
+});
+
 function validateLogin(password, username)
 
 {	
