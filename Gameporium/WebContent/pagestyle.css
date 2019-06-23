@@ -312,3 +312,14 @@ div.credcard {
 @media only screen and (max-width: 300px) {
   .text {font-size: 11px}
 }
+
+ #emailInput:focus, #passwordInput:focus, #nome:focus, #cognome:focus ,#username:focus, #mail:focus, #pass:focus, #confirmPass:focus,
+ #circuito:focus, #numero:focus, #mesescadenza:focus, #annoscadenza:focus, #cvv:focus, #citta:focus, #via:focus, #nciv:focus, #cap:focus,
+ #codiceProdotto:focus,#gioco:focus,#accessorio:focus,#subCatGioco:focus,#sceltag:focus,#eta:focus,#ngiocatori:focus,#durata:focus
+ #subCatAccessorio:focus,#sceltaa:focus,#titolo:focus,#produttore:focus,#descrizione:focus,#quantita:focus,#prezzo:focus,#iva:focus,#offerta:focus,#novita:focus,
+ #codProdotto:focus,#nomeCategoria:focus,#numeroGiocatori:focus, #disponibilita:focus, #IVA:focus, #descrizioneCategoriaGiochi:focus, #descrizioneCategoriaAccessori:focus,
+ #foto:focus,#dataA:focus,#dataDa:focus,#codiceEvento:focus,#luogo:focus, #dataEvento:focus, #ora:focus, #locandina:focus, #codEvento:focus, #numeroPartecipanti:focus,
+ #user:focus{
+	background-color: lavender;
+}
+}

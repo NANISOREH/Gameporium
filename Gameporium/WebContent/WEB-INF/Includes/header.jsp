@@ -59,6 +59,7 @@
   {
   	margin-left:50px;
   }
+  
   </style>
 
 <body>
@@ -261,10 +262,12 @@
 					Accedi o registrati <span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu dropdown-menu-right mt-2">
+				
 					<li class="px-3 py-2">
 						<form action="login" method="post" class="form" role="form" name="loginform">
+
 							
-							<div class="form-group">
+							<div class="form-group" > 
 								<input id="emailInput" placeholder="Username" oninput="validateLogin(document.loginform.pw, document.loginform.un)"
 									class="form-control form-control-sm" type="text" name="un" 
 									required autocomplete="off" value="${cookie.saveUser.value}">

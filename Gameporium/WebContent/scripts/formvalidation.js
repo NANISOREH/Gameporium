@@ -1,3 +1,8 @@
+var input = document.getElementById("emailInput");
+input.addEventListener("focus", function () {
+  this.style.backgroundColor = "red";  
+});
+
 function validateLogin(password, username)
 
 {	
@@ -195,49 +200,4 @@ function htmlEscape(toEscape)
 
 	return toEscape;
 
-}
-
-addCreditCard(form)
-{
-	var n = form.elements.length;
-	var card = /^[0-9]{16,16}$/;
-	
-	for (var i = 3; i < n -1 ; i++) 
-	{		
-		if (form.elements[i].value.length == 0)
-		{
-			Swal.fire({
-				  title: '<h6>Completare tutti i campi!</h6>',
-				  toast: true,
-				  type: 'error',
-				  position: 'top',
-				  timer: 2000,
-				  showConfirmButton: false
-				})
-			return;
-		}
-		else
-			form.elements[i].value = htmlEscape(form.elements[i].value);
-	}
-	
-	if (!form.numero.value.match(card))
-	{
-		Swal.fire({
-			  title: '<h6>Inserire un numero valido!</h6>',
-			  toast: true,
-			  type: 'error',
-			  position: 'top',
-			  timer: 2000,
-			  showConfirmButton: false
-			})
-		
-		form.numero.focus();
-		return;
-	}
-	
-	if (form.cvv.value.length == 3)
-	{
-		form.scadenza.value = form.mesescadenza.value.toString() + "/" + form.annoscadenza.value.toString();
-		form.submit();
-	}
 }
