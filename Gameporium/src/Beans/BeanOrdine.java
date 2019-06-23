@@ -1,14 +1,15 @@
 package Beans;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class BeanOrdine extends Bean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	int codiceOrdine, codiceSpedizione, codicePagamento;
-	String indirizzoSpedizione, tipoSpedizione,metodo, indirizzoFatturazione, username;
+	String indirizzoSpedizione, tipoSpedizione, metodo, statoProdotti, indirizzoFatturazione, username;
 	LocalDate dataSpedizione,dataOrdine;
-	double importo;
+	BigDecimal importo;
 	
 	public BeanOrdine()
 	{
@@ -19,7 +20,7 @@ public class BeanOrdine extends Bean implements Serializable {
 		tipoSpedizione="";
 		dataSpedizione=LocalDate.now();
 		dataOrdine=LocalDate.now();
-		importo=-1;
+		importo = new BigDecimal("-1");
 		metodo="";
 		indirizzoFatturazione="";
 		username="";
@@ -41,13 +42,6 @@ public class BeanOrdine extends Bean implements Serializable {
 		this.indirizzoFatturazione = newIndirizzoFatturazione;
 	}
 
-	public double getImporto() {
-		return importo;
-	}
-
-	public void setImporto(double newImporto) {
-		this.importo = newImporto;
-	}
 
 	public int getCodiceOrdine() {
 		return codiceOrdine;
@@ -104,6 +98,15 @@ public class BeanOrdine extends Bean implements Serializable {
 		this.dataOrdine = newDataOrdine;
 	}
 	
+	public String getStatoProdotti() {
+		return statoProdotti;
+	}
+	
+	
+	public void setStatoProdotti(String statoProdotti) {
+		this.statoProdotti = statoProdotti;
+	}
+
 	public String getUsername() {
 		return username;
 	}
@@ -111,15 +114,23 @@ public class BeanOrdine extends Bean implements Serializable {
 	public void setUsername(String newUsername) {
 		this.username=newUsername;
 	}
+
+	public BigDecimal getImporto() {
+		return importo;
+	}
+
+	public void setImporto(BigDecimal importo) {
+		this.importo = importo;
+	}
+
 	@Override
 	public String toString() {
-		return "BeanOrdine [codiceOrdine=" + codiceOrdine + ", Username="+username+", dataOrdine=" + dataOrdine +", codiceSpedizione=" + codiceSpedizione
+		return "BeanOrdine [codiceOrdine=" + codiceOrdine + ", codiceSpedizione=" + codiceSpedizione
 				+ ", codicePagamento=" + codicePagamento + ", indirizzoSpedizione=" + indirizzoSpedizione
-				+ ", tipoSpedizione=" + tipoSpedizione + ", dataSpedizione=" + dataSpedizione + "]";
+				+ ", tipoSpedizione=" + tipoSpedizione + ", metodo=" + metodo + ", statoProdotti=" + statoProdotti
+				+ ", indirizzoFatturazione=" + indirizzoFatturazione + ", username=" + username + ", dataSpedizione="
+				+ dataSpedizione + ", dataOrdine=" + dataOrdine + ", importo=" + importo + "]";
 	}
-	
-	
-	
 	
 
 }

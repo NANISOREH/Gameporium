@@ -233,11 +233,11 @@
 	
 	#cartcard
 	{
-		height: 220px;
+		height: 60%;
+		width:100%;
 		margin-top: 30px;	
 	  	margin: 15px;
-	  	padding-top: 2px;
-  		padding-bottom:2px;
+	  	padding:2px;
   	}	
   	
   	.img-square-wrapper
@@ -251,8 +251,8 @@
     #cartimg
     {
 	     height: auto;
-	     max-height: 210px;
-	     max-width: 150px;
+	     max-height: 30%;
+	     max-width: 30%;
     }
     
     .dataform

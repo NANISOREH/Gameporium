@@ -66,8 +66,11 @@ public class PagamentiServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-			
-			response.sendRedirect("/Gameporium/clientpage.jsp?azione=pagamento&creditCardSuccess=true"); 
+			if (!request.getParameter("isOrder").equals("true"))
+				response.sendRedirect("/Gameporium/clientpage.jsp?azione=pagamento&creditCardSuccess=true"); 
+			if (request.getParameter("isOrder").equals("true"))
+				response.sendRedirect("/Gameporium/order.jsp?creditCardSuccess=true"); 
+				
 		}
 	}
 
