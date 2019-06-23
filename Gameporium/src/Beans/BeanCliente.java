@@ -4,13 +4,13 @@ import java.io.Serializable;
 public class BeanCliente extends Bean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	String nome, cognome, username, passwordU, recapito;
-	int cartaPred;
+	long cartaPred;
 	
-	public int getCartaPred() {
+	public long getCartaPred() {
 		return cartaPred;
 	}
 
-	public void setCartaPred(int cartaPred) {
+	public void setCartaPred(long cartaPred) {
 		this.cartaPred = cartaPred;
 	}
 
@@ -21,7 +21,7 @@ public class BeanCliente extends Bean implements Serializable {
 		username="";
 		passwordU="";
 		recapito="";
-		cartaPred=-1;
+		cartaPred=99999;
 	}
 
 	public String getNome() {

@@ -28,7 +28,7 @@ CREATE TABLE cliente(
     username        varchar(15),
     passwordU       varchar(20),
     recapito        varchar(30),
-    cartaPred       int references metodoPagamento (numCarta),
+    cartaPred       bigint references metodoPagamento (numCarta),
     primary key(username)
 );
 

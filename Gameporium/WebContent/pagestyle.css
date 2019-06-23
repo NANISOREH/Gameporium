@@ -163,6 +163,25 @@
 /*mobilelogin*/
 
 /*home*/
+	.fadimg
+    {
+    	width:auto; 
+    	height:300px;
+    }
+    
+    .mySlides
+    {
+    	text-align: center;	
+    }
+    
+    .slideshow-container
+    {
+    	background-color: lightgray;
+    	border: 1px solid lightgray;
+    	border-radius: 25px;
+    	padding:0px;
+    }
+	
 	a.offnovlink
 	{
 		float: right;
@@ -282,6 +301,8 @@
 	}
 
 /* orderoperation */
+
+
 
 /*animazioni*/
 /* Slideshow container */

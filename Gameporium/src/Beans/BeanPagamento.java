@@ -11,12 +11,14 @@ import java.io.Serializable;
 		String circuito,scadenza, secureCode;
 		
 		public String getSecureCode() {
-			String cod = Long.toString(numCarta);
-			return cod.substring(cod.length() - 4);
+			
+			return secureCode;
 		}
 
-		public void setSecureCode(String secureCode) {
-			this.secureCode = secureCode;
+		public void setSecureCode() {
+			String cod = Long.toString(numCarta);
+			secureCode = cod.substring(cod.length() - 4);
+
 		}
 
 		public BeanPagamento()
