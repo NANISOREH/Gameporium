@@ -1,7 +1,7 @@
 INSERT INTO cliente(nome,cognome,username,passwordU,recapito,cartaPred) VALUES
 	('Sara','Corrente','Brontolo','Pippolo','3394004520', '1010'),
 	('Fabiana','Gatto','Cucciolo','Pluto','3384596321','1100'),
-    ('Vincenzo','Monzo','Mammolo','Topolino','3384558321','111'),
+    ('Vincenzo','Monzo','Mammolo','Topolino','3384558321', 2222222222222222),
     ('Maria','De Luca','Pisolo','Minnie','3849675843', '100'),
     ('Giovanni','Chiariello','Eolo','ZioPaperone','3397835226', '101'),
     ('Andrea','Palladino','Dotto','Qui','3569472315', '102'),
@@ -237,9 +237,9 @@ INSERT INTO indirizzo(codiceIndirizzo,via,civico,citta, cap) VALUES
     (04,'via dal carcere',25,'Scampia',82120);
     
 INSERT INTO metodoPagamento(circuito,numCarta,cvv,scadenza) VALUES
-	('visa',1234321,119,'12/2019'),
-    ('mastercard',5678765,773,'01/2022'),
-    ('american express',3456543,223,'01/2024');
+	('visa',1111111111111111,119,'12/2019'),
+    ('mastercard',2222222222222222,773,'01/2022'),
+    ('american express',3333333333333333,223,'01/2024');
     
     
 INSERT INTO effettua(username,codiceOrdine) VALUES
@@ -280,9 +280,9 @@ INSERT INTO composizione(codiceOrdine,codiceProdotto,quantita) VALUES
 
 
 INSERT INTO possiede(username,numCarta) VALUES
-	('Mammolo',1234321),
-    ('Mammolo',5678765),
-    ('Mammolo',3456543);
+	('Mammolo',1111111111111111),
+    ('Mammolo',2222222222222222),
+    ('Mammolo',3333333333333333);
 
 
 INSERT INTO spedizione(username,codiceIndirizzo) VALUES

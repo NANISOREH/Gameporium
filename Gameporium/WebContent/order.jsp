@@ -94,15 +94,21 @@
 
 				<div class="form-group">
 					<c:if test="${metodi!=null}">
-						<div class="sectionstyle addressOrder">Metodo di pagamento</div>
-						<label for="sceltag">Seleziona la carta</label>
-						<select class="form-control" id="sceltag" name="sceltag">
+						<jsp:include page="/preset"/>
+								
+						<form id="preset">
+							<label>Metodo di pagamento preferito:</label> 
+								<select class="form-control" id="pselect" name="pselect" 
 
-							<c:forEach items="${metodi}" var="item">
-								<option>${item.circuito} che termina con
-									${item.secureCode}</option>
-							</c:forEach>
-						</select>
+								onchange="changePreset(this)">
+									
+									 <option value="" selected disabled hidden="hidden">${sessionScope.userFavCircuito} che termina con ${sessionScope.userFavSecureCode}</option>
+						       <c:forEach items="${metodi}" var="item"> 
+						        	<option value="${item.secureCode}">${item.circuito} che termina con ${item.secureCode}</option>
+						       </c:forEach>
+						    </select>
+						</form>
+					
 					</c:if>
 						<c:set var="creditCardSuccess"
 							value='${param["creditCardSuccess"]}' />

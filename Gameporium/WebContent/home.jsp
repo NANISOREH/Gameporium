@@ -75,26 +75,26 @@
 
 				<!-- container novità e offerte -->
 
-				<div class="container-fluid clearfix">
+					<div class="container-fluid clearfix">
 
 			 		<div class="slideshow-container">
 
 						<div class="mySlides fade">
 						  <div class="numbertext">1 / 3</div>
-						  <img src="images/cavacon.jpg" style="width:100%; height:380px">
+						  <img class="fadimg" src="images/cavacon.jpg" style="width:auto; height:300px">
 						</div>
 						
 						<div class="mySlides fade">
 						  <div class="numbertext">2 / 3</div>
-						  <img src="images/fantaexpo.png" style="width:100%; height:380px">
+						  <img class="fadimg" src="images/fantaexpo.png" style="width:auto; height:300px">
 						</div>
 						
 						<div class="mySlides fade">
 						  <div class="numbertext">3 / 3</div>
-						  <img src="images/isola.png" style="width:100%; height:380px">
+						  <img class="fadimg" src="images/isola.png">
 						</div>
 						
-						</div>
+					</div>
 						<br>
 						
 						<div style="text-align:center">
@@ -120,9 +120,10 @@
 						  }
 						  slides[slideIndex-1].style.display = "block";  
 						  dots[slideIndex-1].className += " active";
-						  setTimeout(showSlides, 2000);
+						  setTimeout(showSlides, 3000);
 						}
-						</script>			 		
+						</script>	
+							 		
 
 		      		<!-- Inizio sezione offerte -->
 
