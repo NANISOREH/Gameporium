@@ -145,14 +145,14 @@
 				</c:if>
 				
 				<c:if test="${sel=='2'}">
-					<c:set var="gioco" value='${requestScope["accessorio"]}' />
+					<c:set var="accessorio" value='${requestScope["accessorio"]}' />
 
 					<div class="container-fluid">
 						<div class="row">
 							
 							<div class="col-lg-4 col-xs-12 bg-light">
 								<a class="navbar-brand text-white-80" href="#"><img
-									src="images/${gioco.foto}" class=" fotoprodotto rounded mx-auto d-block"
+									src="images/${accessorio.foto}" class=" fotoprodotto rounded mx-auto d-block"
 									alt="Responsive image"
 									style="margin-bottom: 0; margin-top:30px">
 								</a>
@@ -162,7 +162,7 @@
 								 <ul class="list-group list-group-flush">
 								 	
 								 	<li class="list-group-item bg-light">
-										<h4>${gioco.titolo}</h4>
+										<h4>${accessorio.titolo}</h4>
 								 	</li>
 								 	
 								 	<li class="list-group-item bg-light">
@@ -170,45 +170,54 @@
 								 			<div class="nomeriga col-lg-5 col-xs-12">Prezzo:</div>
 									 		<div class="col-lg-7 col-xs-12">
 									 			<span class="prezzo">
-								 				${gioco.prezzo}€</span> 
+								 				${accessorio.prezzo}€</span> 
 									 		</div>
 								 		</div>
 								 	</li>
 								 	<li class="list-group-item bg-light">
 								 		<div class="row">
 								 			<div class="nomeriga col-lg-5 col-xs-12">Cod. art.:</div>
-									 		<div class="col-lg-7 col-xs-12">#${gioco.codiceProdotto}</div>
+									 		<div class="col-lg-7 col-xs-12">#${accessorio.codiceProdotto}</div>
 								 		</div>
 								 	</li>
 								 	<li class="list-group-item bg-light">
 								 		<div class="row">
 								 			<div class="nomeriga col-lg-5">Marca:</div>
-									 		<div class="col-lg-7">${gioco.produttore}</div>
+									 		<div class="col-lg-7">${accessorio.produttore}</div>
 								 		</div>
 								 	</li>
 								 	<li class="list-group-item bg-light">
 								 		<div class="row">
 								 			<div class="nomeriga col-lg-5">Disponibilità:</div>
-									 		<div class="col-lg-7">${gioco.disponibilita}</div>
+								 			<c:choose>
+								 			<c:when test="${accessorio.disponibilita==0 }">
+								 				<div class="col-lg-7" style="color:red">Attualmente non disponibile</div>
+								 			</c:when>
+									 		<c:otherwise>
+									 			<div class="col-lg-7">${accessorio.disponibilita}</div>
+									 		</c:otherwise>
+									 		</c:choose>
 								 		</div>
 								 	</li>
 								 	
 								 	<li class="list-group-item bg-light">
-									 	<form name="quantityForm" action="cartservlet" onkeydown="return event.key != 'Enter';">
-									 		<div class="row">
-									 			<div class="nomeriga col-5">Quantità:
-									 			</div>
-										 		<div class="col-7">
-										 			<input class="quantInput" type="number" name="quantita" value="1">
-												</div>
-												<button class="quantButton btn btn-sm btn-primary btn-block text-uppercase" name="acquistabtn" id="acquistabtn" 
-													onclick ="addToCart(document.quantityForm)"
-													type="button" value='${gioco.codiceProdotto}' >Aggiungi al Carrello
-												</button>
-									 		</div>
-									 	</form>
+								 	<c:choose>
+								 		<c:when test="${accessorio.disponibilita>0 }">
+										 	<form name="quantityForm" action="cartservlet" onkeydown="return event.key != 'Enter';" id="${accessorio.codiceProdotto}">
+										 		<div class="row">
+										 			<div class="nomeriga col-5">Quantità:
+										 			</div>
+											 		<div class="col-7">
+											 			<input class="quantInput" type="number" name="quantita" value="1">
+													</div>
+													<button type="button" class="quantButton btn btn-sm btn-primary btn-block text-uppercase" name="acquistabtn" id="acquistabtn" 
+														onclick ="addToCart(this.value)" value="${accessorio.codiceProdotto}">Aggiungi al Carrello
+													</button>
+										 		</div>
+										 	</form>
+										 </c:when>
+									 </c:choose>
 								 	</li>
-								
 								</ul> 
 							</div>
 							
@@ -221,7 +230,7 @@
 				<h4 style="margin-top: 30px">Descrizione</h4>
 				<div class="container-fluid" style="border-top:1px black solid;">
 					<br>
-					${gioco.descrizione}
+					${prodotto.descrizione}
 				</div>
 			
 				
