@@ -127,27 +127,15 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-			<c:set var="cartcard" value='${sessionScope["cartcardinality"]}' />
-			<ul class="navbar-nav">
-				<li class="nav-item mr-auto carticon d-lg-none">
-					<a href="/Gameporium/cart.jsp">
-      					<i class="fas fa-shopping-cart" aria-hidden="true"></i>
-      					<c:out value="${cartcard}"/> prod.
-      				</a>
-				</li> 
-			</ul>		
-	<!-- 				ricerca mobile -->
-			<div class = "msearch nav-item d-block d-lg-none mx-auto">
-				<form action="productselection.jsp" method="post"
-					class="form-inline md-form form-sm active-cyan active-cyan-2 mt-2">
-	      			<button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2" type="submit">
-   						<i class="fas fa-search" aria-hidden="true"></i>
-   					</button>
-					<input class="searchbox form-control" type="text" name="searchtxt" 
-					aria-label="Search" placeholder="Cerca un prodotto">
-				</form> 
-			</div>
-<!-- 				ricerca mobile -->
+<%-- 			<c:set var="cartcard" value='${sessionScope["cartcardinality"]}' /> --%>
+<!-- 			<ul class="navbar-nav"> -->
+<!-- 				<li class="nav-item mr-auto carticon d-lg-none"> -->
+<!-- 					<a href="/Gameporium/cart.jsp"> -->
+<!--       					<i class="fas fa-shopping-cart" aria-hidden="true"></i> -->
+<%--       					<c:out value="${cartcard}"/> prod. --%>
+<!--       				</a> -->
+<!-- 				</li>  -->
+<!-- 			</ul>		 -->
 
 		
 		<a class="navbar-brand text-white-80" href="/Gameporium/home.jsp"><img
@@ -157,6 +145,20 @@
 
 		<div class="collapse navbar-collapse" id="collapsibleNavbar">
 			<ul class="navbar-nav">
+		<!-- 				ricerca mobile -->
+			<li class = "msearch nav-item d-block d-lg-none mx-auto">
+				<form action="productselection.jsp" method="post"
+					class="form-inline md-form form-sm active-cyan active-cyan-2 mt-2">
+	      			<button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2" type="submit">
+   						<i class="fas fa-search" aria-hidden="true"></i>
+   					</button>
+					<input class="searchbox form-control" type="text" name="searchtxt" 
+					aria-label="Search" placeholder="Cerca un prodotto">
+				</form> 
+				
+			</li>
+<!-- 				ricerca mobile -->
+			
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle text-center" href="#"
 					id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -239,15 +241,17 @@
 			</ul>
 			<!-- 			ricerca desktop -->
 			
+<!-- 			carrello -->
 			<c:set var="cartcard" value='${sessionScope["cartcardinality"]}' />
 			<ul class="navbar-nav">
-				<li class="nav-item mr-auto carticon d-block">
+				<li class="nav-item mr-auto carticon d-xs-block">
 					<a href="/Gameporium/cart.jsp">
       					<i class="fas fa-shopping-cart" aria-hidden="true"></i>
       					<c:out value="${cartcard}"/> prod.
       				</a>
 				</li> 
 			</ul>
+<!-- 			carrello -->
 
 			
 <!-- 			login popup -->

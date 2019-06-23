@@ -169,9 +169,10 @@ CREATE TABLE ordine(
     dataOrdine      date,
     dataSpedizione  date,
     codiceSpedizione    int,
-    codicePagamento int ,
-    importo         numeric,
-    metodo          int references metodoPagamento(numCarta),
+    codicePagamento     int ,
+    statoProdotti   varchar (1000),
+    importo         decimal(5,2),
+    metodo          bigint references metodoPagamento(numCarta),
     indirizzoFatturazione   varchar (50),
     primary key (codiceOrdine)
 );
