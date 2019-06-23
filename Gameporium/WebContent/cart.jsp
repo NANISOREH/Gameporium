@@ -66,54 +66,55 @@
 				<div class="container-fluid clearfix">
 
 					<!-- Inizio iterazione cards-->
-					<form action="cartupdate" method="post" name="removefrm" onkeydown="return event.key != 'Enter';">
+					<form action="cartupdate" method="post" name="removefrm"
+						onkeydown="return event.key != 'Enter';">
 
 						<div class="row">
-							<div class="sectionstyle row col-lg-12 md-12 sm-12 d-none d-lg-block">Il mio carrello</div>
+							<div
+								class="sectionstyle row col-lg-12 md-12 sm-12 d-none d-lg-block">Il
+								mio carrello</div>
 							<c:set var="cartprods" value='${sessionScope["cartitems"]}' />
 
-							<div class="container fluid cartreload">
+							<div class="cartreload">
 
 								<c:forEach items="${cartprods}" var="item" begin="0"
 									end="${cartitems.size() }">
-									<div class="cartcard card col-lg-12 md-12" id="cartcard">
-										<div class="row ">
-											<div class="col-lg-3 col-md-1 sm-1 ">
-												<div class="img-square-wrapper">
-													<img class="card-img mx-auto" id="cartimg"
-														src="images/${item.product.foto }" alt="Card image cap">
+									<div class="container-fluid">
+										<div class="cartcard card" id="cartcard">
+											<div class="row ">
+												<div class="col-lg-4 d-none d-lg-block">
+													<div class="img-square-wrapper">
+														<img class="img-responsive" id="cartimg"
+															src="images/${item.product.foto }" alt="Card image cap">
+													</div>
 												</div>
-											</div>
-											<div class="col-lg-6 col-md-4 sm-4">
-												<div class="card-body">
+												<div class="col-lg-6">
 													<a class="card-title"
 														href="singleProduct?selProd=${item.product.codiceProdotto}&selCat=${item.product.codCategoria}">${item.product.titolo }</a>
-													<p class="card-text">Quantità:
+													<p>Quantità:
 													<div class="col">
 														<input class="quantInput" type="number" name="quantita"
 															value="${item.quantita }" id="${item.quantita}"
 															onchange="reloadCart(value, ${item.product.codiceProdotto})" />
 													</div>
-													 <input type="hidden" name="productId" id="productId" value="${item.product.codiceProdotto }">
-												
+													<input type="hidden" name="productId" id="productId"
+														value="${item.product.codiceProdotto }">
 												</div>
+
+
+
+												<div class="col-lg-2" id="${item.product.codiceProdotto}">
+													Prezzo: ${item.prezzoTotale}€<br>
+													<button class="quantButton" name="rimuovibtn"
+														id="rimuovibtn" onclick="addToCart(document.quantityForm)"
+														type="submit" value='${item.product.codiceProdotto}'>
+														<i class="fa fa-trash" aria-hidden="true"></i>
+													</button>
+
+												</div>
+
+
 											</div>
-
-
-
-											<div class="col-lg-3 col-md-4 sm-4"
-												id="${item.product.codiceProdotto}">
-												Prezzo: ${item.prezzoTotale} 
-												<button
-													class="quantButton btn btn-sm btn-primary btn-block text-uppercase"
-													name="rimuovibtn" id="rimuovibtn"
-													onclick="addToCart(document.quantityForm)" type="submit"
-													value='${item.product.codiceProdotto}'>Rimuovi dal
-													carrello</button>
-
-											</div>
-
-
 										</div>
 									</div>
 								</c:forEach>
