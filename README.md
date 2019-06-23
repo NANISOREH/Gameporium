@@ -1,13 +1,13 @@
 # Gameporium
 
 SEZIONI ANCORA DA COPRIRE
-- Area cliente (metodi pagamento e spedizione)
-- Area amministratore
-- Pagina del carrello
+- Area cliente (metodi pagamento e spedizione) ✓
+- Area amministratore ✓
+- Pagina del carrello ✓
 - Finalizzazione acquisti
 - Visualizzazione ordini effettuati
-- Svacantamento carrello
-- Visualizzare ordini dalla data alla data
+- Svacantamento carrello ✓
+- Visualizzare ordini dalla data alla data ✓
 - Validazione form e messaggi di errore
 - Aggraziare e riempire il footer
 - Riempire i pannelli laterali
@@ -23,3 +23,4 @@ TO DO LIST
 - Sistemare le immagini
 - Far sopravvivere il carrello alla morte della session
 - Il login non dovrebbe riportarti in home
+- Sistemare i vari redirect (sopratutto quelli dell'area Admin)

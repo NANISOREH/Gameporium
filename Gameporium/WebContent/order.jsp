@@ -48,6 +48,9 @@
 
 
 <body>
+	<jsp:include page="/pagamenti">
+		 <jsp:param name="username" value="${sessionScope.currentSessionUser.username}"/>
+	</jsp:include>
 
 	<div class="allpagecontainer container-fluid bg-light">
 
@@ -90,118 +93,116 @@
 				</form>
 
 				<div class="form-group">
-					<c:choose>
-						<c:when test="${metodi!=null}">
-							<label for="sceltag">Seleziona la carta</label>
-							<select class="form-control" id="sceltag" name="sceltag">
+					<c:if test="${metodi!=null}">
+						<div class="sectionstyle addressOrder">Metodo di pagamento</div>
+						<label for="sceltag">Seleziona la carta</label>
+						<select class="form-control" id="sceltag" name="sceltag">
 
-								<c:forEach items="${metodi}" var="item">
-									<option>${item.circuito}che termina con
-										${item.secureCode}</option>
-								</c:forEach>
-							</select>
-						</c:when>
-						<c:otherwise>
-							<c:set var="creditCardSuccess"
-								value='${param["creditCardSuccess"]}' />
-							<c:if test="${creditCardSuccess}">
-								<div class="popup alert alert-success alert-dismissible fade-in"
-									role="success">
-									<a class="close" data-dismiss="alert" aria-label="close">&times;</a>
-									Hai aggiunto una nuova carta di credito!
-								</div>
-							</c:if>
-							<a data-toggle="collapse" href="#newcard" role="button"
-								aria-expanded="false" aria-controls="newcard"> <i
-								class="fas fa-caret-down"></i> Nuova carta
-							</a>
-							<form>
-								<div class="row">
-									<div class="col">
-										<div class="collapse multi-collapse" id="newcard">
+							<c:forEach items="${metodi}" var="item">
+								<option>${item.circuito} che termina con
+									${item.secureCode}</option>
+							</c:forEach>
+						</select>
+					</c:if>
+						<c:set var="creditCardSuccess"
+							value='${param["creditCardSuccess"]}' />
+						<c:if test="${creditCardSuccess}">
+							<div class="popup alert alert-success alert-dismissible fade-in"
+								role="success">
+								<a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+								Hai aggiunto una nuova carta di credito!
+							</div>
+						</c:if>
+						<a data-toggle="collapse" href="#newcard" role="button"
+							aria-expanded="false" aria-controls="newcard"> <i
+							class="fas fa-caret-down"></i> Nuova carta
+						</a>
+						<form id="ccform" name="ccform" action="pagamenti" method="post">
+							<div class="row">
+								<div class="col">
+									<div class="collapse multi-collapse" id="newcard">
 
-											<div class="card card-body">
-												<div class="form-row">
-													<div class="form-group col-md-2">
-														<label for="mesescadenza">Circuito</label> <select
-															class="form-control" id="circuito" name="circuito">
-															<option>Visa</option>
-															<option>American Express</option>
-															<option>MasterCard</option>
-														</select>
-													</div>
-													<div class="form-group col-md-4">
-														<label>Numero</label> <input type="text"
-															class="form-control" name="numero">
-													</div>
-													<div class="form-group col-md-4">
-														<label for="mesescadenza">Scadenza</label> <select
-															class="form-control" id="mesescadenza"
-															name="mesescadenza">
-															<option>01</option>
-															<option>02</option>
-															<option>03</option>
-															<option>04</option>
-															<option>05</option>
-															<option>06</option>
-															<option>07</option>
-															<option>08</option>
-															<option>09</option>
-															<option>10</option>
-															<option>11</option>
-															<option>12</option>
-														</select> <select class="form-control" id="annoscadenza"
-															name="annoscadenza">
-															<option>2019</option>
-															<option selected="selected">2020</option>
-															<option>2021</option>
-															<option>2022</option>
-															<option>2023</option>
-															<option>2024</option>
-															<option>2025</option>
-															<option>2026</option>
-															<option>2027</option>
-															<option>2028</option>
-															<option>2029</option>
-															<option>2030</option>
-														</select> <input type="hidden" id="scadenza" name="scadenza"
-															value="01/2020"> <input type="hidden" id="insert"
-															name="insert" value="true"> <input type="hidden"
-															id="username" name="username"
-															value="${currentSessionUser.username}">
-													</div>
-													<div class="form-group col-md-2">
-														<label>CVV</label> <input type="text" name="cvv" id="cvv"
-															oninput="limitCvv(document.insertform.cvv)"
-															class="form-control" min="3" max="3">
-													</div>
-
+										<div class="card card-body">
+											<div class="form-row">
+												<div class="form-group col-md-2">
+													<label for="mesescadenza">Circuito</label> <select
+														class="form-control" id="circuito" name="circuito">
+														<option>Visa</option>
+														<option>American Express</option>
+														<option>MasterCard</option>
+													</select>
+												</div>
+												<div class="form-group col-md-4">
+													<label>Numero</label> <input type="text"
+														class="form-control" name="numero">
+												</div>
+												<div class="form-group col-md-4">
+													<label for="mesescadenza">Scadenza</label> <select
+														class="form-control" id="mesescadenza"
+														name="mesescadenza">
+														<option>01</option>
+														<option>02</option>
+														<option>03</option>
+														<option>04</option>
+														<option>05</option>
+														<option>06</option>
+														<option>07</option>
+														<option>08</option>
+														<option>09</option>
+														<option>10</option>
+														<option>11</option>
+														<option>12</option>
+													</select> <select class="form-control" id="annoscadenza"
+														name="annoscadenza">
+														<option>2019</option>
+														<option selected="selected">2020</option>
+														<option>2021</option>
+														<option>2022</option>
+														<option>2023</option>
+														<option>2024</option>
+														<option>2025</option>
+														<option>2026</option>
+														<option>2027</option>
+														<option>2028</option>
+														<option>2029</option>
+														<option>2030</option>
+													</select> <input type="hidden" id="scadenza" name="scadenza"
+														value="01/2020"> <input type="hidden" id="insert"
+														name="insert" value="true"> <input type="hidden"
+														id="username" name="username"
+														value="${currentSessionUser.username}">
+														<input type="hidden" name="isOrder" value="true">
+												</div>
+												<div class="form-group col-md-2">
+													<label>CVV</label> <input type="text" name="cvv" id="cvv"
+														oninput="limitCvv(document.insertform.cvv)"
+														class="form-control" min="3" max="3">
 												</div>
 
-												<input type="hidden" id="scadenza" name="scadenza"
-													value="01/2020"> <input type="hidden" id="insert"
-													name="insert" value="true"> <input type="hidden"
-													id="username" name="username"
-													value="${currentSessionUser.username}">
-
-												<button class="btn btn-primary" data-toggle="collapse"
-													type="button">Aggiungi</button>
-
-
-
 											</div>
+
+											<input type="hidden" id="scadenza" name="scadenza"
+												value="01/2020"> <input type="hidden" id="insert"
+												name="insert" value="true"> <input type="hidden"
+												id="username" name="username"
+												value="${currentSessionUser.username}">
+
+											<button class="btn btn-primary" data-toggle="collapse"
+												type="button" onclick="validateCreditCard(document.ccform)">Aggiungi</button>
 
 
 
 										</div>
 
 
+
 									</div>
 
+
 								</div>
-							</form>
-						</c:otherwise>
-					</c:choose>
+
+							</div>
+						</form>
 
 				</div>
 
@@ -209,8 +210,7 @@
 				<div class="form-group">
 					<button type="submit" id="spedizione" name="spedizione"
 						class="btn btn-success btn-lg btn-block" value=""
-						onclick="addCreditCard(document.ordinafrm)"
-						style="max-width: 400px;">Completa l'ordine!</button>
+						style="max-width: 400px; margin-top:70px;">Completa l'ordine!</button>
 				</div>
 
 

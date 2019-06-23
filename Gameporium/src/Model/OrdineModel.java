@@ -357,17 +357,18 @@ public class OrdineModel implements Model {
 	}
 
 
-	public synchronized Collection<Bean> doRetrieveByUserBetweenDate(LocalDate da, LocalDate a, String username) throws SQLException {
+	public synchronized Collection<Bean> doRetrieveByUserBetweenDate(LocalDate da, LocalDate a, String user) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
 		Collection<Bean> Ordine = new LinkedList<Bean>();
 
-		String selectSQL = "SELECT * FROM " + OrdineModel.TABLE_NAME + " as o JOIN effettua as e on o.codiceOrdine=e.codiceOrdine WHERE username="+ username +" and dataOrdine between '" + da + "' and '" + a + "'";
+		String selectSQL = "SELECT * FROM " + OrdineModel.TABLE_NAME + " as o JOIN effettua as e on o.codiceOrdine=e.codiceOrdine WHERE username= ? and dataOrdine between '" + da + "' and '" + a + "'";
 		
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, user);
 			System.out.println(selectSQL);
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
