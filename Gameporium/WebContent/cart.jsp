@@ -53,14 +53,14 @@
 
 			<!-- colonna sinistra -->
 			<div
-				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light">
+				class="col-lg-2 col-md-0 d-none d-lg-block bg-light">
 				<%@include file="/WEB-INF/Includes/leftpanel.jsp"%>
 			</div>
 			<!-- fine colonna sinistra -->
 
 			<!-- colonna centrale -->
-			<div id="homecenter"
-				class="col-lg-8 col-md-12 col-sm-12 col-xs-12 bg-light">
+			<div 
+				class="col-lg-8 col-md-8 col-sm-8 col-xs-8 bg-light">
 
 				<!-- container novità e offerte -->
 				<div class="container-fluid clearfix">
@@ -69,22 +69,22 @@
 					<form action="cartupdate" method="post" name="removefrm" onkeydown="return event.key != 'Enter';">
 
 						<div class="row">
-							<div class="row col-lg-12 md-12 sm-12">Il mio carrello</div>
+							<div class="sectionstyle row col-lg-12 md-12 sm-12 d-none d-lg-block">Il mio carrello</div>
 							<c:set var="cartprods" value='${sessionScope["cartitems"]}' />
 
 							<div class="container fluid cartreload">
 
 								<c:forEach items="${cartprods}" var="item" begin="0"
 									end="${cartitems.size() }">
-									<div class="cartcard card col-lg-12 md-12 sm-12" id="cartcard">
+									<div class="cartcard card col-lg-12 md-12" id="cartcard">
 										<div class="row ">
-											<div class="col-lg-3 col-md-4 sm-12 ">
+											<div class="col-lg-3 col-md-1 sm-1 ">
 												<div class="img-square-wrapper">
 													<img class="card-img mx-auto" id="cartimg"
 														src="images/${item.product.foto }" alt="Card image cap">
 												</div>
 											</div>
-											<div class="col-lg-6 col-md-4 sm-12">
+											<div class="col-lg-6 col-md-4 sm-4">
 												<div class="card-body">
 													<a class="card-title"
 														href="singleProduct?selProd=${item.product.codiceProdotto}&selCat=${item.product.codCategoria}">${item.product.titolo }</a>
@@ -101,7 +101,7 @@
 
 
 
-											<div class="col-lg-3 col-md-4 sm-12"
+											<div class="col-lg-3 col-md-4 sm-4"
 												id="${item.product.codiceProdotto}">
 												Prezzo: ${item.prezzoTotale} 
 												<button
@@ -136,7 +136,7 @@
 			<!-- colonna destra -->
 
 			<div
-				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light">
+				class="col-lg-2 col-md-4 col-sm-4 col-xs-12 bg-light">
 
 				<%@include file="/WEB-INF/Includes/rightpanel.jsp"%>
 
