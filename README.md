@@ -1,12 +1,12 @@
 # Gameporium
 
 SEZIONI ANCORA DA COPRIRE
-- Area cliente (metodi pagamento e spedizione)
+- Area cliente (metodi pagamento e spedizione) ✓
 - Area amministratore ✓
-- Pagina del carrello
+- Pagina del carrello ✓
 - Finalizzazione acquisti
 - Visualizzazione ordini effettuati
-- Svacantamento carrello
+- Svacantamento carrello ✓
 - Visualizzare ordini dalla data alla data ✓
 - Validazione form e messaggi di errore
 - Aggraziare e riempire il footer
