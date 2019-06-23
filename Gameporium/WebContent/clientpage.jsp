@@ -21,6 +21,7 @@
 <%@include file="/WEB-INF/Includes/header.jsp"%>
 <link rel="stylesheet" href="pagestyle.css" type="text/css">
 <script src="scripts/cart.js" type="text/javascript"></script>
+<script src="scripts/formvalidation.js" type="text/javascript"></script>
 </head>
 
 <body style="background-color: #343a40">
@@ -99,10 +100,55 @@
 					</c:when>
 
 					<c:when test="${userchoice=='ordini'}">
-			
+					<jsp:include page="/adminorder">
+					 <jsp:param name="username" value="${sessionScope.currentSessionUser.username}"/>
+					</jsp:include>
+						<div class="sectionstyle">I miei ordini</div>
+
+						<div class="container-fluid" id="contable">
+							<h2>Elenco ordini</h2>
+							<p></p>
+							<table class="table" id="ordertable">
+								<thead>
+									<tr>
+										<th>Codice Ordine</th>
+										<th>Username</th>
+										<th>Data Ordine</th>
+										<th>Data Spedizione</th>
+										<th>Importo</th>
+										<th>Indirizzo Spedizione</th>
+										<th>Indirizzo Fatturazione</th>
+										<th>Tipo Spedizione</th>
+										<th>Codice Spedizione</th>
+										<th>Codice Pagamento</th>
+										<th>Metodo Pagamento</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:set var="ordine" value='${sessionScope["listaOrdini"]}' />
+									<c:forEach items="${ordine}" var="item">
+										<%@include file="/WEB-INF/Includes/ordertable.jsp"%>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
 					</c:when>
 
 					<c:when test="${userchoice=='pagamento'}">
+					
+					<jsp:include page="/pagamenti">
+					 <jsp:param name="username" value="${sessionScope.currentSessionUser.username}"/>
+					</jsp:include>
+					
+					<c:set var="creditCardSuccess" value='${param["creditCardSuccess"]}' />
+					<c:if test="${creditCardSuccess}">
+						<div class="popup alert alert-success alert-dismissible fade-in" role="success">
+						  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						  Hai aggiunto una nuova carta di credito!
+						</div>
+					</c:if>
+					
+					<c:set var="metodi" value='${sessionScope["metodi"]}' />
 			
 					<div class="sectionstyle">I miei metodi di pagamento</div>
 						
@@ -110,9 +156,22 @@
 						<div class="col-lg-2"></div>
 						<div class="col-lg-8 col-xs-12">
 							
-<%-- 							<c:forEach items="${cartprods}" var="item"> --%>
-									<%@include file="/WEB-INF/Includes/creditcard.jsp"%>				
-<%-- 							</c:forEach> --%>
+							<c:forEach items="${metodi}" var="item"> 
+								<div class="credcard">
+								
+									<table class="table fixedtable">
+									  <tbody>
+									    <tr>
+									      <td ><i class="far fa-credit-card"></i> ${item.circuito}</td>
+									      <td>termina con ${item.secureCode}</td>
+									      <td>scade il ${item.scadenza}</td>
+									      <td><a href="#">Elimina</a></td>
+									    </tr>
+									  </tbody>
+									</table>		
+								
+								</div>			
+							</c:forEach>
 
 							
 							<a data-toggle="collapse" href="#newcard" role="button" aria-expanded="false" aria-controls="newcard">
@@ -124,17 +183,21 @@
 										<div class="collapse multi-collapse" id="newcard">
 
 											<div class="card card-body">
-												<form>
+												<form action="pagamenti" id="insertform" name="insertform" method="post">
 													<div class="form-row">
-<!-- 														<div class="form-group col-md-3"> -->
-<!-- 															<label>Intestatario</label> <input type="text" -->
-<!-- 																class="form-control"> -->
-<!-- 														</div> -->
+														<div class="form-group col-md-2">
+															<label for="mesescadenza">Circuito</label>
+															<select class="form-control" id="circuito" name="circuito">
+														        <option>Visa</option>
+														        <option>American Express</option>
+																<option>MasterCard</option>
+														    </select>
+														</div>
 														<div class="form-group col-md-4">
 															<label>Numero</label> <input type="text"
-																class="form-control">
+																class="form-control" name="numero">
 														</div>
-														<div class="form-group col-md-3">
+														<div class="form-group col-md-4">
 															<label for="mesescadenza">Scadenza</label>
 															<select class="form-control" id="mesescadenza" name="mesescadenza">
 														        <option>01</option>
@@ -152,7 +215,7 @@
 														    </select>
 														    <select class="form-control" id="annoscadenza" name="annoscadenza">
 														        <option>2019</option>
-														        <option>2020</option>
+														        <option selected ="selected">2020</option>
 														        <option>2021</option>
 														        <option>2022</option>
 														        <option>2023</option>
@@ -161,19 +224,24 @@
 														        <option>2026</option>
 														        <option>2027</option>
 														        <option>2028</option>
+														        <option>2029</option>
+														        <option>2030</option>
 														    </select>
+														    
+														    <input type="hidden" id="scadenza" name="scadenza" value="01/2020">
+														    <input type="hidden" id="insert" name="insert" value="true">
+														    <input type="hidden" id="username" name="username" value="${currentSessionUser.username}">
 														</div>
 														<div class="form-group col-md-2">
-															<label>CVV</label> <input type="text"
-																class="form-control">
+															<label>CVV</label> 
+															<input type="text" name="cvv" id="cvv" oninput="limitCvv(document.insertform.cvv)"
+																class="form-control" min="3" max="3">
 														</div>
 
 													</div>
 
-													<a class="btn btn-primary" data-toggle="collapse"
-														href="#multiCollapseExample1" role="button"
-														aria-expanded="false"
-														aria-controls="multiCollapseExample1">Aggiungi</a>
+													<button class="btn btn-primary" data-toggle="collapse"
+														type="button" onclick="validateCreditCard(document.insertform)">Aggiungi</button>
 												
 
 												</form>
@@ -191,9 +259,9 @@
 							<br><br>
 							<label for="sceltag">Seleziona predefinita</label>
 							<select class="form-control" id="sceltag" name="sceltag">
-						        <option>Carta 1</option>
-						        <option>Carta 2</option>
-						        <option>carta 3</option>
+						       <c:forEach items="${metodi}" var="item"> 
+						        	<option>${item.circuito} che termina con ${item.secureCode}</option>
+						       </c:forEach>
 						    </select>
 						
 						</div>
@@ -202,6 +270,72 @@
 					</c:when>
 					
 					<c:when test="${userchoice=='indirizzi'}">
+					
+						<div class="sectionstyle">I miei indirizzi di spedizione</div>
+							
+						<div class="row">
+							<div class="col-lg-2"></div>
+							<div class="col-lg-8 col-xs-12">
+								
+	<%-- 							<c:forEach items="${cartprods}" var="item"> --%>
+										<%@include file="/WEB-INF/Includes/indirizzo.jsp"%>				
+	<%-- 							</c:forEach> --%>
+	
+								
+								<a data-toggle="collapse" href="#newcard" role="button" aria-expanded="false" aria-controls="newcard">
+									<i class="fas fa-caret-down"></i> Nuovo indirizzo
+								</a>
+	
+									<div class="row">
+										<div class="col">
+											<div class="collapse multi-collapse" id="newcard">
+	
+												<div class="card card-body">
+													<form>
+														<div class="form-row">
+															<div class="form-group col-md-3">
+																<label>Città</label> <input type="text"
+																	class="form-control">
+															</div>
+															<div class="form-group col-md-4">
+																<label>Via</label> <input type="text"
+																	class="form-control">
+															</div>
+															<div class="form-group col-md-1"></div>
+															<div class="form-group col-md-2">
+																<label>N. civ.</label> <input type="text"
+																	class="form-control">
+															</div>
+															<div class="form-group col-md-2">
+																<label>CAP</label> <input type="text"
+																	class="form-control">
+															</div>
+														</div>
+	
+														<a class="btn btn-primary" data-toggle="collapse"
+															href="#multiCollapseExample1" role="button"
+															aria-expanded="false"
+															aria-controls="multiCollapseExample1">Aggiungi</a>
+	
+													</form>
+												</div>							
+	
+											</div>
+	
+										</div>
+	
+									</div>
+								
+								<br><br>
+								<label for="sceltag">Seleziona predefinito</label>
+								<select class="form-control" id="sceltag" name="sceltag">
+							        <option>Indirizzo 1</option>
+							        <option>Indirizzo 2</option>
+							        <option>Indirizzo 3</option>
+							    </select>
+							
+							</div>
+						</div>
 			
 					</c:when>
 

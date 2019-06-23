@@ -6,12 +6,21 @@ import java.io.Serializable;
 
 	public class BeanPagamento extends Bean implements Serializable{
 		private static final long serialVersionUID = 1L;
-		int codiceP, numCarta, cvv;
-		String circuito,scadenza;
+		int cvv;
+		long numCarta;
+		String circuito,scadenza, secureCode;
 		
+		public String getSecureCode() {
+			String cod = Long.toString(numCarta);
+			return cod.substring(cod.length() - 4);
+		}
+
+		public void setSecureCode(String secureCode) {
+			this.secureCode = secureCode;
+		}
+
 		public BeanPagamento()
 		{
-			codiceP=-1;
 			numCarta= -1;
 			cvv = -1;
 			circuito="";
@@ -26,20 +35,13 @@ import java.io.Serializable;
 			this.scadenza = scadenza;
 		}
 
-		public int getCodiceP() {
-			return codiceP;
-		}
 
-		public void setCodiceP(int newCodiceP) {
-			this.codiceP = newCodiceP;
-		}
-
-		public int getNumCarta() {
+		public long getNumCarta() {
 			return numCarta;
 		}
 
-		public void setNumCarta(int newNumCarta) {
-			this.numCarta = newNumCarta;
+		public void setNumCarta(long l) {
+			this.numCarta = l;
 		}
 		
 		public int getCvv() {
@@ -58,12 +60,12 @@ import java.io.Serializable;
 		public void setCircuito(String newCircuito) {
 			this.circuito = newCircuito;
 		}
-		
+
 		@Override
 		public String toString() {
-			return "BeanPagamento [codiceP=" + codiceP + ", numCarta=" + numCarta + ", cvv=" + cvv + ", circuito="
-					+ circuito + ", scadenza=" + scadenza + "]";
+			return "BeanPagamento [cvv=" + cvv + ", numCarta=" + numCarta + ", circuito=" + circuito + ", scadenza="
+					+ scadenza + "]";
 		}
-
+		
 
 	}
