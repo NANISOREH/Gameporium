@@ -18,6 +18,10 @@
     <servlet-class>Controller.productview.SingleProductServlet</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>SingleEventServlet</servlet-name>
+    <servlet-class>Controller.eventsview.SingleEventServlet</servlet-class>
+ </servlet>
+  <servlet>
     <servlet-name>TestProduct</servlet-name>
     <servlet-class>Controller.testing.TestProduct</servlet-class>
   </servlet>
@@ -88,6 +92,10 @@
   <servlet-mapping>
     <servlet-name>SingleProductServlet</servlet-name>
     <url-pattern>/singleProduct</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SingleEventServlet</servlet-name>
+    <url-pattern>/singleEvent</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>ProductShowServlet</servlet-name>

@@ -76,39 +76,9 @@
 
 		      		<c:set var="resultsevent" value='${sessionScope["listaRisultatiEventi"]}'/>
 
-		      		<c:forEach items="${resultsevent}" var="item">
-
-	      				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 bg-light">
-
-			      			<div class="productcard">
-
-			      				<div class="card-header">
-
-			      					${item.nome}
-
-			      				</div>
-
-		          				<div class="card-body">
-
-		          				
-
-		          				<br>
-
-		       					</div>
-
-		       					<div class="card-footer">
-
-		       						${item.luogo}
-
-		       						${item.ora}
-
-		       					</div>
-
-		       				</div>
-
-	       				</div>
-
-					</c:forEach>
+		      		<c:forEach items="${resultsevent}" var="item" begin="0" end="8">
+							<%@include file="/WEB-INF/Includes/eventcard.jsp"%>
+						</c:forEach>
 
 				</div>
 
