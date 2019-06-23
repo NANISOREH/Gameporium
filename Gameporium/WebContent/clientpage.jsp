@@ -69,19 +69,19 @@
 	
 								<div class="form-group">
 									<label for="recapito">Recapito</label> <input type="email"
-										class="form-control" name="mail" value="${user.recapito}"
+										class="form-control" name="mail" id="mail" value="${user.recapito}"
 										required>
 								</div>
 	
 								<div class="form-group">
 									<label for="pw">Password</label> <input type="password"
-										class="form-control" name="pass" value="${user.passwordU}"
+										class="form-control" name="pass" id="pass" value="${user.passwordU}"
 										required>
 								</div>
 	
 								<div class="form-group">
 									<label for="pwconf">Conferma password</label> <input
-										type="password" class="form-control" name="confirmPass"
+										type="password" class="form-control" name="confirmPass" id="confirmPass"
 										placeholder="Confirm Password" required>
 								</div>
 	
@@ -210,7 +210,7 @@
 														</div>
 														<div class="form-group col-md-4">
 															<label>Numero</label> <input type="text"
-																class="form-control" name="numero">
+																class="form-control" name="numero" id="numero">
 														</div>
 														<div class="form-group col-md-4">
 															<label for="mesescadenza">Scadenza</label>
@@ -317,20 +317,20 @@
 													<form>
 														<div class="form-row">
 															<div class="form-group col-md-3">
-																<label>Città</label> <input type="text"
+																<label>Città</label> <input type="text" id="citta"
 																	class="form-control">
 															</div>
 															<div class="form-group col-md-4">
-																<label>Via</label> <input type="text"
+																<label>Via</label> <input type="text" id="via"
 																	class="form-control">
 															</div>
 															<div class="form-group col-md-1"></div>
 															<div class="form-group col-md-2">
-																<label>N. civ.</label> <input type="text"
+																<label>N. civ.</label> <input type="text" id="nciv"
 																	class="form-control">
 															</div>
 															<div class="form-group col-md-2">
-																<label>CAP</label> <input type="text"
+																<label>CAP</label> <input type="text" id="cap"
 																	class="form-control">
 															</div>
 														</div>

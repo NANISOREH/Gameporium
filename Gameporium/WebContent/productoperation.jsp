@@ -97,7 +97,7 @@
 				        
 						<div class="form-group">
 							<label for="descrizione">Descrizione:</label>
-				            <textarea id="descrizione" class="form-control" name="descrizione" style="height: 100px"></textarea>
+				            <textarea id="descrizione" class="form-control" name="descrizione" id="descrizione" style="height: 100px"></textarea>
 				        </div>
 				                
 				        <div class="form-group ">
@@ -107,12 +107,12 @@
 				        
 						<div class="form-group">
 				        	<label for="prezzo">Prezzo:</label>
-				        	<input type="text" class="form-control" name="prezzo" style="width:80px"  >
+				        	<input type="text" class="form-control" name="prezzo" id="prezzo" style="width:80px"  >
 				        </div>
 
 						<div class="form-group">
 				        	<label for="iva">IVA:</label>
-				        	<input type="text" class="form-control" name="IVA" style="width:80px"  >
+				        	<input type="text" class="form-control" name="IVA" id="iva" style="width:80px"  >
 				        </div>
 				        
 				        <div class="form-group">
@@ -210,7 +210,7 @@
 				        
 						<div class="form-group">
 							<label for="descrizione">Descrizione:</label>
-				            <textarea id="descrizione" class="form-control" name="descrizione" style="height: 100px" readonly="readonly"></textarea>
+				            <textarea id="descrizione" class="form-control" name="descrizione" id="descrizione" style="height: 100px" readonly="readonly"></textarea>
 				        </div>
 				                
 				        <div class="form-group">

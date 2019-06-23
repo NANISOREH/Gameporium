@@ -47,7 +47,6 @@ public class Cart {
 	public void setQuant(BeanCartEntry bce,int quant)
 	{
 		BeanCartEntry selected = null;
-		int oldquantita;
 		
 		for(BeanCartEntry b: products)
 		{
@@ -56,12 +55,13 @@ public class Cart {
 				selected = b;
 			}
 		}
+		totale=totale.subtract(selected.getProduct().getPrezzo().multiply(new BigDecimal(selected.getQuantita())));
+	//	oldquantita=selected.getQuantita();
+		selected.setQuantita(selected.getQuantita()+quant);
+		System.out.println("Nel carrello ci stanno "+selected.getQuantita());
+		selected.setPrezzoTotale(selected.getProduct().getPrezzo().multiply(new BigDecimal(selected.getQuantita())));
 		
-		oldquantita=selected.getQuantita();
-		selected.setQuantita(quant);
-		selected.setPrezzoTotale(selected.getProduct().getPrezzo().multiply(new BigDecimal (quant)));
-		
-		totale=totale.add(selected.getProduct().getPrezzo().multiply(new BigDecimal (quant-selected.getQuantita())));
+		totale=totale.add(selected.getProduct().getPrezzo().multiply(new BigDecimal (selected.getQuantita())));
 	
 	}
 	
@@ -70,9 +70,18 @@ public class Cart {
 		for(BeanCartEntry b: products)
 			if(bce.getCodP()==b.getCodP())
 			{
+				totale=totale.subtract(b.getProduct().getPrezzo().multiply(new BigDecimal(b.getQuantita())));
+
 				b.setQuantita(quant);
+				System.out.println("Nel carrello ci stanno "+b.getQuantita());
+
 				b.setPrezzoTotale(b.getProduct().getPrezzo().multiply(new BigDecimal (quant)));
-				totale=totale.add(b.getPrezzoTotale());
+				System.out.println("Totale: "+totale);
+
+				totale=totale.add(b.getProduct().getPrezzo().multiply(new BigDecimal (b.getQuantita())));
+				System.out.println("Totale: "+totale);
+
+				
 			}
 	}	
 	

@@ -60,7 +60,7 @@
 				        
 						<div class="form-group">
 							<label for="descrizione">Descrizione:</label>
-				            <textarea id="descrizione" class="form-control" name="descrizione" style="height: 100px"></textarea>
+				            <textarea id="descrizione" class="form-control" id="descrizione" name="descrizione" style="height: 100px"></textarea>
 				        </div>
 				                
 				        <div class="form-group ">

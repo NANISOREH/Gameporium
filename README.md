@@ -11,7 +11,7 @@ SEZIONI ANCORA DA COPRIRE
 - Validazione form e messaggi di errore
 - Aggraziare e riempire il footer
 - Riempire i pannelli laterali
-- Animazioni prodotti on hover
+- Animazioni prodotti on hover ✓ (più o meno)
 
 SEZIONI EXTRA (se avanza tempo)
 - Ricerca avanzata
