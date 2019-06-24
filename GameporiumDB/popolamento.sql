@@ -216,17 +216,17 @@ INSERT INTO gioco (codiceProdotto,nomeCategoria,descrizioneCategoria,durata,etaC
 
 
     
-INSERT INTO ordine(codiceOrdine,indirizzoSpedizione,tipoSpedizione,dataOrdine,dataSpedizione,codiceSpedizione,codicePagamento,importo,statoProdotti,metodo,indirizzoFatturazione) VALUES
-	(00001, 'Via Paolo Uccello 8','Raccomandata','2019/07/02','2019/07/05',0010,1,15.3, 'prova', 112,'Via Paolo Uccello 8'),
-    (00002, 'Via Paolo Uccello 8','Prioritaria','2019/06/15','2019/06/22',0011,2,35, 'prova', 111,'Via Uguale 0'),
-    (00003, 'Via Paolo Uccello 8','Celere','2019/05/01','2019/05/08',0022,3,28, 'prova', 113, 'Corso Umberto 27'),
-    (00004, 'Via Paolo Uccello 8','Celere','2019/06/26','2019/07/03',0034,5,25, 'prova', 111, 'Corso Maratona 28' ),
-    (00005, 'Via Paolo Uccello 8','Prioritaria','2019/07/4','2019/07/11',025,7,40, 'prova',112,'Via della morte 06'),
-    (00006, 'Via Paolo Uccello 8','Raccomandata','2019/09/1','2019/09/08',044,9,90.95, 'prova', 111,'Via Napoleone 01'),
-    (00007, 'Via Paolo Uccello 8','Raccomandata','2019/08/10','2019/08/17',059,8,64, 'prova',113,'Via Verdi 45'),
-    (00008, 'Via Paolo Uccello 8','Celere','2019/08/05','2019/08/12',012,14,30, 'prova',112,'Via Condotti 22'),
-    (00009, 'Via Paolo Uccello 8','Prioritaria','2019/10/12','2019/10/19',01,28,34, 'prova',113,'Via Pitagora 90'),
-    (00010, 'Via Paolo Uccello 8','Prioritaria','2019/11/21','2019/11/28',026,41,55, 'prova',111,'Via Uguale 54');
+INSERT INTO ordine(codiceOrdine,indirizzoSpedizione,dataOrdine,dataSpedizione,importo,statoProdotti,metodo) VALUES
+	(00001, 'Via Paolo Uccello 8','2019/07/02','2019/07/05',15.3, 'prova', 112),
+    (00002, 'Via Paolo Uccello 8','2019/06/15','2019/06/22',35, 'prova', 111),
+    (00003, 'Via Paolo Uccello 8','2019/05/01','2019/05/08',28, 'prova', 113),
+    (00004, 'Via Paolo Uccello 8','2019/06/26','2019/07/03',25, 'prova', 111),
+    (00005, 'Via Paolo Uccello 8','2019/07/4','2019/07/11',40, 'prova',112),
+    (00006, 'Via Paolo Uccello 8','2019/09/1','2019/09/08',90.95, 'prova', 111),
+    (00007, 'Via Paolo Uccello 8','2019/08/10','2019/08/17',64, 'prova',113),
+    (00008, 'Via Paolo Uccello 8','2019/08/05','2019/08/12',30, 'prova',112),
+    (00009, 'Via Paolo Uccello 8','2019/10/12','2019/10/19',34, 'prova',113),
+    (00010, 'Via Paolo Uccello 8','2019/11/21','2019/11/28',55, 'prova',111);
     
     
     
@@ -285,6 +285,7 @@ INSERT INTO possiede(username,numCarta) VALUES
     ('Mammolo',3333333333333333);
 
 
-INSERT INTO spedizione(username,codiceIndirizzo) VALUES
+/*INSERT INTO spedizione(username,codiceIndirizzo) VALUES
 	('Mammolo',01),
     ('Mammolo',04);
+    ('Mammolo',04);*/

@@ -1,8 +1,3 @@
-var input = document.getElementById("emailInput");
-input.addEventListener("focus", function () {
-  this.style.backgroundColor = "red";  
-});
-
 function validateLogin(password, username)
 
 {	
@@ -182,6 +177,44 @@ function limitCvv (field)
     if (field.value.length > 3) {
         field.value = field.value.slice(0,3); 
     }
+}
+
+function limitCap(field)
+{
+    if (field.value.length > 5) {
+        field.value = field.value.slice(0,5); 
+    }
+}
+
+function startOrder()
+{
+	var form=document.getElementById("ordinafrm");
+	var n = form.elements.length;
+	
+	for (var i = 0; i < n - 1; i++) 
+	{		
+		if (form.elements[i].value.length == 0)
+		{
+			Swal.fire({
+				  title: '<h6>Completare tutti i campi!</h6>',
+				  toast: true,
+				  type: 'error',
+				  position: 'top',
+				  timer: 2000,
+				  showConfirmButton: false
+				})
+			return;
+		}
+		else
+			form.elements[i].value = htmlEscape(form.elements[i].value);
+	}
+		
+		var indirizzo={via:form.indirizzo.value, civ:form.ncivico.value, cap:form.cap.value, citta: form.citta.value};
+		var jsonAddress=JSON.stringify(indirizzo);
+		var metodo=document.getElementById("pselect").value;
+		var hiddenMetodo = document.getElementById("metodoselect");
+		hiddenMetodo.value=metodo;
+
 }
 
 function htmlEscape(toEscape)
