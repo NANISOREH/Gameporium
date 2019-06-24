@@ -8,10 +8,10 @@ SEZIONI ANCORA DA COPRIRE
 - Visualizzazione ordini effettuati
 - Svacantamento carrello ✓
 - Visualizzare ordini dalla data alla data ✓
-- Validazione form e messaggi di errore
+- Validazione form e messaggi di errore ✓ (ripasso)
 - Aggraziare e riempire il footer
 - Riempire i pannelli laterali
-- Animazioni prodotti on hover ✓ (più o meno)
+- Animazioni prodotti on hover ✓
 
 SEZIONI EXTRA (se avanza tempo)
 - Ricerca avanzata
@@ -23,4 +23,4 @@ TO DO LIST
 - Sistemare le immagini
 - Far sopravvivere il carrello alla morte della session
 - Il login non dovrebbe riportarti in home
-- Sistemare i vari redirect (sopratutto quelli dell'area Admin)
+- Sistemare i vari redirect (sopratutto quelli dell'area Admin)✓
