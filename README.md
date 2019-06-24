@@ -24,3 +24,4 @@ TO DO LIST
 - Far sopravvivere il carrello alla morte della session
 - Il login non dovrebbe riportarti in home
 - Sistemare i vari redirect (sopratutto quelli dell'area Admin)✓
+- Linkare le immagini nello slideshow
