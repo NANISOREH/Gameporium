@@ -21,11 +21,22 @@
                 	<option value="Accessorio GdT">Accessori GdT</option>
               </select>	
               <div class="custom-control custom-checkbox" style="margin-top:20px">
-  				<input type="checkbox" class="custom-control-input" id="customCheck1">
+  				<input type="checkbox" class="custom-control-input" id="offerta">
 			  	<label class="custom-control-label" for="customCheck1">In Offerta</label>
 			  </div>
-
-          </div>
+			<div class="custom-control custom-checkbox" style="margin-top:20px">
+  				<input type="checkbox" class="custom-control-input" id="novita">
+			  	<label class="custom-control-label" for="customCheck1">Novità</label>
+			  </div>
+          	</div>
+			<div class="form-group">
+				<label for="prezzo">Prezzo minimo:</label>
+	            <textarea id="prezzo" class="form-control" name="prezzo"></textarea>
+	        </div>
+	        <div class="form-group">
+	        	<label for="eta">Età consigliata:</label>
+	        	<input class="quantInput" type="number" name="eta" value="6">
+	        </div>
 			  <button type="submit" class="btn btn-primary center-block">Cerca</button>
             </form> 
           </div>

@@ -1,5 +1,6 @@
-/*package Model;
+package Model;
 import Beans.Bean;
+import Beans.BeanEvento;
 import Beans.BeanPartecipazione;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -37,18 +38,22 @@ public class PartecipazioneModel implements Model {
 		BeanPartecipazione p=(BeanPartecipazione) partecipazione;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-
+		EventoModel em=new EventoModel();
+		BeanEvento be=new BeanEvento();
+		be= em.doRetrieveByKey(p.getCodiceEvento());
+		
 		String insertSQL = "INSERT INTO " + PartecipazioneModel.TABLE_NAME
-				+ " (CodiceEvento, CodiceCliente) VALUES (?, ?)";
-
+				+ " (CodiceEvento, username) VALUES (?, ?)";
+		
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setInt(1, p.getCodiceEvento());
-			preparedStatement.setInt(2, p.getCodiceCliente());
+			preparedStatement.setString(2, p.getCodiceCliente());
 			preparedStatement.executeUpdate();
 
 			connection.commit();
+			em.doUpdate("numeroPartecipanti", p.getCodiceEvento(), be.getNumeroPartecipanti()+1);
 		} finally {
 			try {
 				if (preparedStatement != null)
@@ -64,10 +69,10 @@ public class PartecipazioneModel implements Model {
 	public synchronized BeanPartecipazione doRetrieveByKey(Object codice) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-
+		int code=(int) codice;
 		BeanPartecipazione bean = new BeanPartecipazione();
 
-		String selectSQL = "SELECT * FROM " + PartecipazioneModel.TABLE_NAME + " WHERE codiceCliente = ?";
+		String selectSQL = "SELECT * FROM " + PartecipazioneModel.TABLE_NAME + " WHERE username = ?";
 
 		try {
 			connection = ds.getConnection();
@@ -78,7 +83,7 @@ public class PartecipazioneModel implements Model {
 
 			while (rs.next()) {
 				bean.setCodiceEvento(rs.getInt("codiceEvento"));
-				bean.setCodiceCliente(rs.getInt("codiceCliente"));
+				bean.setCodiceCliente(rs.getString("username"));
 			}
 
 		} finally {
@@ -93,14 +98,13 @@ public class PartecipazioneModel implements Model {
 		return bean;
 	}
 
-	@Override
-	public synchronized boolean doDelete(int code) throws SQLException {
+	public synchronized boolean doDelete(Object codice) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-
+		int code=(int) codice;
 		int result = 0;
 
-		String deleteSQL = "DELETE FROM " + PartecipazioneModel.TABLE_NAME + " WHERE codiceCliente = ?";
+		String deleteSQL = "DELETE FROM " + PartecipazioneModel.TABLE_NAME + " WHERE username = ?";
 
 		try {
 			connection = ds.getConnection();
@@ -144,7 +148,7 @@ public class PartecipazioneModel implements Model {
 				BeanPartecipazione bean = new BeanPartecipazione();
 
 				bean.setCodiceEvento(rs.getInt("codiceEvento"));
-				bean.setCodiceCliente(rs.getInt("codiceCliente"));
+				bean.setCodiceCliente(rs.getString("username"));
 				Partecipazione.add(bean);
 			}
 
@@ -162,4 +166,3 @@ public class PartecipazioneModel implements Model {
 
 
 }
-*/
