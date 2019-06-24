@@ -51,11 +51,11 @@
   </servlet>
   <servlet>
     <servlet-name>CartServlet</servlet-name>
-    <servlet-class>Controller.cart.CartServlet</servlet-class>
+    <servlet-class>Controller.purchase.CartServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>CartUpdateServlet</servlet-name>
-    <servlet-class>Controller.cart.CartUpdateServlet</servlet-class>
+    <servlet-class>Controller.purchase.CartUpdateServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>adminServlet</servlet-name>
@@ -85,7 +85,7 @@
     <servlet-name>UserPresetServlet</servlet-name>
     <servlet-class>Controller.userarea.UserPresetServlet</servlet-class>
   </servlet>
-    <servlet>
+  <servlet>
     <servlet-name>PagamentiServlet</servlet-name>
     <servlet-class>Controller.userarea.PagamentiServlet</servlet-class>
   </servlet>
@@ -96,6 +96,10 @@
   <servlet>
     <servlet-name>partecipazioneServlet</servlet-name>
     <servlet-class>Controller.partecipazione.partecipazioneServlet</servlet-class>
+   </servlet>
+   <servlet>
+    <servlet-name>PurchaseServlet</servlet-name>
+    <servlet-class>Controller.purchase.PurchaseServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SingleProductServlet</servlet-name>
@@ -157,11 +161,11 @@
     <servlet-name>JsonRetrievalEventServlet</servlet-name>
     <url-pattern>/jsonretrievalevent</url-pattern>
   </servlet-mapping>
-<servlet-mapping>
+  <servlet-mapping>
     <servlet-name>UserPresetServlet</servlet-name>
     <url-pattern>/preset</url-pattern>
   </servlet-mapping>
-<servlet-mapping>
+  <servlet-mapping>
     <servlet-name>JsonRetrievalClienteServlet</servlet-name>
     <url-pattern>/jsonretrievalcliente</url-pattern>
   </servlet-mapping>
@@ -172,5 +176,9 @@
     <servlet-mapping>
     <servlet-name>partecipazioneServlet</servlet-name>
     <url-pattern>/partecipazione</url-pattern>
+    </servlet-mapping>
+   <servlet-mapping>
+    <servlet-name>PurchaseServlet</servlet-name>
+    <url-pattern>/purchase</url-pattern>
   </servlet-mapping>
 </web-app>

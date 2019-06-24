@@ -41,7 +41,9 @@ public class OrderServlet extends HttpServlet {
 		String dataA = request.getParameter("dataA");
 		String ordine = request.getParameter("ordinebtn");
 		Collection<Bean> bo = null;
-		BeanCliente bc;
+		
+		System.out.println("Ecco l'ordine"+ordine);
+
 
 		if (ordine == null) {
 			if (dataDa != null && dataDa != "" && (username == "" || username == null) && (dataA == "" || dataA == null)) {
@@ -118,7 +120,8 @@ public class OrderServlet extends HttpServlet {
 				response.setStatus(200);
 			}
 		}
-		else {
+
+		/*else {
 			try {
 				bc=cm.doRetrieveByKey(ordine);
 				session.setAttribute("cliente",bc);
@@ -130,7 +133,7 @@ public class OrderServlet extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}
+		}*/
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

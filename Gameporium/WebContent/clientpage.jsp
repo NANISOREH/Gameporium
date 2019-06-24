@@ -183,7 +183,7 @@
 									      <td><button type="button" onclick="deleteCard()">Elimina</button></td>
 									    </tr>
 									  </tbody>
-									</table>		
+									</table>	
 								
 								</div>			
 							</c:forEach>

@@ -407,5 +407,35 @@ public class OrdineModel implements Model {
 	}
 		return Ordine;
 	}
+	
+public synchronized int getMaxOrderCode() throws SQLException {
+		
+		int maxOrderCode=0;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		String selectSQL = "SELECT MAX(codiceOrdine) FROM "+ OrdineModel.TABLE_NAME +";";
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+
+			ResultSet rs = preparedStatement.executeQuery();
+			connection.commit();
+			if (rs.next()) {
+				maxOrderCode = rs.getInt("MAX(codiceOrdine)");
+			}
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		
+		return maxOrderCode;
+	}
+
 
 }
