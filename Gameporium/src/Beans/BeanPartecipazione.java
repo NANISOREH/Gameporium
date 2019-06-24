@@ -1,22 +1,23 @@
-/*package Beans;
+package Beans;
 
 import java.io.Serializable;
 
 public class BeanPartecipazione extends Bean implements Serializable{
 	private static final long serialVersionUID = 1L;
-	int codiceCliente, codiceEvento;
+	int codiceEvento;
+	String codiceCliente;
 	
 	public BeanPartecipazione()
 	{
-		codiceCliente=-1;
+		codiceCliente="";
 		codiceEvento=-1;
 	}
 
-	public int getCodiceCliente() {
+	public String getCodiceCliente() {
 		return codiceCliente;
 	}
 
-	public void setCodiceCliente(int newCodiceCliente) {
+	public void setCodiceCliente(String newCodiceCliente) {
 		this.codiceCliente = newCodiceCliente;
 	}
 
@@ -38,4 +39,3 @@ public class BeanPartecipazione extends Bean implements Serializable{
 
 
 }
-*/

@@ -20,7 +20,7 @@
   <servlet>
     <servlet-name>SingleEventServlet</servlet-name>
     <servlet-class>Controller.eventsview.SingleEventServlet</servlet-class>
- </servlet>
+  </servlet>
   <servlet>
     <servlet-name>TestProduct</servlet-name>
     <servlet-class>Controller.testing.TestProduct</servlet-class>
@@ -56,12 +56,12 @@
   <servlet>
     <servlet-name>CartUpdateServlet</servlet-name>
     <servlet-class>Controller.cart.CartUpdateServlet</servlet-class>
- </servlet>
+  </servlet>
   <servlet>
     <servlet-name>adminServlet</servlet-name>
     <servlet-class>Controller.adminarea.adminServlet</servlet-class>
   </servlet>
-   <servlet>
+  <servlet>
     <servlet-name>adminOrderServlet</servlet-name>
     <servlet-class>Controller.ordersview.OrderServlet</servlet-class>
   </servlet>
@@ -81,13 +81,17 @@
     <servlet-name>JsonRetrievalEventServlet</servlet-name>
     <servlet-class>Controller.eventsview.JsonRetrievalEventServlet</servlet-class>
   </servlet>
-    <servlet>
+  <servlet>
     <servlet-name>PagamentiServlet</servlet-name>
     <servlet-class>Controller.userarea.PagamentiServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>JsonRetrievalClienteServlet</servlet-name>
     <servlet-class>Controller.userarea.JsonRetrievalClienteServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>partecipazioneServlet</servlet-name>
+    <servlet-class>Controller.partecipazione.partecipazioneServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SingleProductServlet</servlet-name>
@@ -121,40 +125,44 @@
     <servlet-name>CartServlet</servlet-name>
     <url-pattern>/cartservlet</url-pattern>
   </servlet-mapping>
-<servlet-mapping>
+  <servlet-mapping>
     <servlet-name>adminServlet</servlet-name>
     <url-pattern>/adminservlet</url-pattern>
-</servlet-mapping>
-  <servlet-mapping>
-<servlet-name>adminOrderServlet</servlet-name>
-  <url-pattern>/adminorder</url-pattern>
   </servlet-mapping>
-<servlet-mapping>
- 	<servlet-name>adminEventServlet</servlet-name>
+  <servlet-mapping>
+    <servlet-name>adminOrderServlet</servlet-name>
+    <url-pattern>/adminorder</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>adminEventServlet</servlet-name>
     <url-pattern>/adminevent</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
- 	<servlet-name>adminClienteServlet</servlet-name>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>adminClienteServlet</servlet-name>
     <url-pattern>/admincliente</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>JsonRetrievalServlet</servlet-name>
     <url-pattern>/jsonretrieval</url-pattern>
   </servlet-mapping>
-<servlet-mapping>
+  <servlet-mapping>
     <servlet-name>PagamentiServlet</servlet-name>
     <url-pattern>/pagamenti</url-pattern>
   </servlet-mapping>
-<servlet-mapping>
+  <servlet-mapping>
     <servlet-name>JsonRetrievalEventServlet</servlet-name>
     <url-pattern>/jsonretrievalevent</url-pattern>
   </servlet-mapping>
-<servlet-mapping>
+  <servlet-mapping>
     <servlet-name>JsonRetrievalClienteServlet</servlet-name>
     <url-pattern>/jsonretrievalcliente</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>CartUpdateServlet</servlet-name>
     <url-pattern>/cartupdate</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>partecipazioneServlet</servlet-name>
+    <url-pattern>/partecipazione</url-pattern>
   </servlet-mapping>
 </web-app>
