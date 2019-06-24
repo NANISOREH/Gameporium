@@ -24,6 +24,7 @@ public class PagamentiServlet extends HttpServlet {
 	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("prova");
 		
 		HttpSession session = request.getSession();
 		String username=request.getParameter("username");
@@ -66,6 +67,7 @@ public class PagamentiServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		BeanPagamento metodo = new BeanPagamento();
 		Collection<Bean> bo=null;
 		
@@ -82,7 +84,6 @@ public class PagamentiServlet extends HttpServlet {
 			} catch (SQLException e) {
 				if (request.getParameter("isOrder") != null)
 				{
-					System.out.println("sto qua");
 					response.sendRedirect("/Gameporium/order.jsp?azione=pagamento&cardNotAdded=true"); 
 				}
 				response.sendRedirect("/Gameporium/clientpage.jsp?azione=pagamento&cardNotAdded=true");
@@ -100,23 +101,6 @@ public class PagamentiServlet extends HttpServlet {
 				response.sendRedirect("/Gameporium/clientpage.jsp?azione=pagamento&creditCardSuccess=true"); 
 			}
 				
-		}
-		if(request.getParameter("remove") != null)
-		{
-			try {
-				bo=pm.doRetrieveByUser(username);
-				for (Bean b : bo)
-				{
-					if (((BeanPagamento) b).getSecureCode() == request.getParameter("securecode"))
-					{
-						pm.doDelete(((BeanPagamento) b).getNumCarta());
-						break;
-					}
-				}
-			
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 		}
 		
 		response.setStatus(200);

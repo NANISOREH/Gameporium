@@ -124,12 +124,31 @@ public class Cart {
 	
 	public String formatStatoProdotti()
 	{
-		String format="[";
-		for(BeanCartEntry b: products)
+		int c=1;
+		String format="[\n";
+		for(BeanCartEntry b : products)
 		{
-			format = format + "{" + "\n" + "\"" + "nomeprodotto" + "\" : \"" + titolo + ;
+			if (c < products.size())
+			{
+				format = format + "\n\t{" + "\n" 
+						+ "\t\t\"" + "nomeProdotto" + "\" : \"" + b.getProduct().getTitolo() + "\",\n"
+						+ "\t\t\"" + "prezzoProdotto" + "\" : \"" + b.getProduct().getPrezzo().toString() + "\",\n"
+						+ "\t\t\"" + "quantita" + "\" : \"" + b.getQuantita() + "\"\n"
+						+ "\t},";
+			}
+			else
+			{
+				format = format + "\n\t{" + "\n" 
+						+ "\t\t\"" + "nomeProdotto" + "\" : \"" + b.getProduct().getTitolo() + "\",\n"
+						+ "\t\t\"" + "prezzoProdotto" + "\" : \"" + b.getProduct().getPrezzo().toString() + "\",\n"
+						+ "\t\t\"" + "quantita" + "\" : \"" + b.getQuantita() + "\"\n"
+						+ "\t}";
+			}
 			
+			c++;
 		}
+		
+		return format + "\n]";
 	}
 	
 }

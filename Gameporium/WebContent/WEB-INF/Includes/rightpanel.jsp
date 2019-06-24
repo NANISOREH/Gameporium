@@ -49,7 +49,7 @@
 
 					<br> <br> <br> <br> Totale: EUR ${totale }
 					<c:if test="${accessDone}">
-						<form action="order.jsp" method="post" name="ordinafrm">
+						<form action="order.jsp">
 							<button
 								class="quantButton btn btn-sm btn-primary btn-block text-uppercase"
 								name="ordinebtn" id="ordinebtn" type="submit" value='${currentUser.username}'>Procedi
