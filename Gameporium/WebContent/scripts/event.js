@@ -1,7 +1,7 @@
 function partecipa(idform){
 
 	var e = idform;
-	var u = document.getElementById("username").value;
+	var u = document.getElementById("usernameE").value;
 	console.log(u)
 	$.get('partecipazione', {"username": u, "codiceEvento": e},
 			function(){

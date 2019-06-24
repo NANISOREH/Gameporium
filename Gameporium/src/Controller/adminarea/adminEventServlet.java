@@ -2,6 +2,7 @@ package Controller.adminarea;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import Beans.Bean;
 import Beans.BeanEvento;
+import Beans.BeanProduct;
 import Model.EventoModel;
 
 /**
@@ -31,7 +33,7 @@ public class adminEventServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String op=request.getParameter("operation");
 		int operation=Integer.parseInt(op);
-		
+		//Elimina evento
 		if(operation==3) {
 			System.out.println("operation: "+operation);
 			int codE=Integer.parseInt(request.getParameter("codiceEvento"));
@@ -40,12 +42,28 @@ public class adminEventServlet extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+			response.sendRedirect("eventoperation.jsp?operation=4");
 			return;
 		}
-		
+		//Inserimento nuovo evento
 		else if(operation==1) {
 			BeanEvento be =new BeanEvento();
 			int codE=Integer.parseInt(request.getParameter("codiceEvento"));
+			Collection <Bean> bpr = null;
+			try {
+				bpr=model.doRetrieveAll("codiceEvento");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			ArrayList<Integer> codici =new ArrayList<Integer>();
+			for(Bean bean :bpr) {
+				codici.add(((BeanEvento) bean).getCodiceEvento());
+			}
+			if(codici.contains(codE)) {
+				response.sendRedirect("eventoperation.jsp?operation=1&isPreso=true");
+				return;
+			}
 			String nome=request.getParameter("nome");
 			String luogo=request.getParameter("luogo");
 			String descrizione=request.getParameter("descrizione");
@@ -69,8 +87,12 @@ public class adminEventServlet extends HttpServlet {
 			catch (SQLException e) {
 				e.printStackTrace();
 				}
+			response.sendRedirect("eventoperation.jsp?operation=1&isPreso=false");
 			return;
 		}
+		
+		
+		//modifica evento
 		else if(operation ==2) {
 			System.out.println("operazione 2");
 			BeanEvento be= new BeanEvento();
@@ -81,14 +103,6 @@ public class adminEventServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-			int codiceEvento=Integer.parseInt(request.getParameter("codiceEvento"));
-			if(codiceEvento!=be.getCodiceEvento()) {
-				try {
-					model.doUpdate("codiceEvento", codE, codiceEvento);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
 			String nome=request.getParameter("nome");
 			if(!nome.equals(be.getNome())) {
 				try {
@@ -149,9 +163,11 @@ public class adminEventServlet extends HttpServlet {
 				}
 			}
 			
-			
+			response.sendRedirect("eventoperation.jsp?operation=2");
 			return;
 		}
+		
+			//visualizza tutti gli eventi
 			Collection <Bean> bpr = null;
 			try {
 				bpr=model.doRetrieveAll("codiceEvento");
@@ -161,7 +177,7 @@ public class adminEventServlet extends HttpServlet {
 			System.out.println(bpr);
 
 			request.setAttribute("elencoEventi", bpr);
-
+			
 			return;
 	}
 
