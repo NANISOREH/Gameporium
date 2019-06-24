@@ -120,10 +120,7 @@
 										<th>Importo</th>
 										<th>Indirizzo Spedizione</th>
 										<th>Indirizzo Fatturazione</th>
-										<th>Tipo Spedizione</th>
-										<th>Codice Spedizione</th>
-										<th>Codice Pagamento</th>
-										<th>Metodo Pagamento</th>
+										<th>Prodotti</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -249,7 +246,7 @@
 														</div>
 														<div class="form-group col-md-2">
 															<label>CVV</label> 
-															<input type="text" name="cvv" id="cvv" oninput="limitCvv(document.insertform.cvv)"
+															<input type="number" name="cvv" id="cvv" oninput="limitField(document.insertform.cvv, 3)"
 																class="form-control" min="3" max="3">
 														</div>
 

@@ -165,15 +165,11 @@ USE GameporiumDB;
 CREATE TABLE ordine(
     codiceOrdine    int,
     indirizzoSpedizione varchar(50) references indirizzo(codiceIndirizzo),
-    tipoSpedizione  varchar(15),
     dataOrdine      date,
     dataSpedizione  date,
-    codiceSpedizione    int,
-    codicePagamento     int ,
-    statoProdotti   varchar (1000),
     importo         decimal(5,2),
+    statoProdotti   varchar (1000),
     metodo          bigint references metodoPagamento(numCarta),
-    indirizzoFatturazione   varchar (50),
     primary key (codiceOrdine)
 );
 

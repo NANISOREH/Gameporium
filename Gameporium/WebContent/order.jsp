@@ -54,7 +54,10 @@
 	 <jsp:param name="username" value="${sessionScope.currentSessionUser.username}"/>
 	 <jsp:param name="retrieve" value="true"/>
 	</jsp:include>
-
+	<c:set var="metodi" value='${sessionScope["metodi"]}' />
+	
+	<jsp:include page="/preset"/>
+		
 	<div class="allpagecontainer container-fluid bg-light">
 
 		<!-- sistema di colonne -->
@@ -71,49 +74,15 @@
 
 			<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 bg-light">
 				<c:set var="user" value='${sessionScope["currentSessionUser"]}' />
-
-				<div class="sectionstyle addressOrder">
-					Ciao <strong>${user.nome } ${user.cognome }</strong>, inserisci l'indirizzo di consegna!
+				
+				<div class="sectionstyle">
+					Metodo di pagamento
 				</div>
-				<c:set var="metodi" value='${sessionScope["metodi"]}' />
-
-
-				<form action="adminorder" id="ordinafrm" name="ordinafrm"
-					method="post">
-
-					<div class="form-group">
-						<label for="indirizzo">Indirizzo:</label> <input type="text"
-							class="form-control" id="indirizzo" name="indirizzo">
-						<label for="ncivico">Num.civico:</label> <input type="number" 
-							class="form-control" id="ncivico" name="ncivico">
-					</div>
-
-					<div class="form-group">
-						<label for="nome">Cap:</label> <input type="number"
-							class="form-control" id="cap" name="cap" onInput="limitCap(document.ordinafrm.cap)">
-					</div>
-					
-					<div class="form-group">
-						<label for="citta">Città:</label> <input type="text"
-							class="form-control" id="citta" name="citta">
-					</div>
-					
-					<input type="hidden" id="jsonaddress" name="jsonaddress" value="1">
-					<input type="hidden" id="metodoselect" name="metodoselect" value="${sessionScope.userFavCircuito}
-									che termina con ${sessionScope.userFavSecureCode}">
-					<input type="hidden" id="importo" name="importo" value="${sessionScope.totale }">
-					
-													
-													
-					
-				</form>
-
+				
 				<div class="form-group">
 					<c:if test="${metodi!=null}">
-						<jsp:include page="/preset" />
-
 						<div id="preset">
-							<label>Metodo di pagamento:</label> 
+							<br>
 							<select
 								class="form-control" id="pselect" name="pselect">
 
@@ -228,15 +197,54 @@
 
 				</div>
 
-				<form action="purchase" id="ordinafrm" name="ordinafrm"
+
+
+				<div class="sectionstyle">
+					Indirizzo di consegna
+				</div>
+				<c:set var="metodi" value='${sessionScope["metodi"]}' />
+
+
+				<form action="purchase" method="post" id="ordinafrm" name="ordinafrm"
 					method="post">
+
+					<div class="form-group">
+						<label for="indirizzo">Indirizzo:</label> <input type="text"
+							class="form-control" id="indirizzo" name="indirizzo">
+					</div>
+					<div class="form-group">
+						<label for="ncivico">Num.civico:</label> <input type="number" 
+							class="form-control" id="ncivico" onInput="limitField(this, 3)" name="ncivico">
+					</div>
+
+					<div class="form-group">
+						<label for="cap">Cap:</label> <input type="number"
+							class="form-control" id="cap" name="cap" onInput="limitField(this, 5)">
+					</div>
+					
+					<div class="form-group">
+						<label for="citta">Città:</label> <input type="text"
+							class="form-control" id="citta" name="citta">
+					</div>
+					
+					<input type="hidden" id="jsonaddress" name="jsonaddress" value="1">
+					<input type="hidden" id="metodoselect" name="metodoselect" value="${sessionScope.userFavCircuito}
+									che termina con ${sessionScope.userFavSecureCode}">
+					<input type="hidden" id="importo" name="importo" value="${sessionScope.totale}">
+					<input type="hidden" id="username" name="username" value="${sessionScope.currentSessionUser.username}">
+					
 					<div class="form-group">
 						<button type="button" id="spedizione" name="spedizione"
-							class="btn btn-success btn-lg btn-block" value=""
-							style="max-width: 400px; margin-top: 70px;" onClick="startOrder()">Completa
+							class="btn btn-success btn-lg btn-block" value="" onClick="startOrder()"
+							style="max-width: 400px; margin-top: 70px;">Completa
 							l'ordine!</button>
 					</div>
+													
+													
+					
 				</form>
+
+				
 
 
 			</div>

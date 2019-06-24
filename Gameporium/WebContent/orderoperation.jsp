@@ -78,10 +78,7 @@
 								<th>Importo</th>
 								<th>Indirizzo Spedizione</th>
 								<th>Indirizzo Fatturazione</th>
-								<th>Tipo Spedizione</th>
-								<th>Codice Spedizione</th>
-								<th>Codice Pagamento</th>
-								<th>Metodo Pagamento</th>
+								<th>Prodotto</th>
 							</tr>
 						</thead>
 						<tbody>

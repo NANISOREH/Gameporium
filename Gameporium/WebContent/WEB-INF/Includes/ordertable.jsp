@@ -16,13 +16,10 @@
         <td>${item.username}</td>
         <td>${item.dataOrdine}</td>
         <td>${item.dataSpedizione}</td>
-        <td>${item.importo}</td>
+        <td>${item.importo}€</td>
         <td>${item.indirizzoSpedizione}</td>
-        <td>${item.indirizzoFatturazione }</td>
-        <td>${item.tipoSpedizione}</td>
-        <td>${item.codiceSpedizione}</td>
-        <td>${item.codicePagamento }</td>
         <td>${item.metodo }</td>
+        <td>${item.statoProdotti }</td>
       </tr>
 
 
