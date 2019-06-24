@@ -1,11 +1,16 @@
 //funzione onhover con zoom
 jQuery(document).ready(function($){
-    $('.card-img-top').hover(
+	
+    $('.card-hover').hover(
         function () {
-            $(this).animate({scale:'1.8'});           
+        	h=$(this).height();
+        	$(this).siblings(".prod-des").removeClass("d-none")        	
+        	$(this).animate({height: "0"},"slow");
         },
         function () {
-            $(this).animate({scale:'1'});
+        	$(this).siblings(".prod-des").addClass("d-none")
+        	$(this).animate({height: "70%"});
+        	
         }
     );  
 });
