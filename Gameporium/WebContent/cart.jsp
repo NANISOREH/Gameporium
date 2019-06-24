@@ -69,61 +69,92 @@
 					<form action="cartupdate" method="post" name="removefrm"
 						onkeydown="return event.key != 'Enter';">
 
-						<div class="row">
-							<div
-								class="sectionstyle row col-lg-12 md-12 sm-12 d-none d-lg-block">Il
+<!-- 						<div class="row"> -->
+							<div class="sectionstyle">Il
 								mio carrello</div>
 							<c:set var="cartprods" value='${sessionScope["cartitems"]}' />
 
-							<div class="cartreload">
+						<div class="container cartcontainer cartreload">
 
-								<c:forEach items="${cartprods}" var="item" begin="0"
-									end="${cartitems.size() }">
-									<div class="container-fluid">
-										<div class="cartcard card" id="cartcard">
-											<div class="row ">
-												<div class="col-lg-4 d-none d-lg-block">
-													<div class="img-square-wrapper">
-														<img class="img-responsive" id="cartimg"
-															src="images/${item.product.foto }" alt="Card image cap">
-													</div>
-												</div>
-												<div class="col-lg-6">
-													<a class="card-title"
-														href="singleProduct?selProd=${item.product.codiceProdotto}&selCat=${item.product.codCategoria}">${item.product.titolo }</a>
-													<p>Quantità:
-													<div class="col">
-														<input class="quantInput" type="number" name="quantita"
-															value="${item.quantita }" id="${item.quantita}"
-															onchange="reloadCart(value, ${item.product.codiceProdotto})" />
-													</div>
-													<input type="hidden" name="productId" id="productId"
-														value="${item.product.codiceProdotto }">
-												</div>
+							<%-- 								<c:forEach items="${cartprods}" var="item" begin="0" --%>
+							<%-- 									end="${cartitems.size() }"> --%>
+							<!-- 										<div class="cartcard card" id="cartcard"> -->
+							<!-- 											<div class="row "> -->
+							<!-- 												<div class="col-sm-4"> -->
+							<!-- 													<div class=" img-square-wrapper"> -->
+							<!-- 														<img class="img-responsive" id="cartimg" -->
+							<%-- 															src="images/${item.product.foto }" alt="Card image cap"> --%>
+							<!-- 													</div> -->
+							<!-- 												</div> -->
+							<!-- 												<div class="col-sm-6"> -->
+							<!-- 													<a class="card-title" -->
+							<%-- 														href="singleProduct?selProd=${item.product.codiceProdotto}&selCat=${item.product.codCategoria}">${item.product.titolo }</a> --%>
+							<!-- 													<p>Quantità: -->
+							<!-- 														<input class="quantInput" type="number" name="quantita" -->
+							<%-- 															value="${item.quantita }" id="${item.quantita}" --%>
+							<%-- 															onchange="reloadCart(value, ${item.product.codiceProdotto})" /> --%>
+
+							<!-- 													<input type="hidden" name="productId" id="productId" -->
+							<%-- 														value="${item.product.codiceProdotto }"> --%>
+							<!-- 												</div> -->
 
 
 
-												<div class="col-lg-2" id="${item.product.codiceProdotto}">
-													Prezzo: ${item.prezzoTotale}€<br>
-													<button class="quantButton" name="rimuovibtn"
-														id="rimuovibtn" onclick="addToCart(document.quantityForm)"
-														type="submit" value='${item.product.codiceProdotto}'>
-														<i class="fa fa-trash" aria-hidden="true"></i>
-													</button>
+							<%-- 												<div class="col-sm-2" id="${item.product.codiceProdotto}"> --%>
+							<%-- 													${item.prezzoTotale}€<br> --%>
+							<!-- 													<button class="quantButton" name="rimuovibtn" -->
+							<!-- 														id="rimuovibtn" onclick="addToCart(document.quantityForm)" -->
+							<%-- 														type="submit" value='${item.product.codiceProdotto}'> --%>
+							<!-- 														<i class="fa fa-trash" aria-hidden="true"></i> -->
+							<!-- 													</button> -->
 
-												</div>
-
-
-											</div>
-										</div>
-									</div>
-								</c:forEach>
-							</div>
+							<!-- 												</div> -->
 
 
-							<!-- fine iterazione cards -->
+							<!-- 											</div> -->
+							<!-- 										</div> -->
 
+							<%-- 								</c:forEach> --%>
+
+
+							<c:forEach items="${cartprods}" var="item" begin="0">
+								<table class="table fixedtable cartable">
+									<tbody>
+										<tr>
+											<td><img class="img-responsive" id="cartimg"
+												src="images/${item.product.foto }" alt="Card image cap">
+											</td>
+											<td>
+												<strong>${item.product.titolo}</strong><br>
+												<label>Quantità</label>
+												<input class="quantInput" type="number"
+												name="quantita" value="${item.quantita }"
+												id="${item.quantita}"
+												onchange="reloadCart(value, ${item.product.codiceProdotto})" />
+
+											</td>
+											<td>${item.prezzoTotale}€</td>
+	
+											<td><input type="hidden" name="productId" id="productId"
+												value="${item.quantita }">
+												<button name="rimuovibtn" id="rimuovibtn"
+													onclick="reloadCart(${item.quantita},value)" type="submit"
+													value='${item.product.codiceProdotto}'>
+													<i class="fa fa-trash" aria-hidden="true"></i>
+												</button></td>
+
+										</tr>
+
+									</tbody>
+								</table>
+							</c:forEach>
+							
 						</div>
+
+
+						<!-- fine iterazione cards -->
+
+<!-- 						</div> -->
 					</form>
 					<!-- fine sezione offerte -->
 

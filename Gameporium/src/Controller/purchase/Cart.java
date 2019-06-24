@@ -1,4 +1,4 @@
-package Controller.cart;
+package Controller.purchase;
 
 import Beans.*;
 
@@ -10,9 +10,11 @@ public class Cart {
 
 	private Collection<BeanCartEntry> products;
 	BigDecimal totale;
+	BigDecimal ivaTotale;
 	public Cart() {
 		products = new ArrayList<BeanCartEntry>();
 		totale=new BigDecimal("0"); 
+		ivaTotale=new BigDecimal("0");
 
 	}
 
@@ -25,7 +27,9 @@ public class Cart {
 	
 	public BigDecimal getTotale()
 	{
-		return totale;
+		ivaTotale = totale.multiply(new BigDecimal("0.22"));
+		
+		return totale.add(ivaTotale);
 	}
 	
 
@@ -116,6 +120,16 @@ public class Cart {
 				return true;
 		}
 		return false;
+	}
+	
+	public String formatStatoProdotti()
+	{
+		String format="[";
+		for(BeanCartEntry b: products)
+		{
+			format = format + "{" + "\n" + "\"" + "nomeprodotto" + "\" : \"" + titolo + ;
+			
+		}
 	}
 	
 }
