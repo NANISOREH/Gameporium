@@ -16,7 +16,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+<script type="text/javascript" src="scripts/event.js"></script>
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
@@ -64,16 +64,6 @@
 								 
 								 	<li class="list-group-item bg-light">
 								 		<div class="row">
-								 			<div class="nomeriga col-lg-5 col-xs-12">
-										 		<div class="col-lg-7 col-xs-12">
-										 			<span class="prezzo">
-									 				${evento.dataEvento}€</span> 
-										 		</div>
-										 	</div>
-								 		</div>
-								 	</li>
-								 	<li class="list-group-item bg-light">
-								 		<div class="row">
 								 			<div class="nomeriga col-lg-5 col-xs-12">Cod. evento.:</div>
 									 		<div class="col-lg-7 col-xs-12">#${evento.codiceEvento}</div>
 								 		</div>
@@ -82,6 +72,12 @@
 								 		<div class="row">
 								 			<div class="nomeriga col-lg-5">Data:</div>
 									 		<div class="col-lg-7">${evento.dataEvento}</div>
+								 		</div>
+								 	</li>
+								 	<li class="list-group-item bg-light">
+								 		<div class="row">
+								 			<div class="nomeriga col-lg-5">Ora:</div>
+									 		<div class="col-lg-7">${evento.ora}</div>
 								 		</div>
 								 	</li>
 								 	<li class="list-group-item bg-light">
@@ -102,6 +98,25 @@
 								 			
 									 			<div class="col-lg-7">${evento.numeroPartecipanti}</div>
 									 		
+								 		</div>
+								 	</li>
+								 	<li class="list-group-item bg-light">
+								 		<div class="row">
+								 			<c:set var="user" value='${sessionScope["currentSessionUser"]}'/>
+							 				<c:set var="accessDone" value='${sessionScope["accessDone"]}' />
+								 			<c:if test="${accessDone}">
+								 				<input type="text" class="d-none" id="usernameE" name="usernameE" value="${currentSessionUser.username}">
+								 				<button type="button" class="btn btn-sm btn-primary btn-block text-uppercase" 
+								 			name="partecipabtn" id="partecipabtn" value="${evento.codiceEvento}" onclick="partecipa(this.value)"
+								 			>Partecipa all'Evento</button>
+								 			</c:if>
+								 			<c:if test="${accessDone==null}">
+								 				<form>
+								 					<div class="form-group">
+														<button type="submit" class="loginbtn btn btn-primary" disabled>Loggati per partecipare all'evento</button>
+													</div>
+								 				</form>
+								 			</c:if>
 								 		</div>
 								 	</li>
 								</ul> 

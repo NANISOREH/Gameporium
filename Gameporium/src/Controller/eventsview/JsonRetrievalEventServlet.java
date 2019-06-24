@@ -26,7 +26,7 @@ public class JsonRetrievalEventServlet extends HttpServlet {
 			throws ServletException, IOException {
 	
 		BeanEvento be=new BeanEvento();
-		String codEvento= request.getParameter("codEvento");
+		String codEvento= request.getParameter("codiceEvento");
 		String jsonBean = null;
 		try {
 			be =model.doRetrieveByKey(Integer.parseInt(codEvento));

@@ -73,7 +73,7 @@
 	<c:set var="logoutDone" value='${requestScope["logoutDone"]}' />
 	<c:set var="isAdmin" value='${sessionScope["isAdmin"]}' />
 	
-			
+				
 	<c:if test="${loginFail}">
 		<div class="popup alert alert-warning alert-dismissible fade-in" role="alert">
 		  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
