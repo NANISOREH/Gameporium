@@ -1,10 +1,8 @@
 package Beans;
 
 import java.io.Serializable;
-import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
 
 public class BeanEvento extends Bean implements Serializable {
 	private static final long serialVersionUID = 1L;
