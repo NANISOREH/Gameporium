@@ -26,17 +26,17 @@
 		<!-- sistema di colonne -->
 		<div class="row">
 			<!-- colonna sinistra -->
-			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-md-block bg-light">
+			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light">
 				<%@include file="/WEB-INF/Includes/leftpanel.jsp"%>
 			</div>
 			<!-- fine colonna sinistra -->
 			<!-- colonna centrale -->
-			<div id="mlcenter" class="col-lg-8 col-md-8 col-sm-12 col-xs-12 bg-light">
+			<div id="mlcenter" class="col-lg-8 col-md-12 bg-light">
 
 				<div class="container">
 					<div class="row">
 
-						<div class="col-sm-12 col-md-6 col-lg-6 mx-auto">
+						<div class="col-12 mx-auto">
 							<h2>Accedi</h2>
 						
 							<p class="hint-text">Inizia a fare acquisti su Gameporium!</p>
@@ -78,7 +78,7 @@
 			<!-- fine colonna centrale -->
 
 			<!-- colonna destra -->
-			<div id="mlrightcol" class="clearfix col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-md-block">
+			<div id="mlrightcol" class="clearfix col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block">
 				<%@include file="/WEB-INF/Includes/rightpanel.jsp"%>
 			</div>
 			<!-- fine sistema di colonne -->

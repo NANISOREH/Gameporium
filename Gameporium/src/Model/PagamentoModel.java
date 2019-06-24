@@ -33,7 +33,6 @@ public class PagamentoModel implements Model {
 
 	public synchronized void customDoSave(Bean pagamento, String username) throws SQLException {
 		BeanPagamento c= (BeanPagamento) pagamento;
-		System.out.println(c);
 		Connection connection = null;
 		PreparedStatement entStatement = null;
 		PreparedStatement relStatement = null;
@@ -61,8 +60,10 @@ public class PagamentoModel implements Model {
 		} finally {
 			try {
 				if (entStatement != null && relStatement!= null)
+				{
 					entStatement.close();
-				relStatement.close();
+					relStatement.close();
+				}
 			} finally {
 				if (connection != null)
 					connection.close();
@@ -93,6 +94,7 @@ public class PagamentoModel implements Model {
 				bean.setCvv(rs.getInt("cvv"));
 				bean.setCircuito(rs.getString("circuito"));
 				bean.setScadenza(rs.getString("scadenza"));
+				bean.setSecureCode();
 			}
 
 		} finally {
@@ -111,7 +113,7 @@ public class PagamentoModel implements Model {
 	@Override
 	public synchronized boolean doDelete(Object codice) throws SQLException {
 		
-		int code=(int) codice;
+		long code=(long) codice;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -122,9 +124,10 @@ public class PagamentoModel implements Model {
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
-			preparedStatement.setInt(1, code);
+			preparedStatement.setLong(1, code);
 
 			result = preparedStatement.executeUpdate();
+			connection.commit();
 
 		} finally {
 			try {
@@ -164,6 +167,7 @@ public class PagamentoModel implements Model {
 				bean.setCvv(rs.getInt("cvv"));
 				bean.setCircuito(rs.getString("circuito"));
 				bean.setScadenza(rs.getString("scadenza"));
+				bean.setSecureCode();
 				Pagamento.add(bean);
 			}
 
@@ -200,6 +204,7 @@ public class PagamentoModel implements Model {
 				bean.setNumCarta(rs.getLong("numCarta"));
 				bean.setCvv(rs.getInt("cvv"));
 				bean.setScadenza(rs.getString("scadenza"));
+				bean.setSecureCode();
 				Pagamento.add(bean);
 			}
 		} finally {
@@ -211,7 +216,6 @@ public class PagamentoModel implements Model {
 					connection.close();
 			}
 	}
-		System.out.println(Pagamento);
 		return Pagamento;
 	}
 

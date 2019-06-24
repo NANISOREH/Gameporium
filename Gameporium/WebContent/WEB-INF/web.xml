@@ -82,6 +82,10 @@
     <servlet-class>Controller.eventsview.JsonRetrievalEventServlet</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>UserPresetServlet</servlet-name>
+    <servlet-class>Controller.userarea.UserPresetServlet</servlet-class>
+  </servlet>
+    <servlet>
     <servlet-name>PagamentiServlet</servlet-name>
     <servlet-class>Controller.userarea.PagamentiServlet</servlet-class>
   </servlet>
@@ -153,7 +157,11 @@
     <servlet-name>JsonRetrievalEventServlet</servlet-name>
     <url-pattern>/jsonretrievalevent</url-pattern>
   </servlet-mapping>
-  <servlet-mapping>
+<servlet-mapping>
+    <servlet-name>UserPresetServlet</servlet-name>
+    <url-pattern>/preset</url-pattern>
+  </servlet-mapping>
+<servlet-mapping>
     <servlet-name>JsonRetrievalClienteServlet</servlet-name>
     <url-pattern>/jsonretrievalcliente</url-pattern>
   </servlet-mapping>

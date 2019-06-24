@@ -28,7 +28,7 @@ CREATE TABLE cliente(
     username        varchar(15),
     passwordU       varchar(20),
     recapito        varchar(30),
-    cartaPred       int references metodoPagamento (numCarta),
+    cartaPred       bigint references metodoPagamento (numCarta),
     primary key(username)
 );
 
@@ -169,9 +169,10 @@ CREATE TABLE ordine(
     dataOrdine      date,
     dataSpedizione  date,
     codiceSpedizione    int,
-    codicePagamento int ,
-    importo         numeric,
-    metodo          int references metodoPagamento(numCarta),
+    codicePagamento     int ,
+    statoProdotti   varchar (1000),
+    importo         decimal(5,2),
+    metodo          bigint references metodoPagamento(numCarta),
     indirizzoFatturazione   varchar (50),
     primary key (codiceOrdine)
 );
@@ -219,4 +220,3 @@ CREATE TABLE composizione(
     foreign key (codiceOrdine) references ordine (codiceOrdine)
                                 ON UPDATE CASCADE
                                 ON DELETE CASCADE);
-

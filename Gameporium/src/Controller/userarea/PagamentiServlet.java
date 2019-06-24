@@ -3,20 +3,12 @@ import Model.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Collection;
-import java.util.Random;
-import java.util.stream.Collectors;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import com.google.gson.Gson;
-
 import Beans.Bean;
-import Beans.BeanOrdine;
 import Beans.BeanPagamento;
 /**
  * Servlet implementation class ProductControl
@@ -29,14 +21,16 @@ public class PagamentiServlet extends HttpServlet {
 		super();
 	}
 
+	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
 		String username=request.getParameter("username");
+		String securecode=request.getParameter("securecode");
 		Collection<Bean> bo=null;
 		
-		if(username!=null) {
+		if(username!=null && request.getParameter("retrieve") != null) {
 			try {
 				bo=pm.doRetrieveByUser(username);
 				session.setAttribute("metodi", bo);
@@ -46,6 +40,26 @@ public class PagamentiServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		if(request.getParameter("remove") != null)
+		{
+			try {
+				bo=(Collection<Bean>) session.getAttribute("metodi");
+
+				for (Bean b : bo)
+				{
+					if (((BeanPagamento) b).getSecureCode().equals(securecode))
+					{
+						pm.doDelete(((BeanPagamento) b).getNumCarta());
+						break;
+					}
+				}
+			
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		response.setStatus(200);
 		
 		
 	}
@@ -53,8 +67,11 @@ public class PagamentiServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		BeanPagamento metodo = new BeanPagamento();
+		Collection<Bean> bo=null;
+		
+		String username=request.getParameter("username");
 
-		if(request.getParameter("insert").equals("true"))
+		if(request.getParameter("insert")!= null)
 		{
 			metodo.setNumCarta(Long.parseLong(request.getParameter("numero")));
 			metodo.setCvv(Integer.parseInt(request.getParameter("cvv")));
@@ -63,12 +80,45 @@ public class PagamentiServlet extends HttpServlet {
 			try {
 				pm.customDoSave(metodo, request.getParameter("username"));
 			} catch (SQLException e) {
+				if (request.getParameter("isOrder") != null)
+				{
+					response.sendRedirect("/Gameporium/order.jsp?azione=pagamento&cardNotAdded=true"); 
+				}
+				response.sendRedirect("/Gameporium/clientpage.jsp?azione=pagamento&cardNotAdded=true");
+				e.printStackTrace();
+				return;
+			}
+				
+			if (request.getParameter("isOrder") != null)
+			{
+				response.sendRedirect("/Gameporium/order.jsp?creditCardSuccess=true"); 
+				return;
+			}
+			if (request.getParameter("isOrder") == null)
+			{
+				response.sendRedirect("/Gameporium/clientpage.jsp?azione=pagamento&creditCardSuccess=true"); 
+			}
+				
+		}
+		if(request.getParameter("remove") != null)
+		{
+			try {
+				bo=pm.doRetrieveByUser(username);
+				for (Bean b : bo)
+				{
+					if (((BeanPagamento) b).getSecureCode() == request.getParameter("securecode"))
+					{
+						pm.doDelete(((BeanPagamento) b).getNumCarta());
+						break;
+					}
+				}
+			
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			
-			
-			response.sendRedirect("/Gameporium/clientpage.jsp?azione=pagamento&creditCardSuccess=true"); 
 		}
+		
+		response.setStatus(200);
 	}
 
 }
