@@ -23,7 +23,7 @@ public class BeanProduct extends Bean implements Serializable {
 		descrizione="";
 		foto="";
 		produttore="";
-		IVA=-1;
+		IVA=22;
 		offerta=false;
 		novita=false;
 	}

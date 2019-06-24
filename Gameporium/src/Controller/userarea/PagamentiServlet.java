@@ -82,6 +82,7 @@ public class PagamentiServlet extends HttpServlet {
 			} catch (SQLException e) {
 				if (request.getParameter("isOrder") != null)
 				{
+					System.out.println("sto qua");
 					response.sendRedirect("/Gameporium/order.jsp?azione=pagamento&cardNotAdded=true"); 
 				}
 				response.sendRedirect("/Gameporium/clientpage.jsp?azione=pagamento&cardNotAdded=true");

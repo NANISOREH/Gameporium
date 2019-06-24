@@ -41,10 +41,10 @@ public class OrderServlet extends HttpServlet {
 		String dataA = request.getParameter("dataA");
 		String ordine = request.getParameter("ordinebtn");
 		Collection<Bean> bo = null;
-		BeanCliente bc;
+		
+		System.out.println("Ecco l'ordine"+ordine);
 
-		if (ordine == null) {
-			if (dataDa != null && dataDa != "" && (username == "" || username == null)) {
+		if (dataDa != null && dataDa != "" && (username == "" || username == null)) {
 				try {
 					bo = om.doRetrieveByDateFrom(LocalDate.parse(dataDa));
 					System.out.println("retrieve by DateFrom:" + bo);
@@ -120,21 +120,7 @@ public class OrderServlet extends HttpServlet {
 			}
 		}
 		
-		
-		else {
-			try {
-				bc=cm.doRetrieveByKey(ordine);
-				session.setAttribute("cliente",bc);
-				
-				System.out.println(ordine);
-				
-				RequestDispatcher rd=request.getRequestDispatcher("order.jsp");
-				rd.forward(request, response);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
