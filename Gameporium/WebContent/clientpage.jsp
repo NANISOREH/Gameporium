@@ -19,9 +19,11 @@
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/Includes/header.jsp"%>
+	<script src="scripts/cart.js" type="text/javascript"></script>
+	<script src="scripts/formvalidation.js" type="text/javascript"></script>
+	<script src="scripts/payment.js" type="text/javascript"></script>
 <link rel="stylesheet" href="pagestyle.css" type="text/css">
-<script src="scripts/cart.js" type="text/javascript"></script>
-<script src="scripts/formvalidation.js" type="text/javascript"></script>
+
 </head>
 
 <body style="background-color: #343a40">
@@ -37,7 +39,7 @@
 			<!-- fine colonna sinistra -->
 
 			<!-- colonna centrale -->
-			<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 bg-light">
+			<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 bg-light" id="pagacenter">
 				
 				
 				<c:set var="user" value='${sessionScope["currentSessionUser"]}' />
@@ -67,19 +69,19 @@
 	
 								<div class="form-group">
 									<label for="recapito">Recapito</label> <input type="email"
-										class="form-control" name="mail" value="${user.recapito}"
+										class="form-control" name="mail" id="mail" value="${user.recapito}"
 										required>
 								</div>
 	
 								<div class="form-group">
 									<label for="pw">Password</label> <input type="password"
-										class="form-control" name="pass" value="${user.passwordU}"
+										class="form-control" name="pass" id="pass" value="${user.passwordU}"
 										required>
 								</div>
 	
 								<div class="form-group">
 									<label for="pwconf">Conferma password</label> <input
-										type="password" class="form-control" name="confirmPass"
+										type="password" class="form-control" name="confirmPass" id="confirmPass"
 										placeholder="Confirm Password" required>
 								</div>
 	
@@ -138,6 +140,7 @@
 					
 					<jsp:include page="/pagamenti">
 					 <jsp:param name="username" value="${sessionScope.currentSessionUser.username}"/>
+					 <jsp:param name="retrieve" value="true"/>
 					</jsp:include>
 					
 					<c:set var="creditCardSuccess" value='${param["creditCardSuccess"]}' />
@@ -145,6 +148,14 @@
 						<div class="popup alert alert-success alert-dismissible fade-in" role="success">
 						  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
 						  Hai aggiunto una nuova carta di credito!
+						</div>
+					</c:if>
+
+					<c:set var="error" value='${param["cardNotAdded"]}' />
+					<c:if test="${error}">
+						<div class="popup alert alert-success alert-dismissible fade-in" role="error">
+						  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						  Non e' stato possibile aggiungere la carta da te inserita, controlla meglio i dati!
 						</div>
 					</c:if>
 					
@@ -157,7 +168,11 @@
 						<div class="col-lg-8 col-xs-12">
 							
 							<c:forEach items="${metodi}" var="item"> 
-								<div class="credcard">
+								<div class="credcard" id="${item.secureCode}">
+								<form id="hiddenform" name="hiddenform">
+									<input type="hidden" name="username" id="username" value="${currentSessionUser.username}">
+									<input type="hidden" name="securecode" id="securecode" value="${item.secureCode}">
+								</form>
 								
 									<table class="table fixedtable">
 									  <tbody>
@@ -165,7 +180,7 @@
 									      <td ><i class="far fa-credit-card"></i> ${item.circuito}</td>
 									      <td>termina con ${item.secureCode}</td>
 									      <td>scade il ${item.scadenza}</td>
-									      <td><a href="#">Elimina</a></td>
+									      <td><button type="button" onclick="deleteCard()">Elimina</button></td>
 									    </tr>
 									  </tbody>
 									</table>		
@@ -195,7 +210,7 @@
 														</div>
 														<div class="form-group col-md-4">
 															<label>Numero</label> <input type="text"
-																class="form-control" name="numero">
+																class="form-control" name="numero" id="numero">
 														</div>
 														<div class="form-group col-md-4">
 															<label for="mesescadenza">Scadenza</label>
@@ -242,27 +257,35 @@
 
 													<button class="btn btn-primary" data-toggle="collapse"
 														type="button" onclick="validateCreditCard(document.insertform)">Aggiungi</button>
-												
+														
+
 
 												</form>
 											</div>
-											
 
 
 										</div>
+													<br><br>
+								<jsp:include page="/preset"/>
 										
+										<form id="preset">
+											<label>Metodo di pagamento preferito:</label> 
+												<select class="form-control" id="pselect" name="pselect" 
+		 
+												onchange="changePreset(this)">
+													
+													 <option value="" selected disabled hidden="hidden">${sessionScope.userFavCircuito} che termina con ${sessionScope.userFavSecureCode}</option>
+										       <c:forEach items="${metodi}" var="item"> 
+										        	<option value="${item.secureCode}">${item.circuito} che termina con ${item.secureCode}</option>
+										       </c:forEach>
+										    </select>
+										</form>
 
 									</div>
 
 								</div>
 							
-							<br><br>
-							<label for="sceltag">Seleziona predefinita</label>
-							<select class="form-control" id="sceltag" name="sceltag">
-						       <c:forEach items="${metodi}" var="item"> 
-						        	<option>${item.circuito} che termina con ${item.secureCode}</option>
-						       </c:forEach>
-						    </select>
+
 						
 						</div>
 					</div>
@@ -294,20 +317,20 @@
 													<form>
 														<div class="form-row">
 															<div class="form-group col-md-3">
-																<label>Città</label> <input type="text"
+																<label>Città</label> <input type="text" id="citta"
 																	class="form-control">
 															</div>
 															<div class="form-group col-md-4">
-																<label>Via</label> <input type="text"
+																<label>Via</label> <input type="text" id="via"
 																	class="form-control">
 															</div>
 															<div class="form-group col-md-1"></div>
 															<div class="form-group col-md-2">
-																<label>N. civ.</label> <input type="text"
+																<label>N. civ.</label> <input type="text" id="nciv"
 																	class="form-control">
 															</div>
 															<div class="form-group col-md-2">
-																<label>CAP</label> <input type="text"
+																<label>CAP</label> <input type="text" id="cap"
 																	class="form-control">
 															</div>
 														</div>
@@ -353,5 +376,6 @@
 		</div>
 	</div>
 	<%@include file="/WEB-INF/Includes/footer.jsp"%>
+
 </body>
 </html>

@@ -41,7 +41,7 @@ public class OrdineModel implements Model {
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + OrdineModel.TABLE_NAME
-				+ " (codiceOrdine, indirizzoSpedizione, tipoSpedizione, dataSpedizione, codiceSpedizione, codicePagamento, importo, metodo, indirizzoFatturazione) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ " (codiceOrdine, indirizzoSpedizione, tipoSpedizione, dataSpedizione, codiceSpedizione, statoProdotti, codicePagamento, importo, metodo, indirizzoFatturazione) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			connection = ds.getConnection();
@@ -51,10 +51,11 @@ public class OrdineModel implements Model {
 			preparedStatement.setString(3, o.getTipoSpedizione());
 			preparedStatement.setDate(4, Date.valueOf(o.getDataSpedizione()));
 			preparedStatement.setInt(6, o.getCodiceSpedizione());
-			preparedStatement.setInt(7, o.getCodicePagamento());
-			preparedStatement.setDouble(8, o.getImporto());
-			preparedStatement.setString(9, o.getMetodo());
-			preparedStatement.setString(10, o.getIndirizzoFatturazione());
+			preparedStatement.setString(7, o.getStatoProdotti());
+			preparedStatement.setInt(8, o.getCodicePagamento());
+			preparedStatement.setBigDecimal(9, o.getImporto());
+			preparedStatement.setString(10, o.getMetodo());
+			preparedStatement.setString(11, o.getIndirizzoFatturazione());
 			preparedStatement.executeUpdate();
 
 			connection.commit();
@@ -93,8 +94,9 @@ public class OrdineModel implements Model {
 				bean.setTipoSpedizione(rs.getString("tipoSpedizione"));
 				bean.setDataSpedizione(rs.getDate("dataSpedizione").toLocalDate());
 				bean.setCodiceSpedizione(rs.getInt("codiceSpedizione"));
+				bean.setStatoProdotti(rs.getString("statoProdotti"));
 				bean.setCodicePagamento(rs.getInt("codicePagamento"));
-				bean.setImporto(rs.getDouble("importo"));
+				bean.setImporto(rs.getBigDecimal("importo"));
 				bean.setMetodo(rs.getString("metodo"));
 				bean.setIndirizzoFatturazione(rs.getString("indirizzoFatturazione"));
 			}
@@ -169,8 +171,9 @@ public class OrdineModel implements Model {
 				bean.setTipoSpedizione(rs.getString("tipoSpedizione"));
 				bean.setDataSpedizione(rs.getDate("dataSpedizione").toLocalDate());
 				bean.setCodiceSpedizione(rs.getInt("codiceSpedizione"));
+				bean.setStatoProdotti(rs.getString("statoProdotti"));
 				bean.setCodicePagamento(rs.getInt("codicePagamento"));
-				bean.setImporto(rs.getDouble("importo"));
+				bean.setImporto(rs.getBigDecimal("importo"));
 				bean.setMetodo(rs.getString("metodo"));
 				bean.setIndirizzoFatturazione(rs.getString("indirizzoFatturazione"));
 				bean.setUsername(rs.getString("username"));
@@ -212,8 +215,9 @@ public class OrdineModel implements Model {
 				bean.setDataOrdine(rs.getDate("dataOrdine").toLocalDate());
 				bean.setDataSpedizione(rs.getDate("dataSpedizione").toLocalDate());
 				bean.setCodiceSpedizione(rs.getInt("codiceSpedizione"));
+				bean.setStatoProdotti(rs.getString("statoProdotti"));
 				bean.setCodicePagamento(rs.getInt("codicePagamento"));
-				bean.setImporto(rs.getDouble("importo"));
+				bean.setImporto(rs.getBigDecimal("importo"));
 				bean.setMetodo(rs.getString("metodo"));
 				bean.setIndirizzoFatturazione(rs.getString("indirizzoFatturazione"));
 				bean.setUsername(rs.getString("username"));
@@ -253,8 +257,9 @@ public class OrdineModel implements Model {
 				bean.setDataOrdine(rs.getDate("dataOrdine").toLocalDate());
 				bean.setDataSpedizione(rs.getDate("dataSpedizione").toLocalDate());
 				bean.setCodiceSpedizione(rs.getInt("codiceSpedizione"));
+				bean.setStatoProdotti(rs.getString("statoProdotti"));
 				bean.setCodicePagamento(rs.getInt("codicePagamento"));
-				bean.setImporto(rs.getDouble("importo"));
+				bean.setImporto(rs.getBigDecimal("importo"));
 				bean.setMetodo(rs.getString("metodo"));
 				bean.setIndirizzoFatturazione(rs.getString("indirizzoFatturazione"));
 				bean.setUsername(rs.getString("username"));
@@ -294,8 +299,9 @@ public class OrdineModel implements Model {
 				bean.setDataOrdine(rs.getDate("dataOrdine").toLocalDate());
 				bean.setDataSpedizione(rs.getDate("dataSpedizione").toLocalDate());
 				bean.setCodiceSpedizione(rs.getInt("codiceSpedizione"));
+				bean.setStatoProdotti(rs.getString("statoProdotti"));
 				bean.setCodicePagamento(rs.getInt("codicePagamento"));
-				bean.setImporto(rs.getDouble("importo"));
+				bean.setImporto(rs.getBigDecimal("importo"));
 				bean.setMetodo(rs.getString("metodo"));
 				bean.setIndirizzoFatturazione(rs.getString("indirizzoFatturazione"));
 				bean.setUsername(rs.getString("username"));
@@ -337,8 +343,9 @@ public class OrdineModel implements Model {
 				bean.setDataOrdine(rs.getDate("dataOrdine").toLocalDate());
 				bean.setDataSpedizione(rs.getDate("dataSpedizione").toLocalDate());
 				bean.setCodiceSpedizione(rs.getInt("codiceSpedizione"));
+				bean.setStatoProdotti(rs.getString("statoProdotti"));
 				bean.setCodicePagamento(rs.getInt("codicePagamento"));
-				bean.setImporto(rs.getDouble("importo"));
+				bean.setImporto(rs.getBigDecimal("importo"));
 				bean.setMetodo(rs.getString("metodo"));
 				bean.setIndirizzoFatturazione(rs.getString("indirizzoFatturazione"));
 				bean.setUsername(rs.getString("username"));
@@ -380,8 +387,9 @@ public class OrdineModel implements Model {
 				bean.setDataOrdine(rs.getDate("dataOrdine").toLocalDate());
 				bean.setDataSpedizione(rs.getDate("dataSpedizione").toLocalDate());
 				bean.setCodiceSpedizione(rs.getInt("codiceSpedizione"));
+				bean.setStatoProdotti(rs.getString("statoProdotti"));
 				bean.setCodicePagamento(rs.getInt("codicePagamento"));
-				bean.setImporto(rs.getDouble("importo"));
+				bean.setImporto(rs.getBigDecimal("importo"));
 				bean.setMetodo(rs.getString("metodo"));
 				bean.setIndirizzoFatturazione(rs.getString("indirizzoFatturazione"));
 				bean.setUsername(rs.getString("username"));
