@@ -43,7 +43,7 @@ div.sectionstyle
 	margin-bottom: 20px;
 }
 
-/* productcard */
+/* product */
 .productcard {
 	margin-top: 30px;
 	margin: 15px;
@@ -208,6 +208,22 @@ div#pscenter {
 /* clientpage */
 
 /*cart*/
+
+.cartable
+{
+	padding: 2px;
+	font-size:13px;
+}
+
+@include media-breakpoint-up(sm) {
+  html {
+    font-size: 23px;
+  }
+}
+
+.cartcontainer{
+	width:100% ;
+}
 div.credcard {
 	max-height: 50px;
 }
@@ -218,24 +234,17 @@ div.credcard {
 }
 
 #cartcard {
-	height: 220px;
+	height: 100%;
 	margin-top: 30px;
 	margin: 15px;
 	padding-top: 2px;
 	padding-bottom: 2px;
-}
-
-.img-square-wrapper {
-	margin-top: 3px;
-	margin-bottom: 3px;
-	margin-left: 6px;
-	vertical-align: middle;
+	font-size: small;
 }
 
 #cartimg {
-	height: auto;
-	max-height: 210px;
-	max-width: 150px;
+	max-height: 20%;
+	max-width: 50%;
 }
 
 .dataform {
@@ -344,7 +353,7 @@ div.credcard {
  #subCatAccessorio:focus,#sceltaa:focus,#titolo:focus,#produttore:focus,#descrizione:focus,#quantita:focus,#prezzo:focus,#iva:focus,#offerta:focus,#novita:focus,
  #codProdotto:focus,#nomeCategoria:focus,#numeroGiocatori:focus, #disponibilita:focus, #IVA:focus, #descrizioneCategoriaGiochi:focus, #descrizioneCategoriaAccessori:focus,
  #foto:focus,#dataA:focus,#dataDa:focus,#codiceEvento:focus,#luogo:focus, #dataEvento:focus, #ora:focus, #locandina:focus, #codEvento:focus, #numeroPartecipanti:focus,
- #user:focus{
+ #user:focus,#usernameE:focus{
 	background-color: lavender;
 }
 }

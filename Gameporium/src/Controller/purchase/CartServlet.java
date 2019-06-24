@@ -1,4 +1,4 @@
-package Controller.cart;
+package Controller.purchase;
 
 import java.io.IOException;
 import java.io.Serializable;
