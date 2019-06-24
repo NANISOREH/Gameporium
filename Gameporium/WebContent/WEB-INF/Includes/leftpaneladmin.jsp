@@ -11,7 +11,7 @@
         <ul>
           <li class="sidebar-dropdown">
               <i class="fa fa-tachometer-alt"></i>
-              <span>Gestione prodotti</span>
+              <span>Gestione catalogo</span>
 
             <div class="sidebar-submenu">
               <ul>
@@ -25,7 +25,7 @@
                   <a href="/Gameporium/productoperation.jsp?operation=3">Elimina prodotto</a>
                 </li>
                 <li>
-                  <a href="/Gameporium/productoperation.jsp?operation=4">Visualizza prodotti</a>
+                  <a href="/Gameporium/productoperation.jsp?operation=4">Visualizza catalogo</a>
                 </li>
               </ul>
             </div>

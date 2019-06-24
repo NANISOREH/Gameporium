@@ -190,7 +190,7 @@ public class OrdineModel implements Model {
 		Collection<Bean> Ordine = new LinkedList<Bean>();
 
 		String selectSQL = "SELECT * FROM " + OrdineModel.TABLE_NAME +" as o JOIN effettua as e on o.codiceOrdine=e.codiceOrdine WHERE username=?";
-		
+		selectSQL += " ORDER BY dataOrdine";
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
@@ -306,7 +306,7 @@ public class OrdineModel implements Model {
 
 		Collection<Bean> Ordine = new LinkedList<Bean>();
 
-		String selectSQL = "SELECT * FROM " + OrdineModel.TABLE_NAME + " as o JOIN effettua as e on e.codiceOrdine=o.codiceOrdine WHERE dataOrdine between " + da + " and " + a;
+		String selectSQL = "SELECT * FROM " + OrdineModel.TABLE_NAME + " as o JOIN effettua as e on e.codiceOrdine=o.codiceOrdine WHERE dataOrdine between '" + da + "' and '" + a + "'";
 		
 		try {
 			connection = ds.getConnection();

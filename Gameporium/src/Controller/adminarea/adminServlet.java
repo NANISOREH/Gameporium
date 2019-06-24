@@ -3,6 +3,7 @@ package Controller.adminarea;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.servlet.ServletException;
@@ -32,7 +33,7 @@ public class adminServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String op=request.getParameter("operation");
 		int operation=Integer.parseInt(op);
-		
+		//Elimina prodotto
 		if(operation==3) {
 			int codP=Integer.parseInt(request.getParameter("codiceProdotto"));
 			try {
@@ -40,12 +41,29 @@ public class adminServlet extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+			response.sendRedirect("productoperation.jsp?operation=4");
 			return;
 		}
 		
+		//Aggiungi prodotto
 		else if(operation==1) {
 			BeanProduct p =new BeanProduct();
 			int codP=Integer.parseInt(request.getParameter("codiceProdotto"));
+			Collection <Bean> bpr = null;
+			try {
+				bpr=model.doRetrieveAll("codiceProdotto");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			ArrayList<Integer> codici =new ArrayList<Integer>();
+			for(Bean bean :bpr) {
+				codici.add(((BeanProduct) bean).getCodiceProdotto());
+			}
+			if(codici.contains(codP)) {
+				response.sendRedirect("productoperation.jsp?operation=1&isPreso=true");
+				return;
+			}
 			String titolo=request.getParameter("titolo");
 			String produttore=request.getParameter("produttore");
 			String descrizione=request.getParameter("descrizione");
@@ -72,7 +90,7 @@ public class adminServlet extends HttpServlet {
 			System.out.println(p.toString());
 	
 			
-			String nomeCat=request.getParameter("categoria");
+			String nomeCat=request.getParameter("nomeCategoria");
 			if (nomeCat.equalsIgnoreCase("Gioco")) {
 				p.setCodCategoria(1);
 			
@@ -118,8 +136,10 @@ public class adminServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 			}
-			response.getWriter().append("Served at: ").append(request.getContextPath());
+			response.sendRedirect("productoperation.jsp?operation=1&isPreso=false");
 			return;
+			
+		//modifica prodotto
 		}
 		else if(operation ==2) {
 			BeanProduct bp= new BeanProduct();
@@ -263,8 +283,11 @@ public class adminServlet extends HttpServlet {
 				}
 				
 			}
+			response.sendRedirect("productoperation.jsp?operation=2");
 			return;
+			
 		}
+			//Visualizza catalogo
 			Collection <Bean> bpr = null;
 			try {
 				bpr=model.doRetrieveAll("codiceProdotto");
@@ -272,7 +295,7 @@ public class adminServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			request.setAttribute("elencoProdotti", bpr);
-
+			
 			return;
 	}
 

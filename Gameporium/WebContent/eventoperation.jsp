@@ -42,6 +42,19 @@
 			<c:when test="${operationchoice== '1'}">
 			
 			<!-- Inserimento nuovo evento -->
+			<c:set var="isPreso" value='${param["isPreso"]}' />
+			<c:if test="${isPreso}">
+				<div class="popup alert alert-danger alert-dismissible fade-in" role="alert">
+				  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				  <strong>Attenzione,</strong> codice evento già esistente!
+				</div>
+			</c:if>
+			<c:if test="${isPreso==false}">
+				<div class="popup alert alert-success alert-dismissible fade-in" role="alert">
+				  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				  evento inserito con successo!
+				</div>
+			</c:if>		
 				<form action="adminevent?operation=1" name="addeventform" method="post" id="reg">				        
 				        <div class="form-group">
 				        	<label for="codiceEvento">Codice evento:</label>
@@ -79,7 +92,7 @@
 				        </div>
 				        				        
 						<div class="form-group" style="float: center">
-				            <button type="submit" id ="caricabtn" name= "caricabtn" class="btn btn-success btn-lg btn-block" value="1"
+				            <button type="button" id ="caricabtn" name= "caricabtn" class="btn btn-success btn-lg btn-block" onclick="validateEvent(addeventform)"value="1"
 				            style="max-width:400px;">Carica Evento</button>
 				        </div>
 				    </form>
@@ -141,16 +154,16 @@
 				        	<input type="text" class="form-control" name="locandina" id="locandina" readonly="readonly" style="width:80px"  >
 				        </div>
 				       	<div class="form-group" style="float: center">
-					            <button type="submit" class="btn btn-success btn-lg btn-block" onclick="enablemodevent(modeventformhidden)" 
+					            <button type="submit" class="btn btn-success btn-lg btn-block" value="1"onclick="enablemodevent(modeventformhidden)" 
 					            style="max-width:400px;">Modifica Evento</button>
 					        </div>	        
 						<div class="form-group" style="float: center">
-				            <button type="submit" id ="caricabtn" name= "caricabtn" disabled="disabled" class="btn btn-success btn-lg btn-block" value="1"
+				            <button type="button" id ="caricabtn" name= "caricabtn" disabled="disabled" class="btn btn-success btn-lg btn-block" onclick="validateEvent(modeventformhidden)" value="1"
 				            style="max-width:400px;">Carica Evento</button>
 				        </div>
 				    </form>
 				
-				<!-- Fine Modifica prodotto -->
+				<!-- Fine Modifica evento -->
 				</c:when>
 				
 				<c:when test="${operationchoice== '3'}">
