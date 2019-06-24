@@ -44,7 +44,7 @@ public class OrderServlet extends HttpServlet {
 		BeanCliente bc;
 
 		if (ordine == null) {
-			if (dataDa != null && dataDa != "" && (username == "" || username == null)) {
+			if (dataDa != null && dataDa != "" && (username == "" || username == null) && (dataA == "" || dataA == null)) {
 				try {
 					bo = om.doRetrieveByDateFrom(LocalDate.parse(dataDa));
 					System.out.println("retrieve by DateFrom:" + bo);
@@ -55,7 +55,7 @@ public class OrderServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 			}
-			if (dataA != null && dataA != "" && (username == "" || username == null)) {
+			if (dataA != null && dataA != "" && (username == "" || username == null) && (dataDa==null || dataDa=="")) {
 				try {
 					bo = om.doRetrieveByDateTo(LocalDate.parse(dataA));
 					session.setAttribute("listaOrdini", bo);
@@ -66,8 +66,7 @@ public class OrderServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 			}
-			if (username != null && username != ""
-					&& (dataDa == null || dataDa == "" || dataA == "" || dataA == null)) {
+			if (username != null && username != "" && (dataDa == null || dataDa == "") && (dataA == "" || dataA == null)) {
 				try {
 					bo = om.doRetrieveByUser(username);
 					session.setAttribute("listaOrdini", bo);
@@ -80,8 +79,8 @@ public class OrderServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 			}
-			if (dataDa != null && dataA != null) {
-				if (username != null) {
+			if (dataDa != null && dataA != null && dataDa!="" && dataA!="") {
+				if (username != null && username!="") {
 					try {
 						bo = om.doRetrieveByUserBetweenDate(LocalDate.parse(dataDa), LocalDate.parse(dataA), username);
 						session.setAttribute("listaOrdini", bo);
@@ -104,7 +103,7 @@ public class OrderServlet extends HttpServlet {
 				}
 			}
 
-			if (username == null) {
+			if ((username == null || username=="") && (dataDa==null||dataDa=="") && (dataA==null||dataA=="")) {
 				System.out.println("lista totale");
 				try {
 					bo = om.doRetrieveAll("codiceOrdine");
@@ -119,8 +118,6 @@ public class OrderServlet extends HttpServlet {
 				response.setStatus(200);
 			}
 		}
-		
-		
 		else {
 			try {
 				bc=cm.doRetrieveByKey(ordine);

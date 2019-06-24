@@ -150,7 +150,7 @@ public class OrdineModel implements Model {
 		System.out.println(order);
 		Collection<Bean> Ordine = new LinkedList<Bean>();
 
-		String selectSQL = "SELECT o.codiceOrdine, o.indirizzoSpedizione, o.tipoSpedizione, o.dataOrdine, o.dataSpedizione, o.codiceSpedizione, o.codicePagamento, o.importo, o.metodo, o.indirizzoFatturazione, e.username\r\n" + 
+		String selectSQL = "SELECT o.codiceOrdine, o.indirizzoSpedizione, o.tipoSpedizione, o.dataOrdine, o.dataSpedizione, o.codiceSpedizione, o.statoProdotti, o.codicePagamento, o.importo, o.metodo, o.indirizzoFatturazione, e.username\r\n" + 
 				" FROM " + OrdineModel.TABLE_NAME +" as o JOIN effettua as e on o.codiceOrdine=e.codiceOrdine";
 
 		if (order != null && !order.equals("")) {
@@ -169,6 +169,7 @@ public class OrdineModel implements Model {
 				bean.setCodiceOrdine(rs.getInt("codiceOrdine"));
 				bean.setIndirizzoSpedizione(rs.getString("indirizzoSpedizione"));
 				bean.setTipoSpedizione(rs.getString("tipoSpedizione"));
+				bean.setDataOrdine(rs.getDate("dataOrdine").toLocalDate());
 				bean.setDataSpedizione(rs.getDate("dataSpedizione").toLocalDate());
 				bean.setCodiceSpedizione(rs.getInt("codiceSpedizione"));
 				bean.setStatoProdotti(rs.getString("statoProdotti"));
@@ -199,7 +200,7 @@ public class OrdineModel implements Model {
 		Collection<Bean> Ordine = new LinkedList<Bean>();
 
 		String selectSQL = "SELECT * FROM " + OrdineModel.TABLE_NAME +" as o JOIN effettua as e on o.codiceOrdine=e.codiceOrdine WHERE username=?";
-		
+		selectSQL += " ORDER BY dataOrdine";
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
@@ -327,7 +328,7 @@ public class OrdineModel implements Model {
 
 		Collection<Bean> Ordine = new LinkedList<Bean>();
 
-		String selectSQL = "SELECT * FROM " + OrdineModel.TABLE_NAME + " as o JOIN effettua as e on e.codiceOrdine=o.codiceOrdine WHERE dataOrdine between " + da + " and " + a;
+		String selectSQL = "SELECT * FROM " + OrdineModel.TABLE_NAME + " as o JOIN effettua as e on e.codiceOrdine=o.codiceOrdine WHERE dataOrdine between '" + da + "' and '" + a + "'";
 		
 		try {
 			connection = ds.getConnection();

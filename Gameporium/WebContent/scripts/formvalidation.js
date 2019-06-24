@@ -1,7 +1,3 @@
-var input = document.getElementById("emailInput");
-input.addEventListener("focus", function () {
-  this.style.backgroundColor = "red";  
-});
 
 function validateLogin(password, username)
 
@@ -200,4 +196,76 @@ function htmlEscape(toEscape)
 
 	return toEscape;
 
+}
+
+function validateAddProduct(addproductform){
+	var c=document.getElementById("nomeCategoria").value;
+	var n=addproductform.elements.length;
+	if(c!="gioco" && c!="accessorio")
+		{
+			Swal.fire({
+				  title: '<h6>Scegliere una categoria!</h6>',
+				  toast: true,
+				  type: 'error',
+				  position: 'top',
+				  timer: 2000,
+				  showConfirmButton: false
+				})
+			return;
+		}
+	
+	for (var i = 0; i < n - 1; i++) 
+	{		
+		
+		if(c=="accessorio"){
+			document.getElementById("eta").value="."
+			document.getElementById("durata").value="."
+			document.getElementById("ngiocatori").value="."
+		}
+		if (addproductform.elements[i].value.length == 0)
+		{
+			
+			Swal.fire({
+				  title: '<h6>Completare tutti i campi!</h6>',
+				  toast: true,
+				  type: 'error',
+				  position: 'top',
+				  timer: 2000,
+				  showConfirmButton: false
+				})
+			return;
+		}
+	}
+	if(c=="accessorio"){
+		document.getElementById("eta").value=""
+		document.getElementById("durata").value=""
+		document.getElementById("ngiocatori").value=""
+	}
+	addproductform.submit();
+}
+
+function validateEvent(addeventform){
+
+	var n=addeventform.elements.length;
+	console.log(n)
+	for (var i = 0; i < n - 1; i++) 
+	{		
+		console.log(addeventform.elements[i].id)
+
+		if (addeventform.elements[i].value.length == 0)
+		{
+			console.log("mancante")
+			Swal.fire({
+				  title: '<h6>Completare tutti i campi!</h6>',
+				  toast: true,
+				  type: 'error',
+				  position: 'top',
+				  timer: 2000,
+				  showConfirmButton: false
+				})
+			return;
+		}
+	}
+
+	addeventform.submit();
 }

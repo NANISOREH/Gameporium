@@ -105,13 +105,13 @@
 								 			<c:set var="user" value='${sessionScope["currentSessionUser"]}'/>
 							 				<c:set var="accessDone" value='${sessionScope["accessDone"]}' />
 								 			<c:if test="${accessDone}">
-								 				<input type="text" class="d-none" id="username" name="username" value="${currentSessionUser.username}">
+								 				<input type="text" class="d-none" id="usernameE" name="usernameE" value="${currentSessionUser.username}">
 								 				<button type="button" class="btn btn-sm btn-primary btn-block text-uppercase" 
 								 			name="partecipabtn" id="partecipabtn" value="${evento.codiceEvento}" onclick="partecipa(this.value)"
 								 			>Partecipa all'Evento</button>
 								 			</c:if>
 								 			<c:if test="${accessDone==null}">
-								 				<form action="login" method="post" class="form" role="form" name="loginform">
+								 				<form>
 								 					<div class="form-group">
 														<button type="submit" class="loginbtn btn btn-primary" disabled>Loggati per partecipare all'evento</button>
 													</div>

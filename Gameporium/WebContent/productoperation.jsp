@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="pagestyle.css" type="text/css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script type="text/javascript" src="scripts/formvalidation.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -42,20 +43,30 @@
 			<c:when test="${operationchoice== '1'}">
 			
 			<!-- Inserimento nuovo prodotto -->
+			<c:set var="isPreso" value='${param["isPreso"]}' />
+			<c:if test="${isPreso}">
+				<div class="popup alert alert-danger alert-dismissible fade-in" role="alert">
+				  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				  <strong>Attenzione,</strong> codice Prodotto già esistente!
+				</div>
+			</c:if>
+			<c:if test="${isPreso==false}">
+				<div class="popup alert alert-success alert-dismissible fade-in" role="alert">
+				  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				  Prodotto inserito con successo!
+				</div>
+			</c:if>			
 				<form action="adminservlet?operation=1" name="addproductform" method="post" id="reg">				        
 				        <div class="form-group">
 				        	<label for="codiceProdotto">Codice prodotto:</label>
 							<input type="text" class="form-control" id="codiceProdotto" name="codiceProdotto"  >
 							<label for="codCat">Categoria:</label>
 								  <div id="prova">
-								    <div class="form-check form-check-inline categoria">
-								      <input name="categoria" type="radio" id="gioco" value="Gioco" onclick="gameoraccessory(id)">
-								      <label for="gioco">Gioco</label>
-								    </div>
-								    <div class="form-check form-check-inline categoria">
-								      <input name="categoria" type="radio" id="accessorio" value="Accessorio" onclick="gameoraccessory(id)">
-								      <label for="accessorio">Accessorio</label>
-								    </div>
+								    <select class="form-control" id="nomeCategoria" name="nomeCategoria" onclick="gameoraccessory(value)" >
+								    	<option value=" - " selected>-</option>
+								        <option value="gioco">Gioco</option>
+								        <option value="accessorio">Accessorio</option>
+							    	</select>
 								  </div>
 						</div>
 		
@@ -63,21 +74,23 @@
 							<div class="hidableforms container" id="subCatGioco">
 								<label for="sceltag">Sottocategoria:</label>
 							    <select class="form-control" id="sceltag" name="sceltag">
+							    	<option value=" - " selected>-</option>
 							        <option value="Gioco di ruolo">Gioco di Ruolo</option>
 							        <option value="Gioco di carte">Gioco di Carte</option>
 							        <option value="Gioco da tavolo">Gioco da Tavolo</option>
 							    </select>
 							  	<label for="eta">Età:</label>
-							  	<input type="text" class="form-control" id="eta" name="eta"  >
+							  	<input type="text" class="form-control" id="eta" name="eta" >
 								<label for="ngiocatori">Numero giocatori:</label>
-							  	<input type="text" class="form-control" id="ngiocatori" name="ngiocatori"  >
+							  	<input type="text" class="form-control" id="ngiocatori" name="ngiocatori" >
 							  	<label for="durata">Durata:</label>
-							  	<input type="text" class="form-control" id="durata" name="durata"  >
+							  	<input type="text" class="form-control" id="durata" name="durata">
 
 							</div>
 							 <div class="hidableforms container" id="subCatAccessorio">
 							 	  <label for="sceltaa">Sottocategoria:</label>
 							      <select class="form-control" id="sceltaa"  name="sceltaa">
+							      	  <option value=" - " selected>-</option>
 							          <option value="Accessori per giochi di ruolo">Accessorio per Gioco di Ruolo</option>
 							          <option value="Accessori per giochi di carte">Accessorio per Gioco di Carte</option>
 							          <option value="Accessori per giochi da tavolo">Accessorio per Gioco da Tavolo</option>
@@ -126,15 +139,15 @@
 							</label>
 				        </div>
 				       
-				       <div class="form-group">
-				       		<div class="upload-btn-wrapper">
-							  <button class="btn">Upload a file</button>
-							  <input type="file" name="foto" id="foto" />
-							</div>
-				       </div>
+<!-- 				       <div class="form-group"> -->
+<!-- 				       		<div class="upload-btn-wrapper"> -->
+<!-- 							  <button class="btn">Upload a file</button> -->
+<!-- 							  <input type="file" name="foto" id="foto" /> -->
+<!-- 							</div> -->
+<!-- 				       </div> -->
 				        
 						<div class="form-group" style="float: center">
-				            <button type="submit" id ="caricabtn" name= "caricabtn" class="btn btn-success btn-lg btn-block" value="1"
+				            <button type="button" id ="caricabtn" name= "caricabtn" class="btn btn-success btn-lg btn-block" onclick="validateAddProduct(addproductform)" value="1"
 				            style="max-width:400px;">Carica Prodotto</button>
 				        </div>
 				    </form>
@@ -387,6 +400,7 @@
 							        <th>Titolo</th>
 							        <th>Codice Prodotto</th>						
 							        <th>Prezzo</th>
+							        <th>Disponibilità:</th>
 							        <th></th>
 							        <th></th>
 							      </tr>

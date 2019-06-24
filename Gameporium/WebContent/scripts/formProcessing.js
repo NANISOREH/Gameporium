@@ -22,7 +22,6 @@ function myFunctEvento(){
 /*questa funzione abilita tutti i campi del form quando l'admin vuole modificare i dati di un prodotto*/
 function enablemod(){
 	event.preventDefault()
-	document.getElementById("codiceProdotto").removeAttribute("readonly");	
 	document.getElementById("descrizione").removeAttribute("readonly");	
 	document.getElementById("eta").removeAttribute("readonly");	
 	document.getElementById("numeroGiocatori").removeAttribute("readonly");	
@@ -44,7 +43,6 @@ function enablemod(){
 /*questa funzione abilita tutti i campi del form quando l'admin vuole modificare i dati di un evento*/
 function enablemodevent(){
 	event.preventDefault()
-	document.getElementById("codiceEvento").removeAttribute("readonly");
 	document.getElementById("numeroPartecipanti").removeAttribute("readonly")
 	document.getElementById("descrizione").removeAttribute("readonly");	
 	document.getElementById("nome").removeAttribute("readonly");	
@@ -172,7 +170,7 @@ $(document).ready(function() {
     		console.log(inputn.attr('name'));
     	});
     
-    	$.getJSON('jsonretrievalevent', {codEvento: codE},
+    	$.getJSON('jsonretrievalevent', {codiceEvento: codE},
             function(response) { 
     			var formProduct=$("#modeventformhidden").serializeArray().map(x => x.name);
     			console.log(response)
