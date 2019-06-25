@@ -60,19 +60,6 @@ CREATE TABLE accessorio(
     FULLTEXT (nomeCategoria, descrizioneCategoria)
 );
 
-DROP TABLE IF EXISTS recensione;
-USE GameporiumDB;
-CREATE TABLE recensione(
-    username    varchar(16),
-    codiceProdotto  int,
-    testo           varchar(200),
-    foreign key (codiceProdotto) references prodotto (codiceProdotto)
-                                ON UPDATE CASCADE
-                                ON DELETE CASCADE,
-    foreign key (username) references cliente (username)
-                                ON UPDATE CASCADE
-                                ON DELETE CASCADE);
-
 DROP TABLE IF EXISTS evento;
 USE GameporiumDB;
 CREATE TABLE evento(
@@ -135,18 +122,7 @@ CREATE TABLE spedizione(
                                 ON UPDATE CASCADE
                                 ON DELETE CASCADE);
                                 
-/*DROP TABLE IF EXISTS pagamento;
-USE GameporiumDB;
-CREATE TABLE pagamento(
-    username    varchar(16),
-    codiceP     int,
-    foreign key (codiceP) references mod_Pagamento (codiceP)
-                                ON UPDATE CASCADE
-                                ON DELETE CASCADE,
-    foreign key (username) references cliente (username)
-                                ON UPDATE CASCADE
-                                ON DELETE CASCADE);*/
-                                
+                       
 DROP TABLE IF EXISTS possiede;
 USE GameporiumDB;
 CREATE TABLE possiede(
@@ -173,15 +149,6 @@ CREATE TABLE ordine(
     primary key (codiceOrdine)
 );
 
-DROP TABLE IF EXISTS corriere;
-USE GameporiumDB;
-CREATE TABLE corriere(
-    codiceCorriere  int,
-    costoSpedizione numeric,
-    nome            varchar(15),
-    primary key(codiceCorriere)
-);
-
 DROP TABLE IF EXISTS effettua;
 USE GameporiumDB;
 CREATE TABLE effettua(
@@ -204,15 +171,3 @@ CREATE TABLE amministratore(
     primary key(username)
 );
 
--- DROP TABLE IF EXISTS composizione;
--- USE GameporiumDB;
--- CREATE TABLE composizione(
---     codiceOrdine int,
---     codiceProdotto int,
---     quantita int,
---     foreign key (codiceProdotto) references prodotto (codiceProdotto)
---                                 ON UPDATE CASCADE
---                                 ON DELETE CASCADE,
---     foreign key (codiceOrdine) references ordine (codiceOrdine)
---                                 ON UPDATE CASCADE
---                                 ON DELETE CASCADE);

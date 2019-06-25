@@ -3,7 +3,6 @@ jQuery(document).ready(function($){
 	
     $('.productcard').hover(
         function () {
-        	
         	$(this).children().children(".card-hover").animate({height: "0"},"slow");
         	$(this).children().children(".prod-des").removeClass("d-none") 
         	$(this).children().children().children(".item-titolo").addClass("d-none")
