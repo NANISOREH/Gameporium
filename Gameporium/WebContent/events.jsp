@@ -28,7 +28,6 @@
 
   <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
-  <%@include file="/WEB-INF/Includes/header.jsp" %>
 
   <link rel="stylesheet" href="pagestyle.css" type="text/css">
 
@@ -38,6 +37,10 @@
 
 <body>
 
+	<div class= "header">
+	<%@include file="/WEB-INF/Includes/header.jsp"%>
+	</div>
+	
   <div class="allpagecontainer container-fluid bg-light">
 
     <!-- sistema di colonne -->

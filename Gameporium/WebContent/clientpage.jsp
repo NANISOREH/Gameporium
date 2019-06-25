@@ -18,7 +18,6 @@
 
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@include file="/WEB-INF/Includes/header.jsp"%>
 	<script src="scripts/cart.js" type="text/javascript"></script>
 	<script src="scripts/formvalidation.js" type="text/javascript"></script>
 	<script src="scripts/payment.js" type="text/javascript"></script>
@@ -26,7 +25,11 @@
 
 </head>
 
-<body style="background-color: #343a40">
+<body>
+
+	<div class= "header">
+	<%@include file="/WEB-INF/Includes/header.jsp"%>
+	</div>
 	<div class="allpagecontainer container-fluid bg-light">
 		<!-- sistema di colonne -->
 		<div class="row">

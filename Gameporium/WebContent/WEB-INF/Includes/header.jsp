@@ -30,9 +30,9 @@
   }
   
   .active-cyan-2 input[type=text]:not([readonly]) {
-    border-bottom: 1px solid #4dd0e1;
-    box-shadow: 0 1px 0 0 #4dd0e1;
-    background: #343a40;	
+    border-bottom: 1px solid #E07D00;
+    box-shadow: 0 1px 0 0 #E07D00;
+    background: #C0C0C0;	
 	border-color: transparent;
   } 
   
@@ -46,13 +46,17 @@
   {
 	margin-left: 35px;
 	margin-right: 0px;
-	color:white;
+	color:#E07D00;
+  }
+  
+  a:link
+  {
+  	color:#E07D00;
   }
   
   .searchbox
   {
   	max-width:180px;
-  	color: white;
   }
   
   #dropdownMenu1
@@ -196,6 +200,31 @@
 				</li>
 				
 				<c:if test="${accessDone}">
+					<c:if test="${isAdmin == true}">
+					<li class="nav-item dropdown d-lg-none"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> Area amministratore </a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" style="text-align: left; " href="/Gameporium/adminpage.jsp">Area amministratore</a>
+						<div class="dropdown-divider"></div>
+						<div style="text-align: center"><button class="btn btn-primary" type="submit">Logout</button></div>
+					</div></li>
+<!-- 					<div class="navbar-nav nav-item dropdown"> -->
+						
+<!-- 					<button type="button" id="dropdownMenu1" data-toggle="dropdown" -->
+<!-- 						class="btn btn-outline-secondary dropdown-toggle"> -->
+<!-- 						Benvenuto, amministratore! <span class="caret"></span> -->
+<!-- 					</button> -->
+					
+<!-- 						<form action="logout" method="get" class="dropdown-menu" aria-labelledby="navbarDropdown"> -->
+<!-- 							<a class="dropdown-item" style="text-align: left; " href="/Gameporium/adminpage.jsp">Area Amministratore</a> -->
+<!-- 							<div class="dropdown-divider"></div> -->
+<!-- 							<div style="text-align: center"><button class="btn btn-primary" type="submit">Logout</button></div> -->
+<!-- 						</form> -->
+<!-- 					</div> -->
+				</c:if>
+				<c:if test="${isAdmin != true}">
 					<li class="nav-item dropdown d-lg-none"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -208,6 +237,7 @@
 						<div class="dropdown-divider"></div>
 						<div style="text-align: center"><button class="btn btn-primary" type="submit">Logout</button></div>
 					</div></li>
+				</c:if>
 				</c:if>
 	
 				<c:if test="${accessDone != true}">
@@ -246,7 +276,7 @@
 			<c:set var="cartcard" value='${sessionScope["cartcardinality"]}' />
 			<ul class="navbar-nav">
 				<li class="nav-item mr-auto carticon d-xs-block">
-					<a href="/Gameporium/cart.jsp">
+					<a href="/Gameporium/cart.jsp" style="color: #E07D00;">
       					<i class="fas fa-shopping-cart" aria-hidden="true"></i>
       					<c:out value="${cartcard}"/> prod.
       				</a>

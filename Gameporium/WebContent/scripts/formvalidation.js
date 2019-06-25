@@ -244,25 +244,128 @@ function htmlEscape(toEscape)
 }
 
 function validateAddProduct(addproductform){
-	var c=document.getElementById("nomeCategoria").value;
+	var cod=addproductform.codiceProdotto.value;
+	console.log(cod)
+	var cat=addproductform.nomeCategoria.value;
+	console.log(cat)
+	var q=addproductform.quantita.value;
+	console.log(q)
+	var i=addproductform.IVA.value;
+	console.log(i)
+	var p=addproductform.prezzo.value;
+	console.log(p)
 	var n=addproductform.elements.length;
-	if(c!="gioco" && c!="accessorio")
+	console.log(n)
+	
+
+	if(isNaN(cod))
 		{
 			Swal.fire({
-				  title: '<h6>Scegliere una categoria!</h6>',
+			  title: '<h6>il Codice deve essere un numero!</h6>',
+			  toast: true,
+			  type: 'error',
+			  position: 'top',
+			  timer: 2000,
+			  showConfirmButton: false
+			})
+		return;
+		}
+	if(cat!="gioco" && cat!="accessorio")
+	{
+		Swal.fire({
+			  title: '<h6>Scegliere una categoria!</h6>',
+			  toast: true,
+			  type: 'error',
+			  position: 'top',
+			  timer: 2000,
+			  showConfirmButton: false
+			})
+		return;
+	}
+
+	
+	if(cat=="gioco"){
+		var e=addproductform.eta.value;
+		var sc=addproductform.sceltag.value;
+		if(sc==" - "){
+			Swal.fire({
+				  title: '<h6>Scegliere una sottocategoria!</h6>',
 				  toast: true,
 				  type: 'error',
 				  position: 'top',
 				  timer: 2000,
 				  showConfirmButton: false
 				})
-			return;
+				return;
 		}
-	
+		if(isNaN(e)){
+			Swal.fire({
+				  title: '<h6>Eta\' deve essere un numero!</h6>',
+				  toast: true,
+				  type: 'error',
+				  position: 'top',
+				  timer: 2000,
+				  showConfirmButton: false
+				})
+				return;
+		}
+	}
+	if(cat=="accessorio"){
+		var sc=addproductform.sceltaa.value;
+		if(sc==" - "){
+			Swal.fire({
+				  title: '<h6>Scegliere una sottocategoria!</h6>',
+				  toast: true,
+				  type: 'error',
+				  position: 'top',
+				  timer: 2000,
+				  showConfirmButton: false
+				})
+				return;
+		}
+	}
+	if(isNaN(p))
+	{
+		Swal.fire({
+		  title: '<h6>Prezzo deve essere un numero!</h6>',
+		  toast: true,
+		  type: 'error',
+		  position: 'top',
+		  timer: 2000,
+		  showConfirmButton: false
+		})
+		return;
+	}
+	if(isNaN(i))
+	{
+		Swal.fire({
+		  title: '<h6>L\'IVA deve essere un numero!</h6>',
+		  toast: true,
+		  type: 'error',
+		  position: 'top',
+		  timer: 2000,
+		  showConfirmButton: false
+		})
+		return;
+	}
+
+	if(isNaN(q))
+	{
+		Swal.fire({
+		  title: '<h6>La quantita\' deve essere un numero!</h6>',
+		  toast: true,
+		  type: 'error',
+		  position: 'top',
+		  timer: 2000,
+		  showConfirmButton: false
+		})
+		return;
+	}
+
 	for (var i = 0; i < n - 1; i++) 
 	{		
 		
-		if(c=="accessorio"){
+		if(cat=="accessorio"){
 			document.getElementById("eta").value="."
 			document.getElementById("durata").value="."
 			document.getElementById("ngiocatori").value="."
@@ -281,7 +384,7 @@ function validateAddProduct(addproductform){
 			return;
 		}
 	}
-	if(c=="accessorio"){
+	if(cat=="accessorio"){
 		document.getElementById("eta").value=""
 		document.getElementById("durata").value=""
 		document.getElementById("ngiocatori").value=""
@@ -289,8 +392,169 @@ function validateAddProduct(addproductform){
 	addproductform.submit();
 }
 
-function validateEvent(addeventform){
+function validateModProduct(modproductform){
+	var cod=modproductform.codiceProdotto.value;
+	console.log(cod)
+	var cat=modproductform.nomeCategoria.value;
+	console.log(cat)
+	var q=modproductform.disponibilita.value;
+	console.log(q)
+	var i=modproductform.IVA.value;
+	console.log(i)
+	var p=modproductform.prezzo.value;
+	console.log(p)
+	var n=modproductform.elements.length;
+	console.log(n)
+	
 
+	if(isNaN(cod))
+		{
+			Swal.fire({
+			  title: '<h6>il Codice deve essere un numero!</h6>',
+			  toast: true,
+			  type: 'error',
+			  position: 'top',
+			  timer: 2000,
+			  showConfirmButton: false
+			})
+		return;
+		}
+	if(cat!="gioco" && cat!="accessorio")
+	{
+		Swal.fire({
+			  title: '<h6>Scegliere una categoria!</h6>',
+			  toast: true,
+			  type: 'error',
+			  position: 'top',
+			  timer: 2000,
+			  showConfirmButton: false
+			})
+		return;
+	}
+
+	
+	if(cat=="gioco"){
+		var e=modproductform.eta.value;
+		var sc=modproductform.descrizioneCategoriaGiochi.value;
+		if(sc==" - "){
+			Swal.fire({
+				  title: '<h6>Scegliere una sottocategoria!</h6>',
+				  toast: true,
+				  type: 'error',
+				  position: 'top',
+				  timer: 2000,
+				  showConfirmButton: false
+				})
+				return;
+		}
+		if(isNaN(e)){
+			Swal.fire({
+				  title: '<h6>Eta\' deve essere un numero!</h6>',
+				  toast: true,
+				  type: 'error',
+				  position: 'top',
+				  timer: 2000,
+				  showConfirmButton: false
+				})
+				return;
+		}
+	}
+	if(cat=="accessorio"){
+		var sc=modproductform.descrizioneCategoriaAccessori.value;
+		if(sc==" - "){
+			Swal.fire({
+				  title: '<h6>Scegliere una sottocategoria!</h6>',
+				  toast: true,
+				  type: 'error',
+				  position: 'top',
+				  timer: 2000,
+				  showConfirmButton: false
+				})
+				return;
+		}
+	}
+	if(isNaN(p))
+	{
+		Swal.fire({
+		  title: '<h6>Prezzo deve essere un numero!</h6>',
+		  toast: true,
+		  type: 'error',
+		  position: 'top',
+		  timer: 2000,
+		  showConfirmButton: false
+		})
+		return;
+	}
+	if(isNaN(i))
+	{
+		Swal.fire({
+		  title: '<h6>L\'IVA deve essere un numero!</h6>',
+		  toast: true,
+		  type: 'error',
+		  position: 'top',
+		  timer: 2000,
+		  showConfirmButton: false
+		})
+		return;
+	}
+
+	if(isNaN(q))
+	{
+		Swal.fire({
+		  title: '<h6>La quantita\' deve essere un numero!</h6>',
+		  toast: true,
+		  type: 'error',
+		  position: 'top',
+		  timer: 2000,
+		  showConfirmButton: false
+		})
+		return;
+	}
+
+	for (var i = 0; i < n - 1; i++) 
+	{		
+		console.log(modproductform.elements[i].name)
+		if(cat=="accessorio"){
+			modproductform.eta.value="."
+			modproductform.durata.value="."
+			modproductform.numeroGiocatori.value="."
+		}
+		if (modproductform.elements[i].value.length == 0)
+		{
+			console.log(modproductform.elements[i].name)
+			Swal.fire({
+				  title: '<h6>Completare tutti i campi!</h6>',
+				  toast: true,
+				  type: 'error',
+				  position: 'top',
+				  timer: 2000,
+				  showConfirmButton: false
+				})
+			return;
+		}
+	}
+	if(cat=="accessorio"){
+		modproductform.eta.value="."
+		modproductform.durata.value="."
+		modproductform.numeroGiocatori.value="."
+	}
+	modproductform.submit();
+}
+
+function validateEvent(addeventform){
+	var cod=addeventform.codiceEvento.value;
+	if(isNaN(cod))
+	{
+		Swal.fire({
+		  title: '<h6>il Codice deve essere un numero!</h6>',
+		  toast: true,
+		  type: 'error',
+		  position: 'top',
+		  timer: 2000,
+		  showConfirmButton: false
+		})
+	return;
+	}
 	var n=addeventform.elements.length;
 	console.log(n)
 	for (var i = 0; i < n - 1; i++) 

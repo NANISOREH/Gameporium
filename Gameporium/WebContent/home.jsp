@@ -37,8 +37,6 @@
 
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
-<%@include file="/WEB-INF/Includes/header.jsp"%>
-
 <link rel="stylesheet" href="pagestyle.css" type="text/css">
 
 </head>
@@ -47,11 +45,15 @@
 
 <body>
 
-	<div class="allpagecontainer container-fluid bg-light">
+	<div class= "header">
+	<%@include file="/WEB-INF/Includes/header.jsp"%>
+	</div>
+
+	<div class="allpagecontainer container-fluid">
 
 		<!-- sistema di colonne -->
 
-		<div class="row">
+		<div class="row columnsystem">
 
 			
 
@@ -59,7 +61,7 @@
 
 			<div
 
-				class="col-lg-2 col-xs-12 d-none d-lg-block bg-light">
+				class="sidepanel col-lg-2 col-xs-12 d-none d-lg-block">
 
 				<%@include file="/WEB-INF/Includes/leftpanel.jsp"%>
 
@@ -71,27 +73,27 @@
 
 			<!-- colonna centrale -->
 
-			<div id="homecenter" class="col-lg-8 col-md-12 col-sm-12 col-xs-12 bg-light">
+			<div id="homecenter" class="col-lg-8 col-md-12 col-sm-12 col-xs-12" style="margin-top: 30px; border: 5px">
 
 				<!-- container novità e offerte -->
 
-					<div class="container-fluid clearfix">
+					<div class="container-fluid clearfix" style="margin-top: 30px;">
 
 			 		<div class="slideshow-container">
 
 						<div class="mySlides fade">
 						  <div class="numbertext">1 / 3</div>
-						  <img class="fadimg" src="images/cavacon.jpg" style="width:auto; height:300px">
+						  <a href="singleEvent?selEvento=2"><img class="fadimg" src="images/cavacon.jpg" style="width:auto; height:300px"></a>
 						</div>
 						
 						<div class="mySlides fade">
 						  <div class="numbertext">2 / 3</div>
-						  <img class="fadimg" src="images/fantaexpo.png" style="width:auto; height:300px">
+						  <a href="singleEvent?selEvento=1"><img class="fadimg" src="images/fantaexpo.png" style="width:auto; height:300px"></a>
 						</div>
 						
 						<div class="mySlides fade">
 						  <div class="numbertext">3 / 3</div>
-						  <img class="fadimg" src="images/isola.png">
+						  <a href="singleEvent?selEvento=3"><img class="fadimg" src="images/isola.png" style="width:auto; height:300px"></a>
 						</div>
 						
 					</div>
@@ -194,7 +196,7 @@
 
 			<div
 
-				class="col-lg-2 col-xs-12 d-none d-lg-block bg-light">
+				class="sidepanel col-lg-2 col-xs-12 d-none d-lg-block ">
 
 				<%@include file="/WEB-INF/Includes/rightpanel.jsp"%>
 
@@ -204,9 +206,10 @@
 
 		</div>
 
+	<%@include file="/WEB-INF/Includes/footer.jsp"%>
 	</div>
 
-	<%@include file="/WEB-INF/Includes/footer.jsp"%>
+	
 
 </body>
 
