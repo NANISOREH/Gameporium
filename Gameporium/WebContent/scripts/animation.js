@@ -3,14 +3,22 @@ jQuery(document).ready(function($){
 	
     $('.productcard').hover(
         function () {
-        	console.log("we")
+        	
         	$(this).children().children(".card-hover").animate({height: "0"},"slow");
-        	$(this).children().children(".prod-des").removeClass("d-none")        	
+        	$(this).children().children(".prod-des").removeClass("d-none") 
+        	$(this).children().children().children(".item-titolo").addClass("d-none")
+        	$(this).children().children().children().children(".price").addClass("d-none")
+        	///$(this).children().children().children().children().children().children(".fas").addClass("d-none")
+        	//$(this).children().children().children().children().children(".quantButton").addClass("d-none")
+
         	        },
         function () {
         	$(this).children().children(".prod-des").addClass("d-none")
         	$(this).children().children(".card-hover").animate({height: "70%"});
-        	
+        	$(this).children().children().children(".item-titolo").removeClass("d-none")
+        	$(this).children().children().children().children(".price").removeClass("d-none")
+        	//$(this).children().children().children().children().children().children(".fas").removeClass("d-none")
+        	//$(this).children().children().children().children().children(".quantButton").removeClass("d-none")
         }
     );  
 });

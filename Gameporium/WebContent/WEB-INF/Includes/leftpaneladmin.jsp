@@ -6,7 +6,7 @@
               <span>Gestione catalogo</span>
 
             <div class="sidebar-submenu">
-              <ul>
+              <ul  >
                 <li>
                   <a href="/Gameporium/productoperation.jsp?operation=1">Inserisci prodotto</a>
                 </li>

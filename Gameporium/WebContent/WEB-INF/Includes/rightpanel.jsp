@@ -21,7 +21,7 @@
 
 
 		<c:if test="${totale != null && totale != '0.00'}">
-			<div class="card panelcard" style="font-size: small; margin-top: 30px">
+			<div class="card panelcard cartpanel" style="font-size: small; margin-top: 30px">
 				<div class="card-body">
 					<c:forEach items="${cartprods}" var="item" begin="0"
 						end="${cartitems.size() }">

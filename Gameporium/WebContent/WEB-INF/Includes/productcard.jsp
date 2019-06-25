@@ -23,7 +23,7 @@
 		  </div>
 		  <div class="pccardbody card-body">
 		    <div class="card-title">
-		    	<a style="color: #F0D628" href="singleProduct?selProd=${item.codiceProdotto}&selCat=${item.codCategoria}"><b>${item.titolo}</b></a>
+		    	<a class="item-titolo"style="color: #F0D628" href="singleProduct?selProd=${item.codiceProdotto}&selCat=${item.codCategoria}"><b>${item.titolo}</b></a>
 		    </div>
 			<div class="row form-group">
 				<div class="col-6">	
