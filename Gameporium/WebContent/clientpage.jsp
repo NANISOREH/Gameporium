@@ -55,18 +55,18 @@
 						<div class="sectionstyle">Dati utente</div>
 						
 						<div class="dataform">
-							<form action="register" name="registerform" method="post" id="reg">
+							<form action="edituser" name="editform" method="post" id="edit">
 								<div class="form-group">
 									<label for="nome">Nome</label> <input type="text"
-										class="form-control" id="nome" name="name" value="${user.nome}"
+										class="form-control" id="nome" name="nome" value="${user.nome}"
 										required> <label for="nome">Cognome</label> <input
-										type="text" class="form-control" id="cognome" name="surname"
+										type="text" class="form-control" id="cognome" name="cognome"
 										value="${user.cognome}" required>
 								</div>
 	
 								<div class="form-group">
 									<label for="username">Username</label> <input type="text"
-										class="form-control" id="username" name="user"
+										class="form-control" id="username" name="username"
 										value="${user.username}" required>
 								</div>
 	
@@ -95,7 +95,7 @@
 									</label>
 								</div>
 								<div class="form-group" style="float: center">
-									<button type="button"
+									<button type="submit"
 										onclick="validateRegister(document.registerform)"
 										class="btn btn-success btn-lg btn-block"
 										style="max-width: 400px;">Modifica dati</button>
@@ -292,76 +292,6 @@
 				
 					</c:when>
 					
-					<c:when test="${userchoice=='indirizzi'}">
-					
-						<div class="sectionstyle">I miei indirizzi di spedizione</div>
-							
-						<div class="row">
-							<div class="col-lg-2"></div>
-							<div class="col-lg-8 col-xs-12">
-								
-	<%-- 							<c:forEach items="${cartprods}" var="item"> --%>
-										<%@include file="/WEB-INF/Includes/indirizzo.jsp"%>				
-	<%-- 							</c:forEach> --%>
-	
-								
-								<a data-toggle="collapse" href="#newcard" role="button" aria-expanded="false" aria-controls="newcard">
-									<i class="fas fa-caret-down"></i> Nuovo indirizzo
-								</a>
-	
-									<div class="row">
-										<div class="col">
-											<div class="collapse multi-collapse" id="newcard">
-	
-												<div class="card card-body">
-													<form>
-														<div class="form-row">
-															<div class="form-group col-md-3">
-																<label>Città</label> <input type="text" id="citta"
-																	class="form-control">
-															</div>
-															<div class="form-group col-md-4">
-																<label>Via</label> <input type="text" id="via"
-																	class="form-control">
-															</div>
-															<div class="form-group col-md-1"></div>
-															<div class="form-group col-md-2">
-																<label>N. civ.</label> <input type="text" id="nciv"
-																	class="form-control">
-															</div>
-															<div class="form-group col-md-2">
-																<label>CAP</label> <input type="text" id="cap"
-																	class="form-control">
-															</div>
-														</div>
-	
-														<a class="btn btn-primary" data-toggle="collapse"
-															href="#multiCollapseExample1" role="button"
-															aria-expanded="false"
-															aria-controls="multiCollapseExample1">Aggiungi</a>
-	
-													</form>
-												</div>							
-	
-											</div>
-	
-										</div>
-	
-									</div>
-								
-								<br><br>
-								<label for="sceltag">Seleziona predefinito</label>
-								<select class="form-control" id="sceltag" name="sceltag">
-							        <option>Indirizzo 1</option>
-							        <option>Indirizzo 2</option>
-							        <option>Indirizzo 3</option>
-							    </select>
-							
-							</div>
-						</div>
-			
-					</c:when>
-
 				</c:choose>
 
 			</div>

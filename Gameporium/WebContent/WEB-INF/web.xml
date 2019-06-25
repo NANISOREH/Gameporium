@@ -94,10 +94,14 @@
     <servlet-class>Controller.userarea.JsonRetrievalClienteServlet</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>EditUserServlet</servlet-name>
+    <servlet-class>Controller.userarea.EditUserServlet</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>partecipazioneServlet</servlet-name>
     <servlet-class>Controller.partecipazione.partecipazioneServlet</servlet-class>
-   </servlet>
-   <servlet>
+  </servlet>
+  <servlet>
     <servlet-name>PurchaseServlet</servlet-name>
     <servlet-class>Controller.purchase.PurchaseServlet</servlet-class>
   </servlet>
@@ -173,12 +177,16 @@
     <servlet-name>CartUpdateServlet</servlet-name>
     <url-pattern>/cartupdate</url-pattern>
   </servlet-mapping>
-    <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>partecipazioneServlet</servlet-name>
     <url-pattern>/partecipazione</url-pattern>
-    </servlet-mapping>
-   <servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>PurchaseServlet</servlet-name>
     <url-pattern>/purchase</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>EditUserServlet</servlet-name>
+    <url-pattern>/edituser</url-pattern>
   </servlet-mapping>
 </web-app>
