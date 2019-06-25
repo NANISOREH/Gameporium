@@ -37,6 +37,7 @@ public class CartUpdateServlet extends HttpServlet {
 			session.setAttribute("cart", cart);
 			session.setAttribute("cartcardinality", cart.cartCardinality());
 			session.setAttribute("totale", cart.getTotale());
+			session.setAttribute("iva", cart.getIva());
 		}
 
 		try {
@@ -57,6 +58,7 @@ public class CartUpdateServlet extends HttpServlet {
 			session.setAttribute("cart", cart);
 			session.setAttribute("cartcardinality", cart.cartCardinality());
 			session.setAttribute("totale", cart.getTotale());
+			session.setAttribute("iva", cart.getIva());
 
 		} catch (SQLException e) {
 			System.out.println("Error:" + e.getMessage());

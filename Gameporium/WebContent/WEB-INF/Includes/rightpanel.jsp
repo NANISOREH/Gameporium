@@ -15,6 +15,7 @@
 	<!-- inizio right panel -->
 	<div class="cartorder">
 		<c:set var="totale" value='${sessionScope["totale"]}' />
+		
 		<c:set var="cartprods" value='${sessionScope["cartitems"]}' />
 		<c:set var="currentUser" value='${sessionScope["currentSessionUser"]}' />
 
@@ -47,7 +48,7 @@
 
 					</c:forEach>
 
-					<br> <br> <br> <br> Totale: EUR ${totale }
+					<br> <br> <br> <br> Totale: EUR ${totale}<br>(IVA ${sessionScope.iva}€)
 					<c:if test="${accessDone}">
 						<form action="order.jsp">
 							<button
