@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS GameporiumDB;
 CREATE DATABASE GameporiumDB;
+ALTER DATABASE GameporiumDB character set utf8 collate utf8_general_ci;
 USE GameporiumDB;
-
 DROP TABLE IF EXISTS prodotto;
 USE GameporiumDB;
 CREATE TABLE prodotto (
