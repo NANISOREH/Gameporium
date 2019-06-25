@@ -19,6 +19,10 @@ body {
 	border-color:rgba(210,105,30);
 	
 }
+.btn-primary{
+	background-color: #E07D00;
+	border-color:rgba(210,105,30)
+}
 
 .opaque
 {
@@ -46,6 +50,11 @@ div.allpagecontainer {
 }
 
 a:link 
+{
+	color:#E07D00;
+}
+
+.dropdown-item 
 {
 	color:#E07D00;
 }

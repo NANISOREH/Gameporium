@@ -32,8 +32,9 @@
   .active-cyan-2 input[type=text]:not([readonly]) {
     border-bottom: 1px solid #E07D00;
     box-shadow: 0 1px 0 0 #E07D00;
-    background: #C0C0C0;	
+    background: rgb(20,20,20);	
 	border-color: transparent;
+	color: lightgrey;
   } 
   
   .msearch
