@@ -1,15 +1,12 @@
 package Model;
 import Beans.Bean;
 import Beans.BeanAmministratore;
-import Beans.BeanCliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.LinkedList;
-import java.time.*;
-
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;

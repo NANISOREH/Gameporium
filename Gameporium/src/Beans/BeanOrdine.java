@@ -6,42 +6,30 @@ import java.time.LocalDate;
 
 public class BeanOrdine extends Bean implements Serializable {
 	private static final long serialVersionUID = 1L;
-	int codiceOrdine, codiceSpedizione, codicePagamento;
-	String indirizzoSpedizione, tipoSpedizione, metodo, statoProdotti, indirizzoFatturazione, username;
+	int codiceOrdine;
+	Long metodo;
+	String indirizzoSpedizione, statoProdotti, username;
 	LocalDate dataSpedizione,dataOrdine;
 	BigDecimal importo;
 	
 	public BeanOrdine()
 	{
 		codiceOrdine=-1;
-		codiceSpedizione=-1;
-		codicePagamento=-1;
 		indirizzoSpedizione="";
-		tipoSpedizione="";
 		dataSpedizione=LocalDate.now();
 		dataOrdine=LocalDate.now();
 		importo = new BigDecimal("-1");
-		metodo="";
-		indirizzoFatturazione="";
+		metodo=(long) 11111111;
 		username="";
 	}
 
-	public String getMetodo() {
+	public Long getMetodo() {
 		return metodo;
 	}
 
-	public void setMetodo(String newMetodo) {
+	public void setMetodo(Long newMetodo) {
 		this.metodo =newMetodo;
 	}
-
-	public String getIndirizzoFatturazione() {
-		return indirizzoFatturazione;
-	}
-
-	public void setIndirizzoFatturazione(String newIndirizzoFatturazione) {
-		this.indirizzoFatturazione = newIndirizzoFatturazione;
-	}
-
 
 	public int getCodiceOrdine() {
 		return codiceOrdine;
@@ -51,36 +39,12 @@ public class BeanOrdine extends Bean implements Serializable {
 		this.codiceOrdine = newCodiceOrdine;
 	}
 
-	public int getCodiceSpedizione() {
-		return codiceSpedizione;
-	}
-
-	public void setCodiceSpedizione(int newCodiceSpedizione) {
-		this.codiceSpedizione = newCodiceSpedizione;
-	}
-
-	public int getCodicePagamento() {
-		return codicePagamento;
-	}
-
-	public void setCodicePagamento(int newCodicePagamento) {
-		this.codicePagamento = newCodicePagamento;
-	}
-
 	public String getIndirizzoSpedizione() {
 		return indirizzoSpedizione;
 	}
 
 	public void setIndirizzoSpedizione(String newIndirizzoSpedizione) {
 		this.indirizzoSpedizione = newIndirizzoSpedizione;
-	}
-
-	public String getTipoSpedizione() {
-		return tipoSpedizione;
-	}
-
-	public void setTipoSpedizione(String newTipoSpedizione) {
-		this.tipoSpedizione = newTipoSpedizione;
 	}
 
 	public LocalDate getDataSpedizione() {
@@ -125,10 +89,8 @@ public class BeanOrdine extends Bean implements Serializable {
 
 	@Override
 	public String toString() {
-		return "BeanOrdine [codiceOrdine=" + codiceOrdine + ", codiceSpedizione=" + codiceSpedizione
-				+ ", codicePagamento=" + codicePagamento + ", indirizzoSpedizione=" + indirizzoSpedizione
-				+ ", tipoSpedizione=" + tipoSpedizione + ", metodo=" + metodo + ", statoProdotti=" + statoProdotti
-				+ ", indirizzoFatturazione=" + indirizzoFatturazione + ", username=" + username + ", dataSpedizione="
+		return "BeanOrdine [codiceOrdine=" + codiceOrdine + ", indirizzoSpedizione=" + indirizzoSpedizione + ", metodo="
+				+ metodo + ", statoProdotti=" + statoProdotti + ", username=" + username + ", dataSpedizione="
 				+ dataSpedizione + ", dataOrdine=" + dataOrdine + ", importo=" + importo + "]";
 	}
 	
