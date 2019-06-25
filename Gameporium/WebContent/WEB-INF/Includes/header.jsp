@@ -75,7 +75,7 @@
 	<c:set var="accessDone" value='${sessionScope["accessDone"]}' />
 	<c:set var="loginSuccess" value='${param["loginSuccess"]}' />
 	<c:set var="currentUser" value='${sessionScope["currentSessionUser"]}' />
-	<c:set var="logoutDone" value='${requestScope["logoutDone"]}' />
+	<c:set var="logoutDone" value='${param["logoutDone"]}' />
 	<c:set var="isAdmin" value='${sessionScope["isAdmin"]}' />
 	<c:set var="orderDone" value='${param["orderDone"]}' />
 	<c:set var="editDone" value='${param["editDone"]}' />
@@ -150,16 +150,6 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-<%-- 			<c:set var="cartcard" value='${sessionScope["cartcardinality"]}' /> --%>
-<!-- 			<ul class="navbar-nav"> -->
-<!-- 				<li class="nav-item mr-auto carticon d-lg-none"> -->
-<!-- 					<a href="/Gameporium/cart.jsp"> -->
-<!--       					<i class="fas fa-shopping-cart" aria-hidden="true"></i> -->
-<%--       					<c:out value="${cartcard}"/> prod. --%>
-<!--       				</a> -->
-<!-- 				</li>  -->
-<!-- 			</ul>		 -->
-
 		
 		<a class="navbar-brand text-white-80" href="/Gameporium/home.jsp"><img
 			src="images/LOGOPLACEH.png" class="rounded mx-auto d-block"
@@ -228,19 +218,7 @@
 						<div class="dropdown-divider"></div>
 						<div style="text-align: center"><button class="btn btn-primary" type="submit">Logout</button></div>
 					</div></li>
-<!-- 					<div class="navbar-nav nav-item dropdown"> -->
-						
-<!-- 					<button type="button" id="dropdownMenu1" data-toggle="dropdown" -->
-<!-- 						class="btn btn-outline-secondary dropdown-toggle"> -->
-<!-- 						Benvenuto, amministratore! <span class="caret"></span> -->
-<!-- 					</button> -->
-					
-<!-- 						<form action="logout" method="get" class="dropdown-menu" aria-labelledby="navbarDropdown"> -->
-<!-- 							<a class="dropdown-item" style="text-align: left; " href="/Gameporium/adminpage.jsp">Area Amministratore</a> -->
-<!-- 							<div class="dropdown-divider"></div> -->
-<!-- 							<div style="text-align: center"><button class="btn btn-primary" type="submit">Logout</button></div> -->
-<!-- 						</form> -->
-<!-- 					</div> -->
+
 				</c:if>
 				<c:if test="${isAdmin != true}">
 					<li class="nav-item dropdown d-lg-none"><a
@@ -253,10 +231,11 @@
 						<a class="dropdown-item" style="text-align: left" href="/Gameporium/clientpage.jsp?azione=pagamento">Metodi di Pagamento</a>
 						<div class="dropdown-divider"></div>
 						
-						
+						<form action="logout" method="get">
 						<div style="text-align: center"><button class="btn btn-primary" type="submit">Logout</button></div>
+						</form>
 					</div></li>
-					<a class="dropdown-item" style="text-align: center" href="/Gameporium/cart.jsp">
+					<a class="dropdown-item d-lg-none" style="text-align: center" href="/Gameporium/cart.jsp">
 						Carrello <i class="fas fa-shopping-cart" aria-hidden="true"></i>
 					</a>
 				</c:if>
@@ -300,7 +279,7 @@
 				<li class="nav-item mr-auto carticon d-xs-block">
 					<a href="/Gameporium/cart.jsp" style="color: #E07D00;">
       					<i class="fas fa-shopping-cart" aria-hidden="true"></i>
-      					<c:out value="${cartcard}"/> prod.
+      					<c:out value="${cartcard}"/>
       				</a>
 				</li> 
 			</ul>

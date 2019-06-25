@@ -195,9 +195,9 @@
 
 								<div class="row">
 									<div class="col">
-										<div class="collapse multi-collapse" id="newcard">
+										<div class="collapse multi-collapse" id="newcard" >
 
-											<div class="card card-body">
+											<div class="card card-body" style="color:black">
 												<form action="pagamenti" id="insertform" name="insertform" method="post">
 													<div class="form-row">
 														<div class="form-group col-md-2">
