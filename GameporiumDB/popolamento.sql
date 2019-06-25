@@ -11,14 +11,7 @@ INSERT INTO cliente(nome,cognome,username,passwordU,recapito,cartaPred) VALUES
     ('Michela','De Lucia','Athos','Paperino','3694752198', '106');
     
 INSERT INTO amministratore(nome,cognome,username,passwordU,recapito) VALUES
-	('Caino','Savastano','Broslayer','hostatoio','123456789');
-    
-INSERT INTO corriere(codiceCorriere, costoSpedizione,nome) VALUES
-	(001, 5, 'BRT'),
-    (002, 3,'SDA'),
-    (003, 10,'TNT'),
-    (004, 5.5,'GLS'),
-    (005, 7, 'UPS');
+	('Luigi','Francese','admin','password','123456789');
     
 INSERT INTO evento(codiceEvento,nome,luogo,descrizione,dataEvento,ora,numeroPartecipanti,locandina) VALUES
 	(001, 'Fantaexpo','Parco dell Irno, SA','Torneo di Pokèmon GDC','2019/09/03','15:00:00',3,'fantaexpo.png'),
@@ -161,12 +154,7 @@ INSERT INTO prodotto(codiceProdotto, codiceCategoria, foto,titolo,disponibilita,
     ('Accessorio','Accessori per giochi di ruolo', 0087),
 	('Accessorio','Accessori per giochi di ruolo', 0088);
 
-    
 
-    
-
-
-    
 INSERT INTO gioco (codiceProdotto,nomeCategoria,descrizioneCategoria,durata,etaConsigliata,numgiocatori) VALUES
 	(0001,'Gioco','Gioco da tavolo','variabile',6,'2+'),
     (0002,'Gioco','Gioco di ruolo','variabile',14,'2+'),
@@ -261,22 +249,6 @@ INSERT INTO partecipazione(codiceEvento,username) VALUES
     (002,'Gongolo'),
     (001,'Gongolo');
     
-INSERT INTO recensione(username,codiceProdotto,testo) VALUES
-	('Gongolo', 0005,'fa schifo'),
-    ('Cucciolo', 0004,'divertente se stai fatto'),
-    ('Mammolo', 0002,'ho ingoiato dei pezzi'),
-    ('Eolo', 0003,'non adatto a chi ha un QI<80');
-
-INSERT INTO composizione(codiceOrdine,codiceProdotto,quantita) VALUES
-	(00001,0003,1),
-    (00002,0001,1),
-    (00002,0006,1),
-    (00003,0005,3);-- ipotizziamo uno sconto che da 30€ mi fa pagare 28
-    
-/*INSERT INTO pagamento(username,codiceP) VALUES
-	('Mammolo',111),
-    ('Mammolo',112),
-    ('Mammolo',113);*/
 
 
 INSERT INTO possiede(username,numCarta) VALUES
@@ -285,7 +257,3 @@ INSERT INTO possiede(username,numCarta) VALUES
     ('Mammolo',3333333333333333);
 
 
-/*INSERT INTO spedizione(username,codiceIndirizzo) VALUES
-	('Mammolo',01),
-    ('Mammolo',04);
-    ('Mammolo',04);*/

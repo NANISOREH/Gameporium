@@ -85,7 +85,7 @@
 								<div class="form-group">
 									<label for="pwconf">Conferma password</label> <input
 										type="password" class="form-control" name="confirmPass" id="confirmPass"
-										placeholder="Confirm Password" required>
+										placeholder="Conferma password" required>
 								</div>
 	
 								<div class="form-group">
