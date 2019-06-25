@@ -89,7 +89,7 @@
 					            <input type="password" class="form-control" name="pass" placeholder="Password (tra 7 e 20 caratteri)" required>
 					        </div>
 							<div class="form-group">
-					            <input type="password" class="form-control" name="confirmPass" placeholder="Confirm Password" required>
+					            <input type="password" class="form-control" name="confirmPass" placeholder="Conferma password" required>
 					        </div>        
 					        <div class="form-group center-block">
 								<label class="checkbox-inline">
