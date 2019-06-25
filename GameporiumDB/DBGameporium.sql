@@ -204,15 +204,15 @@ CREATE TABLE amministratore(
     primary key(username)
 );
 
-DROP TABLE IF EXISTS composizione;
-USE GameporiumDB;
-CREATE TABLE composizione(
-    codiceOrdine int,
-    codiceProdotto int,
-    quantita int,
-    foreign key (codiceProdotto) references prodotto (codiceProdotto)
-                                ON UPDATE CASCADE
-                                ON DELETE CASCADE,
-    foreign key (codiceOrdine) references ordine (codiceOrdine)
-                                ON UPDATE CASCADE
-                                ON DELETE CASCADE);
+-- DROP TABLE IF EXISTS composizione;
+-- USE GameporiumDB;
+-- CREATE TABLE composizione(
+--     codiceOrdine int,
+--     codiceProdotto int,
+--     quantita int,
+--     foreign key (codiceProdotto) references prodotto (codiceProdotto)
+--                                 ON UPDATE CASCADE
+--                                 ON DELETE CASCADE,
+--     foreign key (codiceOrdine) references ordine (codiceOrdine)
+--                                 ON UPDATE CASCADE
+--                                 ON DELETE CASCADE);
