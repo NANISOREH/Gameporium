@@ -3,7 +3,6 @@ jQuery(document).ready(function($){
 	
     $('.productcard').hover(
         function () {
-        	console.log("we")
         	$(this).children().children(".card-hover").animate({height: "0"},"slow");
         	$(this).children().children(".prod-des").removeClass("d-none")        	
         	        },

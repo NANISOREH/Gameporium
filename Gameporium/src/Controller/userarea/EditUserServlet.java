@@ -54,6 +54,8 @@ public class EditUserServlet extends HttpServlet {
 		String name = request.getParameter("nome");
 		String surname = request.getParameter("cognome");
 		
+		
+		
 		try 
 		{
 			cm.doUpdate(name,surname, user, pass, mail, lastUser);
@@ -63,6 +65,13 @@ public class EditUserServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		cliente.setNome(name);
+		cliente.setCognome(surname);
+		cliente.setUsername(user);
+		cliente.setPasswordU(pass);
+		cliente.setRecapito(mail);
+		session.setAttribute("currentSessionUser", cliente);
+
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/home.jsp?editDone=true");
 		dispatcher.forward(request, response);
 	}

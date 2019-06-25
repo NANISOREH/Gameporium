@@ -74,7 +74,7 @@ public class UserPresetServlet extends HttpServlet {
 				{
 					session.setAttribute("userFavSecureCode", ((BeanPagamento) b).getSecureCode());
 					session.setAttribute("userFavCircuito", ((BeanPagamento) b).getCircuito());
-					model.doUpdate("cartaPred", username, ((BeanPagamento) b).getNumCarta());
+					model.doUpdateCard("cartaPred", username, ((BeanPagamento) b).getNumCarta());
 					break;
 				}
 			}
