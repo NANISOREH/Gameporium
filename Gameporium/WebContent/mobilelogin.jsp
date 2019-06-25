@@ -64,9 +64,9 @@
 									type="submit" disabled>Accedi</button>
 								<hr class="my-4">
 								<button
-									class="btn btn-md btn-facebook btn-block text-uppercase" 
+									class="btn btn-primary btn-block btn-sm text-uppercase" 
 									type="button" onclick="window.location='/Gameporium/register.jsp';">
-									<i class="fab fa-facebook-f mr-2"></i> Registra un nuovo account
+									Registra un nuovo account
 								</button>
 							</form>
 						</div>

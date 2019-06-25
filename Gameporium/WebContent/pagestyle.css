@@ -22,8 +22,18 @@ body {
 }
 .btn-primary{
 	background-color: #E07D00;
-	border-color:rgba(210,105,30)
+	border-color:rgba(210,105,30);
 }
+
+.btn-primary:hover{
+	background-color: tomato;
+	border-color:rgba(210,105,30);
+}
+
+/* .btn-primary:active{ */
+/* 	background-color: #E07D00; */
+/* 	border-color:rgba(210,105,30); */
+/* } */
 
 .opaque
 {
@@ -104,6 +114,7 @@ sidebarmenu:link
 	table-layout: fixed;
 	word-wrap: break-word;
 	text-align: left;
+	color:lightgray;
 }
 .listproduct {
 	background-color: rgb(0,0,0,0.0)	
@@ -217,31 +228,28 @@ div#mlcenter {
 /*mobilelogin*/
 
 /*home*/
-	.fadimg
-    {
-    	width:auto; 
-    	height:300px;
-    }
-    
-    .mySlides
-    {
-    	text-align: center;	
-    }
-    
-    .slideshow-container
-    {
-    	background-color: lightgray;
-    	border: 1px solid lightgray;
-    	border-radius: 25px;
-    	padding:0px;
-    }
-	
-	a.offnovlink
-	{
-		float: right;
-	}
+.fadimg
+   {
+   	width:auto; 
+   	height:300px;
+   }
+   
+   .mySlides
+   {
+   	text-align: center;	
+   }
+   
+   .slideshow-container
+   {
+   	background-color: lightgray;
+   	border: 1px solid lightgray;
+   	border-radius: 25px;
+   	padding:0px;
+   }
 
-a.offnovlink {
+a.offnovlink
+{
+	color:#E07D00;
 	float: right;
 }
 
