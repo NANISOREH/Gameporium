@@ -73,6 +73,8 @@
 	<c:set var="logoutDone" value='${requestScope["logoutDone"]}' />
 	<c:set var="isAdmin" value='${sessionScope["isAdmin"]}' />
 	<c:set var="orderDone" value='${param["orderDone"]}' />
+	<c:set var="editDone" value='${param["editDone"]}' />
+	
 	
 				
 	<c:if test="${loginFail}">
@@ -116,6 +118,13 @@
 		<div class="popup alert alert-success alert-dismissible fade-in" role="success">
 		  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		  Ordine effettuato correttamente! È possibile consultare lo stato dell'ordine in "I miei ordini"
+		</div>
+	</c:if>
+	
+	<c:if test="${editDone}">
+		<div class="popup alert alert-success alert-dismissible fade-in" role="success">
+		  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			Hai cambiato correttamente i tuoi dati!
 		</div>
 	</c:if>
 	
