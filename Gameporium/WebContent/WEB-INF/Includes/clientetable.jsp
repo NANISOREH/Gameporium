@@ -12,7 +12,7 @@
 
 
       <tr>
-        <td><a href="#">${item.username}</a></td>
+        <td>${item.username}</td>
         <td>${item.nome}</td>
         <td>${item.cognome}</td>
         <td>${item.recapito}</td>

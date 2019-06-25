@@ -45,7 +45,7 @@
 
 <body>
 
-	<div class="container-fluid bg-light">
+	<div class="container-fluid ">
 
 		<!-- sistema di colonne -->
 
@@ -57,7 +57,7 @@
 
 			<div
 
-				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light">
+				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block ">
 
 				<%@include file="/WEB-INF/Includes/leftpanel.jsp"%>
 
@@ -69,7 +69,7 @@
 
 			<!-- colonna centrale -->
 
-			<div id="pscenter" class="col-lg-8 col-md-12 col-sm-12 col-xs-12 bg-light">
+			<div id="pscenter" class="col-lg-8 col-md-12 col-sm-12 col-xs-12 ">
 
 				<div class="container-fluid clearfix">	
 
@@ -116,7 +116,7 @@
 
 			<div
 
-				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light">
+				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block ">
 
 				<%@include file="/WEB-INF/Includes/rightpanel.jsp"%>
 

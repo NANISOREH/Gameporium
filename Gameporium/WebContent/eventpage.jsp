@@ -27,72 +27,74 @@
 
 <link rel="stylesheet" href="pagestyle.css" type="text/css">
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@include file="/WEB-INF/Includes/header.jsp"%>
 </head>
 
 <body>
 <%-- 	<c:set var="currentProduct" value='${requestScope["currentProduct"]}' /> --%>
-
-	<div class="allpagecontainer container-fluid bg-light">
+	<div class= "header">
+	<%@include file="/WEB-INF/Includes/header.jsp"%>
+	</div>
+	
+	<div class="allpagecontainer container-fluid ">
 		<!-- sistema di colonne -->
 		<div class="row">
 			<!-- colonna sinistra -->
-			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light">
+			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block ">
 				<%@include file="/WEB-INF/Includes/leftpanel.jsp"%>
 			</div>
 			<!-- fine colonna sinistra -->
 			
 			<!-- colonna centrale -->	
-			<div id="centerproductpage" class="col-lg-8 col-md-12 bg-light">
+			<div id="centerproductpage" class="col-lg-8 col-md-12 ">
 
 					<div class="container-fluid">
 						<div class="row">
 							
-							<div class="col-lg-4 col-xs-12 bg-light">
+							<div class="col-lg-4 col-xs-12 ">
 								<a  id="fotoprodotto" href="#"><img
 									src="images/${evento.locandina}" class="rounded mx-auto d-block fotoprodotto"
 									alt="Responsive image">
 								</a>
 							</div>
 							
-							<div class="productinfo col-lg-8 col-xs-12 bg-light">
+							<div class="productinfo col-lg-8 col-xs-12 ">
 								 <ul class="list-group list-group-flush" >
 								 	
-								 	<li class="list-group-item bg-light">
+								 	<li class="list-group-item listevent">
 										<h4>${evento.nome}</h4>
 								 	</li>
 								 
-								 	<li class="list-group-item bg-light">
+								 	<li class="list-group-item listevent">
 								 		<div class="row">
 								 			<div class="nomeriga col-lg-5 col-xs-12">Cod. evento.:</div>
 									 		<div class="col-lg-7 col-xs-12">#${evento.codiceEvento}</div>
 								 		</div>
 								 	</li>
-								 	<li class="list-group-item bg-light">
+								 	<li class="list-group-item listevent">
 								 		<div class="row">
 								 			<div class="nomeriga col-lg-5">Data:</div>
 									 		<div class="col-lg-7">${evento.dataEvento}</div>
 								 		</div>
 								 	</li>
-								 	<li class="list-group-item bg-light">
+								 	<li class="list-group-item listevent">
 								 		<div class="row">
 								 			<div class="nomeriga col-lg-5">Ora:</div>
 									 		<div class="col-lg-7">${evento.ora}</div>
 								 		</div>
 								 	</li>
-								 	<li class="list-group-item bg-light">
+								 	<li class="list-group-item listevent">
 								 		<div class="row">
 								 			<div class="nomeriga col-lg-5">Luogo:</div>
 									 		<div class="col-lg-7">${evento.luogo}</div>
 								 		</div>
 								 	</li>
-								 	<li class="list-group-item bg-light">
+								 	<li class="list-group-item listevent">
 								 		<div class="row">
 								 			<div class="nomeriga col-lg-5">Descrizione:</div>
 									 		<div class="col-lg-7">${evento.descrizione}</div>
 								 		</div>
 								 	</li>
-								 	<li class="list-group-item bg-light">
+								 	<li class="list-group-item listevent">
 								 		<div class="row">
 								 			<div class="nomeriga col-lg-5">Partecipanti:</div>
 								 			
@@ -100,7 +102,7 @@
 									 		
 								 		</div>
 								 	</li>
-								 	<li class="list-group-item bg-light">
+								 	<li class="list-group-item listevent">
 								 		<div class="row">
 								 			<c:set var="user" value='${sessionScope["currentSessionUser"]}'/>
 							 				<c:set var="accessDone" value='${sessionScope["accessDone"]}' />
@@ -139,7 +141,7 @@
 
 			<!-- colonna destra -->
 			<div
-				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light" id="rightpanel">
+				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block" id="rightpanel">
 				<%@include file="/WEB-INF/Includes/rightpanel.jsp"%>
 			</div>
 			<!-- fine sistema di colonne -->

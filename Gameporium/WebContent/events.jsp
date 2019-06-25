@@ -28,7 +28,6 @@
 
   <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
-  <%@include file="/WEB-INF/Includes/header.jsp" %>
 
   <link rel="stylesheet" href="pagestyle.css" type="text/css">
 
@@ -38,7 +37,11 @@
 
 <body>
 
-  <div class="allpagecontainer container-fluid bg-light">
+	<div class= "header">
+	<%@include file="/WEB-INF/Includes/header.jsp"%>
+	</div>
+	
+  <div class="allpagecontainer container-fluid">
 
     <!-- sistema di colonne -->
 
@@ -46,7 +49,7 @@
 
       <!-- colonna sinistra -->
 
-    	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light">
+    	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block ">
 
          <%@include file="/WEB-INF/Includes/leftpanel.jsp" %>  
 
@@ -56,7 +59,7 @@
 
 	<!-- colonna centrale -->
 
-       <div id="evcenter" class="col-lg-8 col-md-12 col-sm-12 col-xs-12 bg-light">
+       <div id="evcenter" class="col-lg-8 col-md-12 col-sm-12 col-xs-12 ">
 
 		
 
@@ -100,7 +103,7 @@
 
     <!-- colonna destra -->
 
-      	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light">
+      	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block">
 
        <%@include file="/WEB-INF/Includes/rightpanel.jsp" %>
 

@@ -58,21 +58,21 @@
 	
 	<jsp:include page="/preset"/>
 		
-	<div class="allpagecontainer container-fluid bg-light">
+	<div class="allpagecontainer container-fluid ">
 
 		<!-- sistema di colonne -->
 		<div class="row">
 
 			<!-- colonna sinistra -->
 			<div
-				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light">
+				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block ">
 				<%@include file="/WEB-INF/Includes/leftpanel.jsp"%>
 			</div>
 			<!-- fine colonna sinistra -->
 
 			<!-- colonna centrale -->
 
-			<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 bg-light">
+			<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 ">
 				<c:set var="user" value='${sessionScope["currentSessionUser"]}' />
 				
 				<div class="sectionstyle">
@@ -253,7 +253,7 @@
 			<!-- colonna destra -->
 
 			<div
-				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light">
+				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block">
 
 				<%@include file="/WEB-INF/Includes/rightpanel.jsp"%>
 

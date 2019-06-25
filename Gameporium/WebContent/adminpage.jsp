@@ -4,7 +4,7 @@
 <c:set var="isAdmin" value='${sessionScope["isAdmin"]}' />
 
 <c:if test="${isAdmin}">
-<head>
+	<head>
 <title>Gameporium</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,33 +21,38 @@
 
 
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@include file="/WEB-INF/Includes/header.jsp"%>
 
-</head>
+	</head>
 
-	<body style="background-color: #343a40">
-		<div class="container-fluid bg-light" style="margin-top: 0">
-			<!-- sistema di colonne -->
-			<div class="row">
-				
-				<!-- colonna sinistra -->
-				<div
-					class="col-lg-4 col-md-4 col-sm-6 col-xs-6 bg-light"
-					style="margin-bottom: 500px">
-					<%@include file="/WEB-INF/Includes/leftpaneladmin.jsp"%>
-				</div>
-				<!-- fine colonna sinistra -->
-				
-				<!-- colonna centrale -->
-				<div class="col-lg-8 col-md-8 col-sm-6 col-xs-6 bg-light"
-					style="margin-bottom: 1100px; margin-top: 30px">
-				</div>
-				<!-- fine colonna centrale -->
-	
-				<!-- fine sistema di colonne -->
-			</div>
+	<body>
+
+		<div class="header">
+			<%@include file="/WEB-INF/Includes/header.jsp"%>
 		</div>
-		<%@include file="/WEB-INF/Includes/footer.jsp"%>
+		<div class="allpagecontainer container">
+
+			<div class="container" style="margin-top: 0">
+				<!-- sistema di colonne -->
+				<div class="row">
+
+					<!-- colonna sinistra -->
+					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6"
+						style="margin-bottom: 500px">
+						<%@include file="/WEB-INF/Includes/leftpaneladmin.jsp"%>
+					</div>
+					<!-- fine colonna sinistra -->
+
+					<!-- colonna centrale -->
+					<div class="col-lg-8 col-md-8 col-sm-6 col-xs-6"
+						style="margin-bottom: 1100px; margin-top: 30px"></div>
+					<!-- fine colonna centrale -->
+
+					<!-- fine sistema di colonne -->
+				</div>
+			</div>
+
+			<%@include file="/WEB-INF/Includes/footer.jsp"%>
+		</div>
 	</body>
 </c:if>
 </html>

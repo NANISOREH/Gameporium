@@ -244,7 +244,7 @@ public class adminServlet extends HttpServlet {
 				String eta=request.getParameter("eta");
 				if(Integer.parseInt(eta)!=bg.getEtaConsigliata()) {
 					try {
-						modelg.doUpdate("eta", codP, eta);
+						modelg.doUpdate("etaConsigliata", codP, eta);
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
@@ -288,8 +288,10 @@ public class adminServlet extends HttpServlet {
 			
 		}
 			//Visualizza catalogo
+		else if(operation==4){	
+			System.out.println("retrieve all");
 			Collection <Bean> bpr = null;
-			try {
+				try {
 				bpr=model.doRetrieveAll("codiceProdotto");
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -297,6 +299,7 @@ public class adminServlet extends HttpServlet {
 			request.setAttribute("elencoProdotti", bpr);
 			
 			return;
+		}
 	}
 
 

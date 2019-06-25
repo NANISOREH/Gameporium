@@ -18,7 +18,6 @@
 
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@include file="/WEB-INF/Includes/header.jsp"%>
 	<script src="scripts/cart.js" type="text/javascript"></script>
 	<script src="scripts/formvalidation.js" type="text/javascript"></script>
 	<script src="scripts/payment.js" type="text/javascript"></script>
@@ -26,20 +25,24 @@
 
 </head>
 
-<body style="background-color: #343a40">
-	<div class="allpagecontainer container-fluid bg-light">
+<body>
+
+	<div class= "header">
+	<%@include file="/WEB-INF/Includes/header.jsp"%>
+	</div>
+	<div class="allpagecontainer container-fluid ">
 		<!-- sistema di colonne -->
 		<div class="row">
 
 			<!-- colonna sinistra -->
 			<div
-				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light">
+				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block ">
 				<%@include file="/WEB-INF/Includes/leftpanel.jsp"%>
 			</div>
 			<!-- fine colonna sinistra -->
 
 			<!-- colonna centrale -->
-			<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 bg-light" id="pagacenter">
+			<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 " id="pagacenter">
 				
 				
 				<c:set var="user" value='${sessionScope["currentSessionUser"]}' />
@@ -296,7 +299,7 @@
 
 			<!-- colonna destra -->
 			<div
-				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light">
+				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block ">
 				<%@include file="/WEB-INF/Includes/rightpanel.jsp"%>
 			</div>
 			<!-- fine sistema di colonne -->

@@ -7,10 +7,10 @@
 <!-- Footer -->
 </head>
 <body>
-<footer class="page-footer font-small blue pt-4 bg-dark">
+<footer class="font-small blue pt-4">
 
   <!-- Footer Links -->
-  <div class="container-fluid text-center bg-dark text-white-50 text-md-left">
+  <div class="container-fluid page-footer text-center text-white-50 text-md-left">
 
     <!-- Grid row -->
     <div class="row">
