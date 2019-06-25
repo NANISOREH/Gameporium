@@ -35,7 +35,7 @@
 				<c:when test="${item.disponibilita>0 }">
 				<div class = "col-6">				
 				 	<form name="quantity" id="${item.codiceProdotto}" action="cartservlet" onkeydown="return event.key != 'Enter';">
-			 			<input class="quantInput" type="number" name="quantita" value="1">
+			 			<input class="quantInput" type="hidden" name="quantita" value="1">
 						<button class="quantButton text-uppercase" name="acquistabtn" id="acquistabtn" 
 							onclick ="addToCart(this.value)" 
 							type="button" value="${item.codiceProdotto}" ><i class="fas fa-shopping-cart"></i>

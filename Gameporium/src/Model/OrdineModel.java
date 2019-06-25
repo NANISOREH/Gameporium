@@ -33,15 +33,17 @@ public class OrdineModel implements Model {
 
 	private static final String TABLE_NAME = "ordine";
 
-	@Override
-	public synchronized void doSave(Bean ordine) throws SQLException {
+	public synchronized void customDoSave(Bean ordine, String username) throws SQLException {
 		
 		BeanOrdine o=(BeanOrdine) ordine;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
+		PreparedStatement relStatement = null;
 
 		String insertSQL = "INSERT INTO " + OrdineModel.TABLE_NAME
-				+ " (codiceOrdine, indirizzoSpedizione, dataOrdine, dataSpedizione, importo, statoProdotti, metodo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+				+ " (codiceOrdine, indirizzoSpedizione, dataOrdine, dataSpedizione, importo, statoProdotti, metodo) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		
+		String insertRel = "INSERT INTO effettua(username,codiceOrdine) VALUES (?, ?)";
 
 		try {
 			connection = ds.getConnection();
@@ -54,6 +56,11 @@ public class OrdineModel implements Model {
 			preparedStatement.setString(6, o.getStatoProdotti());
 			preparedStatement.setLong(7, o.getMetodo());
 			preparedStatement.executeUpdate();
+			
+			relStatement = connection.prepareStatement(insertRel);
+			relStatement.setString(1, username);
+			relStatement.setLong(2, o.getCodiceOrdine());
+			relStatement.executeUpdate();
 
 			connection.commit();
 		} finally {
@@ -406,6 +413,12 @@ public synchronized int getMaxOrderCode() throws SQLException {
 		
 		return maxOrderCode;
 	}
+
+@Override
+public void doSave(Bean bean) throws SQLException {
+	// TODO Auto-generated method stub
+	
+}
 
 
 }
