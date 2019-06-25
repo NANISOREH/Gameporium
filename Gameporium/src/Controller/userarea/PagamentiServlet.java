@@ -24,8 +24,6 @@ public class PagamentiServlet extends HttpServlet {
 	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("prova");
-		
 		HttpSession session = request.getSession();
 		String username=request.getParameter("username");
 		String securecode=request.getParameter("securecode");
@@ -67,11 +65,7 @@ public class PagamentiServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession();
 		BeanPagamento metodo = new BeanPagamento();
-		Collection<Bean> bo=null;
-		
-		String username=request.getParameter("username");
 
 		if(request.getParameter("insert")!= null)
 		{

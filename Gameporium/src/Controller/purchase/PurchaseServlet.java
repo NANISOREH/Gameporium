@@ -49,21 +49,19 @@ public class PurchaseServlet extends HttpServlet {
 		HttpSession session=request.getSession();
 		BeanOrdine b = new BeanOrdine();
 		
-//		String username=request.getParameter("username");
+		String username=request.getParameter("username");
 		String jsonAddress=request.getParameter("jsonaddress");
 		String importo=request.getParameter("importo");
 		String metodo=request.getParameter("metodoselect");
 		
 		Cart cart=(Cart) session.getAttribute("cart");
 		String statoProdotti = cart.formatStatoProdotti();
-		System.out.println(statoProdotti + "\n\n\n");
-		System.out.println(metodo);
 		
 		try {
 		b.setCodiceOrdine(om.getMaxOrderCode()+1);
 		b.setIndirizzoSpedizione(jsonAddress);
 		b.setDataOrdine(LocalDate.now());
-		b.setDataSpedizione(null);
+		b.setDataSpedizione(LocalDate.now().plusDays(3));
 		b.setImporto(new BigDecimal(importo));
 		b.setStatoProdotti(statoProdotti);
 		
@@ -78,13 +76,18 @@ public class PurchaseServlet extends HttpServlet {
 			}
 		}
 		
-		om.doSave(b);
+		System.out.println(b);
+		om.customDoSave(b, username);
 		
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
+		session.removeAttribute("cart");
+		session.removeAttribute("cartitems");
+		session.removeAttribute("cartcardinality");
+		session.removeAttribute("totale");
 		
 		response.sendRedirect("/Gameporium/home.jsp?orderDone=true");
 	}

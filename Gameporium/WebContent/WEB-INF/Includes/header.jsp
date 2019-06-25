@@ -72,6 +72,7 @@
 	<c:set var="currentUser" value='${sessionScope["currentSessionUser"]}' />
 	<c:set var="logoutDone" value='${requestScope["logoutDone"]}' />
 	<c:set var="isAdmin" value='${sessionScope["isAdmin"]}' />
+	<c:set var="orderDone" value='${param["orderDone"]}' />
 	
 				
 	<c:if test="${loginFail}">
@@ -108,6 +109,13 @@
 		<div class="alert alert-warning alert-dismissible" role="alert">
 		  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		  <strong>Attenzione!</strong> Sei loggato come amministratore (${currentUser.username}).
+		</div>
+	</c:if>
+	
+	<c:if test="${orderDone}">
+		<div class="popup alert alert-success alert-dismissible fade-in" role="success">
+		  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		  Ordine effettuato correttamente! È possibile consultare lo stato dell'ordine in "I miei ordini"
 		</div>
 	</c:if>
 	

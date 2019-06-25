@@ -164,7 +164,7 @@ DROP TABLE IF EXISTS ordine;
 USE GameporiumDB;
 CREATE TABLE ordine(
     codiceOrdine    int,
-    indirizzoSpedizione varchar(50) references indirizzo(codiceIndirizzo),
+    indirizzoSpedizione varchar(500) references indirizzo(codiceIndirizzo),
     dataOrdine      date,
     dataSpedizione  date,
     importo         decimal(5,2),
