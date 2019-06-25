@@ -252,8 +252,13 @@
 						<a class="dropdown-item" style="text-align: left" href="/Gameporium/clientpage.jsp?azione=ordini">I miei Ordini</a>
 						<a class="dropdown-item" style="text-align: left" href="/Gameporium/clientpage.jsp?azione=pagamento">Metodi di Pagamento</a>
 						<div class="dropdown-divider"></div>
+						
+						
 						<div style="text-align: center"><button class="btn btn-primary" type="submit">Logout</button></div>
 					</div></li>
+					<a class="dropdown-item" style="text-align: center" href="/Gameporium/cart.jsp">
+						Carrello <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+					</a>
 				</c:if>
 				</c:if>
 	

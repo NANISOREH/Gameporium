@@ -30,7 +30,7 @@
 	<c:set var="mailPresent" value='${requestScope["mailPresent"]}' />
 	<c:set var="userPresent" value='${requestScope["userPresent"]}' />
 
-	<div class="allpagecontainer container-fluid bg-light">
+	<div class="allpagecontainer container-fluid ">
 	<c:if test="${notRegistered}">
 		<div class="alert alert-warning alert-dismissible fade-in" role="alert">
 		  <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -59,14 +59,14 @@
 			
 			<!-- colonna sinistra -->
 			<div
-				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light">
+				class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block ">
 				<%@include file="/WEB-INF/Includes/leftpanel.jsp"%>
 			</div>
 			<!-- fine colonna sinistra -->
 			
 			<!-- colonna centrale -->
 
-			<div class="col-lg-8 col-md-12 bg-light">
+			<div class="col-lg-8 col-md-12 ">
 				<div class="row">
 					<div id="regcenter" class = "container col-lg-6">
 					    <form id="reg" action="register" name="registerform" method="post" id="reg">
