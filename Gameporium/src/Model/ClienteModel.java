@@ -82,7 +82,7 @@ public class ClienteModel implements Model {
 			preparedStatement.setString(1, username);
 
 			ResultSet rs = preparedStatement.executeQuery();
-
+			
 			while (rs.next()) {
 				bean.setCognome(rs.getString("cognome"));
 				bean.setNome(rs.getString("nome"));
@@ -248,28 +248,25 @@ public class ClienteModel implements Model {
 		return Cliente;
 	}
 	
-	public synchronized void doUpdate(String column, String username, Object value) throws SQLException
+	public synchronized void doUpdate(String column1, String column2, String column3, String column4, String column5, String username) throws SQLException
 	{
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
-		String selectSQL = "UPDATE "+ ClienteModel.TABLE_NAME + " as c SET "+column+"= ? WHERE c.username= ?";
+		String selectSQL ="UPDATE "+ClienteModel.TABLE_NAME+" SET nome=?, cognome=?, username=?, passwordU=?, recapito=? WHERE username='"+username+"'";
+
 
 		try {
-				connection = ds.getConnection();
-				preparedStatement = connection.prepareStatement(selectSQL);
-				
-				if(value instanceof String) {
-					String val = (String) value;
-					preparedStatement.setString(1, val);
-					preparedStatement.setString(2, username);
-				}
-				if(value instanceof Long) {
-					long val= (Long) value;
-					preparedStatement.setLong(1, val);
-					preparedStatement.setString(2, username);
-				}
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, column1);
+			preparedStatement.setString(2, column2);
+			preparedStatement.setString(3, column3);
+			preparedStatement.setString(4, column4);
+			preparedStatement.setString(5, column5);
 
+
+				
 				preparedStatement.executeUpdate();
 				connection.commit();
 		    }

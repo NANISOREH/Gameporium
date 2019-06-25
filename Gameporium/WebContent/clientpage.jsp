@@ -52,18 +52,18 @@
 						<div class="sectionstyle">Dati utente</div>
 						
 						<div class="dataform">
-							<form action="register" name="registerform" method="post" id="reg">
+							<form action="edituser" name="editform" method="post" id="edit">
 								<div class="form-group">
 									<label for="nome">Nome</label> <input type="text"
-										class="form-control" id="nome" name="name" value="${user.nome}"
+										class="form-control" id="nome" name="nome" value="${user.nome}"
 										required> <label for="nome">Cognome</label> <input
-										type="text" class="form-control" id="cognome" name="surname"
+										type="text" class="form-control" id="cognome" name="cognome"
 										value="${user.cognome}" required>
 								</div>
 	
 								<div class="form-group">
 									<label for="username">Username</label> <input type="text"
-										class="form-control" id="username" name="user"
+										class="form-control" id="username" name="username"
 										value="${user.username}" required>
 								</div>
 	
@@ -92,7 +92,7 @@
 									</label>
 								</div>
 								<div class="form-group" style="float: center">
-									<button type="button"
+									<button type="submit"
 										onclick="validateRegister(document.registerform)"
 										class="btn btn-success btn-lg btn-block"
 										style="max-width: 400px;">Modifica dati</button>
