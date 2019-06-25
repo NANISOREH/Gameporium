@@ -173,17 +173,18 @@ function validateCreditCard(form)
 	}
 }
 
-function limitCvv (field)
+function limitField (field, max)
 {
-    if (field.value.length > 3) {
-        field.value = field.value.slice(0,3); 
-    }
-}
-
-function limitCap(field)
-{
-    if (field.value.length > 5) {
-        field.value = field.value.slice(0,5); 
+	var numOnly = /^[0-9]{0,30}$/;
+	
+	if (!field.value.match(numOnly))
+	{
+		alert("no");
+		field.value = field.value.slice(0,field.value.length); 
+	}
+	
+    if (field.value.length > max) {
+        field.value = field.value.slice(0,max); 
     }
 }
 
@@ -212,9 +213,15 @@ function startOrder()
 		
 		var indirizzo={via:form.indirizzo.value, civ:form.ncivico.value, cap:form.cap.value, citta: form.citta.value};
 		var jsonAddress=JSON.stringify(indirizzo);
-		var metodo=document.getElementById("pselect").value;
-		var hiddenMetodo = document.getElementById("metodoselect");
-		hiddenMetodo.value=metodo;
+		var campoIndirizzo = document.getElementById("jsonaddress");
+		alert(campoIndirizzo.value);
+		campoIndirizzo.value = jsonAddress;
+		alert(campoIndirizzo.value);
+		
+		var metodo = document.getElementById("metodoselect");
+		metodo.value=document.getElementById("pselect").value;
+		
+		form.submit();
 
 }
 

@@ -30,7 +30,6 @@ public class UserPresetServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		BeanCliente c = (BeanCliente) session.getAttribute("currentSessionUser");
 		String pred = Long.toString(c.getCartaPred());
-		System.out.println(pred);
 		String securecode = pred.substring(pred.length() - 4);
 		Collection<Bean> bo=null;
 		
@@ -54,6 +53,11 @@ public class UserPresetServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//setta la carta predefinita nel model
+		if(request.getParameter("doGetPlease")!= null)
+		{
+			doGet(request, response);
+			return;
+		}
 		
 		HttpSession session = request.getSession();
 		BeanCliente c = (BeanCliente) session.getAttribute("currentSessionUser");
