@@ -88,6 +88,7 @@ public class PurchaseServlet extends HttpServlet {
 		session.removeAttribute("cartitems");
 		session.removeAttribute("cartcardinality");
 		session.removeAttribute("totale");
+		session.removeAttribute("iva");
 		
 		response.sendRedirect("/Gameporium/home.jsp?orderDone=true");
 	}

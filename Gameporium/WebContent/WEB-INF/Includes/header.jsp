@@ -212,7 +212,6 @@
 						<a class="dropdown-item" style="text-align: left; " href="/Gameporium/clientpage.jsp?azione=dati">Dati Utente</a>
 						<a class="dropdown-item" style="text-align: left" href="/Gameporium/clientpage.jsp?azione=ordini">I miei Ordini</a>
 						<a class="dropdown-item" style="text-align: left" href="/Gameporium/clientpage.jsp?azione=pagamento">Metodi di Pagamento</a>
-						<a class="dropdown-item" style="text-align: left" href="/Gameporium/clientpage.jsp?azione=indirizzi">Indirizzi</a>
 						<div class="dropdown-divider"></div>
 						<div style="text-align: center"><button class="btn btn-primary" type="submit">Logout</button></div>
 					</div></li>
@@ -320,7 +319,6 @@
 							<a class="dropdown-item" style="text-align: left; " href="/Gameporium/clientpage.jsp?azione=dati">Dati Utente</a>
 							<a class="dropdown-item" style="text-align: left" href="/Gameporium/clientpage.jsp?azione=ordini">I miei Ordini</a>
 							<a class="dropdown-item" style="text-align: left" href="/Gameporium/clientpage.jsp?azione=pagamento">Metodi di Pagamento</a>
-							<a class="dropdown-item" style="text-align: left" href="/Gameporium/clientpage.jsp?azione=indirizzi">Indirizzi</a>
 							<div class="dropdown-divider"></div>
 							<div style="text-align: center"><button class="btn btn-primary" type="submit">Logout</button></div>
 						</form>
