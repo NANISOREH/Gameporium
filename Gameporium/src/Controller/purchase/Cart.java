@@ -3,6 +3,7 @@ package Controller.purchase;
 import Beans.*;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -27,9 +28,11 @@ public class Cart {
 	
 	public BigDecimal getTotale()
 	{
+		ivaTotale.setScale(2, RoundingMode.UNNECESSARY); 
 		ivaTotale = totale.multiply(new BigDecimal("0.22"));
+		System.out.println(ivaTotale);
 		
-		return totale.add(ivaTotale);
+		return totale.add(ivaTotale).setScale(2, RoundingMode.UNNECESSARY);
 	}
 	
 
@@ -62,7 +65,6 @@ public class Cart {
 		totale=totale.subtract(selected.getProduct().getPrezzo().multiply(new BigDecimal(selected.getQuantita())));
 	//	oldquantita=selected.getQuantita();
 		selected.setQuantita(selected.getQuantita()+quant);
-		System.out.println("Nel carrello ci stanno "+selected.getQuantita());
 		selected.setPrezzoTotale(selected.getProduct().getPrezzo().multiply(new BigDecimal(selected.getQuantita())));
 		
 		totale=totale.add(selected.getProduct().getPrezzo().multiply(new BigDecimal (selected.getQuantita())));
@@ -75,17 +77,9 @@ public class Cart {
 			if(bce.getCodP()==b.getCodP())
 			{
 				totale=totale.subtract(b.getProduct().getPrezzo().multiply(new BigDecimal(b.getQuantita())));
-
 				b.setQuantita(quant);
-				System.out.println("Nel carrello ci stanno "+b.getQuantita());
-
 				b.setPrezzoTotale(b.getProduct().getPrezzo().multiply(new BigDecimal (quant)));
-				System.out.println("Totale: "+totale);
-
 				totale=totale.add(b.getProduct().getPrezzo().multiply(new BigDecimal (b.getQuantita())));
-				System.out.println("Totale: "+totale);
-
-				
 			}
 	}	
 	
@@ -149,6 +143,11 @@ public class Cart {
 		}
 		
 		return format + "\n]";
+	}
+
+	public Object getIva() {
+		// TODO Auto-generated method stub
+		return ivaTotale.setScale(2, RoundingMode.UNNECESSARY);
 	}
 	
 }
