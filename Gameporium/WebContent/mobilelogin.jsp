@@ -22,16 +22,16 @@
 </head>
 
 <body>
-	<div class="allpagecontainer container-fluid bg-light">
+	<div class="allpagecontainer container-fluid ">
 		<!-- sistema di colonne -->
 		<div class="row">
 			<!-- colonna sinistra -->
-			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block bg-light">
+			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 d-none d-lg-block ">
 				<%@include file="/WEB-INF/Includes/leftpanel.jsp"%>
 			</div>
 			<!-- fine colonna sinistra -->
 			<!-- colonna centrale -->
-			<div id="mlcenter" class="col-lg-8 col-md-12 bg-light">
+			<div id="mlcenter" class="col-lg-8 col-md-12 ">
 
 				<div class="container">
 					<div class="row">

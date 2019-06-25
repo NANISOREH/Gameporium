@@ -28,10 +28,10 @@
 
 						<div class="cartable">
 
-							<table class="table" style="padding: 0px; font-size: 12, 5px;">
+							<table class="table cartableright">
 								<tbody>
 									<tr>
-										<td><i class="fas fa-shopping-cart"></i></td>
+										<td></td>
 										<td scope="row" class="col-lg-4"><a
 											href="singleProduct?selProd=${item.product.codiceProdotto}&selCat=${item.product.codCategoria}">${item.product.titolo }</a>
 										</td>

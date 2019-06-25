@@ -77,9 +77,9 @@
 
 				<!-- container novità e offerte -->
 
-					<div class="container-fluid clearfix" style="margin-top: 30px;">
+					<div class="container-fluid clearfix" style="margin-top: 30px">
 
-			 		<div class="slideshow-container">
+			 		<div class="slideshow-container d-none d-md-block">
 
 						<div class="mySlides fade">
 						  <div class="numbertext">1 / 3</div>
@@ -99,7 +99,7 @@
 					</div>
 						<br>
 						
-						<div style="text-align:center">
+						<div class="d-none d-md-block"style="text-align:center">
 						  <span class="dot"></span> 
 						  <span class="dot"></span> 
 						  <span class="dot"></span> 
