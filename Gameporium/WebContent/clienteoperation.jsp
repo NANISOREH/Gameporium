@@ -23,70 +23,68 @@
 	<%@include file="/WEB-INF/Includes/header.jsp"%>
 	</div>
 	
-	<div class="container-fluid bg-light" style="margin-top: 0">
+	<div class="container-fluid" style="margin-top: 0">
 		<!-- sistema di colonne -->
 		<div class="row">
 			
 			<!-- colonna sinistra -->
 			<div
-				class="col-lg-4 col-md-4 col-sm-6 col-xs-6 bg-light"
-				style="margin-bottom: 500px">
+				class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
 				<%@include file="/WEB-INF/Includes/leftpaneladmin.jsp"%>
 			</div>
 			<!-- fine colonna sinistra -->
 			
 			<!-- colonna centrale -->
-			<div class="col-lg-8 col-md-8 col-sm-6 col-xs-6 bg-light"
-				style="margin-bottom: 1100px; margin-top: 30px">
+			<div class="col-lg-8 col-md-8 col-sm-6 col-xs-6">
 			<c:set var="operationchoice" value='${param["operation"]}'/>
 				
 			
 			<c:choose>
 			<c:when test="${operationchoice== '3'}">
 			<form id="modclienteform">				        
-			        <div class="form-group">
+			        <div class="form-group adminproduct">
 			        	<label for="username">Username:</label>
 						<input type="text" class="form-control" id="user" name="user">
 					</div>
-					<div class="form-group">
+					<div class="form-group adminproduct">
 			       		<div class="upload-btn-wrapper">
-						  <button type="submit" class="btn" id="cercaCRUDe">Cerca Cliente</button>
+						  <button type="submit" class="btn" id="cercaCRUDe"><i class="fas fa-search" aria-hidden="true"></i></button>
 						</div>
 			       </div>
 			</form>
 			
 			<form action="admincliente?operation=3" name="modclienteformhidden" method="post" id="modclienteformhidden">				        
-			        <div class="form-group">
+			        <div class="form-group adminproduct">
 				       	<label for="username">Username:</label>
 						<input type="text" class="form-control" id="username" name="username" readonly="readonly"  >
 					</div>
 				       	
-					<div class="form-group">
+					<div class="form-group adminproduct">
 						<label for="nome">Nome:</label>
 				       	<input type="text" class="form-control" id="nome" name="nome"  readonly="readonly">
 				    </div>
 				       
-					<div class="form-group">
+					<div class="form-group adminproduct">
 						<label for="cognome">Cognome:</label>
 				        <input type="text" class="form-control" id="cognome" name="cognome"  readonly="readonly">
 				    </div>
 				       
-					<div class="form-group">
+					<div class="form-group adminproduct">
 						<label for="passwordU">Password:</label>
 				        <input type="password" id="passwordU" class="form-control" name="passwordU" readonly="readonly">
 				    </div>
 			        				                
-			        <div class="form-group ">
+			        <div class="form-group adminproduct ">
 						<label for="recapito">Recapito:</label>
 			            <input type="text" class="form-control" name="recapito" id="recapito"  readonly="readonly">
 			        </div>
 				        
-					<div class="form-group">
+					<div class="form-group adminproduct">
 			        	<label for="cartaPred">Carta Predefinita:</label>
 			        	<input type="text" class="form-control" name="cartaPred" id="cartaPred" readonly="readonly" >
 			        </div>
 
-					<div class="form-group" style="float: center">
+					<div class="form-group adminproduct" style="float: center">
 			            <button type="submit" id ="caricabtn" name= "caricabtn" class="btn btn-success btn-lg btn-block" value="1"
 			            style="max-width:400px;">Elimina Cliente</button>
 			        </div>
@@ -97,10 +95,10 @@
 				<c:when test="${operationchoice== '4'}">
 					<jsp:include page="/admincliente"/>
 					<c:set var="cliente" value='${requestScope["elencoClienti"]}'/>
-						<div class="container">
+						<div class="container adminproduct">
  							<h2>Elenco utenti:</h2>
   							<p></p>
-  							  <table class="table">
+  							  <table class="table adminproduct">
 							    <thead>
 							      <tr>
 							        <th>Username</th>

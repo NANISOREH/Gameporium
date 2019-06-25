@@ -26,18 +26,18 @@
 </head>
 
 <body style="background-color: #343a40">
-	<div class="allpagecontainer container-fluid bg-light">
+	<div class="allpagecontainer container-fluid ">
 		<!-- sistema di colonne -->
 		<div class="row">
 
 			<!-- colonna sinistra -->
-			<div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 bg-light" style = "margin-bottom:200px;">
+			<div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 " style = "margin-bottom:200px;">
 				<%@include file="/WEB-INF/Includes/leftpaneladmin.jsp"%>
 			</div>
 			<!-- fine colonna sinistra -->
 
 			<!-- colonna centrale -->
-			<div class="col-lg-10 col-md-6 col-sm-12 col-xs-12 bg-light">
+			<div class="col-lg-10 col-md-6 col-sm-12 col-xs-12 ">
 				<c:set var="ordine" value='${sessionScope["listaOrdini"]}' />
 				
 				
@@ -52,15 +52,15 @@
 					</div>
 					<div class="form-group">
 						<label for="dataOrdine">Data da:</label>
-						<input type="date" class="form-control" name="dataDa" id="dataDa" style="width:100px"  >
+						<input type="date" class="form-control" name="dataDa" id="dataDa" style="width:175px"  >
 					</div>
 					<div class="form-group">
 						<label for="dataOrdine"> a:</label>
-						<input type="date" class="form-control" name="dataA" id="dataA" style="width:100px"  >
+						<input type="date" class="form-control" name="dataA" id="dataA" style="width:175px"  >
 					</div>
 					<div class="form-group">
 						<div class="upload-btn-wrapper">
-							<button type="submit" class="btn" id="cercaCRUD">Cerca ordini</button>
+							<button type="submit" class="btn" id="cercaCRUD"><i class="fas fa-search" aria-hidden="true"></i></button>
 						</div>
 					</div>
 				</form>

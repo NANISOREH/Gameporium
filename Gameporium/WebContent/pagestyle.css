@@ -16,9 +16,11 @@ body {
 {
 	background-color:rgba(255,0,0,0.0);
 	color:lightgray;
-	border: 5px inset;
-	border-color:rgba(210,105,30);
 	
+}
+.cartpanel{
+	border: inset 5px;
+	border-color:rgba(210,105,30)
 }
 .btn-primary{
 	background-color: #E07D00;
@@ -59,9 +61,18 @@ body {
 
 a:link 
 {
-	color:#E07D00;
+	color:#E07D00 !important;
 }
-
+a:active
+{
+	color:#E07D00
+}
+a:visited{
+	color:#E07D00
+}
+a:hover{
+	color:tomato;
+}
 .dropdown-item 
 {
 	color:#E07D00;
@@ -95,9 +106,12 @@ a:link
 	padding: 2px;
 }
 
-sidebarmenu:link
+.sidebar-menu:link
 {
 	color: #E07D00;
+}
+.sidebar-submenu{
+	color: white;
 }
 
 .fixedtable {
@@ -218,8 +232,7 @@ div#mlcenter {
 
 /*home*/
 	.fadimg
-    {
-    	width:auto; 
+    { 
     	height:300px;
     }
     
@@ -230,8 +243,7 @@ div#mlcenter {
     
     .slideshow-container
     {
-    	background-color: lightgray;
-    	border: 1px solid lightgray;
+    	background-color: rgb(0,0,0,0.0);
     	border-radius: 25px;
     	padding:0px;
     }
@@ -335,6 +347,9 @@ div.credcard {
 
 .cartreload {
 	color: red;
+}
+.adminproduct{
+	color:lightgrey !important;
 }
 .admintable{
 	text: white;
