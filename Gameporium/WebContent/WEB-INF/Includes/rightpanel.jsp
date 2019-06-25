@@ -21,17 +21,17 @@
 
 
 		<c:if test="${totale != null && totale != '0.00'}">
-			<div class="card" style="font-size: small; margin-top: 30px">
+			<div class="card panelcard" style="font-size: small; margin-top: 30px">
 				<div class="card-body">
 					<c:forEach items="${cartprods}" var="item" begin="0"
 						end="${cartitems.size() }">
 
 						<div class="cartable">
 
-							<table class="table" style="padding: 0px; font-size: 12, 5px;">
+							<table class="table cartableright">
 								<tbody>
 									<tr>
-										<td><i class="fas fa-shopping-cart"></i></td>
+										<td></td>
 										<td scope="row" class="col-lg-4"><a
 											href="singleProduct?selProd=${item.product.codiceProdotto}&selCat=${item.product.codCategoria}">${item.product.titolo }</a>
 										</td>
@@ -68,7 +68,7 @@
 		</c:if>
 	</div>
 
-	<div class="card" style="margin-top: 30px">
+	<div class="panelcard card" style="margin-top: 30px">
 		<div class="card-body">Lorem ipsum dolor sit amet, consectetur
 			adipiscing elit. Maecenas fermentum, lorem sit amet sagittis
 			convallis, nunc urna efficitur purus, non faucibus quam ante in
@@ -89,18 +89,7 @@
 			Fusce porta sem sed est vulputate posuere. Proin a augue luctus,
 			imperdiet sem nec, efficitur tellus. Integer volutpat convallis orci
 			vitae feugiat. Nam in turpis diam. Nam porta, leo sit amet efficitur
-			lacinia, lacus mauris sollicitudin dui, ac fringilla metus felis ut
-			est. In leo mi, pellentesque at purus sed, auctor eleifend erat.
-			Curabitur convallis elit eget dolor sodales maximus. Vestibulum ante
-			ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-			Curae; Orci varius natoque penatibus et magnis dis parturient montes,
-			nascetur ridiculus mus. Sed scelerisque, felis nec tincidunt dapibus,
-			nisi tortor elementum est, nec euismod velit lorem et elit. Integer
-			interdum urna a dolor tincidunt, imperdiet semper libero congue.
-			Mauris quam dui, volutpat vel fringilla vitae, bibendum ac augue.
-			Praesent in varius est. Mauris efficitur quam id dui aliquet, quis
-			consectetur purus pellentesque. Nunc enim diam, faucibus nec magna
-			ut, efficitur cursus nulla.</div>
+	</div>
 	</div>
 </body>
 </html>

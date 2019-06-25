@@ -36,8 +36,6 @@
 
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
-<%@include file="/WEB-INF/Includes/header.jsp"%>
-
 <link rel="stylesheet" href="pagestyle.css" type="text/css">
 
 </head>
@@ -45,22 +43,26 @@
 
 
 <body>
+	
+	<div class= "header">
+	<%@include file="/WEB-INF/Includes/header.jsp"%>
+	</div>
 
-	<div class="allpagecontainer container-fluid bg-light">
+	<div class="allpagecontainer container-fluid">
 
 		<!-- sistema di colonne -->
 		<div class="row">
 
 			<!-- colonna sinistra -->
 			<div
-				class="col-lg-2 col-md-0 d-none d-lg-block bg-light">
+				class="col-lg-2 col-md-0 d-none d-lg-block ">
 				<%@include file="/WEB-INF/Includes/leftpanel.jsp"%>
 			</div>
 			<!-- fine colonna sinistra -->
 
 			<!-- colonna centrale -->
 			<div 
-				class="col-lg-8 col-md-8 col-sm-8 col-xs-8 bg-light">
+				class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
 
 				<!-- container novità e offerte -->
 				<div class="container-fluid clearfix">
@@ -168,7 +170,7 @@
 			<!-- colonna destra -->
 
 			<div
-				class="col-lg-2 col-md-4 col-sm-4 col-xs-12 bg-light">
+				class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
 
 				<%@include file="/WEB-INF/Includes/rightpanel.jsp"%>
 

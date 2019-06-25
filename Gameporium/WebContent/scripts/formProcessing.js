@@ -3,20 +3,20 @@ function myFunct(){
 	//ci vuole un altro if che faccia partire la funzione solo quando il form è quello giusto altrimenti cercherà sempre il button
 	if(document.getElementById("modproductform"))
 	{	
-	var cod=document.getElementById("codProdotto").value;
-	if(!isNaN(cod)){
-		document.getElementById("cercaCRUD").click();
-	}
+		var cod=document.getElementById("codProdotto").value;
+		if(!isNaN(cod)){
+			document.getElementById("cercaCRUD").click();
+		}
 	}
 }
 function myFunctEvento(){
 	//ci vuole un altro if che faccia partire la funzione solo quando il form è quello giusto altrimenti cercherà sempre il button
 	if(document.getElementById("modeventform"))
 	{
-	var cod=document.getElementById("codEvento").value;
-	if(!isNaN(cod)){
-		document.getElementById("cercaCRUD").click();
-	}
+		var cod=document.getElementById("codEvento").value;
+		if(!isNaN(cod)){
+			document.getElementById("cercaCRUD").click();
+		}
 	}
 }
 /*questa funzione abilita tutti i campi del form quando l'admin vuole modificare i dati di un prodotto*/
@@ -143,6 +143,7 @@ $(document).ready(function() {
     						  default:
     						    console.log("Errore" );
     						}
+    						$('#modproductform').load(' #modproductform');
     					}
     					else{
     						console.log(key)

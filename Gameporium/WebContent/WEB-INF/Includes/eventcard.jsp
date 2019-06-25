@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 </head>
 <body>
-  	<div class="col-lg-4 col-xs-12 bg-light">
+  	<div class="col-lg-4 col-xs-12">
 	
 		<div class="productcard card d-block mx-auto">	  
 			<div class="d-block mx-auto ">

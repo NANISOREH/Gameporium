@@ -147,7 +147,7 @@
 <!-- 				       </div> -->
 				        
 						<div class="form-group" style="float: center">
-				            <button type="button" id ="caricabtn" name= "caricabtn" class="btn btn-success btn-lg btn-block" onclick="validateAddProduct(addproductform)" value="1"
+				            <button type="button" id ="caricabtn" name= "caricabtn" class="btn btn-success btn-lg btn-block" onclick="validateAddProduct(document.addproductform)" value="1"
 				            style="max-width:400px;">Carica Prodotto</button>
 				        </div>
 				    </form>
@@ -155,12 +155,20 @@
 				
 				<c:when test="${operationchoice== '2'}">
 				<c:set var="cod" value='${param["codiceProdotto"]}'/>
+
 				<!-- Modifica prodotto -->
 
 				<form id="modproductform">				        
 			        <div class="form-group">
 			        	<label for="codProdotto">Codice prodotto:</label>
 						<input type="text" class="form-control" id="codProdotto" name="codProdotto" value="${cod}"  >
+						
+					<c:if test="${cod==-1}">
+						<div class="popup alert alert-warning alert-dismissible fade-in" role="alert">
+			  				<a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			  				Prodotto non esistente!
+						</div>
+					</c:if>
 						
 					</div>
 					<div class="form-group">
@@ -262,11 +270,11 @@
 					        </div>
 					       
 							<div class="form-group" style="float: center">
-					            <button type="submit" class="btn btn-success btn-lg btn-block" onclick="enablemod(modproductformhidden)" 
+					            <button type="submit" class="btn btn-success btn-lg btn-block" onclick="enablemod(modproductformhidden)" value="1"
 					            style="max-width:400px;">Modifica Prodotto</button>
 					        </div>
 					        <div class="form-group" style="float: center">
-					            <button type="submit" class="btn btn-success btn-lg btn-block" name="modbtn" id="modbtn" disabled="disabled" 
+					            <button type="button" class="btn btn-success btn-lg btn-block" name="modbtn" id="modbtn" onclick="validateModProduct(document.modproductformhidden)"disabled="disabled" 
 					            style="max-width:400px;">Salva Modifiche</button>
 					        </div>
 				   		</div>
@@ -276,6 +284,7 @@
 				</c:when>
 				
 				<c:when test="${operationchoice== '3'}">
+				
 				<form id="modproductform">				        
 			        <div class="form-group">
 			        	<label for="codProdotto">Codice prodotto:</label>
@@ -389,7 +398,7 @@
 				</c:when>
 				
 				<c:when test="${operationchoice== '4'}">
-					<jsp:include page="/adminServlet"/>
+					<jsp:include page="/adminservlet"/>
 					<c:set var="prodotto" value='${requestScope["elencoProdotti"]}'/>
 						<div class="container">
  							<h2>Elenco prodotti</h2>
