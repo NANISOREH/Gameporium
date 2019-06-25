@@ -16,10 +16,13 @@
 
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@include file="/WEB-INF/Includes/header.jsp"%>
 </head>
 
-<body onload="myFunctEvento()" style="background-color: #343a40">
+<body onload="myFunctEvento()">
+	<div class= "header">
+	<%@include file="/WEB-INF/Includes/header.jsp"%>
+	</div>
+	
 	<div class="container-fluid bg-light" style="margin-top: 0">
 		<!-- sistema di colonne -->
 		<div class="row">
@@ -92,7 +95,7 @@
 				        </div>
 				        				        
 						<div class="form-group" style="float: center">
-				            <button type="button" id ="caricabtn" name= "caricabtn" class="btn btn-success btn-lg btn-block" onclick="validateEvent(addeventform)"value="1"
+				            <button type="button" id ="caricabtn" name= "caricabtn" class="btn btn-success btn-lg btn-block" onclick="validateEvent(document.addeventform)"value="1"
 				            style="max-width:400px;">Carica Evento</button>
 				        </div>
 				    </form>

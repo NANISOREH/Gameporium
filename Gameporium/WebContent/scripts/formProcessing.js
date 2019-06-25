@@ -143,6 +143,7 @@ $(document).ready(function() {
     						  default:
     						    console.log("Errore" );
     						}
+    						$('#modproductform').load(' #modproductform');
     					}
     					else{
     						console.log(key)
