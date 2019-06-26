@@ -18,7 +18,7 @@
   }
   
   .navbar-nav .nav-item.active .nav-link, .navbar-nav .nav-item:hover .nav-link {
-	    background-color: #8c8c8c
+	    background-color: #331900
   }
   
   .navbar-toggler-icon {

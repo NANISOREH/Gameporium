@@ -16,11 +16,12 @@
 
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<link rel="stylesheet" href="pagestyle.css" type="text/css">
 </head>
 
 <body onload="myFunctEvento()">
 	<div class= "header">
-	<%@include file="/WEB-INF/Includes/header.jsp"%>
+		<%@include file="/WEB-INF/Includes/header.jsp"%>
 	</div>
 	
 	<div class="container-fluid " style="margin-top: 0">

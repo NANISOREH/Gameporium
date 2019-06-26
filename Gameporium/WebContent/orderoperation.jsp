@@ -20,18 +20,20 @@
 
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@include file="/WEB-INF/Includes/header.jsp"%>
 <link rel="stylesheet" href="pagestyle.css" type="text/css">
 <jsp:include page="/adminorder" flush="true" />
 </head>
 
-<body style="background-color: #343a40">
-	<div class="allpagecontainer container-fluid ">
+<body>
+	<div class= "header">
+		<%@include file="/WEB-INF/Includes/header.jsp"%>
+	</div>
+	<div class="container-fluid ">
 		<!-- sistema di colonne -->
 		<div class="row">
 
 			<!-- colonna sinistra -->
-			<div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 " style = "margin-bottom:200px;">
+			<div class="col-lg-2 col-md-3 col-sm-6 col-xs-6">
 				<%@include file="/WEB-INF/Includes/leftpaneladmin.jsp"%>
 			</div>
 			<!-- fine colonna sinistra -->
