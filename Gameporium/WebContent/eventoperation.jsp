@@ -23,21 +23,19 @@
 	<%@include file="/WEB-INF/Includes/header.jsp"%>
 	</div>
 	
-	<div class="container-fluid bg-light" style="margin-top: 0">
+	<div class="container-fluid " style="margin-top: 0">
 		<!-- sistema di colonne -->
 		<div class="row">
 			
 			<!-- colonna sinistra -->
 			<div
-				class="col-lg-4 col-md-4 col-sm-6 col-xs-6 bg-light"
-				style="margin-bottom: 500px">
+				class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
 				<%@include file="/WEB-INF/Includes/leftpaneladmin.jsp"%>
 			</div>
 			<!-- fine colonna sinistra -->
 			
 			<!-- colonna centrale -->
-			<div class="col-lg-8 col-md-8 col-sm-6 col-xs-6 bg-light"
-				style="margin-bottom: 1100px; margin-top: 30px">
+			<div class="col-lg-8 col-md-8 col-sm-6 col-xs-6 ">
 				<c:set var="operationchoice" value='${param["operation"]}'/>
 				
 			
@@ -59,42 +57,42 @@
 				</div>
 			</c:if>		
 				<form action="adminevent?operation=1" name="addeventform" method="post" id="reg">				        
-				        <div class="form-group">
+				        <div class="form-group adminproduct">
 				        	<label for="codiceEvento">Codice evento:</label>
 							<input type="text" class="form-control" id="codiceEvento" name="codiceEvento">
 						</div>
 				        	
-						<div class="form-group">
+						<div class="form-group adminproduct">
 							<label for="nome">Nome:</label>
 				        	<input type="text" class="form-control" id="nome" name="nome"  >
 				        </div>
 				        
-						<div class="form-group">
+						<div class="form-group adminproduct">
 							<label for="luogo">Luogo:</label>
 				            <input type="text" class="form-control" id="luogo" name="luogo"  >
 				        </div>
 				        
-						<div class="form-group">
+						<div class="form-group adminproduct">
 							<label for="descrizione">Descrizione:</label>
 				            <textarea id="descrizione" class="form-control" id="descrizione" name="descrizione" style="height: 100px"></textarea>
 				        </div>
 				                
-				        <div class="form-group ">
+				        <div class="form-group adminproduct ">
 							<label for="dataEvento">Data:</label>
-				            <input type="date" class="form-control" name="dataEvento" id="dataEvento" style="width:80px"  >
+				            <input type="date" class="form-control" name="dataEvento" id="dataEvento" style="width:175px"  >
 				        </div>
 				        
-						<div class="form-group">
+						<div class="form-group adminproduct">
 				        	<label for="ora">Ora:</label>
-				        	<input type="time" class="form-control" name="ora" id="ora" style="width:80px"  >
+				        	<input type="time" class="form-control" name="ora" id="ora" style="width:175px"  >
 				        </div>
 
-						<div class="form-group">
+						<div class="form-group adminproduct">
 				        	<label for="locandina">Locandina:</label>
-				        	<input type="text" class="form-control" name="locandina" id="locandina" style="width:80px"  >
+				        	<input type="text" class="form-control" name="locandina" id="locandina" style="width:100px"  >
 				        </div>
 				        				        
-						<div class="form-group" style="float: center">
+						<div class="form-group adminproduct" style="float: center">
 				            <button type="button" id ="caricabtn" name= "caricabtn" class="btn btn-success btn-lg btn-block" onclick="validateEvent(document.addeventform)"value="1"
 				            style="max-width:400px;">Carica Evento</button>
 				        </div>
@@ -106,61 +104,61 @@
 				<!-- Modifica evento -->
 
 				<form id="modeventform">				        
-			        <div class="form-group">
+			        <div class="form-group adminproduct">
 			        	<label for="codEvento">Codice Evento:</label>
 						<input type="text" class="form-control" id="codEvento" name="codEvento" value="${cod}"  >
 						
 					</div>
-					<div class="form-group">
+					<div class="form-group adminproduct">
 			       		<div class="upload-btn-wrapper">
-						  <button type="submit" class="btn" id="cercaCRUD">Cerca Evento</button>
+						  <button type="submit" class="btn" id="cercaCRUD"><i class="fas fa-search" aria-hidden="true"></i></button>
 						</div>
 			       </div>
 				</form>
 			    
 				<form action="adminevent?operation=2" name="modeventformhidden" method="post" id="modeventformhidden">
-					<div class="form-group">
+					<div class="form-group adminproduct">
 			        	<label for="codEvento">Codice Evento:</label>
 						<input type="text" class="form-control" id="codiceEvento" name="codiceEvento" readonly="readonly"  >						
 					</div>		
-					<div class="form-group">
+					<div class="form-group adminproduct">
 			        	<label for="codEvento">Numero Partecipanti:</label>
 						<input type="text" class="form-control" id="numeroPartecipanti" name="numeroPartecipanti" readonly="readonly"  >						
 					</div>		         	
-						<div class="form-group">
+						<div class="form-group adminproduct">
 							<label for="nome">Nome:</label>
 				        	<input type="text" class="form-control" id="nome" name="nome" readonly="readonly"  >
 				        </div>
 				        
-						<div class="form-group">
+						<div class="form-group adminproduct">
 							<label for="luogo">Luogo:</label>
 				            <input type="text" class="form-control" id="luogo" name="luogo" readonly="readonly"  >
 				        </div>
 				        
-						<div class="form-group">
+						<div class="form-group adminproduct">
 							<label for="descrizione">Descrizione:</label>
 				            <textarea id="descrizione" class="form-control" name="descrizione" readonly="readonly" style="height: 100px"></textarea>
 				        </div>
 				                
-				        <div class="form-group ">
+				        <div class="form-group adminproduct ">
 							<label for="dataEvento">Data:</label>
-				            <input type="date" class="form-control" name="dataEvento" id="dataEvento" readonly="readonly" style="width:80px"  >
+				            <input type="date" class="form-control" name="dataEvento" id="dataEvento" readonly="readonly" style="width:175px"  >
 				        </div>
 				        
-						<div class="form-group">
+						<div class="form-group adminproduct">
 				        	<label for="ora">Ora:</label>
-				        	<input type="time" class="form-control" name="ora" id="ora" readonly="readonly" style="width:80px"  >
+				        	<input type="time" class="form-control" name="ora" id="ora" readonly="readonly" style="width:100px"  >
 				        </div>
 
-						<div class="form-group">
+						<div class="form-group adminproduct">
 				        	<label for="locandina">Locandina:</label>
 				        	<input type="text" class="form-control" name="locandina" id="locandina" readonly="readonly" style="width:80px"  >
 				        </div>
-				       	<div class="form-group" style="float: center">
+				       	<div class="form-group adminproduct" style="float: center">
 					            <button type="submit" class="btn btn-success btn-lg btn-block" value="1"onclick="enablemodevent(modeventformhidden)" 
 					            style="max-width:400px;">Modifica Evento</button>
 					        </div>	        
-						<div class="form-group" style="float: center">
+						<div class="form-group adminproduct" style="float: center">
 				            <button type="button" id ="caricabtn" name= "caricabtn" disabled="disabled" class="btn btn-success btn-lg btn-block" onclick="validateEvent(modeventformhidden)" value="1"
 				            style="max-width:400px;">Carica Evento</button>
 				        </div>
@@ -171,58 +169,58 @@
 				
 				<c:when test="${operationchoice== '3'}">
 				<form id="modeventform">				        
-			        <div class="form-group">
+			        <div class="form-group adminproduct">
 			        	<label for="codEvento">Codice Evento:</label>
 						<input type="text" class="form-control" id="codEvento" name="codEvento">
 					</div>
-					<div class="form-group">
+					<div class="form-group adminproduct">
 			       		<div class="upload-btn-wrapper">
-						  <button type="submit" class="btn" id="cercaCRUDe">Cerca Evento</button>
+						  <button type="submit" class="btn" id="cercaCRUDe"><i class="fas fa-search" aria-hidden="true"></i></button>
 						</div>
 			       </div>
 				</form>
 				
 				
 				<form action="adminevent?operation=3" name="modeventformhidden" method="post" id="modeventformhidden">				        
-					<div class="form-group">
+					<div class="form-group adminproduct">
 			        	<label for="codEvento">Codice Evento:</label>
 						<input type="text" class="form-control" id="codiceEvento" name="codiceEvento" readonly="readonly"  >						
 					</div>		
-					<div class="form-group">
+					<div class="form-group adminproduct">
 			        	<label for="codEvento">Numero Partecipanti:</label>
 						<input type="text" class="form-control" id="numeroPartecipanti" name="numeroPartecipanti" readonly="readonly"  >						
 					</div>		         	
 					
-					<div class="form-group">
+					<div class="form-group adminproduct">
 							<label for="nome">Nome:</label>
 				        	<input type="text" class="form-control" id="nome" name="nome" readonly="readonly"  >
 				        </div>
 				        
-						<div class="form-group">
+						<div class="form-group adminproduct">
 							<label for="luogo">Luogo:</label>
 				            <input type="text" class="form-control" id="luogo" name="luogo" readonly="readonly"  >
 				        </div>
 				        
-						<div class="form-group">
+						<div class="form-group adminproduct">
 							<label for="descrizione">Descrizione:</label>
 				            <textarea id="descrizione" class="form-control" name="descrizione" readonly="readonly" style="height: 100px"></textarea>
 				        </div>
 				                
-				        <div class="form-group ">
+				        <div class="form-group adminproduct ">
 							<label for="dataEvento">Data:</label>
 				            <input type="date" class="form-control" name="dataEvento" id="dataEvento" readonly="readonly" style="width:80px"  >
 				        </div>
 				        
-						<div class="form-group">
+						<div class="form-group adminproduct">
 				        	<label for="ora">Ora:</label>
-				        	<input type="time" class="form-control" name="ora" id="ora" readonly="readonly" style="width:80px"  >
+				        	<input type="time" class="form-control" name="ora" id="ora" readonly="readonly" style="width:175px"  >
 				        </div>
 
-						<div class="form-group">
+						<div class="form-group adminproduct">
 				        	<label for="locandina">Locandina:</label>
-				        	<input type="text" class="form-control" name="locandina" id="locandina" readonly="readonly" style="width:80px"  >
+				        	<input type="text" class="form-control" name="locandina" id="locandina" readonly="readonly" style="width:100px"  >
 				        </div>        
-						<div class="form-group" style="float: center">
+						<div class="form-group adminproduct" style="float: center">
 				            <button type="submit" id ="eliminabtn" name= "eliminabtn" class="btn btn-success btn-lg btn-block" value="1"
 				            style="max-width:400px;">Elimina Evento</button>
 				        </div>
@@ -233,10 +231,10 @@
 				<c:when test="${operationchoice== '4'}">
 					<jsp:include page="/adminevent"/>
 					<c:set var="evento" value='${requestScope["elencoEventi"]}'/>
-						<div class="container">
+						<div class="container adminproduct">
  							<h2>Elenco Eventi</h2>
   							<p></p>
-  							  <table class="table">
+  							  <table class="table adminproduct">
 							    <thead>
 							      <tr>
 							        <th>Codice evento</th>

@@ -18,33 +18,29 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+<link rel="stylesheet" href="pagestyle.css" type="text/css">
 
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
 	</head>
 
 	<body>
-
 		<div class="header">
 			<%@include file="/WEB-INF/Includes/header.jsp"%>
 		</div>
-		<div class="allpagecontainer container">
-
-			<div class="container" style="margin-top: 0">
+		<div class="allpagecontainer container-fluid">		
 				<!-- sistema di colonne -->
-				<div class="row">
+				<div class="row" >
 
 					<!-- colonna sinistra -->
-					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6"
-						style="margin-bottom: 500px">
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
 						<%@include file="/WEB-INF/Includes/leftpaneladmin.jsp"%>
 					</div>
 					<!-- fine colonna sinistra -->
 
 					<!-- colonna centrale -->
-					<div class="col-lg-8 col-md-8 col-sm-6 col-xs-6"
-						style="margin-bottom: 1100px; margin-top: 30px"></div>
+					<div class="col-lg-8 col-md-8 col-sm-6 col-xs-6">
+					</div>
 					<!-- fine colonna centrale -->
 
 					<!-- fine sistema di colonne -->
@@ -52,7 +48,7 @@
 			</div>
 
 			<%@include file="/WEB-INF/Includes/footer.jsp"%>
-		</div>
+		
 	</body>
 </c:if>
 </html>

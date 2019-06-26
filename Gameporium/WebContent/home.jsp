@@ -83,26 +83,26 @@
 
 						<div class="mySlides fade">
 						  <div class="numbertext">1 / 3</div>
-						  <a href="singleEvent?selEvento=2"><img class="fadimg" src="images/cavacon.jpg" style="width:auto; height:300px"></a>
+						  <a href="singleEvent?selEvento=2"><img class="fadimg" src="images/cavacon.jpg" style="width:100%; height:300px"></a>
 						</div>
 						
 						<div class="mySlides fade">
 						  <div class="numbertext">2 / 3</div>
-						  <a href="singleEvent?selEvento=1"><img class="fadimg" src="images/fantaexpo.png" style="width:auto; height:300px"></a>
+						  <a href="singleEvent?selEvento=1"><img class="fadimg" src="images/fantaexpo.png" style="width:100%; height:300px"></a>
 						</div>
 						
 						<div class="mySlides fade">
 						  <div class="numbertext">3 / 3</div>
-						  <a href="singleEvent?selEvento=3"><img class="fadimg" src="images/isola.png" style="width:auto; height:300px"></a>
+						  <a href="singleEvent?selEvento=3"><img class="fadimg" src="images/isola.png" style="width:100%; height:300px"></a>
 						</div>
 						
 					</div>
 						<br>
 						
 						<div class="d-none d-md-block"style="text-align:center">
-						  <span class="dot"></span> 
-						  <span class="dot"></span> 
-						  <span class="dot"></span> 
+						  <a href="singleEvent?selEvento=2"><span class="dot"></span></a> 
+						  <a href="singleEvent?selEvento=1"><span class="dot"></span></a> 
+						  <a href="singleEvent?selEvento=3"><span class="dot"></span></a> 
 						</div>
 						<!-- Lo script l'ho messo qui perchè se lo metto in un file js le immagini si accodano invece di scorrere -->
 					<script>
@@ -112,6 +112,7 @@
 						  var i;
 						  var slides = document.getElementsByClassName("mySlides");
 						  var dots = document.getElementsByClassName("dot");
+						  
 						  for (i = 0; i < slides.length; i++) {
 						    slides[i].style.display = "none";  
 						  }
@@ -120,6 +121,7 @@
 						  for (i = 0; i < dots.length; i++) {
 						    dots[i].className = dots[i].className.replace(" active", "");
 						  }
+						  
 						  slides[slideIndex-1].style.display = "block";  
 						  dots[slideIndex-1].className += " active";
 						  setTimeout(showSlides, 3000);
