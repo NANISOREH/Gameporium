@@ -13,11 +13,10 @@
 		<div class="productcard card d-block mx-auto">
 		  
 		  <div class="prodimg d-block mx-auto ">
-		  	<a href="singleProduct?selProd=${item.codiceProdotto}&selCat=${item.codCategoria}"></a>
 		  	<img class="card-img-top card-hover" src="images/${item.foto}" alt="Card image cap">
-		  	<div class="prod-des d-none" style="font-size:60%; color: white; text-align:justify">
+		  		<a href="singleProduct?selProd=${item.codiceProdotto}&selCat=${item.codCategoria}"><div class="prod-des d-none" style="font-size:60%; color: white; text-align:justify">
 		  	${item.descrizione}
-		  	</div>
+		  	</div></a>
 		  <!-- onhover property -->
          
 		  </div>
