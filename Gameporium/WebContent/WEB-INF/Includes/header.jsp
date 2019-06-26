@@ -13,12 +13,12 @@
 
   <style>
   .navbar-nav .nav-item .nav-link {
-    color: dark;
+    color: lightgray;
     text-align: center;
   }
   
   .navbar-nav .nav-item.active .nav-link, .navbar-nav .nav-item:hover .nav-link {
-	    background-color: #8c8c8c
+	background-color: #CB6600
   }
   
   .navbar-toggler-icon {

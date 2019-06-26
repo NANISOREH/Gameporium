@@ -5,15 +5,13 @@ function deleteCard()
 		
 	$.get('pagamenti', {"username": username, "remove": "true", "securecode": securecode}, 
 		function(){
-			$(document).ready(function() {
 				$('#' + securecode.toString()).load(' #' + securecode.toString());
 				$("#message").remove();
-				$('#' + securecode.toString()).append('<div id="message" class="popup alert alert-success fade-in" role="success"> Hai cancellato un metodo di pagamento!</div>');
+				$(".sectionstyle").append('<div id="message" class="popup alert alert-success fade-in" role="success"> Hai cancellato un metodo di pagamento!</div>');
 				setTimeout(function(){
 					  $('#message').remove();
 					}, 3000);
-			 })
-	});
+			});
 	
 }	
 

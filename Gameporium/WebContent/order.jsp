@@ -56,7 +56,7 @@
 	</jsp:include>
 	<c:set var="metodi" value='${sessionScope["metodi"]}' />
 	
-	<jsp:include page="/preset"/>
+	
 		
 	<div class="allpagecontainer container-fluid ">
 
@@ -74,13 +74,16 @@
 
 			<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 ">
 				<c:set var="user" value='${sessionScope["currentSessionUser"]}' />
-				
+				<c:set var="newCard" value='${param["newCard"]}' />
 				<div class="sectionstyle">
 					Metodo di pagamento
 				</div>
 				
 				<div class="form-group">
 					<c:if test="${metodi!=null}">
+						<jsp:include page="/preset">
+							<jsp:param name="newCard" value="${newCard}"/>
+						</jsp:include>
 						<div id="preset">
 							<br>
 							<select
@@ -114,7 +117,7 @@
 							<div class="col">
 								<div class="collapse multi-collapse" id="newcard">
 
-									<div class="card card-body">
+									<div class="card card-body" style="color:black">
 										<div class="form-row">
 											<div class="form-group col-md-2">
 												<label for="mesescadenza">Circuito</label> <select
@@ -166,7 +169,7 @@
 											</div>
 											<div class="form-group col-md-2">
 												<label>CVV</label> <input type="text" name="cvv" id="cvv"
-													oninput="limitCvv(document.ccform.cvv)"
+													oninput="limitField(document.ccform.cvv, 3)"
 													class="form-control" min="3" max="3">
 											</div>
 

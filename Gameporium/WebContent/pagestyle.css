@@ -25,15 +25,21 @@ body {
 	border-color:rgba(210,105,30);
 }
 
+.btn-outline-secondary{
+	background-color: #E07D00;
+	border-color:rgba(210,105,30);
+}
+
 .btn-primary:hover{
 	background-color: tomato;
 	border-color:rgba(210,105,30);
 }
 
-/* .btn-primary:active{ */
-/* 	background-color: #E07D00; */
-/* 	border-color:rgba(210,105,30); */
-/* } */
+.btn-outline-secondary:hover{
+	background-color: tomato;
+	border-color:rgba(210,105,30);
+}
+
 
 .opaque
 {
@@ -46,7 +52,6 @@ body {
 
 .header
 {
-	border-bottom: 1px solid black; 
 	border-top: 3px solid #E07D00;
 }
 
@@ -198,7 +203,7 @@ div.nomeriga {
 span.prezzo {
 	font-size: 23px;
 	font-weight: bold;
-	color: red;
+	color: tomato;
 }
 
 input.quantInput {
