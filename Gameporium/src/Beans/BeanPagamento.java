@@ -18,7 +18,6 @@ import java.io.Serializable;
 		public void setSecureCode() {
 			String cod = Long.toString(numCarta);
 			secureCode = cod.substring(cod.length() - 4);
-
 		}
 
 		public BeanPagamento()

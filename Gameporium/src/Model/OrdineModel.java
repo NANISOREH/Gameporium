@@ -100,6 +100,8 @@ public class OrdineModel implements Model {
 				bean.setImporto(rs.getBigDecimal("importo"));
 				bean.setStatoProdotti(rs.getString("statoProdotti"));
 				bean.setMetodo(rs.getLong("metodo"));
+				bean.setSecureCode();
+				
 			}
 
 		} finally {
@@ -175,6 +177,7 @@ public class OrdineModel implements Model {
 				bean.setStatoProdotti(rs.getString("statoProdotti"));
 				bean.setMetodo(rs.getLong("metodo"));
 				bean.setUsername(rs.getString("username"));
+				bean.setSecureCode();
 				Ordine.add(bean);
 			}
 
@@ -215,6 +218,7 @@ public class OrdineModel implements Model {
 				bean.setStatoProdotti(rs.getString("statoProdotti"));
 				bean.setMetodo(rs.getLong("metodo"));
 				bean.setUsername(rs.getString("username"));
+				bean.setSecureCode();
 				Ordine.add(bean);
 			}
 		} finally {
@@ -253,6 +257,7 @@ public class OrdineModel implements Model {
 				bean.setStatoProdotti(rs.getString("statoProdotti"));
 				bean.setMetodo(rs.getLong("metodo"));
 				bean.setUsername(rs.getString("username"));
+				bean.setSecureCode();
 				Ordine.add(bean);
 			}
 		} finally {
@@ -331,6 +336,7 @@ public class OrdineModel implements Model {
 				bean.setStatoProdotti(rs.getString("statoProdotti"));
 				bean.setMetodo(rs.getLong("metodo"));
 				bean.setUsername(rs.getString("username"));
+				bean.setSecureCode();
 				Ordine.add(bean);
 			}
 		} finally {
@@ -371,6 +377,7 @@ public class OrdineModel implements Model {
 				bean.setStatoProdotti(rs.getString("statoProdotti"));
 				bean.setMetodo(rs.getLong("metodo"));
 				bean.setUsername(rs.getString("username"));
+				bean.setSecureCode();
 				Ordine.add(bean);
 			}
 		} finally {

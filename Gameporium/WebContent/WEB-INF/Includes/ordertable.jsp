@@ -17,11 +17,10 @@
         <td>${item.dataOrdine}</td>
         <td>${item.dataSpedizione}</td>
         <td>${item.importo}€</td>
-        <td>${item.indirizzoSpedizione}</td>
-        <td>${item.metodo }</td>
-        <td>${item.statoProdotti }</td>
+        <td id="address">${item.indirizzoSpedizione}</td>
+        <td>Carta di credito che termina con ${item.secureCode}</td>
+        <td id="prodStatus">${item.statoProdotti }</td>
       </tr>
-
 
 
 </body>
