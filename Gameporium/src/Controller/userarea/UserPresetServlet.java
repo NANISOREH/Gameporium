@@ -34,14 +34,33 @@ public class UserPresetServlet extends HttpServlet {
 		Collection<Bean> bo=null;
 		
 		bo=(Collection<Bean>) session.getAttribute("metodi");
-
-		for (Bean b : bo)
+		
+		//lo esegue quando l'utente aggiunge una carta da order 
+		if (request.getParameter("newCard") != null)
 		{
-			if (((BeanPagamento) b).getSecureCode().equals(securecode))
+			String ncSecure = (String) request.getParameter("newCard");
+			for (Bean b : bo)
 			{
-				session.setAttribute("userFavSecureCode", ((BeanPagamento) b).getSecureCode());
-				session.setAttribute("userFavCircuito", ((BeanPagamento) b).getCircuito());
-				break;
+				if (((BeanPagamento) b).getSecureCode().equals(ncSecure))
+				{
+					session.setAttribute("userFavSecureCode", ((BeanPagamento) b).getSecureCode());
+					session.setAttribute("userFavCircuito", ((BeanPagamento) b).getCircuito());
+					break;
+				}
+			}
+			
+		}
+
+		if (request.getParameter("newCard") == null)	
+		{
+			for (Bean b : bo)
+			{
+				if (((BeanPagamento) b).getSecureCode().equals(securecode))
+				{
+					session.setAttribute("userFavSecureCode", ((BeanPagamento) b).getSecureCode());
+					session.setAttribute("userFavCircuito", ((BeanPagamento) b).getCircuito());
+					break;
+				}
 			}
 		}
 		
@@ -53,6 +72,7 @@ public class UserPresetServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//setta la carta predefinita nel model
+		System.out.println("POST");
 		if(request.getParameter("doGetPlease")!= null)
 		{
 			doGet(request, response);

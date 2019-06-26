@@ -8,7 +8,7 @@ public class BeanOrdine extends Bean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	int codiceOrdine;
 	Long metodo;
-	String indirizzoSpedizione, statoProdotti, username;
+	String indirizzoSpedizione, statoProdotti, username, secureCode;
 	LocalDate dataSpedizione,dataOrdine;
 	BigDecimal importo;
 	
@@ -33,6 +33,15 @@ public class BeanOrdine extends Bean implements Serializable {
 
 	public int getCodiceOrdine() {
 		return codiceOrdine;
+	}
+	
+	public void setSecureCode() {
+		String cod = Long.toString(metodo);
+		secureCode = cod.substring(cod.length() - 4);
+	}
+	
+	public String getSecureCode() {
+		return secureCode;
 	}
 
 	public void setCodiceOrdine(int newCodiceOrdine) {

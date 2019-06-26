@@ -21,11 +21,12 @@
 	<script src="scripts/cart.js" type="text/javascript"></script>
 	<script src="scripts/formvalidation.js" type="text/javascript"></script>
 	<script src="scripts/payment.js" type="text/javascript"></script>
+	
 <link rel="stylesheet" href="pagestyle.css" type="text/css">
 
 </head>
 
-<body>
+<body onLoad="renderFields()">
 
 	<div class= "header">
 	<%@include file="/WEB-INF/Includes/header.jsp"%>
@@ -121,8 +122,8 @@
 										<th>Data Ordine</th>
 										<th>Data Spedizione</th>
 										<th>Importo</th>
-										<th>Indirizzo Spedizione</th>
-										<th>Indirizzo Fatturazione</th>
+										<th>Indirizzo</th>
+										<th>Metodo di Pagamento</th>
 										<th>Prodotti</th>
 									</tr>
 								</thead>
@@ -165,7 +166,7 @@
 						
 					<div class="row">
 						<div class="col-lg-2"></div>
-						<div class="col-lg-8 col-xs-12">
+						<div class="col-lg-8 col-xs-12 refresh">
 							
 							<c:forEach items="${metodi}" var="item"> 
 								<div class="credcard" id="${item.secureCode}">
@@ -306,6 +307,6 @@
 		</div>
 	</div>
 	<%@include file="/WEB-INF/Includes/footer.jsp"%>
-
+<script src="scripts/orderRender.js" type="text/javascript"></script>
 </body>
 </html>
