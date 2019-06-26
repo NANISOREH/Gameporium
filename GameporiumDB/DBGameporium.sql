@@ -60,19 +60,6 @@ CREATE TABLE accessorio(
     FULLTEXT (nomeCategoria, descrizioneCategoria)
 );
 
-DROP TABLE IF EXISTS recensione;
-USE GameporiumDB;
-CREATE TABLE recensione(
-    username    varchar(16),
-    codiceProdotto  int,
-    testo           varchar(200),
-    foreign key (codiceProdotto) references prodotto (codiceProdotto)
-                                ON UPDATE CASCADE
-                                ON DELETE CASCADE,
-    foreign key (username) references cliente (username)
-                                ON UPDATE CASCADE
-                                ON DELETE CASCADE);
-
 DROP TABLE IF EXISTS evento;
 USE GameporiumDB;
 CREATE TABLE evento(
@@ -160,15 +147,6 @@ CREATE TABLE ordine(
     statoProdotti   varchar (1000),
     metodo          bigint references metodoPagamento(numCarta),
     primary key (codiceOrdine)
-);
-
-DROP TABLE IF EXISTS corriere;
-USE GameporiumDB;
-CREATE TABLE corriere(
-    codiceCorriere  int,
-    costoSpedizione numeric,
-    nome            varchar(15),
-    primary key(codiceCorriere)
 );
 
 DROP TABLE IF EXISTS effettua;
