@@ -24,8 +24,24 @@ body {
 }
 .btn-primary{
 	background-color: #E07D00;
-	border-color:rgba(210,105,30)
+	border-color:rgba(210,105,30);
 }
+
+.btn-outline-secondary{
+	background-color: #E07D00;
+	border-color:rgba(210,105,30);
+}
+
+.btn-primary:hover{
+	background-color: tomato;
+	border-color:rgba(210,105,30);
+}
+
+.btn-outline-secondary:hover{
+	background-color: tomato;
+	border-color:rgba(210,105,30);
+}
+
 
 .opaque
 {
@@ -38,7 +54,6 @@ body {
 
 .header
 {
-	border-bottom: 1px solid black; 
 	border-top: 3px solid #E07D00;
 }
 
@@ -118,6 +133,7 @@ a:hover{
 	table-layout: fixed;
 	word-wrap: break-word;
 	text-align: left;
+	color:lightgray;
 }
 .listproduct {
 	background-color: rgb(0,0,0,0.0)	
@@ -201,7 +217,7 @@ div.nomeriga {
 span.prezzo {
 	font-size: 23px;
 	font-weight: bold;
-	color: red;
+	color: tomato;
 }
 
 input.quantInput {
@@ -231,29 +247,28 @@ div#mlcenter {
 /*mobilelogin*/
 
 /*home*/
-	.fadimg
-    { 
-    	height:300px;
-    }
-    
-    .mySlides
-    {
-    	text-align: center;	
-    }
-    
-    .slideshow-container
-    {
-    	background-color: rgb(0,0,0,0.0);
-    	border-radius: 25px;
-    	padding:0px;
-    }
-	
-	a.offnovlink
-	{
-		float: right;
-	}
+.fadimg
+   {
+   	width:auto; 
+   	height:300px;
+   }
+   
+   .mySlides
+   {
+   	text-align: center;	
+   }
+   
+   .slideshow-container
+   {
+   	background-color: lightgray;
+   	border: 1px solid lightgray;
+   	border-radius: 25px;
+   	padding:0px;
+   }
 
-a.offnovlink {
+a.offnovlink
+{
+	color:#E07D00;
 	float: right;
 }
 

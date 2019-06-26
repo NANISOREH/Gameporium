@@ -78,9 +78,9 @@
 								<th>Data Ordine</th>
 								<th>Data Spedizione</th>
 								<th>Importo</th>
-								<th>Indirizzo Spedizione</th>
-								<th>Indirizzo Fatturazione</th>
-								<th>Prodotto</th>
+								<th>Indirizzo</th>
+								<th>Metodo di Pagamento</th>
+								<th>Prodotti</th>
 							</tr>
 						</thead>
 						<tbody>

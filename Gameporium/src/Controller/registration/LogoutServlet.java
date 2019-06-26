@@ -24,8 +24,7 @@ public class LogoutServlet extends HttpServlet
 		HttpSession session = request.getSession(false);
 		if(session != null)
 		    session.invalidate();
-		request.setAttribute("logoutDone", true);
-		request.getRequestDispatcher("/home.jsp").forward(request,response);
+		response.sendRedirect("/Gameporium/home.jsp?logoutDone=true");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 

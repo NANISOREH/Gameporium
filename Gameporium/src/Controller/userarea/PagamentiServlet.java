@@ -34,6 +34,10 @@ public class PagamentiServlet extends HttpServlet {
 				bo=pm.doRetrieveByUser(username);
 				session.setAttribute("metodi", bo);
 				response.setStatus(200);
+				
+				if (bo.isEmpty())
+					session.removeAttribute("metodi");
+				
 				return;
 			}catch (SQLException e) {
 				e.printStackTrace();
@@ -65,7 +69,10 @@ public class PagamentiServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		BeanPagamento metodo = new BeanPagamento();
+		@SuppressWarnings("unchecked")
+		Collection<Bean> bo=(Collection<Bean>) session.getAttribute("metodi");
 
 		if(request.getParameter("insert")!= null)
 		{
@@ -73,6 +80,7 @@ public class PagamentiServlet extends HttpServlet {
 			metodo.setCvv(Integer.parseInt(request.getParameter("cvv")));
 			metodo.setCircuito(request.getParameter("circuito"));
 			metodo.setScadenza(request.getParameter("scadenza"));
+			metodo.setSecureCode();
 			try {
 				pm.customDoSave(metodo, request.getParameter("username"));
 			} catch (SQLException e) {
@@ -80,14 +88,17 @@ public class PagamentiServlet extends HttpServlet {
 				{
 					response.sendRedirect("/Gameporium/order.jsp?azione=pagamento&cardNotAdded=true"); 
 				}
-				response.sendRedirect("/Gameporium/clientpage.jsp?azione=pagamento&cardNotAdded=true");
-				e.printStackTrace();
+				if (request.getParameter("isOrder") != null)
+				{
+					response.sendRedirect("/Gameporium/clientpage.jsp?azione=pagamento&cardNotAdded=true");
+					e.printStackTrace();
+				}
 				return;
 			}
 				
 			if (request.getParameter("isOrder") != null)
 			{
-				response.sendRedirect("/Gameporium/order.jsp?creditCardSuccess=true"); 
+				response.sendRedirect("/Gameporium/order.jsp?creditCardSuccess=true&newCard=" + metodo.getSecureCode()); 
 				return;
 			}
 			if (request.getParameter("isOrder") == null)
@@ -96,6 +107,9 @@ public class PagamentiServlet extends HttpServlet {
 			}
 				
 		}
+		
+		if (bo.isEmpty())
+			session.removeAttribute("metodi");
 		
 		response.setStatus(200);
 	}

@@ -179,7 +179,6 @@ function limitField (field, max)
 	
 	if (!field.value.match(numOnly))
 	{
-		alert("no");
 		field.value = field.value.slice(0,field.value.length); 
 	}
 	
@@ -214,9 +213,7 @@ function startOrder()
 		var indirizzo={via:form.indirizzo.value, civ:form.ncivico.value, cap:form.cap.value, citta: form.citta.value};
 		var jsonAddress=JSON.stringify(indirizzo);
 		var campoIndirizzo = document.getElementById("jsonaddress");
-		alert(campoIndirizzo.value);
 		campoIndirizzo.value = jsonAddress;
-		alert(campoIndirizzo.value);
 		
 		var metodo = document.getElementById("metodoselect");
 		metodo.value=document.getElementById("pselect").value;
