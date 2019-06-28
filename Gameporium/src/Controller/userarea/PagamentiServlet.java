@@ -88,7 +88,7 @@ public class PagamentiServlet extends HttpServlet {
 				{
 					response.sendRedirect("/Gameporium/order.jsp?azione=pagamento&cardNotAdded=true"); 
 				}
-				if (request.getParameter("isOrder") != null)
+				if (request.getParameter("isOrder") == null)
 				{
 					response.sendRedirect("/Gameporium/clientpage.jsp?azione=pagamento&cardNotAdded=true");
 					e.printStackTrace();
@@ -108,9 +108,16 @@ public class PagamentiServlet extends HttpServlet {
 				
 		}
 		
-		if (bo.isEmpty())
+		if (bo==null) {
 			session.removeAttribute("metodi");
-		
+			response.setStatus(200);
+			return;
+		}
+		else if(bo.isEmpty()) {
+			session.removeAttribute("metodi");
+			response.setStatus(200);
+			return;
+		}
 		response.setStatus(200);
 	}
 

@@ -204,7 +204,7 @@ INSERT INTO gioco (codiceProdotto,nomeCategoria,descrizioneCategoria,durata,etaC
 
 
     
-INSERT INTO ordine(codiceOrdine,indirizzoSpedizione,dataOrdine,dataSpedizione,importo,statoProdotti,metodo) VALUES
+/*INSERT INTO ordine(codiceOrdine,indirizzoSpedizione,dataOrdine,dataSpedizione,importo,statoProdotti,metodo) VALUES
 	(00001, 'Via Paolo Uccello 8','2019/07/02','2019/07/05',15.3, 'prova', 112),
     (00002, 'Via Paolo Uccello 8','2019/06/15','2019/06/22',35, 'prova', 111),
     (00003, 'Via Paolo Uccello 8','2019/05/01','2019/05/08',28, 'prova', 113),
@@ -214,16 +214,8 @@ INSERT INTO ordine(codiceOrdine,indirizzoSpedizione,dataOrdine,dataSpedizione,im
     (00007, 'Via Paolo Uccello 8','2019/08/10','2019/08/17',64, 'prova',113),
     (00008, 'Via Paolo Uccello 8','2019/08/05','2019/08/12',30, 'prova',112),
     (00009, 'Via Paolo Uccello 8','2019/10/12','2019/10/19',34, 'prova',113),
-    (00010, 'Via Paolo Uccello 8','2019/11/21','2019/11/28',55, 'prova',111);
-    
-    
-    
-INSERT INTO indirizzo(codiceIndirizzo,via,civico,citta, cap) VALUES
-    (01,'via dall Università', 53,'Aversa', 80200),
-    (02,'via Vittorio Emanuele',89,'Napoli',80010),
-    (03, 'via eruzione',70,'Pompei',83020),
-    (04,'via dal carcere',25,'Scampia',82120);
-    
+    (00010, 'Via Paolo Uccello 8','2019/11/21','2019/11/28',55, 'prova',111);*/
+
 INSERT INTO metodoPagamento(circuito,numCarta,cvv,scadenza) VALUES
 	('visa',1111111111111111,119,'12/2019'),
     ('mastercard',2222222222222222,773,'01/2022'),

@@ -210,7 +210,7 @@
 														    </select>
 														</div>
 														<div class="form-group col-md-4">
-															<label>Numero</label> <input type="text"
+															<label>Numero</label> <input type="text" oninput="limitField(document.insertform.numero, 16)"
 																class="form-control" name="numero" id="numero">
 														</div>
 														<div class="form-group col-md-4">
@@ -268,7 +268,7 @@
 										</div>
 													<br><br>
 								<jsp:include page="/preset"/>
-										
+									<c:if test="${metodi!=null}">
 										<form id="preset">
 											<label>Metodo di pagamento preferito:</label> 
 												<select class="form-control" id="pselect" name="pselect" 
@@ -281,8 +281,8 @@
 										       </c:forEach>
 										    </select>
 										</form>
-
-									</div>
+									</c:if>
+								</div>
 
 								</div>
 							

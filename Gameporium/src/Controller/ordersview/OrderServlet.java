@@ -41,8 +41,6 @@ public class OrderServlet extends HttpServlet {
 		String dataA = request.getParameter("dataA");
 		String ordine = request.getParameter("ordinebtn");
 		Collection<Bean> bo = null;
-		
-		System.out.println("Ecco l'ordine"+ordine);
 
 
 		if (ordine == null) {
@@ -70,8 +68,8 @@ public class OrderServlet extends HttpServlet {
 			}
 			if (username != null && username != "" && (dataDa == null || dataDa == "") && (dataA == "" || dataA == null)) {
 				try {
+					System.out.println("retrieve by username:" + username);
 					bo = om.doRetrieveByUser(username);
-					session.setAttribute("listaOrdini", bo);
 					System.out.println("retrieve by username:" + bo);
 					Collection<Bean> temp = bo.stream().distinct().collect(Collectors.toList());
 					session.setAttribute("listaOrdini", temp);

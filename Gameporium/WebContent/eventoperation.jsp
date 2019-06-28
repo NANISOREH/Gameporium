@@ -16,20 +16,20 @@
 
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<link rel="stylesheet" href="pagestyle.css" type="text/css">
 </head>
 
 <body onload="myFunctEvento()">
-	<div class= "header">
-	<%@include file="/WEB-INF/Includes/header.jsp"%>
-	</div>
-	
-	<div class="container-fluid " style="margin-top: 0">
-		<!-- sistema di colonne -->
-		<div class="row">
+  <div class= "header">
+    <%@include file="/WEB-INF/Includes/header.jsp"%>
+  </div>
+  
+  <div class="container-fluid " style="margin-top: 0">
+    <!-- sistema di colonne -->
+    <div class="row">
 			
 			<!-- colonna sinistra -->
-			<div
-				class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+			<div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 " style = "margin-bottom:200px;">
 				<%@include file="/WEB-INF/Includes/leftpaneladmin.jsp"%>
 			</div>
 			<!-- fine colonna sinistra -->

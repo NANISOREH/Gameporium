@@ -79,7 +79,7 @@
 							</div>
 							
 							<div class="form-group">
-					        	<input type="text" class="form-control" name="user" placeholder="Username" required>
+					        	<input type="text" class="form-control" name="user" placeholder="Username (tra 3 e 15 caratteri)" required>
 					        </div>
 					        
 					        <div class="form-group">

@@ -128,7 +128,7 @@
 												</select>
 											</div>
 											<div class="form-group col-md-4">
-												<label>Numero</label> <input type="text"
+												<label>Numero</label> <input type="text" oninput="limitField(document.ccform.numero, 16)"
 													class="form-control" name="numero">
 											</div>
 											<div class="form-group col-md-4">

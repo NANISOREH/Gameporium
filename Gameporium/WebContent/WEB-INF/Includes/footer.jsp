@@ -19,9 +19,9 @@
       <div class="col-md-6 mt-md-0 mt-3">
 
         <!-- Content -->
-        <h5 class="text-uppercase">Footer Content</h5>
-        <p>Here you can use rows and columns to organize your footer content.</p>
-
+        <h5 class="text-uppercase">Contatti:</h5>
+        <p>Telefono: 339-4398000</p>
+    <p>e-mail:<a href="#"> gamporium.store@pec.it</p></a>
       </div>
       <!-- Grid column -->
 
@@ -31,20 +31,17 @@
       <div class="col-md-3 mb-md-0 mb-3">
 
         <!-- Links -->
-        <h5 class="text-uppercase">Links</h5>
+        <h5 class="text-uppercase">Seguici su</h5>
 
         <ul class="list-unstyled">
           <li>
-            <a href="#!">Link 1</a>
+            <i class="fab fa-facebook"><a href="www.facebook.it">  Facebook</a></i>
           </li>
           <li>
-            <a href="#!">Link 2</a>
+            <i class="fab fa-instagram"><a href="www.instagram.it">  Instagram</a></i>
           </li>
           <li>
-            <a href="#!">Link 3</a>
-          </li>
-          <li>
-            <a href="#!">Link 4</a>
+            <i class="fab fa-telegram"><a href="www.telegram.com">  Telegram</a></i>
           </li>
         </ul>
 
@@ -55,20 +52,20 @@
       <div class="col-md-3 mb-md-0 mb-3">
 
         <!-- Links -->
-        <h5 class="text-uppercase">Links</h5>
+        <h5 class="text-uppercase">Affiliati</h5>
 
         <ul class="list-unstyled">
           <li>
-            <a href="#!">Link 1</a>
+            <a href="www.dragonstore.it">Dragonstore</a>
           </li>
           <li>
-            <a href="#!">Link 2</a>
+            <a href="www.giochidatavolo.it">Giochi da Tavolo</a>
           </li>
           <li>
-            <a href="#!">Link 3</a>
+            <a href="www.giocandolandia.com">Giocandolandia</a>
           </li>
           <li>
-            <a href="#!">Link 4</a>
+            <a href="www.fantasystore.it">Fantasy Store</a>
           </li>
         </ul>
 

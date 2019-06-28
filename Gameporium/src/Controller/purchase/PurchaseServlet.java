@@ -65,6 +65,8 @@ public class PurchaseServlet extends HttpServlet {
 		b.setImporto(new BigDecimal(importo));
 		b.setStatoProdotti(statoProdotti);
 		
+		System.out.println(b.toString());
+		
 		@SuppressWarnings("unchecked")
 		Collection<Bean> bo=(Collection<Bean>) session.getAttribute("metodi");
 		for (Bean bean : bo)

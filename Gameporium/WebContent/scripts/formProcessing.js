@@ -263,7 +263,6 @@ function ajaxOrder()
 			$.get('adminorder', {"username": u}, 
 		      function(){
 		        $("#ordertable").load(' #ordertable');
-		      }, 
-		      failAlert()); 
+		      }); 
 		});
 }

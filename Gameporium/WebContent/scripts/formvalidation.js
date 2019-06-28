@@ -49,6 +49,7 @@ function validateRegister(registerform)
 	var n = registerform.elements.length; 
 	var mailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	var pass = /^.{7,}$/;
+	var username=/^.{3,15}$/
 
 	for (var i = 0; i < n - 1; i++) 
 	{		
@@ -68,6 +69,22 @@ function validateRegister(registerform)
 			registerform.elements[i].value = htmlEscape(registerform.elements[i].value);
 	}
 	
+	
+	if (!registerform.username.value.match(username))
+	{
+		Swal.fire({
+			  title: '<h6>L username deve essere di lunghezza compresa tra 3 e 15 caratteri</h6>',
+			  toast: true,
+			  type: 'error',
+			  position: 'top',
+			  timer: 2000,
+			  showConfirmButton: false
+			})
+		
+		registerform.pass.focus();
+		return;
+	}
+	
 	if (!registerform.pass.value.match(pass))
 	{
 		Swal.fire({
@@ -82,6 +99,7 @@ function validateRegister(registerform)
 		registerform.pass.focus();
 		return;
 	}
+	
 	else if (!registerform.mail.value.match(mailReg))
 	{
 		Swal.fire({

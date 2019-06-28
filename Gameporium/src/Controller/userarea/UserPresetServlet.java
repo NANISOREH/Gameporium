@@ -50,8 +50,11 @@ public class UserPresetServlet extends HttpServlet {
 			}
 			
 		}
-
-		if (request.getParameter("newCard") == null)	
+		
+		String var = request.getParameter("newCard");
+		System.out.println(var);
+		System.out.println(bo);
+		if (var!=null)	
 		{
 			for (Bean b : bo)
 			{

@@ -30,8 +30,8 @@ function addToCart(idform)
 				  timer: 2000,
 				  showConfirmButton: false 
 				});
-			}, 
-			failAlert());
+			}); 
+		
 	
 }
 

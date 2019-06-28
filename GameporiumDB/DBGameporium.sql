@@ -88,17 +88,6 @@ CREATE TABLE partecipazione(
                                 ON DELETE CASCADE
 );
 
-DROP TABLE IF EXISTS indirizzo;
-USE GameporiumDB;
-CREATE TABLE indirizzo(
-    codiceIndirizzo int,
-    citta varchar(20),
-    via varchar(30),
-    civico int,
-    cap int,
-    primary key (codiceIndirizzo)
-    );
-    
 DROP TABLE IF EXISTS metodoPagamento;
 USE GameporiumDB;
 CREATE TABLE   metodoPagamento(
@@ -108,20 +97,6 @@ CREATE TABLE   metodoPagamento(
     scadenza varchar(7),
     primary key(numCarta)
     );
-    
-DROP TABLE IF EXISTS spedizione;
-USE GameporiumDB;
-CREATE TABLE spedizione(
-    username    varchar(16),
-    codiceIndirizzo int,
-    testo           varchar(200),
-    foreign key (codiceIndirizzo) references indirizzo (codiceIndirizzo)
-                                ON UPDATE CASCADE
-                                ON DELETE CASCADE,
-    foreign key (username) references cliente (username)
-                                ON UPDATE CASCADE
-                                ON DELETE CASCADE);
-                                
                        
 DROP TABLE IF EXISTS possiede;
 USE GameporiumDB;

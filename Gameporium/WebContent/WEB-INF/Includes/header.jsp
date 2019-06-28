@@ -18,7 +18,8 @@
   }
   
   .navbar-nav .nav-item.active .nav-link, .navbar-nav .nav-item:hover .nav-link {
-	background-color: #CB6600
+	background-color: brown;
+
   }
   
   .navbar-toggler-icon {

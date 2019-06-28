@@ -46,7 +46,7 @@
 
         <div class="panelcard card" style="margin-top: 30px">
           <div class="card-body" style="margin-top: 30px">
-          <img src="images/lato.png" style="width:100">
+          <img src="images/lato.png" style="width:100%">
           </div>
         </div>
 

@@ -1,4 +1,4 @@
- <!-- pannello laterale -->
+<!-- pannello laterale -->
       <div class="sidebar-menu" style="margin-top:10px">
         <ul>
           <li class="sidebar-dropdown">

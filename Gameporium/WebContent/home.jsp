@@ -79,7 +79,7 @@
 
 					<div class="container-fluid clearfix" style="margin-top: 30px">
 
-			 		<div class="slideshow-container d-none d-md-block">
+			 		<div class="slideshow-container d-none d-md-block" style="overflow:hidden">
 
 						<div class="mySlides fade">
 						  <div class="numbertext">1 / 3</div>
