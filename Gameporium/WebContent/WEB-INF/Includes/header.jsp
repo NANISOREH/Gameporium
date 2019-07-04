@@ -18,8 +18,13 @@
   }
   
   .navbar-nav .nav-item.active .nav-link, .navbar-nav .nav-item:hover .nav-link {
+<<<<<<< HEAD
 	background-color: brown;
 
+=======
+	background-color: #331900;
+	background-color: #CB6600
+>>>>>>> 7c914d4915aff36d17a704ec42a5377877fd2605
   }
   
   .navbar-toggler-icon {

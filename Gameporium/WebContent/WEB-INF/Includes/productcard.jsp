@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 </head>
 <body>
+<<<<<<< HEAD
     <div class="col-lg-4 col-md-6 col-xs-12 ">
   
     <div class="productcard card d-block mx-auto">
@@ -18,6 +19,18 @@
         ${item.descrizione}
         </div></a>
       <!-- onhover property -->
+=======
+  	<div class="col-lg-4 col-md-6 col-xs-12 ">
+	
+		<div class="productcard card d-block mx-auto">
+		  
+		  <div class="prodimg d-block mx-auto ">
+		  	<img class="card-img-top card-hover" src="images/${item.foto}" alt="Card image cap">
+		  		<a href="singleProduct?selProd=${item.codiceProdotto}&selCat=${item.codCategoria}"><div class="prod-des d-none" style="font-size:60%; color: white; text-align:justify">
+		  	${item.descrizione}
+		  	</div></a>
+		  <!-- onhover property -->
+>>>>>>> 7c914d4915aff36d17a704ec42a5377877fd2605
          
       </div>
       <div class="pccardbody card-body">
