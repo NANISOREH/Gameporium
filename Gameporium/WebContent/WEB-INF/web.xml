@@ -22,10 +22,6 @@
     <servlet-class>Controller.eventsview.SingleEventServlet</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>TestProduct</servlet-name>
-    <servlet-class>Controller.testing.TestProduct</servlet-class>
-  </servlet>
-  <servlet>
     <servlet-name>ProductShowServlet</servlet-name>
     <servlet-class>Controller.productview.ProductShowServlet</servlet-class>
   </servlet>
@@ -44,10 +40,6 @@
   <servlet>
     <servlet-name>EventShowServlet</servlet-name>
     <servlet-class>Controller.eventsview.EventShowServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>SearchServlet</servlet-name>
-    <servlet-class>Controller.productview.SearchServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>CartServlet</servlet-name>

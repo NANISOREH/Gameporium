@@ -20,7 +20,6 @@
 </head>
 
 <body onload="myFunctEvento()">
-<<<<<<< HEAD
   <div class= "header">
     <%@include file="/WEB-INF/Includes/header.jsp"%>
   </div>
@@ -28,15 +27,6 @@
   <div class="container-fluid " style="margin-top: 0">
     <!-- sistema di colonne -->
     <div class="row">
-=======
-	<div class= "header">
-		<%@include file="/WEB-INF/Includes/header.jsp"%>
-	</div>
-	
-	<div class="container-fluid " style="margin-top: 0">
-		<!-- sistema di colonne -->
-		<div class="row">
->>>>>>> 7c914d4915aff36d17a704ec42a5377877fd2605
 			
 			<!-- colonna sinistra -->
 			<div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 " style = "margin-bottom:200px;">
