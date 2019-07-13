@@ -6,5 +6,11 @@ Gameporium/WebContent/META-INF/context.xml
 Gameporium/build
 Gameporium/.classpath
 Gameporium/.project
+.idea/
+Gameporium/.idea/
+Gameporium/Gameporium.iml
+Gameporium/META-INF/
+Gameporium/out/
+out/
 
 
