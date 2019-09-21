@@ -76,7 +76,7 @@ body {
 
 a:link 
 {
-  color:#E07D00 !important;
+  color:#E07D00;
 }
 a:active
 {
@@ -471,4 +471,4 @@ div.credcard {
  #user:focus,#usernameE:focus{
   background-color: lavender;
 }
-ù
+ï¿½

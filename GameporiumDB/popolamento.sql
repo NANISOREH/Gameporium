@@ -216,13 +216,13 @@ INSERT INTO gioco (codiceProdotto,nomeCategoria,descrizioneCategoria,durata,etaC
     (00009, 'Via Paolo Uccello 8','2019/10/12','2019/10/19',34, 'prova',113),
     (00010, 'Via Paolo Uccello 8','2019/11/21','2019/11/28',55, 'prova',111);*/
 
-INSERT INTO metodoPagamento(circuito,numCarta,cvv,scadenza) VALUES
+/*INSERT INTO metodoPagamento(circuito,numCarta,cvv,scadenza) VALUES
 	('visa',1111111111111111,119,'12/2019'),
     ('mastercard',2222222222222222,773,'01/2022'),
-    ('american express',3333333333333333,223,'01/2024');
+    ('american express',3333333333333333,223,'01/2024');*/
     
     
-INSERT INTO effettua(username,codiceOrdine) VALUES
+/*INSERT INTO effettua(username,codiceOrdine) VALUES
 	('Brontolo',00001),
     ('Athos',00002),
     ('Eolo',00003),
@@ -232,7 +232,7 @@ INSERT INTO effettua(username,codiceOrdine) VALUES
     ('Cucciolo',00007),
     ('Athos',00008),
     ('Pisolo',00009),
-    ('Portos',00010);
+    ('Portos',00010);*/
     
 INSERT INTO partecipazione(codiceEvento,username) VALUES
 	(001,'Portos'),
@@ -243,9 +243,9 @@ INSERT INTO partecipazione(codiceEvento,username) VALUES
     
 
 
-INSERT INTO possiede(username,numCarta) VALUES
+/*INSERT INTO possiede(username,numCarta) VALUES
 	('Mammolo',1111111111111111),
     ('Mammolo',2222222222222222),
-    ('Mammolo',3333333333333333);
+    ('Mammolo',3333333333333333);*/
 
 
